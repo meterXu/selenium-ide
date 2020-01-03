@@ -1,6 +1,6 @@
 {
-  "name": "@seleniumhq/code-export-python-robotframework",
-  "version": "3.16.0",
+  "name": "code-export-python-robotframework",
+  "version": "1.0.0",
   "description": "Export Selenium IDE project contents to Python robotframework",
   "repository": "https://github.com/SeleniumHQ/selenium-ide",
   "keywords": [
