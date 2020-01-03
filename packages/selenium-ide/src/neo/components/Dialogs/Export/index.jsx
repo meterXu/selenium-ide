@@ -78,11 +78,11 @@ class ExportContent extends React.Component {
   render() {
     return (
       <DialogContainer
-        title="Select language"
+        title="选择语言"
         onRequestClose={this.props.cancel}
         renderFooter={() => (
           <span className="right">
-            <FlatButton onClick={this.props.cancelSelection}>cancel</FlatButton>
+            <FlatButton onClick={this.props.cancelSelection}>关闭</FlatButton>
             <FlatButton
               disabled={!this.state.selectedLanguages.length}
               type="submit"
@@ -100,9 +100,9 @@ class ExportContent extends React.Component {
                   .catch(error => {
                     this.props.cancelSelection()
                     ModalState.showAlert({
-                      title: 'Unable to complete code export',
+                      title: '无法完成代码导出',
                       description: error.message,
-                      confirmLabel: 'OK',
+                      confirmLabel: '确认',
                     })
                   })
               }}
@@ -121,13 +121,13 @@ class ExportContent extends React.Component {
         />
         <hr />
         <Checkbox
-          label="Include origin tracing code comments"
+          label="包括源代码注释"
           checked={this.state.enableOriginTracing}
           form={true}
           onChange={this.toggleOriginTracing.bind(this)}
         />
         <Checkbox
-          label="Export for use on Selenium Grid"
+          label="导出以在Selenium Grid上使用"
           checked={this.state.enableGridConfig}
           form={true}
           onChange={this.toggleGridConfig.bind(this)}
@@ -136,7 +136,7 @@ class ExportContent extends React.Component {
           <Input
             id="grid-url"
             name="grid-url"
-            label="Remote URL"
+            label="远端 URL"
             value={this.state.gridConfigUrl}
             onChange={value => {
               this.onUrlChange(value)
