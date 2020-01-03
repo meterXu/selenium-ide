@@ -1,3 +1,3 @@
-# code-export-python-pytest
+# code-export-python-robotframework
 
-Python pytest code export for Selenium IDE.
+Python robotframework code export for Selenium IDE.
