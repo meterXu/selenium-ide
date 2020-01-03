@@ -189,7 +189,7 @@ class PlaybackState {
       UiState._project.addCurrentUrl()
     } catch (e) {} // eslint-disable-line no-empty
     this.lastSelectedView = UiState.selectedView
-    UiState.changeView('Executing', true)
+    UiState.changeView('执行中', true)
     UiState.selectCommand(undefined)
     if (UiState.isRecording) {
       const chosePlay = await ModalState.showAlert({
@@ -613,7 +613,7 @@ class PlaybackState {
   @action.bound
   resume(breakOnNextCommand = false) {
     this.commandTarget.doPlayToThisPoint()
-    UiState.changeView('Executing')
+    UiState.changeView('执行中')
     UiState.selectTest(
       this.stackCaller,
       this.currentRunningSuite,

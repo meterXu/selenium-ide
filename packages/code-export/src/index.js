@@ -14,7 +14,7 @@
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
-
+import robotframework from '../../code-export-python-robotframework/src/'
 export const availableLanguages = {
   'csharp-nunit': require('@seleniumhq/code-export-csharp-nunit'),
   'csharp-xunit': require('@seleniumhq/code-export-csharp-xunit'),
@@ -22,7 +22,7 @@ export const availableLanguages = {
   'javascript-mocha': require('@seleniumhq/code-export-javascript-mocha'),
   'python-pytest': require('@seleniumhq/code-export-python-pytest'),
   'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
-  'python-robotframework':require('../../code-export-python-robotframework/src/index.js')
+  'python-robotframework':robotframework
 }
 
 function registerCommand(language, command, emitter) {
