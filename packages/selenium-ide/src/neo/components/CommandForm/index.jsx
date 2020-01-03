@@ -83,7 +83,7 @@ export default class CommandForm extends React.Component {
             <CommandInput
               id="command"
               name="command"
-              label="Command"
+              label="命令"
               value={
                 this.props.command
                   ? this.parseCommandName(this.props.command.command)
@@ -152,7 +152,7 @@ export default class CommandForm extends React.Component {
             <TargetInput
               id="target"
               name="target"
-              label="Target"
+              label="目标"
               value={this.props.command ? this.props.command.target : ''}
               targets={this.props.command ? this.props.command.targets : []}
               disabled={!this.props.command}
@@ -188,7 +188,7 @@ export default class CommandForm extends React.Component {
           <TextArea
             id="value"
             name="value"
-            label="Value"
+            label="值"
             value={this.props.command ? this.props.command.value : ''}
             disabled={!this.props.command}
             onChange={this.props.command ? this.props.command.setValue : null}
@@ -196,7 +196,7 @@ export default class CommandForm extends React.Component {
           <Input
             id="comment"
             name="comment"
-            label="Description"
+            label="描述"
             value={this.props.command ? this.props.command.comment : ''}
             disabled={!this.props.command}
             onChange={this.props.command ? this.props.command.setComment : null}

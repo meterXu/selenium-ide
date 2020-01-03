@@ -45,7 +45,7 @@ export default class SearchBar extends React.Component {
           ref={this.props.inputRef}
           className="search"
           type="search"
-          placeholder="Search tests..."
+          placeholder="搜索测试..."
           value={this.props.value}
           onChange={this.handleChange}
         />

@@ -62,7 +62,7 @@ export default class ProjectHeader extends React.Component {
           }${this.props.changed ? '*' : ''}`}
         />
         <div>
-          <span className="title-prefix">Project: </span>
+          <span className="title-prefix">项目: </span>
           <ContentEditable
             className="title"
             onKeyDown={this.handleKeyDown}

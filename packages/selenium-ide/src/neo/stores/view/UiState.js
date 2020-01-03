@@ -26,11 +26,11 @@ import WindowSession from '../../IO/window-session'
 import BackgroundRecorder from '../../IO/SideeX/recorder'
 
 class UiState {
-  views = ['Tests', 'Test suites', 'Executing']
+  views = ['测试', '测试组', '执行中']
   @observable
   lastViewSelection = new Map()
   @observable
-  selectedView = 'Tests'
+  selectedView = '测试'
   @observable
   selectedTest = {}
   @observable
@@ -168,11 +168,11 @@ class UiState {
   async changeView(view, ignoreCache) {
     if (this.isRecording && view !== this.selectedView) {
       const choseChange = await ModalState.showAlert({
-        title: 'Stop recording',
+        title: '停止录制',
         description:
-          'Changing the current view will stop the recording process. Would you like to continue?',
-        confirmLabel: 'stop recording',
-        cancelLabel: 'cancel',
+          '更改当前视图将停止录制过程。你想继续吗？',
+        confirmLabel: '停止录制',
+        cancelLabel: '关闭',
       })
       if (choseChange) {
         await this.stopRecording()
@@ -248,11 +248,11 @@ class UiState {
   async selectTest(test, suite, stack, override) {
     if (this.isRecording && test !== this.selectedTest.test) {
       const choseSelect = await ModalState.showAlert({
-        title: 'Stop recording',
+        title: '停止录制',
         description:
-          'Leaving this test and moving to another one will stop the recording process. Would you like to continue?',
-        confirmLabel: 'stop recording',
-        cancelLabel: 'cancel',
+          '离开此测试并转到另一个测试将停止记录过程。你想继续吗？',
+        confirmLabel: '停止录制',
+        cancelLabel: '关闭',
       })
       if (choseSelect) {
         await this.stopRecording()
@@ -267,10 +267,10 @@ class UiState {
   selectTestByIndex(index, suite) {
     const selectTestInArray = (index, tests) =>
       index >= 0 && index < tests.length ? tests[index] : undefined
-    if (this.selectedView === 'Tests') {
+    if (this.selectedView === '测试') {
       const test = selectTestInArray(index, this.filteredTests)
       if (test) this.selectTest(test)
-    } else if (this.selectedView === 'Test suites') {
+    } else if (this.selectedView === '测试组') {
       const suiteState = this.getSuiteState(suite)
       const tests = suiteState.filteredTests.get()
       const test = selectTestInArray(index, tests)
@@ -291,7 +291,7 @@ class UiState {
         const nextSuite = this._project.suites[suiteIndex + 1]
         this.selectTestByIndex(0, nextSuite)
       }
-    } else if (this.selectedView === 'Executing') {
+    } else if (this.selectedView === '执行中') {
       const test = selectTestInArray(index, PlaybackState.testsToRun)
       if (test) {
         let stack = undefined
@@ -364,7 +364,7 @@ class UiState {
     if (!startingUrl) {
       startingUrl = await ModalState.selectBaseUrl({
         isInvalid,
-        confirmLabel: 'Start recording',
+        confirmLabel: '开始录制',
       })
     }
     try {
@@ -374,7 +374,7 @@ class UiState {
       await this.emitRecordingState()
     } catch (err) {
       ModalState.showAlert({
-        title: 'Could not start recording',
+        title: '无法开始录制',
         description: err ? err.message : undefined,
       })
     }
@@ -408,7 +408,7 @@ class UiState {
   emitRecordingState() {
     Manager.emitMessage({
       action: 'event',
-      event: this.isRecording ? 'recordingStarted' : 'recordingStopped',
+      event: this.isRecording ? '录制开始' : '录制已停止',
       options: {
         testName: this.selectedTest.test
           ? this.selectedTest.test.name

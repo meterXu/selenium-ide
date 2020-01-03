@@ -93,10 +93,10 @@ export default class TestTable extends React.Component {
           <thead>
             <tr>
               <th>
-                <span>Command</span>
+                <span>命令</span>
               </th>
-              <th>Target</th>
-              <th>Value</th>
+              <th>目标</th>
+              <th>值</th>
             </tr>
           </thead>
         </table>
