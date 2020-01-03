@@ -108,7 +108,7 @@ class WelcomeDialogContents extends React.Component {
           <ul className="welcome-dialog__options">
             <li>
               <a onClick={this.startRecordingInNewProject}>
-                在新项目中录制新测试
+                新建项目并开始录制
               </a>
             </li>
             <li className="file-open">

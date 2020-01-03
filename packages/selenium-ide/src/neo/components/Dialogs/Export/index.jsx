@@ -110,7 +110,7 @@ class ExportContent extends React.Component {
                 marginRight: '0',
               }}
             >
-              export
+              导出
             </FlatButton>
           </span>
         )}
