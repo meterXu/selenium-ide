@@ -308,13 +308,13 @@ export class MenuTest extends React.Component {
             })
           }
         >
-          Rename
+          重命名
         </ListMenuItem>
         <ListMenuItem onClick={this.props.duplicateTest}>
-          Duplicate
+          复制
         </ListMenuItem>
-        <ListMenuItem onClick={this.props.removeTest}>Delete</ListMenuItem>
-        <ListMenuItem onClick={this.props.codeExport}>Export</ListMenuItem>
+        <ListMenuItem onClick={this.props.removeTest}>删除</ListMenuItem>
+        <ListMenuItem onClick={this.props.codeExport}>导出</ListMenuItem>
       </ListMenu>
     )
     //setting component of context menu.

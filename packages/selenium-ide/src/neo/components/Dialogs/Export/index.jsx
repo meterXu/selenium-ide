@@ -55,6 +55,7 @@ class ExportContent extends React.Component {
       enableGridConfig: UiState.gridConfigEnabled,
       gridConfigUrl: UiState.specifiedRemoteUrl,
     }
+    debugger
   }
   static propTypes = {
     cancelSelection: PropTypes.func.isRequired,
