@@ -25,7 +25,6 @@
     "@seleniumhq/code-export-java-junit": "^3.16.0",
     "@seleniumhq/code-export-javascript-mocha": "^3.16.1",
     "@seleniumhq/code-export-python-pytest": "^3.16.0",
-    "@seleniumhq/code-export-python-robotframework": "^3.16.0",
     "@seleniumhq/code-export-ruby-rspec": "^3.16.0"
   }
 }
