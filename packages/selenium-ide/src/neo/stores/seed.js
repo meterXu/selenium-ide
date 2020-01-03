@@ -780,7 +780,7 @@ export default function seed(store, numberOfSuites = 0) {
   waitSuite.addTestCase(waitTest4)
   waitSuite.addTestCase(waitTest5)
 
-  UiState.changeView('Test suites')
+  UiState.changeView('测试组')
   suiteAll.setOpen(true)
   UiState.selectTest(checkTest, suiteAll)
 

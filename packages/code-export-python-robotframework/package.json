@@ -14,7 +14,7 @@
     "build": "babel -d dist src --ignore=__test__",
     "watch": "yarn build -w"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
