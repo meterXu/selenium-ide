@@ -36,7 +36,10 @@ opts.generateMethodDeclaration = generateMethodDeclaration
 function generateTestDeclaration(name) {
   return `def test_${exporter.parsers.uncapitalize(
     exporter.parsers.sanitizeName(name)
-  )}(self):`
+  )}():
+  self = type('test',(), {})() 
+  self.driver = webdriver.Chrome()
+  self.vars = {}`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -101,10 +104,8 @@ export async function emitSuite({
     generateTestDeclaration,
     project,
   })
-  const suiteDeclaration = generateSuiteDeclaration(suite.name)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
-    suiteDeclaration,
     suite,
     project,
     beforeEachOptions,
