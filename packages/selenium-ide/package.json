@@ -50,7 +50,7 @@
     "@seleniumhq/code-export": "^3.16.1",
     "@seleniumhq/side-model": "^3.15.0",
     "@seleniumhq/side-utils": "^3.16.0",
-    "browser-webdriver": "^3.14.0",
+    "browser-webdriver": "^3.6.0-alpha.0",
     "classnames": "^2.2.5",
     "fuse.js": "^3.3.0",
     "google-closure-library": "^20170521.0.0",
