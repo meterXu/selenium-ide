@@ -44,9 +44,7 @@ function generateMethodDeclaration(name) {
   )}(self):`
 }
 function generateSuiteDeclaration(name) {
-  return `class Test${exporter.parsers.capitalize(
-    exporter.parsers.sanitizeName(name)
-  )}():`
+  return ``
 }
 function generateFilename(name) {
   return `test_${exporter.parsers.uncapitalize(
