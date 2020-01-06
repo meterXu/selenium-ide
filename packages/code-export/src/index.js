@@ -21,7 +21,7 @@ export const availableLanguages = {
   'javascript-mocha': require('@seleniumhq/code-export-javascript-mocha'),
   'python-pytest': require('@seleniumhq/code-export-python-pytest'),
   'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
-  'python-robotframework':require('code-export-python-robotframework')
+  'python-robotframework':require('../../code-export-python-robotframework/dist')
 }
 
 function registerCommand(language, command, emitter) {
