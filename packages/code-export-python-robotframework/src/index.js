@@ -30,6 +30,7 @@ opts.fileExtension = '.py'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
+opts.testLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
@@ -37,9 +38,9 @@ function generateTestDeclaration(name) {
   return `def test_${exporter.parsers.uncapitalize(
     exporter.parsers.sanitizeName(name)
   )}():
-  self = type('test',(), {})() 
-  self.driver = webdriver.Chrome()
-  self.vars = {}`
+    self = type('test',(), {})() 
+    self.driver = webdriver.Chrome()
+    self.vars = {}`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(

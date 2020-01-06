@@ -18,9 +18,9 @@ import { codeExport as exporter } from '@seleniumhq/side-utils'
 
 const emitters = {
   afterAll,
-  afterEach,
+  afterEach: empty,
   beforeAll,
-  beforeEach,
+  beforeEach: empty,
   declareDependencies,
   declareMethods: empty,
   declareVariables: empty,
@@ -42,66 +42,26 @@ export function generateHooks() {
 
 function afterAll() {
   const params = {
-    // startingSyntax: {
-    //   commands: [{ level: 0, statement: 'def teardown_class(cls):' }],
-    // },
-    // endingSyntax: {
-    //   commands: [{ level: 0, statement: '' }],
-    // },
-    // registrationLevel: 1,
-  }
-  return params
-}
-
-function afterEach() {
-  const params = {
-    // startingSyntax: {
-    //   commands: [
-    //     { level: 0, statement: 'def teardown_method(self, method):' },
-    //     { level: 1, statement: 'self.driver.quit()' },
-    //   ],
-    // },
-    // endingSyntax: {
-    //   commands: [{ level: 0, statement: '' }],
-    // },
+    startingSyntax: {
+      commands: [{ level: 0, statement: 'def teardown_class(cls):' }],
+    },
+    endingSyntax: {
+      commands: [{ level: 0, statement: '' }],
+    },
+    registrationLevel: 1,
   }
   return params
 }
 
 function beforeAll() {
   const params = {
-    // startingSyntax: {
-    //   commands: [{ level: 0, statement: 'def setup_class(cls):' }],
-    // },
-    // endingSyntax: {
-    //   commands: [{ level: 0, statement: '' }],
-    // },
-    // registrationLevel: 1,
-  }
-  return params
-}
-
-function beforeEach() {
-  const params = {
-    // startingSyntax: ({ browserName, gridUrl } = {}) => ({
-    //   commands: [
-    //     { level: 0, statement: 'def setup_method(self, method):' },
-    //     {
-    //       level: 1,
-    //       statement: gridUrl
-    //         ? `self.driver = webdriver.Remote(command_executor='${gridUrl}', desired_capabilities=DesiredCapabilities.${
-    //             browserName ? browserName.toUpperCase() : 'CHROME'
-    //           })`
-    //         : `self.driver = webdriver.${
-    //             browserName ? browserName : 'Chrome'
-    //           }()`,
-    //     },
-    //     { level: 1, statement: 'self.vars = {}' },
-    //   ],
-    // }),
-    // endingSyntax: {
-    //   commands: [{ level: 0, statement: '' }],
-    // },
+    startingSyntax: {
+      commands: [{ level: 0, statement: 'def setup_class(cls):' }],
+    },
+    endingSyntax: {
+      commands: [{ level: 0, statement: '' }],
+    },
+    registrationLevel: 1,
   }
   return params
 }

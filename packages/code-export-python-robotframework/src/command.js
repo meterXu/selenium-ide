@@ -121,7 +121,7 @@ export const emitters = {
 }
 
 exporter.register.preprocessors(emitters)
-
+const waitTimeOut = 30000
 function register(command, emitter) {
   exporter.register.emitter({ command, emitter, emitters })
 }
@@ -209,6 +209,15 @@ async function emitCheck(locator) {
   const commands = [
     {
       level: 0,
+      statement: {
+        level: 0,
+        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+          locator
+        )})))`,
+      },
+    },
+    {
+      level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
         locator
       )})`,
@@ -230,9 +239,16 @@ function emitChooseOkOnNextConfirmation() {
 }
 
 async function emitClick(target) {
-  return Promise.resolve(
-    `self.driver.find_element(${await location.emit(target)}).click()`
-  )
+  return Promise.resolve({
+    commands: [
+      {
+        level: 0,
+        statement: `self.driver.find_element(${await location.emit(
+          target
+        )}).click()`,
+      },
+    ],
+  })
 }
 
 async function emitClose() {
@@ -610,11 +626,22 @@ function generateSendKeysInput(value) {
 }
 
 async function emitSendKeys(target, value) {
-  return Promise.resolve(
-    `self.driver.find_element(${await location.emit(
-      target
-    )}).send_keys(${generateSendKeysInput(value)})`
-  )
+  return Promise.resolve({
+    commands: [
+      {
+        level: 0,
+        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+          target
+        )})))`,
+      },
+      {
+        level: 0,
+        statement: `self.driver.find_element(${await location.emit(
+          target
+        )}).send_keys(${generateSendKeysInput(value)})`,
+      },
+    ],
+  })
 }
 
 function emitSetSpeed() {
@@ -685,11 +712,22 @@ async function emitSubmit(_locator) {
 }
 
 async function emitType(target, value) {
-  return Promise.resolve(
-    `self.driver.find_element(${await location.emit(
-      target
-    )}).send_keys(${generateSendKeysInput(value)})`
-  )
+  return Promise.resolve({
+    commands: [
+      {
+        level: 0,
+        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+          target
+        )})))`,
+      },
+      {
+        level: 0,
+        statement: `self.driver.find_element(${await location.emit(
+          target
+        )}).send_keys(${generateSendKeysInput(value)})`,
+      },
+    ],
+  })
 }
 
 async function emitUncheck(locator) {
