@@ -278,6 +278,11 @@ export default class Panel extends React.Component {
       window.removeEventListener('beforeunload', this.quitHandler)
     }
   }
+  componentDidMount() {
+    window.onresize = function() {
+      UiState.setWindowHeight(window.outerHeight)
+    }
+  }
   render() {
     return (
       <div className="container" onKeyDown={this.handleKeyDownAlt.bind(this)}>
