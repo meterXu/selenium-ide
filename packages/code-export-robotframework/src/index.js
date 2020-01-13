@@ -26,34 +26,25 @@ export const displayName = 'Python robotframework'
 export let opts = {}
 opts.emitter = emitter
 opts.hooks = generateHooks()
-opts.fileExtension = '.py'
+opts.fileExtension = '.robot'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
-opts.commentPrefix = '#'
+opts.commentPrefix = ''
 opts.testLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
-function generateTestDeclaration(name) {
-  return `def test_${exporter.parsers.uncapitalize(
-    exporter.parsers.sanitizeName(name)
-  )}():
-    self = type('test',(), {})() 
-    self.driver = webdriver.Chrome()
-    self.vars = {}`
-}
-function generateMethodDeclaration(name) {
-  return `def ${exporter.parsers.uncapitalize(
-    exporter.parsers.sanitizeName(name)
-  )}(self):`
-}
-function generateSuiteDeclaration(name) {
+function generateTestDeclaration() {
   return ``
 }
-function generateFilename(name) {
-  return `test_${exporter.parsers.uncapitalize(
-    exporter.parsers.sanitizeName(name)
-  )}${opts.fileExtension}`
+function generateMethodDeclaration() {
+  return ``
+}
+function generateSuiteDeclaration() {
+  return ``
+}
+function generateFilename() {
+  return ``
 }
 
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)

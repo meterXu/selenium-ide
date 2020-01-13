@@ -581,9 +581,7 @@ async function emitSelect(selectElement, option) {
   const commands = [
     {
       level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        selectElement
-      )})))`,
+      statement: ``,
     },
     {
       level: 0,

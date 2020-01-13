@@ -43,7 +43,7 @@ export function generateHooks() {
 function afterAll() {
   const params = {
     startingSyntax: {
-      commands: [{ level: 0, statement: 'def teardown_class(cls):' }],
+      commands: [{ level: 0, statement: '' }],
     },
     endingSyntax: {
       commands: [{ level: 0, statement: '' }],
@@ -56,7 +56,7 @@ function afterAll() {
 function beforeAll() {
   const params = {
     startingSyntax: {
-      commands: [{ level: 0, statement: 'def setup_class(cls):' }],
+      commands: [{ level: 0, statement: '' }],
     },
     endingSyntax: {
       commands: [{ level: 0, statement: '' }],
@@ -70,38 +70,8 @@ function declareDependencies() {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 0, statement: 'import pytest' },
-        { level: 0, statement: 'import time' },
-        { level: 0, statement: 'import json' },
-        { level: 0, statement: 'from selenium import webdriver' },
-        {
-          level: 0,
-          statement: 'from selenium.webdriver.common.by import By',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.common.action_chains import ActionChains',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.support import expected_conditions',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.support.wait import WebDriverWait',
-        },
-        {
-          level: 0,
-          statement: 'from selenium.webdriver.common.keys import Keys',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.common.desired_capabilities import DesiredCapabilities',
-        },
+        { level: 0, statement: '*** Settings ***' },
+        { level: 0, statement: 'Library           SeleniumLibrary' },
         {
           level: 0,
           statement: '',
