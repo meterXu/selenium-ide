@@ -72,10 +72,11 @@ function declareDependencies() {
       commands: [
         { level: 0, statement: '*** Settings ***' },
         { level: 0, statement: 'Library           SeleniumLibrary' },
-        {
-          level: 0,
-          statement: '',
-        },
+        { level: 0, statement: '' },
+        { level: 0, statement: '*** Variables ***' },
+        { level: 0, statement: '${BROWSER}        chrome' },
+        { level: 0, statement: '${SELSPEED}       0.0s' },
+        { level: 0, statement: '' },
       ],
     },
   }

@@ -121,7 +121,7 @@ export const emitters = {
 }
 
 exporter.register.preprocessors(emitters)
-const waitTimeOut = 30000
+const waitTimeOut = 3000
 function register(command, emitter) {
   exporter.register.emitter({ command, emitter, emitters })
 }

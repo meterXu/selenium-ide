@@ -25,6 +25,13 @@ const emitters = {
   partialLinkText: emitPartialLinkText,
   css: emitCss,
   xpath: emitXpath,
+  jquery: emitJQuery,
+  class: emitClass,
+  identifier: emitIdentifier,
+  tag: emitTag,
+  dom: emitDom,
+  sizzle: emitSizzle,
+  default: emitDefault,
 }
 
 export function emit(location) {
@@ -36,25 +43,53 @@ export default {
 }
 
 function emitId(selector) {
-  return Promise.resolve(`By.ID, "${selector}"`)
+  return Promise.resolve(`id:${selector}`)
 }
 
 function emitName(selector) {
-  return Promise.resolve(`By.NAME, "${selector}"`)
+  return Promise.resolve(`name:${selector}`)
 }
 
 function emitLink(selector) {
-  return Promise.resolve(`By.LINK_TEXT, "${selector}"`)
+  return Promise.resolve(`link:${selector}`)
 }
 
 function emitPartialLinkText(selector) {
-  return Promise.resolve(`By.PARTIAL_LINK_TEXT, "${selector}"`)
+  return Promise.resolve(`partial link:${selector}`)
 }
 
 function emitCss(selector) {
-  return Promise.resolve(`By.CSS_SELECTOR, "${selector}"`)
+  return Promise.resolve(`css:${selector}`)
 }
 
 function emitXpath(selector) {
-  return Promise.resolve(`By.XPATH, "${selector}"`)
+  return Promise.resolve(`xpath:${selector}`)
+}
+
+function emitJQuery(selector) {
+  return Promise.resolve(`jquery:${selector}`)
+}
+
+function emitClass(selector) {
+  return Promise.resolve(`class:${selector}`)
+}
+
+function emitIdentifier(selector) {
+  return Promise.resolve(`identifier:${selector}`)
+}
+
+function emitTag(selector) {
+  return Promise.resolve(`tag:${selector}`)
+}
+
+function emitDom(selector) {
+  return Promise.resolve(`dom:${selector}`)
+}
+
+function emitSizzle(selector) {
+  return Promise.resolve(`sizzle:${selector}`)
+}
+
+function emitDefault(selector) {
+  return Promise.resolve(`default:${selector}`)
 }

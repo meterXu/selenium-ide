@@ -29,22 +29,23 @@ opts.hooks = generateHooks()
 opts.fileExtension = '.robot'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
-opts.commentPrefix = ''
+opts.commentPrefix = '#'
 opts.testLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
-function generateTestDeclaration() {
-  return ``
+function generateTestDeclaration(name) {
+  return ' '
 }
-function generateMethodDeclaration() {
-  return ``
+function generateMethodDeclaration(name) {
+  return `2`
 }
-function generateSuiteDeclaration() {
-  return ``
+function generateSuiteDeclaration(name) {
+  return `*** Test Cases ***
+${test.name}`
 }
-function generateFilename() {
-  return ``
+function generateFilename(name) {
+  return `4`
 }
 
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)
