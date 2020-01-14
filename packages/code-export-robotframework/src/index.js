@@ -21,7 +21,7 @@ import location from './location'
 import { generateHooks } from './hook'
 
 // Define language options
-export const displayName = 'Python robotframework'
+export const displayName = 'Robotframework'
 
 export let opts = {}
 opts.emitter = emitter
