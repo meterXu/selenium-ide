@@ -430,7 +430,7 @@ async function emitExecuteScript(script, varName) {
     },
     {
       level: 0,
-      statement: 'Log    ' + varName,
+      statement: 'Log    ${' + varName + '}',
     },
   ]
   return Promise.resolve({ commands })
@@ -448,7 +448,7 @@ async function emitExecuteAsyncScript(script, varName) {
     },
     {
       level: 0,
-      statement: 'Log    ' + varName,
+      statement: 'Log    ${' + varName + '}',
     },
   ]
   return Promise.resolve({ commands })
