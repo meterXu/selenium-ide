@@ -35,17 +35,21 @@ opts.generateMethodDeclaration = generateMethodDeclaration
 
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name) {
-  return ' '
+  return `
+  `
 }
 function generateMethodDeclaration(name) {
-  return `2`
+  return `
+  `
 }
 function generateSuiteDeclaration(name) {
   return `*** Test Cases ***
-${test.name}`
+${name}`
 }
 function generateFilename(name) {
-  return `4`
+  return `test_${exporter.parsers.uncapitalize(
+    exporter.parsers.sanitizeName(name)
+  )}${opts.fileExtension}`
 }
 
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)

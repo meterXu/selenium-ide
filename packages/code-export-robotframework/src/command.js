@@ -137,11 +137,11 @@ function canEmit(commandName) {
 }
 
 function variableLookup(varName) {
-  return `\${${varName}}`
+  return '${' + varName + '}'
 }
 
 function variableSetter(varName, value) {
-  return varName ? `\${${varName}} = ${value}` : ''
+  return varName ? '${' + varName + `} = ${value}` : ''
 }
 
 function emitWaitForWindow() {
@@ -184,8 +184,8 @@ function emitAssert(varName, value) {
     _value = value
   }
   const result = _value
-    ? `Should Be Equal    \${${varName}}    ${_value}`
-    : `Should Be Equal    \${${varName}}    ${value}`
+    ? 'Should Be Equal    ${' + varName + '}    ' + _value
+    : 'Should Be Equal    ${' + varName + '}    ' + value
   return Promise.resolve(result)
 }
 
@@ -256,7 +256,7 @@ function generateExpressionScript(script) {
 
 function generateScriptArguments(script) {
   return `${script.argv.length ? ', ' : ''}${script.argv
-    .map(varName => `\${${varName}}`)
+    .map(varName => '${' + varName + '}')
     .join(',')}`
 }
 
@@ -313,7 +313,7 @@ function emitControlFlowForEach(collectionVarName, iteratorVarName) {
     commands: [
       {
         level: 0,
-        statement: `collection = \${${collectionVarName}}`,
+        statement: 'collection = ${' + collectionVarName + '}',
       },
       {
         level: 0,
@@ -321,7 +321,7 @@ function emitControlFlowForEach(collectionVarName, iteratorVarName) {
       },
       {
         level: 1,
-        statement: `\${${iteratorVarName}} = entry`,
+        statement: '${' + iteratorVarName + '} = entry',
       },
     ],
   })
@@ -341,8 +341,8 @@ function emitControlFlowRepeatIf(script) {
 
 function emitControlFlowTimes(target) {
   const commands = [
-    { level: 0, statement: `:FOR \${i} IN RANGE    0    ${target}` },
-    { level: 0, statement: `\\` },
+    { level: 0, statement: ':FOR ${i} IN RANGE    0    ' + target },
+    { level: 0, statement: '\\' },
   ]
   return Promise.resolve({ commands, endingLevelAdjustment: 1 })
 }
@@ -422,13 +422,15 @@ async function emitExecuteScript(script, varName) {
   const commands = [
     {
       level: 0,
-      statement: `\${${varName}}=    Execute Javascript    ${generateScriptArguments(
-        script
-      )}`,
+      statement:
+        '${' +
+        varName +
+        '}=    Execute Javascript    ' +
+        generateScriptArguments(script),
     },
     {
       level: 0,
-      statement: `Log    \${${varName}}`,
+      statement: 'Log    ' + varName,
     },
   ]
   return Promise.resolve({ commands })
@@ -438,13 +440,15 @@ async function emitExecuteAsyncScript(script, varName) {
   const commands = [
     {
       level: 0,
-      statement: `\${${varName}}=    Execute Javascript    ${generateScriptArguments(
-        script
-      )}`,
+      statement:
+        '${' +
+        varName +
+        '}=    Execute Javascript    ' +
+        generateScriptArguments(script),
     },
     {
       level: 0,
-      statement: `Log    \${${varName}}`,
+      statement: 'Log    ' + varName,
     },
   ]
   return Promise.resolve({ commands })
@@ -517,8 +521,10 @@ function emitOpen(target) {
     ? `${target}`
     : `${global.baseUrl}${target}`
   return Promise.resolve(
-    `[Setup]    Run Keywords    Open Browser    ${url}    \${BROWSER}
-...    AND    Set Selenium Speed    \${SELSPEED}`
+    '[Setup]    Run Keywords    Open Browser    ' +
+      url +
+      '    ${BROWSER} \n' +
+      '...    AND    Set Selenium Speed    ${SELSPEED}'
   )
 }
 

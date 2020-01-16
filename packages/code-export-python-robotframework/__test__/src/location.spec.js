@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { emit } from '../../src/location'
+import { emit } from '../../../code-export-robotframework/src/location'
 
 describe('location code emitter', () => {
   it('should fail to emit empty string', () => {

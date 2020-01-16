@@ -33,17 +33,17 @@ export default {
 }
 
 function emitId(id) {
-  return Promise.resolve(`By.CSS_SELECTOR, "*[id='${id}']"`)
+  return Promise.resolve(`css:*[id='${id}']`)
 }
 
 function emitValue(value) {
-  return Promise.resolve(`By.CSS_SELECTOR, "*[value='${value}']"`)
+  return Promise.resolve(`css:*[value='${value}']`)
 }
 
 function emitLabel(label) {
-  return Promise.resolve(`By.XPATH, "//option[. = '${label}']"`)
+  return Promise.resolve(`xpath://option[. = '${label}']`)
 }
 
 function emitIndex(index) {
-  return Promise.resolve(`By.CSS_SELECTOR, "*:nth-child(${index})"`)
+  return Promise.resolve(`css:*:nth-child(${index})`)
 }
