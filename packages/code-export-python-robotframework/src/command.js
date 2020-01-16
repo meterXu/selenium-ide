@@ -185,14 +185,16 @@ function emitAssert(varName, value) {
     _value = value
   }
   const result = _value
-    ? `assert(self.vars["${varName}"] == ${_value})`
-    : `assert(self.vars["${varName}"] == "${value}")`
+    ? `assert(self.vars["${varName}"] == ${generateSendKeysInput(_value)})`
+    : `assert(self.vars["${varName}"] == ${generateSendKeysInput(_value)})`
   return Promise.resolve(result)
 }
 
 function emitAssertAlert(alertText) {
   return Promise.resolve(
-    `assert self.driver.switch_to.alert.text == "${alertText}"`
+    `assert self.driver.switch_to.alert.text == ${generateSendKeysInput(
+      alertText
+    )}`
   )
 }
 
@@ -1082,13 +1084,15 @@ async function emitVerifyValue(locator, value) {
         locator
       )}).get_attribute("value")`,
     },
-    { level: 0, statement: `assert value == "${value}"` },
+    { level: 0, statement: `assert value == ${generateSendKeysInput(value)}` },
   ]
   return Promise.resolve({ commands })
 }
 
 async function emitVerifyTitle(title) {
-  return Promise.resolve(`assert self.driver.title == "${title}"`)
+  return Promise.resolve(
+    `assert self.driver.title == "${generateSendKeysInput(title)}"`
+  )
 }
 
 async function emitWaitForElementEditable(locator, timeout) {
