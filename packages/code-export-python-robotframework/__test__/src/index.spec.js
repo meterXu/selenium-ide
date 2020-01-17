@@ -17,7 +17,7 @@
 
 import fs from 'fs'
 import path from 'path'
-import { emitTest, emitSuite, _emitMethod, _findTestByName } from '../../../code-export-robotframework/src'
+import { emitTest, emitSuite, _emitMethod, _findTestByName } from '../../src'
 import { project as projectProcessor } from '@seleniumhq/side-utils'
 
 function readFile(filename) {

@@ -19,13 +19,13 @@ def test_validcredentials():
     self.vars = {}
     self.driver.get(\\"http://the-internet.herokuapp.com/login\\")
     self.driver.set_window_size(1440, 1177)
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
     self.driver.find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
     self.driver.find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
     self.driver.find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
     assert self.driver.find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
 def test_invalidcredentials():
     self = type('test',(), {})() 
@@ -33,13 +33,13 @@ def test_invalidcredentials():
     self.vars = {}
     self.driver.get(\\"http://the-internet.herokuapp.com/login\\")
     self.driver.set_window_size(1440, 1177)
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
     self.driver.find_element(By.ID, \\"username\\").send_keys(\\"blah\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
     self.driver.find_element(By.ID, \\"password\\").send_keys(\\"blah\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
     self.driver.find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"flash\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"flash\\")))
     assert self.driver.find_element(By.ID, \\"flash\\").text == \\"Your username is invalid!\\\\\\\\\\\\\\\\n×\\"
 "
 `;
@@ -185,7 +185,7 @@ def selectwindow(self):
   [object Object]
   self.vars[\\"win9425\\"] = self.wait_for_window(2000)
   self.driver.switch_to.window(self.vars[\\"win9425\\"])
-  assert self.driver.title == \\"New Window\\"
+  assert self.driver.title == \\"\\"New Window\\"\\"
 
 def test_reuse():
     self = type('test',(), {})() 
@@ -221,7 +221,7 @@ def selectwindow(self):
   [object Object]
   self.vars[\\"win9425\\"] = self.wait_for_window(2000)
   self.driver.switch_to.window(self.vars[\\"win9425\\"])
-  assert self.driver.title == \\"New Window\\"
+  assert self.driver.title == \\"\\"New Window\\"\\"
 
 def test_reuse():
     self = type('test',(), {})() 
@@ -237,7 +237,7 @@ def test_selectwindow():
     [object Object]
     self.vars[\\"win9425\\"] = self.wait_for_window(2000)
     self.driver.switch_to.window(self.vars[\\"win9425\\"])
-    assert self.driver.title == \\"New Window\\"
+    assert self.driver.title == \\"\\"New Window\\"\\"
 "
 `;
 
@@ -260,13 +260,13 @@ def test_login():
     self.vars = {}
     self.driver.get(\\"http://the-internet.herokuapp.com/login\\")
     self.driver.set_window_size(1440, 1177)
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
     self.driver.find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
     self.driver.find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
     self.driver.find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
     assert self.driver.find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
 "
 `;
@@ -327,16 +327,16 @@ def test_selectwindow():
     self.vars = {}
     self.driver.get(\\"http://the-internet.herokuapp.com/\\")
     self.driver.set_window_size(1260, 1027)
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.LINK_TEXT, \\"Multiple Windows\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.LINK_TEXT, \\"Multiple Windows\\")))
     self.driver.find_element(By.LINK_TEXT, \\"Multiple Windows\\").click()
     self.vars[\\"window_handles\\"] = self.driver.window_handles
     [object Object]
     self.vars[\\"win9625\\"] = self.wait_for_window(2000)
     self.vars[\\"root\\"] = self.driver.current_window_handle
     self.driver.switch_to.window(self.vars[\\"win9625\\"])
-    assert self.driver.title == \\"New Window\\"
+    assert self.driver.title == \\"\\"New Window\\"\\"
     self.driver.switch_to.window(self.vars[\\"root\\"])
-    assert self.driver.title == \\"The Internet\\"
+    assert self.driver.title == \\"\\"The Internet\\"\\"
 "
 `;
 
@@ -359,13 +359,13 @@ def test_login():
     self.vars = {}
     self.driver.get(\\"http://the-internet.herokuapp.com/login\\")
     self.driver.set_window_size(1440, 1177)
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"username\\")))
     self.driver.find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.ID, \\"password\\")))
     self.driver.find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\"#login button\\")))
     self.driver.find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    WebDriverWait(self.driver, 30000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
+    WebDriverWait(self.driver, 3000).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, \\".flash.success\\")))
     assert self.driver.find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
 "
 `;

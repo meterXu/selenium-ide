@@ -13,7 +13,8 @@
   "scripts": {
     "build": "babel -d dist src --ignore=__test__",
     "test": "jest",
-    "test:ext": "jest --testMatch \"**/index.spec.js\"",
+    "test:index": "jest --testMatch \"**/index.spec.js\"",
+    "test:command": "jest --testMatch \"**/command.spec.js\"",
     "watch": "yarn build -w"
   },
   "main": "dist/index.js",

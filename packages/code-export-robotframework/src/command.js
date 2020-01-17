@@ -446,6 +446,7 @@ async function emitExecuteScript(script, varName) {
 }
 
 async function emitExecuteAsyncScript(script, varName) {
+  const scriptString = script.script.replace(/"/g, "'")
   const commands = [
     {
       level: 0,
@@ -453,6 +454,8 @@ async function emitExecuteAsyncScript(script, varName) {
         '${' +
         varName +
         '}=    Execute Javascript    ' +
+        scriptString +
+        '    ' +
         generateScriptArguments(script),
     },
     {
@@ -548,7 +551,10 @@ async function emitRun(testName) {
 
 async function emitRunScript(script) {
   return Promise.resolve(
-    `Execute Javascript    ${generateScriptArguments(script)}`
+    'Execute Javascript    ' +
+      script.script +
+      '    ' +
+      generateScriptArguments(script)
   )
 }
 
@@ -647,7 +653,7 @@ function generateSendKeysInput(value) {
           return s
         } else if (s.startsWith('Key[')) {
           const key = s.match(/\['(.*)'\]/)[1]
-          return `Keys.${key}`
+          return `${key}`
         } else {
           return `${s}`
         }
@@ -673,7 +679,7 @@ async function emitSendKeys(target, value) {
       },
       {
         level: 0,
-        statement: `Input Text    ${await location.emit(
+        statement: `Press Keys    ${await location.emit(
           target
         )}    ${generateSendKeysInput(value)}`,
       },

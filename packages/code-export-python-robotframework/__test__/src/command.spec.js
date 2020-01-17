@@ -15,12 +15,12 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import Command from '../../../code-export-robotframework/src/command'
+import Command from '../../src/command'
 import {
   Commands,
   ControlFlowCommandNames,
 } from '../../../selenium-ide/src/neo/models/Command'
-import { opts } from '../../../code-export-robotframework/src'
+import { opts } from '../../src'
 import { codeExport as exporter } from '@seleniumhq/side-utils'
 
 const commandPrefixPadding = opts.commandPrefixPadding

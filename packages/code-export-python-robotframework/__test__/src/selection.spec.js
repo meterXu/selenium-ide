@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { emit } from '../../../code-export-robotframework/src/selection'
+import { emit } from '../../src/selection'
 
 describe('selection location code emitter', () => {
   it('should fail to emit unknown selection locator', () => {

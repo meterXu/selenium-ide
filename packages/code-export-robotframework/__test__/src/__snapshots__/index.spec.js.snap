@@ -9,8 +9,9 @@ Library           SeleniumLibrary
 \${BROWSER}        chrome
 \${SELSPEED}       0.0s
 
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER}
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     Set Window Size    1440    1177
     Wait Until Element Is Visible    id:username    3000
@@ -21,8 +22,9 @@ Library           SeleniumLibrary
     Click Element    css:#login button
     Wait Until Element Is Visible    css:.flash.success    3000
     Element Should Contain    css:.flash.success    You logged into a secure area!\\\\\\\\\\\\\\\\n×
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER}
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     Set Window Size    1440    1177
     Wait Until Element Is Visible    id:username    3000
@@ -45,69 +47,78 @@ Library           SeleniumLibrary
 \${BROWSER}        chrome
 \${SELSPEED}       0.0s
 
- 
-    \${myVar}=    Execute Javascript    
+
+  
+    \${myVar}=    Execute Javascript    return 'a'    
     Log    \${myVar}
-    if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else:
-      \${output}=    Execute Javascript    
-      Log    \${output}
+    \${condition}=    Execute Javascript    return arguments[0] === 'a'    \${myVar}
+    Run Keyword if    \${condition}
+    \${output}=    Execute Javascript    return 'a'    
+    Log    \${output}
+    ELSE IF    Execute Javascript    return arguments[0] === 'b'    \${myVar}:
+    \${output}=    Execute Javascript    return 'b'    
+    Log    \${output}
+    ELSE    
+    \${output}=    Execute Javascript    return 'c'    
+    Log    \${output}
     Should Be Equal    \${output}    a
- 
-    \${myVar}=    Execute Javascript    
+
+  
+    \${myVar}=    Execute Javascript    return 'b'    
     Log    \${myVar}
-    if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else:
-      \${output}=    Execute Javascript    
-      Log    \${output}
+    \${condition}=    Execute Javascript    return arguments[0] === 'a'    \${myVar}
+    Run Keyword if    \${condition}
+    \${output}=    Execute Javascript    return 'a'    
+    Log    \${output}
+    ELSE IF    Execute Javascript    return arguments[0] === 'b'    \${myVar}:
+    \${output}=    Execute Javascript    return 'b'    
+    Log    \${output}
+    ELSE    
+    \${output}=    Execute Javascript    return 'c'    
+    Log    \${output}
     Should Be Equal    \${output}    b
- 
-    \${myVar}=    Execute Javascript    
+
+  
+    \${myVar}=    Execute Javascript    return 'c'    
     Log    \${myVar}
-    if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else if Execute Javascript    , \${myVar}:
-      \${output}=    Execute Javascript    
-      Log    \${output}
-    else:
-      \${output}=    Execute Javascript    
-      Log    \${output}
+    \${condition}=    Execute Javascript    return arguments[0] === 'a'    \${myVar}
+    Run Keyword if    \${condition}
+    \${output}=    Execute Javascript    return 'a'    
+    Log    \${output}
+    ELSE IF    Execute Javascript    return arguments[0] === 'b'    \${myVar}:
+    \${output}=    Execute Javascript    return 'b'    
+    Log    \${output}
+    ELSE    
+    \${output}=    Execute Javascript    return 'c'    
+    Log    \${output}
     Should Be Equal    \${output}    c
- 
-    \${check}=    Execute Javascript    
+
+  
+    \${check}=    Execute Javascript    return 1    
     Log    \${check}
     condition = True
     while condition:
-      \${check}=    Execute Javascript    , \${check}
+      \${check}=    Execute Javascript    return arguments[0] + 1        \${check}
       Log    \${check}
-      condition = Execute Javascript    , \${check}
-    Should Be Equal    \${check}    3
- 
-    \${check}=    Execute Javascript    
+      condition = Execute Javascript    return arguments[0] < 3    \${check}
+      Should Be Equal    \${check}    3
+
+  
+    \${check}=    Execute Javascript    return 1    
     Log    \${check}
     :FOR \${i} IN RANGE    0    2
     \\\\
-      \${check}=    Execute Javascript    , \${check}
+      \${check}=    Execute Javascript    return arguments[0] + 1        \${check}
       Log    \${check}
-    Should Be Equal    \${check}    3
- 
-    \${check}=    Execute Javascript    
+      Should Be Equal    \${check}    3
+
+  
+    \${check}=    Execute Javascript    return 1    
     Log    \${check}
-    while Execute Javascript    , \${check}:
-      \${check}=    Execute Javascript    , \${check}
+    while Execute Javascript    return arguments[0] < 3    \${check}:
+      \${check}=    Execute Javascript    return arguments[0] + 1        \${check}
       Log    \${check}
-    Should Be Equal    \${check}    3
+      Should Be Equal    \${check}    3
 "
 `;
 
@@ -120,19 +131,22 @@ Library           SeleniumLibrary
 \${BROWSER}        chrome
 \${SELSPEED}       0.0s
 
-2
-  [Setup]    Run Keywords    Open Browser    https://the-internet.herokuapp.com/    \${BROWSER}
+
+  
+  [Setup]    Run Keywords    Open Browser    https://the-internet.herokuapp.com/    \${BROWSER} 
   ...    AND    Set Selenium Speed    \${SELSPEED}
   [object Object]
   [object Object]
   [object Object]
   [object Object]
 
- 
+
+  
     \${username} = \\"blah\\"
     \${password} = \\"blah\\"
     self.login()
- 
+
+  
     \${username} = \\"tomsmith\\"
     \${password} = \\"SuperSecretPassword!\\"
     self.login()
@@ -153,10 +167,11 @@ def wait_for_window(self, timeout = 2):
   wh_now = self.driver.window_handles
   wh_then = self.vars[\\"window_handles\\"]
   if len(wh_now) > len(wh_then):
-    return set(wh_now).difference(set(wh_then)).pop()
+  return set(wh_now).difference(set(wh_then)).pop()
 
-2
-  [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER}
+
+  
+  [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER} 
   ...    AND    Set Selenium Speed    \${SELSPEED}
   self.vars[\\"window_handles\\"] = self.driver.window_handles
   [object Object]
@@ -164,7 +179,8 @@ def wait_for_window(self, timeout = 2):
   Switch Window    \${win9425}
   assert self.driver.title == \\"New Window\\"
 
- 
+
+  
     self.selectwindow()
 "
 `;
@@ -183,10 +199,11 @@ def wait_for_window(self, timeout = 2):
   wh_now = self.driver.window_handles
   wh_then = self.vars[\\"window_handles\\"]
   if len(wh_now) > len(wh_then):
-    return set(wh_now).difference(set(wh_then)).pop()
+  return set(wh_now).difference(set(wh_then)).pop()
 
-2
-  [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER}
+
+  
+  [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER} 
   ...    AND    Set Selenium Speed    \${SELSPEED}
   self.vars[\\"window_handles\\"] = self.driver.window_handles
   [object Object]
@@ -194,10 +211,12 @@ def wait_for_window(self, timeout = 2):
   Switch Window    \${win9425}
   assert self.driver.title == \\"New Window\\"
 
- 
+
+  
     self.selectwindow()
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER}
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/windows    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     self.vars[\\"window_handles\\"] = self.driver.window_handles
     [object Object]
@@ -217,9 +236,10 @@ Library           SeleniumLibrary
 \${SELSPEED}       0.0s
 
 *** Test Cases ***
-it
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER}
+login
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     Set Window Size    1440    1177
     Wait Until Element Is Visible    id:username    3000
@@ -243,16 +263,18 @@ Library           SeleniumLibrary
 \${SELSPEED}       0.0s
 
 *** Test Cases ***
-it
-2
-  [Setup]    Run Keywords    Open Browser    https://the-internet.herokuapp.com/    \${BROWSER}
+valid credentials
+
+  
+  [Setup]    Run Keywords    Open Browser    https://the-internet.herokuapp.com/    \${BROWSER} 
   ...    AND    Set Selenium Speed    \${SELSPEED}
   [object Object]
   [object Object]
   [object Object]
   [object Object]
 
- 
+
+  
     \${username} = \\"tomsmith\\"
     \${password} = \\"SuperSecretPassword!\\"
     self.login()
@@ -269,16 +291,17 @@ Library           SeleniumLibrary
 \${SELSPEED}       0.0s
 
 *** Test Cases ***
-it
+select window
 def wait_for_window(self, timeout = 2):
   time.sleep(round(timeout / 1000))
   wh_now = self.driver.window_handles
   wh_then = self.vars[\\"window_handles\\"]
   if len(wh_now) > len(wh_then):
-    return set(wh_now).difference(set(wh_then)).pop()
+  return set(wh_now).difference(set(wh_then)).pop()
 
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/    \${BROWSER}
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     Set Window Size    1260    1027
     Wait Until Element Is Visible    link:Multiple Windows    3000
@@ -305,9 +328,10 @@ Library           SeleniumLibrary
 \${SELSPEED}       0.0s
 
 *** Test Cases ***
-it
- 
-    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER}
+login
+
+  
+    [Setup]    Run Keywords    Open Browser    http://the-internet.herokuapp.com/login    \${BROWSER} 
     ...    AND    Set Selenium Speed    \${SELSPEED}
     Set Window Size    1440    1177
     Wait Until Element Is Visible    id:username    3000
