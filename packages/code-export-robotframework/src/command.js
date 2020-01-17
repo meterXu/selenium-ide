@@ -341,7 +341,7 @@ function emitControlFlowRepeatIf(script) {
         statement: `condition = ${generateExpressionScript(script)}`,
       },
     ],
-    endingLevelAdjustment: -1,
+    endingLevelAdjustment: 0,
   })
 }
 
