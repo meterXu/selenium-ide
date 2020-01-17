@@ -141,7 +141,7 @@ function variableLookup(varName) {
 }
 
 function variableSetter(varName, value) {
-  return varName ? '${' + varName + `} = ${value}` : ''
+  return varName ? '${' + varName + '} = ' + value : ''
 }
 
 function emitWaitForWindow() {
@@ -695,11 +695,14 @@ async function emitStoreAttribute(locator, varName) {
     },
     {
       level: 0,
-      statement: `\${${varName}} = Get Element Attribute    ${await location.emit(
-        elementLocator
-      )}    ${attributeName}`,
+      statement:
+        '${' +
+        varName +
+        '} = Get Element Attribute    ' +
+        (await location.emit(elementLocator)) +
+        '    ${attributeName}',
     },
-    { level: 0, statement: `Log    \${${varName}}` },
+    { level: 0, statement: 'Log    ${' + varName + '}' },
   ]
   return Promise.resolve({ commands })
 }
@@ -709,9 +712,9 @@ async function emitStoreJson(json, varName) {
     commadns: [
       {
         level: 0,
-        statement: `\${${varName}}=    Get Element Attribute    ${json}`,
+        statement: '${' + varName + '}=    Get Element Attribute    ' + json,
       },
-      { level: 0, statement: `Log    \${${varName}}` },
+      { level: 0, statement: 'Log    ${' + varName + '}' },
     ],
   })
 }
@@ -726,13 +729,12 @@ async function emitStoreText(locator, varName) {
     },
     {
       level: 0,
-      statement: `\${${varName}}=    Get Text    ${await location.emit(
-        locator
-      )}`,
+      statement:
+        '${' + varName + '}=    Get Text    ' + (await location.emit(locator)),
     },
     {
       level: 0,
-      statement: `Log    \${${varName}}`,
+      statement: 'Log    ${' + varName + '}',
     },
   ]
   return Promise.resolve({ commands })
@@ -743,11 +745,11 @@ async function emitStoreTitle(_, varName) {
     commands: [
       {
         level: 0,
-        statement: `\${${varName}}=    Get Title`,
+        statement: '${' + varName + '}=    Get Title',
       },
       {
         level: 0,
-        statement: `Log    \${${varName}}`,
+        statement: 'Log    ${' + varName + '}',
       },
     ],
   })
@@ -763,11 +765,12 @@ async function emitStoreValue(locator, varName) {
     },
     {
       level: 0,
-      statement: `\${${varName}}=    Get Element Attribute    locator    value`,
+      statement:
+        '${' + varName + '}=    Get Element Attribute    locator    value',
     },
     {
       level: 0,
-      statement: `Log    \${${varName}}`,
+      statement: 'Log    ${' + varName + '}',
     },
   ]
   return Promise.resolve({ commands })
@@ -778,11 +781,11 @@ async function emitStoreWindowHandle(varName) {
     commands: [
       {
         level: 0,
-        statement: `\${${varName}}=    Get Window Handles`,
+        statement: '${' + varName + '}=    Get Window Handles',
       },
       {
         level: 0,
-        statement: `Log    \${${varName}}`,
+        statement: 'Log    ${' + varName + '}',
       },
     ],
   })
@@ -798,13 +801,15 @@ async function emitStoreXpathCount(locator, varName) {
     },
     {
       level: 0,
-      statement: `\${${varName}}=    Get Element Count    ${await location.emit(
-        locator
-      )}`,
+      statement:
+        '${' +
+        varName +
+        '}=    Get Element Count    ' +
+        (await location.emit(locator)),
     },
     {
       level: 0,
-      statement: `Log    \${${varName}}`,
+      statement: 'Log    ${' + varName + '}',
     },
   ]
   return Promise.resolve({ commands })
@@ -893,9 +898,8 @@ async function emitVerifyElementPresent(locator) {
     },
     {
       level: 0,
-      statement: `\${count}=    Get Element Count    ${await location.emit(
-        locator
-      )})`,
+      statement:
+        '${count}=    Get Element Count    ' + (await location.emit(locator)),
     },
     { level: 0, statement: 'Should Be True    ${count}>0' },
   ]
@@ -912,9 +916,8 @@ async function emitVerifyElementNotPresent(locator) {
     },
     {
       level: 0,
-      statement: `\${count}=    Get Element Count    ${await location.emit(
-        locator
-      )})`,
+      statement:
+        '${count}=    Get Element Count    ' + (await location.emit(locator)),
     },
     { level: 0, statement: 'Should Be True    ${count}==0' },
   ]
@@ -967,15 +970,17 @@ async function emitVerifyNotSelectedValue(locator, expectedValue) {
     },
     {
       level: 0,
-      statement: `\${value}=    Get Element Attribute    ${await location.emit(
-        locator
-      )}    value`,
+      statement:
+        '${value}=    Get Element Attribute    ' +
+        (await location.emit(locator)) +
+        '    value',
     },
     {
       level: 0,
-      statement: `Should Be True    \${value}!= "${exporter.emit.text(
-        expectedValue
-      )}"`,
+      statement:
+        'Should Be True    ${value}!= "' +
+        exporter.emit.text(expectedValue) +
+        '"',
     },
   ]
   return Promise.resolve({ commands })
@@ -1009,13 +1014,13 @@ async function emitVerifySelectedLabel(locator, labelValue) {
     },
     {
       level: 0,
-      statement: `\${selected_text}=    Get Selected List Label    ${await location.emit(
-        locator
-      )}`,
+      statement:
+        '${selected_text}=    Get Selected List Label    ' +
+        (await location.emit(locator)),
     },
     {
       level: 0,
-      statement: `Should Be True    \${selected_text}=="${labelValue}"`,
+      statement: 'Should Be True    ${selected_text}==' + labelValue,
     },
   ]
   return Promise.resolve({
@@ -1051,11 +1056,11 @@ async function emitVerifyValue(locator, value) {
     },
     {
       level: 0,
-      statement: `\${value}=    Get Element Attribute    ${await location.emit(
-        locator
-      )}`,
+      statement:
+        '${value}=    Get Element Attribute    ' +
+        (await location.emit(locator)),
     },
-    { level: 0, statement: `Should Be True    \${value}    ${value}` },
+    { level: 0, statement: 'Should Be True    ${value}    ' + value },
   ]
   return Promise.resolve({ commands })
 }
