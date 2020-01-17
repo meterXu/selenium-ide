@@ -157,7 +157,7 @@ function emitWaitForWindow() {
     },
     { level: 0, statement: 'if len(wh_now) > len(wh_then):' },
     {
-      level: 1,
+      level: 0,
       statement: 'return set(wh_now).difference(set(wh_then)).pop()',
     },
   ]
@@ -251,11 +251,13 @@ async function emitClose() {
 }
 
 function generateExpressionScript(script) {
-  return `Execute Javascript    ${generateScriptArguments(script)}`
+  return `Execute Javascript    return ${
+    script.script
+  }${generateScriptArguments(script)}`
 }
 
 function generateScriptArguments(script) {
-  return `${script.argv.length ? ', ' : ''}${script.argv
+  return `${script.argv.length ? '    ' : ''}${script.argv
     .map(varName => '${' + varName + '}')
     .join(',')}`
 }
@@ -272,9 +274,9 @@ function emitControlFlowDo() {
 
 function emitControlFlowElse() {
   return Promise.resolve({
-    commands: [{ level: 0, statement: 'else:' }],
-    startingLevelAdjustment: -1,
-    endingLevelAdjustment: +1,
+    commands: [{ level: 0, statement: 'ELSE    ' }],
+    startingLevelAdjustment: 0,
+    endingLevelAdjustment: 0,
   })
 }
 
@@ -283,18 +285,18 @@ function emitControlFlowElseIf(script) {
     commands: [
       {
         level: 0,
-        statement: `else if ${generateExpressionScript(script)}:`,
+        statement: `ELSE IF    ${generateExpressionScript(script)}:`,
       },
     ],
-    startingLevelAdjustment: -1,
-    endingLevelAdjustment: +1,
+    startingLevelAdjustment: 0,
+    endingLevelAdjustment: 0,
   })
 }
 
 function emitControlFlowEnd() {
   return Promise.resolve({
     commands: [{ level: 0, statement: `` }],
-    startingLevelAdjustment: -1,
+    startingLevelAdjustment: 0,
     skipEmitting: true,
   })
 }
@@ -302,9 +304,13 @@ function emitControlFlowEnd() {
 function emitControlFlowIf(script) {
   return Promise.resolve({
     commands: [
-      { level: 0, statement: `if ${generateExpressionScript(script)}:` },
+      {
+        level: 0,
+        statement: `\${condition}=    ${generateExpressionScript(script)}`,
+      },
+      { level: 0, statement: `Run Keyword if    \${condition}` },
     ],
-    endingLevelAdjustment: 1,
+    endingLevelAdjustment: 0,
   })
 }
 
@@ -320,7 +326,7 @@ function emitControlFlowForEach(collectionVarName, iteratorVarName) {
         statement: `for entry in collection`,
       },
       {
-        level: 1,
+        level: 0,
         statement: '${' + iteratorVarName + '} = entry',
       },
     ],
@@ -419,6 +425,7 @@ async function emitEditContent(locator, content) {
 }
 
 async function emitExecuteScript(script, varName) {
+  const scriptString = script.script.replace(/"/g, "'")
   const commands = [
     {
       level: 0,
@@ -426,6 +433,8 @@ async function emitExecuteScript(script, varName) {
         '${' +
         varName +
         '}=    Execute Javascript    ' +
+        scriptString +
+        '    ' +
         generateScriptArguments(script),
     },
     {
