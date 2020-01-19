@@ -264,22 +264,22 @@ class TestRow extends React.Component {
             label={parse('x', { primaryKey: true })}
             onClick={this.cut}
           >
-            Cut
+            剪切
           </ListMenuItem>
           <ListMenuItem
             label={parse('c', { primaryKey: true })}
             onClick={this.copy}
           >
-            Copy
+            拷贝
           </ListMenuItem>
           <ListMenuItem
             label={parse('v', { primaryKey: true })}
             onClick={this.paste}
           >
-            Paste
+            粘贴
           </ListMenuItem>
           <ListMenuItem label="Del" onClick={this.remove}>
-            Delete
+            删除
           </ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem
@@ -287,15 +287,15 @@ class TestRow extends React.Component {
               this.addCommand(this.props.index)
             }}
           >
-            Insert new command
+            插入新命令
           </ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem onClick={this.clearAll}>
-            Clear all commands
+            清除所有命令
           </ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem label="B" onClick={this.props.command.toggleBreakpoint}>
-            Toggle breakpoint
+            切换断点
           </ListMenuItem>
           <ListMenuItem
             label="S"
@@ -305,7 +305,7 @@ class TestRow extends React.Component {
               })
             }}
           >
-            Play to this point
+            播放到此处
           </ListMenuItem>
           <ListMenuItem
             label="U"
@@ -315,7 +315,7 @@ class TestRow extends React.Component {
               })
             }}
           >
-            Record from here
+            从此处开始录制
           </ListMenuItem>
           <ListMenuItem
             onClick={() => {
@@ -324,7 +324,7 @@ class TestRow extends React.Component {
               })
             }}
           >
-            Play from here
+            从此处开始播放
           </ListMenuItem>
           {this.props.isSingleCommandExecutionEnabled && (
             <ListMenuItem
@@ -333,7 +333,7 @@ class TestRow extends React.Component {
                 this.props.executeCommand(this.props.command)
               }}
             >
-              Execute this command
+              执行此命令
             </ListMenuItem>
           )}
         </ListMenu>
