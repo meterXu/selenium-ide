@@ -650,20 +650,20 @@ function generateSendKeysInput(value) {
     return value
       .map(s => {
         if (s.startsWith('self.vars[')) {
-          return s
+          return s.replace('keys.', '')
         } else if (s.startsWith('Key[')) {
           const key = s.match(/\['(.*)'\]/)[1]
-          return `${key}`
+          return `${key.replace('keys.', '')}`
         } else {
-          return `${s}`
+          return `${s.replace('keys.', '')}`
         }
       })
       .join(', ')
   } else {
     if (value.startsWith('self.vars[')) {
-      return value
+      return value.replace('keys.', '')
     } else {
-      return `${value}`
+      return `${value.replace('keys.', '')}`
     }
   }
 }
