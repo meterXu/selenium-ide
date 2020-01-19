@@ -46,11 +46,10 @@ export default class Navigation extends React.Component {
   async handleChangedTab(tab) {
     if (PlaybackState.isPlaying && !PlaybackState.paused) {
       const choseChange = await ModalState.showAlert({
-        title: 'Playback is running',
-        description:
-          "Can't change the view while playback is running, pause the playback?",
-        confirmLabel: 'pause',
-        cancelLabel: 'cancel',
+        title: '回放正在运行',
+        description: '回放正在运行时无法更改视图，需要暂停播放吗？',
+        confirmLabel: '暂停',
+        cancelLabel: '关闭',
       })
       if (choseChange) {
         PlaybackState.pause()
@@ -85,13 +84,13 @@ export default class Navigation extends React.Component {
         >
           {UiState.selectedView === '测试' && (
             <AddButton
-              data-tip={'<p>Add new test</p>'}
+              data-tip={'<p>添加新的测试</p>'}
               onClick={ModalState.createTest}
             />
           )}
           {UiState.selectedView === '测试组' && (
             <AddButton
-              data-tip={'<p>Add new test suite</p>'}
+              data-tip={'<p>添加新的测试组</p>'}
               onClick={ModalState.createSuite}
             />
           )}

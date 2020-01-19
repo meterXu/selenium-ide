@@ -41,7 +41,7 @@ export default class GaugeMenu extends React.Component {
         width={40}
       >
         <div className="speed-gauge">
-          <span>Fast</span>
+          <span>快</span>
           <Slider
             vertical
             included={false}
@@ -50,7 +50,7 @@ export default class GaugeMenu extends React.Component {
             value={this.props.maxDelay - this.props.value}
             onChange={this.handleChange.bind(this)}
           />
-          <span>Slow</span>
+          <span>慢</span>
         </div>
       </Menu>
     )
