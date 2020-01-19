@@ -72,7 +72,7 @@ export class OpenInput extends React.Component {
           onChange={this.handleChange}
         />
         <label
-          data-tip={`<p>Open project <span style="color: #929292;padding-left: 5px;">${parse(
+          data-tip={`<p>打开项目<span style="color: #929292;padding-left: 5px;">${parse(
             'o',
             { primaryKey: true }
           )}</span></p>`}

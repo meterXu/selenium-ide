@@ -47,11 +47,11 @@ export default class CommandForm extends React.Component {
     const commandName = Commands.list.get(command).name
     if (commandName === 'pause' && !UiState.pauseNotificationSent) {
       ModalState.showAlert({
-        title: 'Hard coded sleeps are old hat.',
+        title: '开始搬砖。',
         description:
-          'There are implicit waits built into the IDE commands.\n\n' +
-          "If that doesn't get the job done for you then check out the explicit wait commands. " +
-          'They start with the words `wait for element` (e.g., `wait for element visible`).',
+          'IDE命令中内置了隐式等待。\n\n' +
+          '如果那没有满足预期，请使用显式等待命令。 ' +
+          '这些命令的开头一般是 `wait for element` (例如： `wait for element visible`)。',
       })
       UiState.pauseNotificationSent = true
     }
@@ -95,7 +95,7 @@ export default class CommandForm extends React.Component {
               }
             />
             <FlatButton
-              data-tip="<p>Enable/Disable command</p>"
+              data-tip="<p>启用/禁用命令</p>"
               className={classNames(
                 'icon',
                 this.props.command &&
@@ -116,8 +116,8 @@ export default class CommandForm extends React.Component {
             <FlatButton
               data-tip={
                 this.props.command && this.props.command.opensWindow
-                  ? '<p>Modify new window configuration</p>'
-                  : '<p>Add new window configuration</p>'
+                  ? '<p>修改新窗口配置</p>'
+                  : '<p>添加新窗口配置</p>'
               }
               className={classNames(
                 'new-window-button',
@@ -161,7 +161,7 @@ export default class CommandForm extends React.Component {
               }
             />
             <FlatButton
-              data-tip="<p>Select target in page</p>"
+              data-tip="<p>在页面中选择目标</p>"
               className={classNames('icon', 'si-select', {
                 active: this.props.isSelecting,
               })}
@@ -173,7 +173,7 @@ export default class CommandForm extends React.Component {
               onClick={this.handleSelect}
             />
             <FlatButton
-              data-tip="<p>Find target in page</p>"
+              data-tip="<p>在页面中查找目标</p>"
               className="icon si-search"
               disabled={
                 this.props.command

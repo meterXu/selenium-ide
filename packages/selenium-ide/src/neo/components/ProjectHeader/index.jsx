@@ -88,13 +88,13 @@ export default class ProjectHeader extends React.Component {
             opener={<MoreButton canFocus={true} />}
           >
             <ListMenuItem href="https://www.seleniumhq.org/selenium-ide/docs/en/introduction/command-line-runner/">
-              {'Running in CI'}
+              {'在CI中运行'}
             </ListMenuItem>
             <ListMenuItem href="https://github.com/SeleniumHQ/selenium-ide/releases/latest">
-              {"What's new"}
+              {'检查更新'}
             </ListMenuItem>
             <ListMenuItem href="https://www.seleniumhq.org/selenium-ide/docs/en/introduction/getting-started/">
-              {'Help'}
+              {'帮助'}
             </ListMenuItem>
           </ListMenu>
         </span>

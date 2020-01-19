@@ -63,19 +63,19 @@ export default class TabBar extends React.Component {
         <ul>
           {this.props.tabs.map((tab, index) => (
             <li
-              key={tab.name}
+              key={tab.id}
               style={{
                 width: `${this.props.tabWidth}px`,
               }}
             >
               <a
-                className={classNames(tab.name.toLowerCase(), {
+                className={classNames(tab.id.toLowerCase(), {
                   unread: tab.unread,
                 })}
                 href="#"
-                onClick={this.handleClick.bind(this, tab.name, index)}
+                onClick={this.handleClick.bind(this, tab.id, index)}
               >
-                {tab.name}
+                {tab.id}
               </a>
             </li>
           ))}

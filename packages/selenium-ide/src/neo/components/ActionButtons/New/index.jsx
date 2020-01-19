@@ -25,7 +25,7 @@ export default class NewButton extends React.Component {
     const props = { ...this.props }
     return (
       <ActionButton
-        data-tip={`<p>Create new project <span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>创建新项目<span style="color: #929292;padding-left: 5px;">${parse(
           'n',
           { primaryKey: true, shiftKey: true }
         )}</span></p>`}

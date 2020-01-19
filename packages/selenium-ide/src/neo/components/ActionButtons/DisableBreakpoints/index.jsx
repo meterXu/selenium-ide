@@ -24,7 +24,7 @@ export default class DisableBreakpointsButton extends React.Component {
   render() {
     return (
       <ActionButton
-        data-tip={`<p>Disable breakpoints <span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>禁用断点<span style="color: #929292;padding-left: 5px;">${parse(
           'y',
           { primaryKey: true }
         )}</span></p>`}

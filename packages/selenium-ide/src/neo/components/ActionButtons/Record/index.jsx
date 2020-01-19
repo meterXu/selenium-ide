@@ -33,11 +33,11 @@ export default class Record extends React.Component {
         className="record"
         data-tip={
           this.props.isRecording
-            ? `<p>Stop recording <span style="color: #929292;padding-left: 5px;">${parse(
+            ? `<p>停止录制<span style="color: #929292;padding-left: 5px;">${parse(
                 'u',
                 { primaryKey: true }
               )}</span></p>`
-            : `<p>Start recording <span style="color: #929292;padding-left: 5px;">${parse(
+            : `<p>开始录制<span style="color: #929292;padding-left: 5px;">${parse(
                 'u',
                 { primaryKey: true }
               )}</span></p>`

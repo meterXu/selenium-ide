@@ -69,8 +69,8 @@ export default class Console extends React.Component {
       ? Commands.list.get(UiState.selectedCommand.displayedName)
       : undefined
     const tabs = [
-      { name: 'Log', unread: this.state.logsUnread },
-      { name: 'Reference', unread: false },
+      { id: 'Log', name: '日志', unread: this.state.logsUnread },
+      { id: 'Reference', name: '参考', unread: false },
     ]
     return (
       <footer

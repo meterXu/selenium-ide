@@ -24,7 +24,7 @@ export default class StepIntoButton extends React.Component {
   render() {
     return (
       <ActionButton
-        data-tip={`<p>Step over current command <span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>单步执行<span style="color: #929292;padding-left: 5px;">${parse(
           "'",
           { primaryKey: true }
         )}</span></p>`}

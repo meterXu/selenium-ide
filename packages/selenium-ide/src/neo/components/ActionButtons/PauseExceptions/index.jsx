@@ -23,7 +23,7 @@ export default class PauseExceptionsButton extends React.Component {
   render() {
     return (
       <ActionButton
-        data-tip="<p>Pause on exceptions</p>"
+        data-tip="<p>遇到错误暂停</p>"
         {...this.props}
         className={classNames('si-break-exceptions', this.props.className)}
       /> // eslint-disable-line react/prop-types

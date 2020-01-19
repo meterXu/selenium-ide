@@ -28,7 +28,7 @@ export default class SaveButton extends React.Component {
     delete props.unsaved
     return (
       <ActionButton
-        data-tip={`<p>Save project <span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>保存项目<span style="color: #929292;padding-left: 5px;">${parse(
           's',
           { primaryKey: true }
         )}</span></p>`}

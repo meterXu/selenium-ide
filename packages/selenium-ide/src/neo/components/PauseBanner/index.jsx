@@ -29,7 +29,7 @@ export default class PauseBanner extends React.Component {
       return (
         <div className="state-banner background-pause">
           <div className="state-toolbar">
-            <span>Paused in debugger</span>
+            <span>在调试器中暂停</span>
           </div>
         </div>
       )
@@ -37,7 +37,7 @@ export default class PauseBanner extends React.Component {
       return (
         <div className="state-banner background-controlled">
           <div className="state-toolbar">
-            <span>Controlled by {Manager.controller.name} </span>
+            <span>受控制于 {Manager.controller.name} </span>
           </div>
         </div>
       )

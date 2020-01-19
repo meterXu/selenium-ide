@@ -34,7 +34,7 @@ export default class SpeedGaugeButton extends React.Component {
     delete props.isMenuOpen
     return (
       <ActionButton
-        data-tip="<p>Test execution speed</p>"
+        data-tip="<p>执行速度</p>"
         {...props}
         className={classNames(
           `si-gauge-${this.props.speed}`,
