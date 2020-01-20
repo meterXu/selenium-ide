@@ -132,7 +132,7 @@ class NewWindowInput extends React.Component {
               }
               onClick={this.onSubmit}
             >
-              {'confirm'}
+              {'确认'}
             </FlatButton>
           </div>
         )}
@@ -179,10 +179,7 @@ class NewWindowInput extends React.Component {
               onChange={this.handleWindowTimeoutChange}
               onBlur={this.handleWindowTimeoutBlur}
             />
-            <p>
-              Timeout is the amount of time the test will wait for the new
-              window to finish opening.
-            </p>
+            <p>超时是测试等待新窗口完成打开的时间。</p>
           </React.Fragment>
         ) : null}
       </DialogContainer>
