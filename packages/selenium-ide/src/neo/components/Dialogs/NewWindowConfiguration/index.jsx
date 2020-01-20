@@ -102,8 +102,8 @@ class NewWindowInput extends React.Component {
     const isInvalid = isEmpty || isNonUnique
     const errorMessage = isInvalid
       ? isEmpty
-        ? 'Name cannot be empty'
-        : 'Name must be unique'
+        ? '名称不能为空'
+        : '名称必须唯一'
       : undefined
     this.setState({
       ...this.state,
@@ -120,7 +120,7 @@ class NewWindowInput extends React.Component {
   render() {
     return (
       <DialogContainer
-        title="New Window Configuration"
+        title="新窗口配置"
         type={this.state.isInvalidName ? 'warn' : 'info'}
         renderFooter={() => (
           <div className="right">
@@ -144,13 +144,13 @@ class NewWindowInput extends React.Component {
               whiteSpace: 'pre-line',
             }}
           >
-            {`This command opens a new window. For accurate playback some additional information is needed.`}
+            {`此命令将打开一个新窗口。为了准确播放，需要一些其他信息。`}
           </p>
         ) : (
-          <p>Use this option if the command opens a new window.</p>
+          <p>如果命令打开一个新窗口，请使用此选项。</p>
         )}
         <Checkbox
-          label="New Window Configuration Enabled"
+          label="启用新窗口配置"
           form={true}
           disabled={false}
           checked={this.state.isConfigEnabled}
@@ -160,7 +160,7 @@ class NewWindowInput extends React.Component {
           <React.Fragment>
             <LabelledInput
               name="windowName"
-              label="1. Window Name"
+              label="1. 窗口名称"
               value={this.state.options.windowName}
               onChange={this.handleWindowNameChange}
               autoFocus
@@ -169,11 +169,11 @@ class NewWindowInput extends React.Component {
               <div className="message">* {this.state.errorMessage}</div>
             )}
             <p style={{ whiteSpace: 'pre-line' }}>
-              {`Window Name is used in order to interact with the new window. To make your tests more readable, change it to something descriptive.`}
+              {`窗口名称用于与新窗口进行交互。为了使您的测试更具可读性，请将其更改为描述性的内容`}
             </p>
             <LabelledInput
               name="windowTimeout"
-              label="2. Timeout (milliseconds)"
+              label="2. 超时 (毫秒)"
               type="number"
               value={this.state.options.windowTimeout}
               onChange={this.handleWindowTimeoutChange}
