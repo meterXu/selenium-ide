@@ -135,10 +135,9 @@ function handleContentScriptResponse(message, sender, sendResponse) {
 function showNoTabAvailableDialog() {
   UiState.windowSession.focusIDEWindow()
   ModalState.showAlert({
-    title: 'Tab not found',
-    description:
-      'No tab is available for this test case, either continue recording it, or play it back.',
-    confirmLabel: 'close',
+    title: '没找到相应的页面选项卡',
+    description: '此测试没找到相应的页面选项卡, 请继续记录它或进行回放。',
+    confirmLabel: '关闭',
   })
 }
 

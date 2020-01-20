@@ -75,7 +75,7 @@ export default class TabBar extends React.Component {
                 href="#"
                 onClick={this.handleClick.bind(this, tab.id, index)}
               >
-                {tab.id}
+                {tab.name}
               </a>
             </li>
           ))}
