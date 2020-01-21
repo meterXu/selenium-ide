@@ -169,8 +169,7 @@ class UiState {
     if (this.isRecording && view !== this.selectedView) {
       const choseChange = await ModalState.showAlert({
         title: '停止录制',
-        description:
-          '更改当前视图将停止录制过程。你想继续吗？',
+        description: '更改当前视图将停止录制过程。你想继续吗？',
         confirmLabel: '停止录制',
         cancelLabel: '关闭',
       })
@@ -249,8 +248,7 @@ class UiState {
     if (this.isRecording && test !== this.selectedTest.test) {
       const choseSelect = await ModalState.showAlert({
         title: '停止录制',
-        description:
-          '离开此测试并转到另一个测试将停止记录过程。你想继续吗？',
+        description: '离开此测试并转到另一个测试将停止记录过程。你想继续吗？',
         confirmLabel: '停止录制',
         cancelLabel: '关闭',
       })
