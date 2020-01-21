@@ -82,13 +82,13 @@ export default class Navigation extends React.Component {
           tab={UiState.selectedView}
           tabChanged={this.handleChangedTab}
         >
-          {UiState.selectedView === '用例' && (
+          {UiState.selectedView === UiState.lang.tests && (
             <AddButton
               data-tip={'<p>添加新的用例</p>'}
               onClick={ModalState.createTest}
             />
           )}
-          {UiState.selectedView === '用例组' && (
+          {UiState.selectedView === UiState.lang.suites && (
             <AddButton
               data-tip={'<p>添加新的用例组</p>'}
               onClick={ModalState.createSuite}
@@ -97,7 +97,7 @@ export default class Navigation extends React.Component {
         </VerticalTabBar>
         <Provider renameTest={ModalState.renameTest}>
           <React.Fragment>
-            {UiState.selectedView === '用例' && (
+            {UiState.selectedView === UiState.lang.tests && (
               <React.Fragment>
                 <SearchBar
                   value={UiState.filterTerm}
@@ -111,7 +111,7 @@ export default class Navigation extends React.Component {
                 />
               </React.Fragment>
             )}
-            {UiState.selectedView === '用例组' && (
+            {UiState.selectedView === UiState.lang.suites && (
               <React.Fragment>
                 <SearchBar
                   value={UiState.filterTerm}
@@ -127,7 +127,7 @@ export default class Navigation extends React.Component {
                 />
               </React.Fragment>
             )}
-            {UiState.selectedView === '执行中' && (
+            {UiState.selectedView === UiState.lang.executing && (
               <React.Fragment>
                 <ExecutionPlan />
                 <Runs

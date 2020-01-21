@@ -17,7 +17,7 @@
 
 import { action, observable } from 'mobx'
 import UiState from './UiState'
-
+import i18n from '../../i18n'
 class ModalState {
   @observable
   editedSuite = null
@@ -256,9 +256,9 @@ class ModalState {
 }
 
 const Types = {
-  test: '用例',
-  suite: '用例组',
-  project: '项目',
+  test: i18n.lang.tests,
+  suite: i18n.lang.suites,
+  project: i18n.lang.project,
 }
 
 if (!window._modalState) window._modalState = new ModalState()

@@ -24,13 +24,14 @@ import Command from '../../models/Command'
 import Manager from '../../../plugin/manager'
 import WindowSession from '../../IO/window-session'
 import BackgroundRecorder from '../../IO/SideeX/recorder'
-
+import i18n from '../../i18n'
 class UiState {
-  views = ['用例', '用例组', '执行中']
+  lang = i18n.lang
+  views = [this.lang.tests, this.lang.suites, this.lang.executing]
   @observable
   lastViewSelection = new Map()
   @observable
-  selectedView = '用例'
+  selectedView = this.lang.tests
   @observable
   selectedTest = {}
   @observable
@@ -265,10 +266,10 @@ class UiState {
   selectTestByIndex(index, suite) {
     const selectTestInArray = (index, tests) =>
       index >= 0 && index < tests.length ? tests[index] : undefined
-    if (this.selectedView === '用例') {
+    if (this.selectedView === this.lang.tests) {
       const test = selectTestInArray(index, this.filteredTests)
       if (test) this.selectTest(test)
-    } else if (this.selectedView === '用例组') {
+    } else if (this.selectedView === this.lang.suites) {
       const suiteState = this.getSuiteState(suite)
       const tests = suiteState.filteredTests.get()
       const test = selectTestInArray(index, tests)

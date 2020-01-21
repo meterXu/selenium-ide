@@ -39,7 +39,7 @@ export default class ToolBar extends React.Component {
     UiState.toggleRecord()
   }
   playAll() {
-    const isInSuiteView = UiState.selectedView === '用例组'
+    const isInSuiteView = UiState.selectedView === UiState.lang.suites
 
     if (PlaybackState.canPlaySuite) {
       PlaybackState.playSuiteOrResume()

@@ -214,7 +214,7 @@ export function loadProject(project, file) {
 }
 
 export function loadJSProject(project, data) {
-  UiState.changeView('用例')
+  UiState.changeView(UiState.lang.tests)
   PlaybackState.clearPlayingCache()
   UiState.clearViewCache()
   project.fromJS(data)
