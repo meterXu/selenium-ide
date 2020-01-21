@@ -26,11 +26,11 @@ import WindowSession from '../../IO/window-session'
 import BackgroundRecorder from '../../IO/SideeX/recorder'
 
 class UiState {
-  views = ['测试', '测试组', '执行中']
+  views = ['用例', '用例组', '执行中']
   @observable
   lastViewSelection = new Map()
   @observable
-  selectedView = '测试'
+  selectedView = '用例'
   @observable
   selectedTest = {}
   @observable
@@ -265,10 +265,10 @@ class UiState {
   selectTestByIndex(index, suite) {
     const selectTestInArray = (index, tests) =>
       index >= 0 && index < tests.length ? tests[index] : undefined
-    if (this.selectedView === '测试') {
+    if (this.selectedView === '用例') {
       const test = selectTestInArray(index, this.filteredTests)
       if (test) this.selectTest(test)
-    } else if (this.selectedView === '测试组') {
+    } else if (this.selectedView === '用例组') {
       const suiteState = this.getSuiteState(suite)
       const tests = suiteState.filteredTests.get()
       const test = selectTestInArray(index, tests)

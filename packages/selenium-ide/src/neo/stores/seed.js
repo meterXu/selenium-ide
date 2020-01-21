@@ -780,11 +780,11 @@ export default function seed(store, numberOfSuites = 0) {
   waitSuite.addTestCase(waitTest4)
   waitSuite.addTestCase(waitTest5)
 
-  UiState.changeView('测试组')
+  UiState.changeView('用例组')
   suiteAll.setOpen(true)
   UiState.selectTest(checkTest, suiteAll)
 
-  store.changeName('seed project')
+  store.changeName('种子项目')
 
   UiState.saved()
 

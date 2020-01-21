@@ -256,9 +256,9 @@ class ModalState {
 }
 
 const Types = {
-  test: 'test case',
-  suite: 'suite',
-  project: 'project',
+  test: '用例',
+  suite: '用例组',
+  project: '项目',
 }
 
 if (!window._modalState) window._modalState = new ModalState()
