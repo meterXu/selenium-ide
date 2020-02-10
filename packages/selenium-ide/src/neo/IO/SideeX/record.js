@@ -43,6 +43,7 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       comment: command.comment,
     },
   })
+  console.log(command)
   if (results.length >= 1) {
     // if more than one plugin responded, warn the user
     if (results.length > 1) {
