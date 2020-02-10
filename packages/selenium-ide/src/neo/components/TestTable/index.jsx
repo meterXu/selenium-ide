@@ -56,7 +56,7 @@ export default class TestTable extends React.Component {
   }
   detectNewCommand(change) {
     this.newCommand = change.added[0]
-    this.newCommand.comment = this.createCommandComment(this.newCommand)
+    this.newCommand.comment = this.createCommandComment(change.added[0])
   }
   disposeNewCommand() {
     this.newCommand = undefined
@@ -70,6 +70,10 @@ export default class TestTable extends React.Component {
   }
   createCommandComment(command) {
     console.log(command)
+    console.log(command.id)
+    console.log(command.target.value)
+    console.log(command.command)
+    console.log(commandType.hasOwnProperty(command.command))
     let typeComment = ''
     let valueComment = ''
     let labelComment = ''
