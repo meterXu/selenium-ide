@@ -73,8 +73,8 @@ export default class TestTable extends React.Component {
     let typeComment = ''
     let valueComment = ''
     let labelComment = ''
-    if (commandType.hasOwnProperty(command.type)) {
-      typeComment = commandType[command.type]
+    if (commandType.hasOwnProperty(command.command)) {
+      typeComment = commandType[command.command]
     }
     if (command.value) {
       valueComment = UiState.lang.commandComment.valueIs + command.value
