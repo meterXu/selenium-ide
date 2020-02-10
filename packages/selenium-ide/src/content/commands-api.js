@@ -31,6 +31,7 @@ let targetSelector
 attach(selenium)
 
 function doCommands(request, _sender, sendResponse) {
+  console.log(request.commands)
   if (request.commands) {
     if (request.commands == 'waitPreparation') {
       selenium['doWaitPreparation']('', selenium.preprocessParameter(''))
