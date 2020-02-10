@@ -640,6 +640,7 @@ Recorder.addEventHandler(
     let myPort = browser.runtime.connect()
     let tmpTarget = locatorBuilders.buildAll(event.target)
     myPort.onMessage.addListener(function(m) {
+      console.log(m)
       if (m.cmd.includes('Text') || m.cmd.includes('Label')) {
         let tmpText = bot.dom.getVisibleText(event.target)
         record(m.cmd, tmpTarget, tmpText)
