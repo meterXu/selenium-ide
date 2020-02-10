@@ -29,8 +29,7 @@ function isEmpty(commands) {
 }
 
 async function notifyPluginsOfRecordedCommand(command, test) {
-  command.comment = '哈哈哈'
-  console.log(command)
+  //console.log(command)
   const results = await Manager.emitMessageForResponse({
     action: 'event',
     event: 'commandRecorded',
@@ -40,10 +39,9 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       target: command.target,
       targets: command.targets,
       value: command.value,
-      comment: command.comment,
+      formLabel: '哈哈哈',
     },
   })
-  console.log(command)
   if (results.length >= 1) {
     // if more than one plugin responded, warn the user
     if (results.length > 1) {

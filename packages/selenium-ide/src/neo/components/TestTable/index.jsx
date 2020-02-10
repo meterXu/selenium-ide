@@ -25,6 +25,7 @@ import UiState from '../../stores/view/UiState'
 import PlaybackState from '../../stores/view/PlaybackState'
 import TestRow from '../TestRow'
 import { deriveCommandLevels } from '../../playback/playback-tree/command-leveler'
+import commandType from '../../../common/commandType'
 import './style.css'
 
 @observer
@@ -55,6 +56,7 @@ export default class TestTable extends React.Component {
   }
   detectNewCommand(change) {
     this.newCommand = change.added[0]
+    this.newCommand.comment = this.createCommandComment(this.newCommand)
   }
   disposeNewCommand() {
     this.newCommand = undefined
@@ -65,6 +67,28 @@ export default class TestTable extends React.Component {
     } else {
       this.node.scrollTop = 0
     }
+  }
+  createCommandComment(command) {
+    console.log(command)
+    let typeComment = ''
+    let valueComment = ''
+    let labelComment = ''
+    if (commandType.hasOwnProperty(command.type)) {
+      typeComment = commandType[command.type]
+    }
+    if (command.value) {
+      valueComment = UiState.lang.commandComment.valueIs + command.value
+    }
+    if (command.formLabel) {
+      labelComment = UiState.lang.commandComment.formLabelIs + command.formLabel
+    }
+    return (
+      typeComment +
+      UiState.lang.commandComment.targetAddressIs +
+      command.target +
+      labelComment +
+      valueComment
+    )
   }
   componentDidUpdate(prevProps) {
     if (prevProps.commands !== this.props.commands) {
