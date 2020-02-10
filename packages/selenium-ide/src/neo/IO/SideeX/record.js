@@ -131,7 +131,7 @@ export function recordCommand(command, target, value, index, select = false) {
   newCommand.setCommand(command)
   newCommand.setTarget(target)
   newCommand.setValue(value)
-
+  console.log(newCommand)
   if (select) {
     UiState.selectCommand(newCommand)
   }

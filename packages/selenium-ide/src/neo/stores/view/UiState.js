@@ -368,7 +368,6 @@ class UiState {
     }
     try {
       await this.recorder.attach(startingUrl)
-      console.log(startingUrl)
       this._setRecordingState(true)
       this.lastRecordedCommand = null
       await this.emitRecordingState()
