@@ -29,6 +29,8 @@ function isEmpty(commands) {
 }
 
 async function notifyPluginsOfRecordedCommand(command, test) {
+  command.comment = '哈哈哈'
+  console.log(command)
   const results = await Manager.emitMessageForResponse({
     action: 'event',
     event: 'commandRecorded',
@@ -38,7 +40,7 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       target: command.target,
       targets: command.targets,
       value: command.value,
-      comment: '哈哈哈',
+      comment: command.comment,
     },
   })
   if (results.length >= 1) {
