@@ -40,6 +40,7 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       value: command.value,
     },
   })
+  console.log(command)
   if (results.length >= 1) {
     // if more than one plugin responded, warn the user
     if (results.length > 1) {
@@ -131,7 +132,6 @@ export function recordCommand(command, target, value, index, select = false) {
   newCommand.setCommand(command)
   newCommand.setTarget(target)
   newCommand.setValue(value)
-  console.log(newCommand)
   if (select) {
     UiState.selectCommand(newCommand)
   }
