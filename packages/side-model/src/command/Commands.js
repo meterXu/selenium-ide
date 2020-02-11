@@ -16,7 +16,7 @@
 // under the License.
 
 import { ArgTypes } from './ArgTypes'
-
+import i18n from '../../../selenium-ide/src/neo/i18n'
 export const TargetTypes = {
   NONE: 0,
   LOCATOR: 'locator',
@@ -261,6 +261,7 @@ export const Commands = [
     'click',
     {
       name: 'click',
+      title: i18n.lang.commandType.click,
       type: TargetTypes.LOCATOR,
       description: `Clicks on a target element (e.g., a link, button, checkbox, or radio button).`,
       target: ArgTypes.locator,
@@ -270,6 +271,7 @@ export const Commands = [
     'clickAt',
     {
       name: 'click at',
+      title: i18n.lang.commandType.clickAt,
       type: TargetTypes.LOCATOR,
       description: `Clicks on a target element (e.g., a link, button, checkbox, 
         or radio button). The coordinates are relative to the target element 
@@ -283,6 +285,7 @@ export const Commands = [
     'close',
     {
       name: 'close',
+      title: i18n.lang.commandType.close,
       description: `Closes the current window. There is no need to close the 
         initial window, IDE will re-use it; closing it may cause a performance 
         penalty on the test.`,
@@ -340,6 +343,7 @@ export const Commands = [
     'echo',
     {
       name: 'echo',
+      title: i18n.lang.commandType.echo,
       description: `Prints the specified message into the third table cell in 
         your Selenese tables. Useful for debugging.`,
       target: ArgTypes.message,
@@ -349,6 +353,7 @@ export const Commands = [
     'editContent',
     {
       name: 'edit content',
+      title: i18n.lang.commandType.editContent,
       type: TargetTypes.LOCATOR,
       description: `Sets the value of a content editable element as if you typed in it.`,
       target: ArgTypes.locator,
@@ -499,6 +504,7 @@ export const Commands = [
     'open',
     {
       name: 'open',
+      title: i18n.lang.commandType.open,
       description: `Opens a URL and waits for the page to load before proceeding. 
         This accepts both relative and absolute URLs.`,
       target: ArgTypes.url,
@@ -508,6 +514,7 @@ export const Commands = [
     'pause',
     {
       name: 'pause',
+      title: i18n.lang.commandType.pause,
       description: 'Wait for the specified amount of time.',
       target: ArgTypes.waitTime,
     },
@@ -559,6 +566,7 @@ export const Commands = [
     'select',
     {
       name: 'select',
+      title: i18n.lang.commandType.select,
       type: TargetTypes.LOCATOR,
       description: `Select an element from a drop-down menu using an option 
         locator. Option locators provide different ways of specifying a select 
@@ -572,6 +580,7 @@ export const Commands = [
     'selectFrame',
     {
       name: 'select frame',
+      title: i18n.lang.commandType.selectFrame,
       type: TargetTypes.LOCATOR,
       description: `Selects a frame within the current window. You can select a
         frame by its 0-based index number (e.g., select the first frame with 
@@ -587,6 +596,7 @@ export const Commands = [
     'selectWindow',
     {
       name: 'select window',
+      title: i18n.lang.commandType.selectWindow,
       description: `Selects a popup window using a window locator. Once a 
         popup window has been selected, all commands will go to that window. 
         Window locators use handles to select windows.`,
@@ -597,6 +607,7 @@ export const Commands = [
     'sendKeys',
     {
       name: 'send keys',
+      title: i18n.lang.commandType.sendKeys,
       type: TargetTypes.LOCATOR,
       description: `Simulates keystroke events on the specified element, as 
         though you typed the value key-by-key. This simulates a real user typing 
@@ -614,6 +625,7 @@ export const Commands = [
     'setSpeed',
     {
       name: 'set speed',
+      title: i18n.lang.commandType.setSpeed,
       description: `Set execution speed (e.g., set the millisecond length of 
         a delay which will follow each Selenium operation). By default, there 
         is no such delay, e.g., the delay is 0 milliseconds. This setting is 
@@ -625,6 +637,7 @@ export const Commands = [
     'setWindowSize',
     {
       name: 'set window size',
+      title: i18n.lang.commandType.setWindowSize,
       description:
         "Set the browser's window size, including the browser's interface.",
       target: ArgTypes.resolution,
@@ -634,6 +647,7 @@ export const Commands = [
     'store',
     {
       name: 'store',
+      title: i18n.lang.commandType.store,
       description: 'Save a target string as a variable for easy re-use.',
       target: ArgTypes.text,
       value: ArgTypes.variableName,
@@ -712,6 +726,7 @@ export const Commands = [
     'submit',
     {
       name: 'submit',
+      title: i18n.lang.commandType.submit,
       type: TargetTypes.LOCATOR,
       description: `Submit the specified form. This is particularly useful for 
         forms without submit buttons, e.g. single-input "Search" forms.`,
@@ -731,6 +746,7 @@ export const Commands = [
     'type',
     {
       name: 'type',
+      title: i18n.lang.commandType.type,
       type: TargetTypes.LOCATOR,
       description: `Sets the value of an input field, as though you typed it 
         in. Can also be used to set the value of combo boxes, check boxes, etc. 
@@ -746,6 +762,7 @@ export const Commands = [
     'uncheck',
     {
       name: 'uncheck',
+      title: i18n.lang.commandType.uncheck,
       type: TargetTypes.LOCATOR,
       description: 'Uncheck a toggle-button (checkbox/radio).',
       target: ArgTypes.locator,

@@ -21,7 +21,7 @@ import WindowSession from '../window-session'
 import { Commands, ArgTypes } from '../../models/Command'
 import Manager from '../../../plugin/manager'
 import { Logger, Channels } from '../../stores/view/Logs'
-import commandType from '../../../common/commandType'
+import ingoreCommand from '../../../common/ingoreCommand'
 const logger = new Logger(Channels.SYSTEM)
 
 function isEmpty(commands) {
@@ -127,8 +127,9 @@ function createCommandComment(obj) {
     let typeComment = ''
     let valueComment = ''
     let labelComment = ''
-    if (commandType.hasOwnProperty(obj.command)) {
-      typeComment = commandType[obj.command]
+    let findCommand = Commands.list.get(obj.command)
+    if (findCommand) {
+      typeComment = findCommand.title || ''
     }
     if (obj.value) {
       valueComment = UiState.lang.commandComment.valueIs + obj.value
@@ -184,6 +185,7 @@ export default function record(
   insertBeforeLastCommand
 ) {
   if (UiState.isSelectingTarget) return
+  if (ingoreCommand.filter(c => c === command).length > 0) return
   const test = UiState.displayedTest
   if (isEmpty(test.commands) && command === 'open') {
     addInitialCommands(targets[0][0])

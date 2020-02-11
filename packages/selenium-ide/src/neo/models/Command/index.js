@@ -23,7 +23,7 @@ import {
   ArgTypes as _ArgTypes,
   TargetTypes,
   registerCommand,
-} from '@seleniumhq/side-model'
+} from '../../../../../side-model/dist'
 const EventEmitter = require('events')
 import { mergeEventEmitter } from '../../../common/events'
 
