@@ -1,7 +1,7 @@
-import UiState from '../neo/stores/view/UiState'
+import i18n from '../neo/i18n/index'
 export default {
-  click: UiState.lang.commandType.click,
-  open: UiState.lang.commandType.open,
-  'set window size': UiState.lang.commandType.set_window_size,
-  type: UiState.lang.commandType.type,
+  click: i18n.lang.commandType.click,
+  open: i18n.lang.commandType.open,
+  'set window size': i18n.lang.commandType.set_window_size,
+  type: i18n.lang.commandType.type,
 }

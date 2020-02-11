@@ -29,8 +29,7 @@ import MultilineEllipsis from '../MultilineEllipsis'
 import { withOnContextMenu } from '../ContextMenu'
 import ModalState from '../../stores/view/ModalState'
 import './style.css'
-import UiState from '../../stores/view/UiState'
-import commandType from '../../../common/commandType'
+
 export const Type = 'command'
 
 const commandSource = {
@@ -105,10 +104,6 @@ class TestRow extends React.Component {
     this.select = this.select.bind(this)
     this.remove = this.remove.bind(this)
     this.clearAll = this.clearAll.bind(this)
-    this.createCommandComment = this.createCommandComment.bind(this)
-    this.state = {
-      comment: null,
-    }
   }
   static propTypes = {
     index: PropTypes.number,
@@ -255,32 +250,6 @@ class TestRow extends React.Component {
       }
     }
   }
-  createCommandComment() {
-    let obj = this.props.command
-    if (obj && obj.command) {
-      let typeComment = ''
-      let valueComment = ''
-      let labelComment = ''
-      if (commandType.hasOwnProperty(obj.command)) {
-        typeComment = commandType[obj.command]
-      }
-      if (obj.value) {
-        valueComment = UiState.lang.commandComment.valueIs + obj.value
-      }
-      if (obj.formLabel) {
-        labelComment = UiState.lang.commandComment.formLabelIs + obj.formLabel
-      }
-      return (
-        typeComment +
-        UiState.lang.commandComment.targetAddressIs +
-        obj.target +
-        labelComment +
-        valueComment
-      )
-    } else {
-      return null
-    }
-  }
   render() {
     const commandIndentation = (
       <span
@@ -321,7 +290,9 @@ class TestRow extends React.Component {
             插入新命令
           </ListMenuItem>
           <ListMenuSeparator />
-          <ListMenuItem onClick={this.clearAll}>清除所有命令</ListMenuItem>
+          <ListMenuItem onClick={this.clearAll}>
+            清除所有命令
+          </ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem label="B" onClick={this.props.command.toggleBreakpoint}>
             切换断点
@@ -422,15 +393,17 @@ class TestRow extends React.Component {
         </td>
         <td
           className={classNames('comment', {
-            cell__hidden: !this.state.comment,
+            cell__hidden: !this.props.command.comment,
           })}
           colSpan="3"
         >
-          <MultilineEllipsis lines={1}>{this.state.comment}</MultilineEllipsis>
+          <MultilineEllipsis lines={1}>
+            {this.props.command.comment}
+          </MultilineEllipsis>
         </td>
         <td
           className={classNames('command', {
-            cell__alternate: this.state.comment,
+            cell__alternate: this.props.command.comment,
           })}
         >
           {commandIndentation}
@@ -438,7 +411,7 @@ class TestRow extends React.Component {
         </td>
         <td
           className={classNames({
-            cell__alternate: this.state.comment,
+            cell__alternate: this.props.command.comment,
           })}
         >
           <MultilineEllipsis lines={3}>
@@ -447,7 +420,7 @@ class TestRow extends React.Component {
         </td>
         <td
           className={classNames({
-            cell__alternate: this.state.comment,
+            cell__alternate: this.props.command.comment,
           })}
         >
           <MultilineEllipsis lines={3}>

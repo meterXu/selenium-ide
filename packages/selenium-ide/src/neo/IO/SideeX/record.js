@@ -21,7 +21,7 @@ import WindowSession from '../window-session'
 import { Commands, ArgTypes } from '../../models/Command'
 import Manager from '../../../plugin/manager'
 import { Logger, Channels } from '../../stores/view/Logs'
-
+import commandType from '../../../common/commandType'
 const logger = new Logger(Channels.SYSTEM)
 
 function isEmpty(commands) {
@@ -29,7 +29,6 @@ function isEmpty(commands) {
 }
 
 async function notifyPluginsOfRecordedCommand(command, test) {
-  //console.log(command)
   const results = await Manager.emitMessageForResponse({
     action: 'event',
     event: 'commandRecorded',
@@ -39,7 +38,7 @@ async function notifyPluginsOfRecordedCommand(command, test) {
       target: command.target,
       targets: command.targets,
       value: command.value,
-      formLabel: '哈哈哈',
+      comment: command.comment,
     },
   })
   if (results.length >= 1) {
@@ -123,6 +122,32 @@ function addStoreRootHandleIfDoesNotExist() {
   test.createCommand(1, 'storeWindowHandle', 'root')
 }
 
+function createCommandComment(obj) {
+  if (obj && obj.command) {
+    let typeComment = ''
+    let valueComment = ''
+    let labelComment = ''
+    if (commandType.hasOwnProperty(obj.command)) {
+      typeComment = commandType[obj.command]
+    }
+    if (obj.value) {
+      valueComment = UiState.lang.commandComment.valueIs + obj.value
+    }
+    if (obj.formLabel) {
+      labelComment = UiState.lang.commandComment.formLabelIs + obj.formLabel
+    }
+    return (
+      typeComment +
+      UiState.lang.commandComment.targetAddressIs +
+      obj.target +
+      labelComment +
+      valueComment
+    )
+  } else {
+    return null
+  }
+}
+
 // for plugins
 export function recordCommand(command, target, value, index, select = false) {
   const test = UiState.displayedTest
@@ -133,6 +158,13 @@ export function recordCommand(command, target, value, index, select = false) {
   newCommand.setCommand(command)
   newCommand.setTarget(target)
   newCommand.setValue(value)
+  newCommand.setComment(
+    createCommandComment({
+      command,
+      target,
+      value,
+    })
+  )
   if (select) {
     UiState.selectCommand(newCommand)
   }
@@ -161,7 +193,13 @@ export default function record(
       // double click removed the 2 clicks from before
       index -= 2
     }
-    const newCommand = recordCommand(command, targets[0][0], value, index)
+    let target = targets[0][0]
+    targets.forEach(c => {
+      if (c[1] === 'xpath:attributes') {
+        target = c[0]
+      }
+    })
+    const newCommand = recordCommand(command, target, value, index)
     if (Commands.list.has(command)) {
       const type = Commands.list.get(command).target
       if (type && type.name === ArgTypes.locator.name) {
