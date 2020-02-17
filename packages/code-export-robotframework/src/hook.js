@@ -75,7 +75,7 @@ function declareDependencies() {
         { level: 0, statement: '' },
         { level: 0, statement: '*** Variables ***' },
         { level: 0, statement: '${BROWSER}        chrome' },
-        { level: 0, statement: '${SELSPEED}       0.0s' },
+        { level: 0, statement: '${SELSPEED}       0.08s' },
         { level: 0, statement: '' },
       ],
     },
