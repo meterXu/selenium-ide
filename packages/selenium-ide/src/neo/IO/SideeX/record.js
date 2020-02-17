@@ -199,6 +199,14 @@ export default function record(
     targets.forEach(c => {
       if (c[1] === 'xpath:attributes') {
         target = c[0]
+      } else if (c[1] === 'xpath:link') {
+        target = c[0]
+      } else if (c[1] === 'xpath:innerText') {
+        target = c[0]
+      } else if (c[1] === 'xpath:position') {
+        target = c[0]
+      } else if (c[1] === 'xpath:idRelative') {
+        target = c[0]
       }
     })
     const newCommand = recordCommand(command, target, value, index)
