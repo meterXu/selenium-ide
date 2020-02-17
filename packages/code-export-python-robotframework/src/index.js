@@ -40,6 +40,7 @@ function generateTestDeclaration(name) {
   )}():
     self = type('test',(), {})() 
     self.driver = webdriver.Chrome()
+    self.driver.implicitly_wait(3000)
     self.vars = {}`
 }
 function generateMethodDeclaration(name) {

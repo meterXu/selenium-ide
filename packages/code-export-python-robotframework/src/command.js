@@ -209,15 +209,15 @@ function emitAnswerOnNextPrompt(textToSend) {
 
 async function emitCheck(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: {
-        level: 0,
-        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-          locator
-        )})))`,
-      },
-    },
+    // {
+    //   level: 0,
+    //   statement: {
+    //     level: 0,
+    //     statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //       locator
+    //     )})))`,
+    //   },
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -243,12 +243,12 @@ function emitChooseOkOnNextConfirmation() {
 async function emitClick(target) {
   return Promise.resolve({
     commands: [
-      {
-        level: 0,
-        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-          target
-        )})))`,
-      },
+      // {
+      //   level: 0,
+      //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+      //     target
+      //   )})))`,
+      // },
       {
         level: 0,
         statement: `self.driver.find_element(${await location.emit(
@@ -370,12 +370,12 @@ function emitControlFlowWhile(script) {
 
 async function emitDoubleClick(target) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        target
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     target
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -390,24 +390,24 @@ async function emitDoubleClick(target) {
 
 async function emitDragAndDrop(dragged, dropped) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        dragged
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     dragged
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `dragged = self.driver.find_element(${await location.emit(
         dragged
       )})`,
     },
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        dropped
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     dropped
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `dropped = self.driver.find_element(${await location.emit(
@@ -430,12 +430,12 @@ async function emitEcho(message) {
 
 async function emitEditContent(locator, content) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -467,12 +467,12 @@ async function emitExecuteAsyncScript(script, varName) {
 
 async function emitMouseDown(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -490,12 +490,12 @@ async function emitMouseDown(locator) {
 
 async function emitMouseMove(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -510,10 +510,10 @@ async function emitMouseMove(locator) {
 
 async function emitMouseOut() {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, "body")))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((By.CSS_SELECTOR, "body")))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(By.CSS_SELECTOR, "body")`,
@@ -529,12 +529,12 @@ async function emitMouseOut() {
 
 async function emitMouseUp(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -581,24 +581,24 @@ async function emitSetWindowSize(size) {
 
 async function emitSelect(selectElement, option) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        selectElement
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     selectElement
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `dropdown = self.driver.find_element(${await location.emit(
         selectElement
       )})`,
     },
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        option
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     option
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `dropdown.find_element(${await selection.emit(
@@ -621,12 +621,12 @@ async function emitSelectFrame(frameLocation) {
   } else {
     return Promise.resolve({
       commands: [
-        {
-          level: 0,
-          statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-            frameLocation
-          )})))`,
-        },
+        // {
+        //   level: 0,
+        //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+        //     frameLocation
+        //   )})))`,
+        // },
         {
           level: 0,
           statement: `element = self.driver.find_element(${await location.emit(
@@ -703,12 +703,12 @@ function generateSendKeysInput(value) {
 async function emitSendKeys(target, value) {
   return Promise.resolve({
     commands: [
-      {
-        level: 0,
-        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-          target
-        )})))`,
-      },
+      // {
+      //   level: 0,
+      //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+      //     target
+      //   )})))`,
+      // },
       {
         level: 0,
         statement: `self.driver.find_element(${await location.emit(
@@ -734,12 +734,12 @@ async function emitStoreAttribute(locator, varName) {
   const elementLocator = locator.slice(0, attributePos)
   const attributeName = locator.slice(attributePos + 1)
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        elementLocator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     elementLocator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `attribute = self.driver.find_element(${await location.emit(
@@ -760,12 +760,12 @@ async function emitStoreText(locator, varName) {
     locator
   )}).text`
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: variableSetter(varName, result),
@@ -783,12 +783,12 @@ async function emitStoreValue(locator, varName) {
     locator
   )}).get_attribute("value")`
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: variableSetter(varName, result),
@@ -808,12 +808,12 @@ async function emitStoreXpathCount(locator, varName) {
     locator
   )}))`
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: variableSetter(varName, result),
@@ -831,12 +831,12 @@ async function emitSubmit(_locator) {
 async function emitType(target, value) {
   return Promise.resolve({
     commands: [
-      {
-        level: 0,
-        statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-          target
-        )})))`,
-      },
+      // {
+      //   level: 0,
+      //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+      //     target
+      //   )})))`,
+      // },
       {
         level: 0,
         statement: `self.driver.find_element(${await location.emit(
@@ -849,12 +849,12 @@ async function emitType(target, value) {
 
 async function emitUncheck(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -868,12 +868,12 @@ async function emitUncheck(locator) {
 
 async function emitVerifyChecked(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `assert self.driver.find_element(${await location.emit(
@@ -886,12 +886,12 @@ async function emitVerifyChecked(locator) {
 
 async function emitVerifyEditable(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -905,12 +905,12 @@ async function emitVerifyEditable(locator) {
 
 async function emitVerifyElementPresent(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `elements = self.driver.find_elements(${await location.emit(
@@ -924,12 +924,12 @@ async function emitVerifyElementPresent(locator) {
 
 async function emitVerifyElementNotPresent(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `elements = self.driver.find_elements(${await location.emit(
@@ -943,12 +943,12 @@ async function emitVerifyElementNotPresent(locator) {
 
 async function emitVerifyNotChecked(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `assert self.driver.find_element(${await location.emit(
@@ -961,12 +961,12 @@ async function emitVerifyNotChecked(locator) {
 
 async function emitVerifyNotEditable(locator) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -980,12 +980,12 @@ async function emitVerifyNotEditable(locator) {
 
 async function emitVerifyNotSelectedValue(locator, expectedValue) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `value = self.driver.find_element(${await location.emit(
@@ -1002,12 +1002,12 @@ async function emitVerifyNotSelectedValue(locator, expectedValue) {
 
 async function emitVerifyNotText(locator, text) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `text = self.driver.find_element(${await location.emit(
@@ -1021,12 +1021,12 @@ async function emitVerifyNotText(locator, text) {
 
 async function emitVerifySelectedLabel(locator, labelValue) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `element = self.driver.find_element(${await location.emit(
@@ -1037,10 +1037,10 @@ async function emitVerifySelectedLabel(locator, labelValue) {
       level: 0,
       statement: `locator = "option[@value='{}']".format(element.get_attribute("value"))`,
     },
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((By.XPATH, locator)))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((By.XPATH, locator)))`,
+    // },
     {
       level: 0,
       statement: 'selected_text = element.find_element(By.XPATH, locator).text',
@@ -1054,12 +1054,12 @@ async function emitVerifySelectedLabel(locator, labelValue) {
 
 async function emitVerifyText(locator, text) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `assert self.driver.find_element(${await location.emit(
@@ -1072,12 +1072,12 @@ async function emitVerifyText(locator, text) {
 
 async function emitVerifyValue(locator, value) {
   const commands = [
-    {
-      level: 0,
-      statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
-        locator
-      )})))`,
-    },
+    // {
+    //   level: 0,
+    //   statement: `WebDriverWait(self.driver, ${waitTimeOut}).until(expected_conditions.visibility_of_element_located((${await location.emit(
+    //     locator
+    //   )})))`,
+    // },
     {
       level: 0,
       statement: `value = self.driver.find_element(${await location.emit(
