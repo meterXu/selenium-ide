@@ -30,18 +30,13 @@ opts.fileExtension = '.py'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
-opts.testLevel = '0'
+opts.commandLevel = '3'
 opts.generateMethodDeclaration = generateMethodDeclaration
 
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name) {
-  return `def test_${exporter.parsers.uncapitalize(
-    exporter.parsers.sanitizeName(name)
-  )}():
-    self = type('test',(), {})() 
-    self.driver = webdriver.Chrome()
-    self.driver.implicitly_wait(3000)
-    self.vars = {}`
+  return `@classmethod
+def runCase(self):`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -49,10 +44,10 @@ function generateMethodDeclaration(name) {
   )}(self):`
 }
 function generateSuiteDeclaration(name) {
-  return ``
+  return `class JetRPA(object):`
 }
 function generateFilename(name) {
-  return `test_${exporter.parsers.uncapitalize(
+  return `rpa_${exporter.parsers.uncapitalize(
     exporter.parsers.sanitizeName(name)
   )}${opts.fileExtension}`
 }
@@ -68,8 +63,10 @@ export async function emitTest({
 }) {
   global.baseUrl = baseUrl
   const testDeclaration = generateTestDeclaration(test.name)
-  const result = await exporter.emit.test(test, tests, {
-    ...opts,
+  let newopts = Object.assign({}, opts)
+  newopts.testLevel = '2'
+  let result = await exporter.emit.test(test, tests, {
+    ...newopts,
     testDeclaration,
     enableOriginTracing,
     project,
@@ -85,7 +82,11 @@ export async function emitTest({
   })
   return {
     filename: generateFilename(test.name),
-    body: exporter.emit.orderedSuite(_suite),
+    body:
+      exporter.emit.orderedSuite(_suite) +
+      'jetRpa = JetRPA()\n' +
+      'jetRpa.runCase()\n' +
+      'jetRpa.quitCase()',
   }
 }
 
@@ -99,13 +100,16 @@ export async function emitSuite({
   beforeEachOptions,
 }) {
   global.baseUrl = baseUrl
-  const result = await exporter.emit.testsFromSuite(tests, suite, opts, {
+  let result = await exporter.emit.testsFromSuite(tests, suite, opts, {
     enableOriginTracing,
     generateTestDeclaration,
     project,
   })
+  // eslint-disable-next-line no-const-assign
+  const suiteDeclaration = generateSuiteDeclaration(suite.name)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
+    suiteDeclaration,
     suite,
     project,
     beforeEachOptions,
