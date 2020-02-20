@@ -57,7 +57,6 @@ function afterEach() {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 1, statement: '@classmethod' },
         { level: 1, statement: 'def quitCase(self, method):' },
         { level: 2, statement: 'self.driver.quit()' },
       ],
@@ -87,7 +86,7 @@ function beforeEach() {
     startingSyntax: ({ browserName, gridUrl } = {}) => ({
       commands: [
         { level: 1, statement: 'driver = None' },
-        { level: 1, statement: '@classmethod' },
+        { level: 1, statement: '' },
         { level: 1, statement: 'def getDriver(self):' },
         { level: 2, statement: 'time.sleep(0.3)' },
         { level: 2, statement: 'if self.driver is None:' },

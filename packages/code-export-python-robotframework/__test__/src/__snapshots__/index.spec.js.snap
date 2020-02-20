@@ -15,7 +15,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -23,11 +23,9 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
-  @classmethod
   def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
       self.getDriver().set_window_size(1440, 1177)
@@ -36,7 +34,6 @@ class JetRPA(object):
       self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
                                                             assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
   
-  @classmethod
   def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
       self.getDriver().set_window_size(1440, 1177)
@@ -141,7 +138,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -149,7 +146,6 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
@@ -160,13 +156,11 @@ class JetRPA(object):
     self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
     self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
   
-  @classmethod
   def runCase(self):
       self.vars[\\"username\\"] = \\"blah\\"
       self.vars[\\"password\\"] = \\"blah\\"
       self.login()
   
-  @classmethod
   def runCase(self):
       self.vars[\\"username\\"] = \\"tomsmith\\"
       self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
@@ -190,7 +184,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -198,7 +192,6 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
@@ -217,7 +210,6 @@ class JetRPA(object):
     self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
     assert self.getDriver().title == \\"\\"New Window\\"\\"
   
-  @classmethod
   def runCase(self):
       self.selectwindow()
   
@@ -239,7 +231,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -247,7 +239,6 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
@@ -266,11 +257,9 @@ class JetRPA(object):
     self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
     assert self.getDriver().title == \\"\\"New Window\\"\\"
   
-  @classmethod
   def runCase(self):
       self.selectwindow()
   
-  @classmethod
   def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/windows\\")
       self.vars[\\"window_handles\\"] = self.getDriver().window_handles
@@ -297,7 +286,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -305,11 +294,9 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
-    @classmethod
     def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
       self.getDriver().set_window_size(1440, 1177)
@@ -338,7 +325,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -346,7 +333,6 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
@@ -357,7 +343,6 @@ class JetRPA(object):
     self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
     self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
   
-    @classmethod
     def runCase(self):
       self.vars[\\"username\\"] = \\"tomsmith\\"
       self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
@@ -383,7 +368,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -391,7 +376,6 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
@@ -402,7 +386,6 @@ class JetRPA(object):
     if len(wh_now) > len(wh_then):
       return set(wh_now).difference(set(wh_then)).pop()
   
-    @classmethod
     def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/\\")
       self.getDriver().set_window_size(1260, 1027)
@@ -436,7 +419,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class JetRPA(object):
     driver = None
-    @classmethod
+    
     def getDriver(self):
       time.sleep(0.3)
       if self.driver is None:
@@ -444,11 +427,9 @@ class JetRPA(object):
         self.driver.implicitly_wait(3000)
       return self.driver
   
-    @classmethod
     def quitCase(self, method):
       self.driver.quit()
   
-    @classmethod
     def runCase(self):
       self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
       self.getDriver().set_window_size(1440, 1177)
