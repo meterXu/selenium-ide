@@ -107,7 +107,6 @@ class PlaybackState {
     this.browserDriver = new WebDriverExecutor()
     this.originalCalledTest = undefined
     this.playbackOptions = {}
-
     reaction(
       () => this.paused,
       paused => {
@@ -758,6 +757,7 @@ class PlaybackState {
   @action.bound
   setDelay(delay) {
     this.delay = delay
+    UiState.project.changeDelay(this.delay)
   }
 
   @action.bound

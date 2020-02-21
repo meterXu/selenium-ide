@@ -3,6 +3,7 @@
   "version": "2.0",
   "name": "test case reuse",
   "url": "https://the-internet.herokuapp.com",
+  "delay": 300,
   "tests": [{
     "id": "c8e84558-3efa-4481-a601-f6b7cff1c6d9",
     "name": "login",

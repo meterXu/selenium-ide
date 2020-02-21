@@ -32,6 +32,10 @@ export default class ProjectStore {
   @observable
   url = ''
   @observable
+  defaultDelay = 300
+  @observable
+  delay = this.defaultDelay
+  @observable
   plugins = []
   @observable
   _tests = []
@@ -113,6 +117,10 @@ export default class ProjectStore {
   changeName(name) {
     this.name = name.replace(/<[^>]*>/g, '') // firefox adds unencoded html elements to the string, strip them
     this.setModified(true)
+  }
+  @action.bound
+  changeDelay(delay) {
+    this.delay = delay
   }
 
   @action.bound
@@ -230,6 +238,8 @@ export default class ProjectStore {
     this.plugins.replace(jsRep.plugins)
     this.version = jsRep.version
     this.id = jsRep.id || uuidv4()
+    this.delay = jsRep.delay || this.defaultDelay
+    window._playbackState.delay = this.delay
     this.saved()
   }
 
@@ -250,6 +260,7 @@ export default class ProjectStore {
       suites: this._suites.map(s => s.export()),
       urls: this._urls,
       plugins: this.plugins,
+      delay: this.delay,
     })
   }
 }

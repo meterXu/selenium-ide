@@ -3,6 +3,7 @@
   "version": "2.0",
   "name": "nested-select-window-v2",
   "url": "http://the-internet.herokuapp.com",
+  "delay": 300,
   "tests": [{
     "id": "3147925e-12c9-4b8e-aac1-90f4f13e8404",
     "name": "reuse",

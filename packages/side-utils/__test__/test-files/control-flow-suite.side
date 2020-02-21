@@ -3,6 +3,7 @@
   "version": "2.0",
   "name": "control flow",
   "url": "http://the-internet.herokuapp.com",
+  "delay": 300,
   "tests": [{
     "id": "229b94d0-5a3d-49a2-a55e-a4e4a6449039",
     "name": "send KEY_ENTER",

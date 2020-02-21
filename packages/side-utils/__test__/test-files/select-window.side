@@ -3,6 +3,7 @@
   "version": "2.0",
   "name": "select window",
   "url": "http://the-internet.herokuapp.com",
+  "delay": 300,
   "tests": [{
     "id": "5d92f854-623b-41da-826b-2feb4ad20f2a",
     "name": "select window",

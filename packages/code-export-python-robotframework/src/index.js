@@ -32,7 +32,6 @@ opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
 opts.commandLevel = '3'
 opts.generateMethodDeclaration = generateMethodDeclaration
-
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name) {
   return `def runCase(self):`
