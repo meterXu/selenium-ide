@@ -151,6 +151,13 @@ class UiState {
     return speed ? speed : 1
   }
 
+  @computed
+  get gaugeWaitSpeed() {
+    const value = PlaybackState.maxDelay - PlaybackState.implicitlyWait
+    const speed = Math.ceil((value / PlaybackState.maxDelay) * 5)
+    return speed ? speed : 1
+  }
+
   @action.bound
   _changeView(view, ignoreCache) {
     this.lastViewSelection.set(this.selectedView, this.selectedTest)

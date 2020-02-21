@@ -25,6 +25,7 @@ import './style.css'
 export default class SpeedGaugeButton extends React.Component {
   static propTypes = {
     speed: PropTypes.number,
+    title: PropTypes.string.isRequired,
   }
   static defaultProps = {
     speed: 5,
@@ -34,7 +35,7 @@ export default class SpeedGaugeButton extends React.Component {
     delete props.isMenuOpen
     return (
       <ActionButton
-        data-tip="<p>执行速度</p>"
+        data-tip={'<p>' + this.props.title + '</p>'}
         {...props}
         className={classNames(
           `si-gauge-${this.props.speed}`,

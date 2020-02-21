@@ -34,7 +34,11 @@ export default class ProjectStore {
   @observable
   defaultDelay = 300
   @observable
+  defaultImplicitlyWait = 3000
+  @observable
   delay = this.defaultDelay
+  @observable
+  implicitlyWait = this.defaultImplicitlyWait
   @observable
   plugins = []
   @observable
@@ -121,6 +125,11 @@ export default class ProjectStore {
   @action.bound
   changeDelay(delay) {
     this.delay = delay
+  }
+
+  @action.bound
+  changeImplicitlyWait(implicitlyWait) {
+    this.implicitlyWait = implicitlyWait
   }
 
   @action.bound
@@ -239,7 +248,9 @@ export default class ProjectStore {
     this.version = jsRep.version
     this.id = jsRep.id || uuidv4()
     this.delay = jsRep.delay || this.defaultDelay
+    this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     window._playbackState.delay = this.delay
+    window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
   }
 
@@ -261,6 +272,7 @@ export default class ProjectStore {
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,
+      implicitlyWait: this.implicitlyWait,
     })
   }
 }

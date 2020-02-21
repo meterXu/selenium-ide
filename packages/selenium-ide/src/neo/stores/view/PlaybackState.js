@@ -761,6 +761,12 @@ class PlaybackState {
   }
 
   @action.bound
+  setImplicitlyWait(implicitlyWait) {
+    this.implicitlyWait = implicitlyWait
+    UiState.project.changeImplicitlyWait(this.implicitlyWait)
+  }
+
+  @action.bound
   callTestCase(_testCase, playbackOptions) {
     let testCase = _testCase
     if (typeof testCase === 'string') {

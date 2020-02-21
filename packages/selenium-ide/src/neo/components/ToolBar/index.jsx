@@ -112,10 +112,18 @@ export default class ToolBar extends React.Component {
           onClick={PlaybackState.stepOver}
         />
         <GaugeMenu
-          opener={<SpeedGauge speed={UiState.gaugeSpeed} />}
+          opener={<SpeedGauge speed={UiState.gaugeSpeed} title="执行速度" />}
           value={PlaybackState.delay}
           maxDelay={PlaybackState.maxDelay}
           onChange={PlaybackState.setDelay}
+          flags={['快', '慢']}
+        />
+        <GaugeMenu
+          opener={<SpeedGauge speed={UiState.gaugeWaitSpeed} title="隐式等待" />}
+          value={PlaybackState.implicitlyWait}
+          maxDelay={PlaybackState.maxDelay}
+          onChange={PlaybackState.setImplicitlyWait}
+          flags={['短', '长']}
         />
         <div className="flexer" />
         <DisableBreakpoints

@@ -42,11 +42,11 @@ function generateMethodDeclaration(name) {
   )}(self):`
 }
 // eslint-disable-next-line no-unused-vars
-function generateSuiteDeclaration(name, delay) {
+function generateSuiteDeclaration(name, delay, implicitlyWait) {
   return `class JetRPA(object):
     driver = None
     delay = ${(delay || 300) / 1000}
-    waitTime = 3000
+    waitTime = ${implicitlyWait}
     `
 }
 function generateFilename(name) {
@@ -75,7 +75,7 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay)
+  const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay, project.implicitlyWait)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -109,7 +109,7 @@ export async function emitSuite({
     project,
   })
   // eslint-disable-next-line no-const-assign
-  const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay)
+  const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay, project.implicitlyWait)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,

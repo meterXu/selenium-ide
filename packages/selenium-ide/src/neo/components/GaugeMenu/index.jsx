@@ -28,6 +28,7 @@ export default class GaugeMenu extends React.Component {
     value: PropTypes.number.isRequired,
     maxDelay: PropTypes.number.isRequired,
     onChange: PropTypes.func.isRequired,
+    flags: PropTypes.array.isRequired,
   }
   handleChange(value) {
     this.props.onChange(this.props.maxDelay - value)
@@ -41,7 +42,7 @@ export default class GaugeMenu extends React.Component {
         width={40}
       >
         <div className="speed-gauge">
-          <span>快</span>
+          <span>{this.props.flags[0]}</span>
           <Slider
             vertical
             included={false}
@@ -50,7 +51,7 @@ export default class GaugeMenu extends React.Component {
             value={this.props.maxDelay - this.props.value}
             onChange={this.handleChange.bind(this)}
           />
-          <span>慢</span>
+          <span>{this.props.flags[1]}</span>
         </div>
       </Menu>
     )
