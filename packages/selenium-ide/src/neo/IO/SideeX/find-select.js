@@ -136,7 +136,7 @@ function showNoTabAvailableDialog() {
   UiState.windowSession.focusIDEWindow()
   ModalState.showAlert({
     title: '没找到相应的页面选项卡',
-    description: '此测试没找到相应的页面选项卡, 请继续记录它或进行回放。',
+    description: '此用例没找到相应的页面选项卡, 请继续记录它或进行回放。',
     confirmLabel: '关闭',
   })
 }

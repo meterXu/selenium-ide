@@ -102,7 +102,7 @@ class RenameDialogContents extends React.Component {
             ? '重命名'
             : '添加',
       cancelButton: this.props.isNewTest ? '以后' : '关闭',
-      inputLabel: this.props.isNewTest ? '测试名称' : this.state.type + ' 名称',
+      inputLabel: this.props.isNewTest ? '用例名称' : this.state.type + ' 名称',
     }
     return (
       <DialogContainer

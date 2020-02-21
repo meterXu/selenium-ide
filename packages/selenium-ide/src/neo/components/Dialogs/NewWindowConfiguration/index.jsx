@@ -169,7 +169,7 @@ class NewWindowInput extends React.Component {
               <div className="message">* {this.state.errorMessage}</div>
             )}
             <p style={{ whiteSpace: 'pre-line' }}>
-              {`窗口名称用于与新窗口进行交互。为了使您的测试更具可读性，请将其更改为描述性的内容`}
+              {`窗口名称用于与新窗口进行交互。为了使您的用例更具可读性，请将其更改为描述性的内容`}
             </p>
             <LabelledInput
               name="windowTimeout"
@@ -179,7 +179,7 @@ class NewWindowInput extends React.Component {
               onChange={this.handleWindowTimeoutChange}
               onBlur={this.handleWindowTimeoutBlur}
             />
-            <p>超时是测试等待新窗口完成打开的时间。</p>
+            <p>超时是用例等待新窗口完成打开的时间。</p>
           </React.Fragment>
         ) : null}
       </DialogContainer>

@@ -82,21 +82,6 @@ export default class ProjectHeader extends React.Component {
             unsaved={this.props.changed}
             onClick={this.props.save}
           />
-          {/*<ListMenu*/}
-          {/*  width={250}*/}
-          {/*  padding={-5}*/}
-          {/*  opener={<MoreButton canFocus={true} />}*/}
-          {/*>*/}
-          {/*  <ListMenuItem href="https://www.seleniumhq.org/selenium-ide/docs/en/introduction/command-line-runner/">*/}
-          {/*    {'在CI中运行'}*/}
-          {/*  </ListMenuItem>*/}
-          {/*  <ListMenuItem href="https://github.com/SeleniumHQ/selenium-ide/releases/latest">*/}
-          {/*    {'检查更新'}*/}
-          {/*  </ListMenuItem>*/}
-          {/*  <ListMenuItem href="https://www.seleniumhq.org/selenium-ide/docs/en/introduction/getting-started/">*/}
-          {/*    {'帮助'}*/}
-          {/*  </ListMenuItem>*/}
-          {/*</ListMenu>*/}
         </span>
       </div>
     )

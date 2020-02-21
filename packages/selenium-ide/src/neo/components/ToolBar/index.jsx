@@ -66,11 +66,11 @@ export default class ToolBar extends React.Component {
           onClick={this.playAll}
           data-tip={
             PlaybackState.canPlaySuite
-              ? `<p>运行组内所有测试<span style="color: #929292;padding-left: 5px;">${parse(
+              ? `<p>运行组内所有用例<span style="color: #929292;padding-left: 5px;">${parse(
                   'r',
                   { primaryKey: true, shiftKey: true }
                 )}</span></p>`
-              : `<p>运行所有测试<span style="color: #929292;padding-left: 5px;">${parse(
+              : `<p>运行所有用例<span style="color: #929292;padding-left: 5px;">${parse(
                   'r',
                   { primaryKey: true, shiftKey: true }
                 )}</span></p>`

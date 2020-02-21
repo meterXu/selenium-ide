@@ -85,7 +85,7 @@ class TestSelectorContent extends React.Component {
   render() {
     return (
       <DialogContainer
-        title="选择测试"
+        title="选择用例"
         onRequestClose={this.props.cancel}
         renderFooter={() => (
           <span className="right">

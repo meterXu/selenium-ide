@@ -24,7 +24,7 @@ export default class PlayAllButton extends React.Component {
   render() {
     return (
       <ActionButton
-        data-tip={`<p>运行组内所有测试<span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>运行组内所有用例<span style="color: #929292;padding-left: 5px;">${parse(
           'r',
           { primaryKey: true, shiftKey: true }
         )}</span></p>`}

@@ -24,7 +24,7 @@ export default class PlayCurrentButton extends React.Component {
   render() {
     return (
       <ActionButton
-        data-tip={`<p>运行当前测试<span style="color: #929292;padding-left: 5px;">${parse(
+        data-tip={`<p>运行当前用例<span style="color: #929292;padding-left: 5px;">${parse(
           'r',
           { primaryKey: true }
         )}</span></p>`}

@@ -249,7 +249,7 @@ class UiState {
     if (this.isRecording && test !== this.selectedTest.test) {
       const choseSelect = await ModalState.showAlert({
         title: '停止录制',
-        description: '离开此测试并转到另一个测试将停止记录过程。你想继续吗？',
+        description: '离开此用例并转到另一个用例将停止记录过程。你想继续吗？',
         confirmLabel: '停止录制',
         cancelLabel: '关闭',
       })
