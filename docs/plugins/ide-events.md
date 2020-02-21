@@ -1,10 +1,10 @@
 ---
 id: ide-events
-title: Selenium IDE Events
+title: JetRecord Events
 sidebar_label: IDE Events
 ---
 
-Selenium IDE sends events throughout it's use to notify plugins of playback status or recording status.  
+JetRecord sends events throughout it's use to notify plugins of playback status or recording status.  
 
 An event [request](requests.md) is very similar to an action request.  
 
@@ -26,7 +26,7 @@ An event [request](requests.md) is very similar to an action request.
 
 ### Responding to Events
 
-Some events are notification only, meaning Selenium IDE will not let you have a chance to stop it to do you computation, while on some Selenium IDE can wait, refer to the [list of events](ide-events.md#list-of-events) for reference.  
+Some events are notification only, meaning JetRecord will not let you have a chance to stop it to do you computation, while on some JetRecord can wait, refer to the [list of events](ide-events.md#list-of-events) for reference.  
 
 Responding to events is just as any request, have a look at [Receiving Requests](requests.md#receiving-requests).
 
@@ -34,7 +34,7 @@ There are a couple of gotchas when it comes to responding to events to watch out
 
 ## List of Events
 
-List of events emitted by Selenium IDE.
+List of events emitted by JetRecord.
 
 ### System Events
 
@@ -42,7 +42,7 @@ List of events emitted by Selenium IDE.
 
 Event that pops each time a user loads a new project file.  
 
-**Note:** Selenium IDE **will not** wait on this event.  
+**Note:** JetRecord **will not** wait on this event.  
 
 ##### Options
 
@@ -55,7 +55,7 @@ Event that pops each time a user loads a new project file.
 
 Events that pop every time the user begins or finishes recording his actions.  
 
-**Note:** Selenium IDE **will not** wait on this event.  
+**Note:** JetRecord **will not** wait on this event.  
 
 ##### Options
 
@@ -65,7 +65,7 @@ Events that pop every time the user begins or finishes recording his actions.
 
 Events that pop when a command was recorded.  
 
-**Note:** Selenium IDE **will** wait on this event.  
+**Note:** JetRecord **will** wait on this event.  
 
 ##### Options
 
@@ -81,7 +81,7 @@ Events that pop when a command was recorded.
 
 Events that pop when a test case begins or finishes executing.  
 
-**Note:** Selenium IDE **will** wait on these events.  
+**Note:** JetRecord **will** wait on these events.  
 
 ##### Options
 
@@ -95,7 +95,7 @@ Events that pop when a test case begins or finishes executing.
 
 Event that pops when a test suite begins to execute.  
 
-**Note:** Selenium IDE **will** wait on this event.  
+**Note:** JetRecord **will** wait on this event.  
 
 ##### Options
 
@@ -107,7 +107,7 @@ Event that pops when a test suite begins to execute.
 
 Event that pops when a test suite finishes to execute.  
 
-**Note:** Selenium IDE **will not** wait on this event.  
+**Note:** JetRecord **will not** wait on this event.  
 
 ##### Options
 
@@ -115,7 +115,7 @@ Event that pops when a test suite finishes to execute.
 - `suiteName` - the running suite's name.
 - `projectName` - the current project's name.  
 
-Selenium IDE will not wait on the stop event (unlike the start event), this is to prevent the user from feeling like the IDE is frozen, you can still run your teardown code, as subsequent test runs will have a different `runId`.
+JetRecord will not wait on the stop event (unlike the start event), this is to prevent the user from feeling like the IDE is frozen, you can still run your teardown code, as subsequent test runs will have a different `runId`.
 
 **Note:** suite events will pop in addition to the normal test case events.
 

@@ -21,7 +21,7 @@ const _users = [
 ]
 
 const siteConfig = {
-  title: 'Selenium IDE', // Title for your website.
+  title: 'JetRecord', // Title for your website.
   tagline: 'Open source record and playback test automation for the web',
   url: 'https://selenium.dev', // Your website URL
   baseUrl: '/selenium-ide/', // Base URL for your project */

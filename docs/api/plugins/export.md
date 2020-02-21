@@ -4,7 +4,7 @@ title: Plugins Export API
 sidebar_label: Export
 ---
 
-Playback API concerns with the exporting capabilities of Selenium IDE.  
+Playback API concerns with the exporting capabilities of JetRecord.  
 
 This API is prefix with `/export`.  
 
@@ -20,7 +20,7 @@ Used to get [WebDriver code](https://www.npmjs.com/package/selenium-webdriver) t
 }
 ```
 
-- `location` - a valid Selenium IDE locator (e.g. `css=input.text`).
+- `location` - a valid JetRecord locator (e.g. `css=input.text`).
 
 #### Returns
 

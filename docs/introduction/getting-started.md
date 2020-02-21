@@ -6,7 +6,7 @@ sidebar_label: Getting Started
 
 ## Installation
 
-Install Selenium IDE from either the <a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd" target="_blank" rel="noopener noreferrer">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/" target="_blank" rel="noopener noreferrer">Firefox</a> web store.
+Install JetRecord from either the <a href="https://chrome.google.com/webstore/detail/selenium-ide/mooikfkahbdckldjjndioackbalphokd" target="_blank" rel="noopener noreferrer">Chrome</a> or <a href="https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/" target="_blank" rel="noopener noreferrer">Firefox</a> web store.
 
 ## Launch the IDE
 
@@ -14,7 +14,7 @@ Once installed, launch it by clicking its icon from the menu bar in your browser
 
 ### Troubleshooting
 
-Don't see the icon for Selenium IDE in your menu-bar?
+Don't see the icon for JetRecord in your menu-bar?
 
 #### Option 1
 

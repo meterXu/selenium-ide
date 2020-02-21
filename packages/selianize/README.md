@@ -1,5 +1,5 @@
 # Selianize
-Exports Selenium IDE projects (.side) to executable javascript code
+Exports JetRecord projects (.side) to executable javascript code
 
 ## Usage
 ```javascript

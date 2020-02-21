@@ -1,6 +1,6 @@
 # SIDE Model
 
-Data for Selenium IDE
+Data for JetRecord
 
 ## Installation
 

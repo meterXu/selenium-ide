@@ -4,7 +4,7 @@ title: Code Export Plugin Support
 sidebar_label: Exporting Code
 ---
 
-The plugins API enables any Selenium IDE plugin to export code for either:
+The plugins API enables any JetRecord plugin to export code for either:
 
 1. an existing language
 2. a new language
@@ -41,7 +41,7 @@ The key is the ID which will be used in the export event. The value is the displ
 
 ### Export event
 
-Selenium IDE sends the following event for each entity type, which your plugin can respond to for code export.
+JetRecord sends the following event for each entity type, which your plugin can respond to for code export.
 
 ```js
 {

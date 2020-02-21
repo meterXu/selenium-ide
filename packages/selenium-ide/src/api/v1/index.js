@@ -35,7 +35,7 @@ const router = new Router()
 const errors = {
   cannotAccessInControlMode: {
     errorCode: 'CannotAccessInControlMode',
-    error: 'Selenium IDE is controlled by a different extension.',
+    error: 'JetRecord is controlled by a different extension.',
   },
   missingPlugin: {
     errorCode: 'MissingPlugin',
@@ -71,7 +71,7 @@ function tryOverrideControl(req) {
   WindowSession.focusIDEWindow()
   return ModalState.showAlert({
     title: 'Assisted Control',
-    description: `${req.name} is trying to control Selenium IDE`,
+    description: `${req.name} is trying to control JetRecord`,
     confirmLabel: 'Restart and Allow access',
     cancelLabel: 'Deny access',
   }).then(r => {

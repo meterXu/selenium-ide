@@ -213,7 +213,7 @@ function handleInternalMessage(message) {
             .catch(() => {
               browser.runtime.sendMessage(
                 message.controller.id,
-                'Error Connecting to Selenium IDE'
+                'Error Connecting to JetRecord'
               )
             })
         })
@@ -261,7 +261,7 @@ browser.runtime.onMessageExternal.addListener(
             sendResponse(true)
           })
         } else {
-          return sendResponse({ error: 'Selenium IDE is not active' })
+          return sendResponse({ error: 'JetRecord is not active' })
         }
       })
     return true

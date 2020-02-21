@@ -145,7 +145,7 @@ class Index extends React.Component {
               image: `${baseUrl}img/home/lightning-bolt.png`,
               imageAlt: 'lightning bolt',
               imageAlign: 'top',
-              content: `Run your tests on any browser/OS combination in parallel using the [Command-line Runner for Selenium IDE](${_docUrl(
+              content: `Run your tests on any browser/OS combination in parallel using the [Command-line Runner for JetRecord](${_docUrl(
                 'introduction/command-line-runner'
               )}).`,
             },
@@ -158,7 +158,7 @@ class Index extends React.Component {
       <div className="productShowcaseSection paddingBottom paddingTop">
         <h2>Ready to use IDE</h2>
         <MarkdownBlock>
-          Getting started with Selenium IDE requires no additional setup other
+          Getting started with JetRecord requires no additional setup other
           than installing the extension on your browser. One of our driving
           philosophies is to provide an easy to use tool that will give instant
           feedback. We believe that the easier we can make it, the more likely
@@ -174,7 +174,7 @@ class Index extends React.Component {
           {
             title: 'Resilient Tests',
             content:
-              'Selenium IDE records multiple locators for each element it interacts with. If one locator fails during playback, the others will be tried until one is successful.',
+              'JetRecord records multiple locators for each element it interacts with. If one locator fails during playback, the others will be tried until one is successful.',
             image: `${baseUrl}img/home/locators.png`,
             imageAlt: 'locators',
             imageAlign: 'left',
@@ -204,7 +204,7 @@ class Index extends React.Component {
         {[
           {
             title: 'Control Flow',
-            content: `Selenium IDE ships with an extensive control flow structure, with available commands like \`if\`, \`while\` and \`times\`. To learn more, check out [the Control Flow documentation](${_docUrl(
+            content: `JetRecord ships with an extensive control flow structure, with available commands like \`if\`, \`while\` and \`times\`. To learn more, check out [the Control Flow documentation](${_docUrl(
               'introduction/control-flow'
             )}).`,
             image: `${baseUrl}img/home/control-flow.png`,
@@ -220,7 +220,7 @@ class Index extends React.Component {
         {[
           {
             title: 'Plugins',
-            content: `Selenium IDE can be extended through the use of [plugins](${_docUrl(
+            content: `JetRecord can be extended through the use of [plugins](${_docUrl(
               'plugins/plugins-getting-started'
             )}). They can introduce new commands to the IDE or integrate with a third-party service. Write your own or install one that someone else has already written.`,
             image: `${baseUrl}img/home/plug.png`,
@@ -236,7 +236,7 @@ class Index extends React.Component {
         <div className="homeContainer">
           <div className="projectTitle">Try it out</div>
           <div>
-            Download Selenium IDE for either Chrome or Firefox and get started.
+            Download JetRecord for either Chrome or Firefox and get started.
           </div>
           <br />
           <PromoSection>

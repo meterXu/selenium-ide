@@ -1,3 +1,3 @@
 # code-export-javascript-mocha
 
-JavaScript Mocha code export for Selenium IDE.
+JavaScript Mocha code export for JetRecord.

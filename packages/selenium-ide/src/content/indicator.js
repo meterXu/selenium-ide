@@ -7,7 +7,7 @@ var handleMessage = (function() {
   )
   var lastTimeoutHandle = 0
   function resetContent() {
-    content.innerText = 'Selenium IDE is recording...'
+    content.innerText = 'JetRecord is recording...'
     content.style.color = '#E80600'
     circle.style.animation = 'fadeIn 1s infinite alternate'
     circle.style.visibility = 'visible'

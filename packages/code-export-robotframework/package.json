@@ -1,7 +1,7 @@
 {
   "name": "code-export-robotframework",
   "version": "1.0.3",
-  "description": "Export Selenium IDE project contents to robotframework",
+  "description": "Export JetRecord project contents to robotframework",
   "repository": "https://github.com/meterXu/selenium-ide",
   "keywords": [
     "selenium",

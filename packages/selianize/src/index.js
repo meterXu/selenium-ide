@@ -25,7 +25,7 @@ import utils from './utils'
 import { stringEscape } from '@seleniumhq/side-utils'
 
 /**
- * @typedef Project a Selenium IDE project (.side)
+ * @typedef Project a JetRecord project (.side)
  * @property {string} id the id of the project
  * @property {string} name the name of the project
  * @property {string} url
@@ -58,7 +58,7 @@ import { stringEscape } from '@seleniumhq/side-utils'
  */
 
 /**
- * Exports a Selenium IDE project (.side) to executable javascript code
+ * Exports a JetRecord project (.side) to executable javascript code
  * @param {Project} project
  * @param {{ silenceErrors?: boolean, skipStdLibEmitting?: boolean }} _opts
  * @param {*} snapshot

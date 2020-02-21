@@ -37,10 +37,10 @@ function Legacy() {
       <Container className="mainContainer documentContainer postContainer">
         <div className="post">
           <header className="postHeader">
-            <h1>Legacy Selenium IDE</h1>
+            <h1>Legacy JetRecord</h1>
           </header>
           <p>
-            The legacy version of Selenium IDE is no longer maintained, no bugs
+            The legacy version of JetRecord is no longer maintained, no bugs
             found in it will be fixed. Issues opened about it will be closed.
           </p>
           <GridBlock contents={supportLinks} layout="threeColumn" />

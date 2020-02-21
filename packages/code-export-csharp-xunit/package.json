@@ -1,7 +1,7 @@
 {
   "name": "@seleniumhq/code-export-csharp-xunit",
   "version": "3.16.0",
-  "description": "Export Selenium IDE project contents to C# XUnit",
+  "description": "Export JetRecord project contents to C# XUnit",
   "repository": "https://github.com/SeleniumHQ/selenium-ide",
   "keywords": [
     "selenium",

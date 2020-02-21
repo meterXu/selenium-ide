@@ -55,7 +55,7 @@ function startPolling(payload) {
 }
 
 startPolling({
-  name: "Selenium IDE plugin",
+  name: "JetRecord plugin",
   version: "1.0.0",
   commands: [
     {

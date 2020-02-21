@@ -4,9 +4,9 @@ title: Introduction to Plugins API
 sidebar_label: Introduction
 ---
 
-While Selenium IDE can send you a request to perform a task (execute a command or emit one), you can ask the IDE to perform a task as well.
+While JetRecord can send you a request to perform a task (execute a command or emit one), you can ask the IDE to perform a task as well.
 
-Selenium IDE implements an HTTP like messaging protocol. For a general overview of how this works take a look at [Calling the API](../../plugins/plugins-getting-started#calling-the-api).  
+JetRecord implements an HTTP like messaging protocol. For a general overview of how this works take a look at [Calling the API](../../plugins/plugins-getting-started#calling-the-api).  
 
 ## Structure of the API
 
@@ -32,9 +32,9 @@ Each one determines different functionality on the resource.
 
 ### Errors
 
-If the window is closed when a request is sent, Selenium IDE will not respond and the Promise will reject.  
+If the window is closed when a request is sent, JetRecord will not respond and the Promise will reject.  
 
-Alternatively, if Selenium IDE is open it can either succeed which will resolve the Promise, or pass a "userland" error back to you, since errors can't be serialized.  
+Alternatively, if JetRecord is open it can either succeed which will resolve the Promise, or pass a "userland" error back to you, since errors can't be serialized.  
 
 #### Connection error
 

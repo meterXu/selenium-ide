@@ -4,7 +4,7 @@ title: Plugins Record API
 sidebar_label: Record
 ---
 
-The Record API is concerned with the recording capabilities of Selenium IDE.  
+The Record API is concerned with the recording capabilities of JetRecord.  
 
 This API is prefix with `/record`.  
 

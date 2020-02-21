@@ -20,14 +20,14 @@ import Extension from './extension'
 
 jest.setTimeout(300000)
 
-describe('Selenium IDE', () => {
+describe('JetRecord', () => {
   let ext
   afterEach(async () => {
     await ext.clean()
   })
   it('should load', async () => {
     ext = await new Extension().init()
-    expect(await ext.driver.getTitle()).toBe('Selenium IDE - seed project')
+    expect(await ext.driver.getTitle()).toBe('JetRecord - seed project')
   })
   it('should run the smoke suite', async () => {
     ext = await new Extension().init()

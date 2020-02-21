@@ -1,5 +1,5 @@
 # Selenium SIDE Runner
-Runs exported Selenium IDE tests in command line
+Runs exported JetRecord tests in command line
 
 ## Installation
 Node.js is required to use `selenium-side-runner`.  

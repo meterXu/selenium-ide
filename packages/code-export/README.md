@@ -1,3 +1,3 @@
 # code-export
 
-Central API for Selenium IDE code export.
+Central API for JetRecord code export.

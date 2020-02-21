@@ -4,9 +4,9 @@ title: Command-line Runner
 sidebar_label: Command-line Runner
 ---
 
-You can now run all of your Selenium IDE tests on any browser, in parallel, and on a Grid without needing to write any code.
+You can now run all of your JetRecord tests on any browser, in parallel, and on a Grid without needing to write any code.
 
-There's just the small matter of installing the Selenium IDE command line runner, getting the necessary browser drivers (if running your tests locally), and launching the runner from a command prompt with the options you want.
+There's just the small matter of installing the JetRecord command line runner, getting the necessary browser drivers (if running your tests locally), and launching the runner from a command prompt with the options you want.
 
 ![command-line-runner-sample](/selenium-ide/img/docs/runner.png)
 
@@ -16,7 +16,7 @@ The following dependencies are needed for the command line runner to work:
 
 - `node` (the Node.js programming language) version `8` or `10`
 - `npm` (the NodeJS package manager) which typically gets installed with `node`
-- `selenium-side-runner` (the Selenium IDE command line runner)
+- `selenium-side-runner` (the JetRecord command line runner)
 - and the browser driver we want to use (more on that in the next section)
 
 ```sh
@@ -216,19 +216,19 @@ selenium-side-runner --config-file "/path/to/your/config.yaml"
 
 __NOTE: When using the `--config-file` flag, the `.side.yml` will be ignored.__
 
-## Selenium IDE Configuration
+## JetRecord Configuration
 
 ### Test parallelization in a suite
 
 Out of the box, the runner executes suites in parallel, but tests within a suite are executed sequentially.
 
-To run tests in a given suite in parallel, you'll need to update the settings for that suite in Selenium IDE.
+To run tests in a given suite in parallel, you'll need to update the settings for that suite in JetRecord.
 
-1. Switch to the `Test Suites` view in Selenium IDE
+1. Switch to the `Test Suites` view in JetRecord
 2. Click the drop-down menu next to the name of the suite you'd like to configure and click `Settings`
 3. Click the checkbox for `Run in parallel`
 4. Click `Submit`
-5. Save your Selenium IDE project file
+5. Save your JetRecord project file
 
 To configure more than one suite to run this way, repeat steps 1-4 in each suite. Be sure to save the project file once you're done.
 
@@ -236,7 +236,7 @@ To configure more than one suite to run this way, repeat steps 1-4 in each suite
 
 ### Additional params
 
-Plugins for Selenium IDE can specify their own unique run-time parameters. You can make use of them through the `--params` flag.
+Plugins for JetRecord can specify their own unique run-time parameters. You can make use of them through the `--params` flag.
 
 This options takes a string of the various options (similar to how you specify capabilities).
 

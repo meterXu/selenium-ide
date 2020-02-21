@@ -96,7 +96,7 @@ class ImportDialogContent extends React.Component {
         onRequestClose={this.props.cancel}
       >
         <p>
-          In order to fully import your legacy Selenium IDE suite, you need to
+          In order to fully import your legacy JetRecord suite, you need to
           individually import the following tests
         </p>
         <Dropzone

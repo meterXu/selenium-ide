@@ -13,7 +13,7 @@ To add a hover to your test, there's a small bit of manual intervention required
 _Option 1: Add it while recording_
 
 1. While recording, right click on the element you want to hover over
-2. From the menu that appears click `Selenium IDE` and then `Mouse Over`
+2. From the menu that appears click `JetRecord` and then `Mouse Over`
 3. Confirm the `Mouse Over` test step is in the correct location in your test (and drag-and-drop it to a different location if need-be)
 
 _Option 2: Add it by hand in the test editor_
@@ -25,7 +25,7 @@ _Option 2: Add it by hand in the test editor_
 
 ### Why don't numbers that are typed into a date input field appear correctly?
 
-This issue presents itself when running your tests through the command line runner for Selenium IDE.
+This issue presents itself when running your tests through the command line runner for JetRecord.
 
 To circumvent it, you will need to enable w3c mode, which you can do by passing `-c "chromeOptions.w3c=true"` as part of launching the runner.
 
@@ -53,7 +53,7 @@ assertElementPresent|//a@[starts-with(.,'you are the') and contains(.,'User to l
 
 ### How do I scroll?
 
-There's not a distinct command in Selenium IDE for scrolling because there's not one implemented in Selenium. Instead you can use the `scrollTo` command in JavaScript to accomplish this by specifying `x` and `y` coordinates you'd like to scroll to.
+There's not a distinct command in JetRecord for scrolling because there's not one implemented in Selenium. Instead you can use the `scrollTo` command in JavaScript to accomplish this by specifying `x` and `y` coordinates you'd like to scroll to.
 
 command | target|value
 ------------ | -------------|-----------
@@ -65,13 +65,13 @@ executeScript|window.scrollTo(0,1000)|
 #### Why do I need to step through a "Save as" flow everytime I want to save my project?
 #### Why do I need to overwrite a previously saved file?
 
-All of these questions are part of the same problem -- as a browser extension Selenium IDE does not have access to the file system. The only way to offer "save" functionality is through downloading the file. This issue will be resolved when the IDE moves to a native application. This will give the IDE premier filesystem access, which will enable it to offer a polished "save" experience.
+All of these questions are part of the same problem -- as a browser extension JetRecord does not have access to the file system. The only way to offer "save" functionality is through downloading the file. This issue will be resolved when the IDE moves to a native application. This will give the IDE premier filesystem access, which will enable it to offer a polished "save" experience.
 
 If you want to stay updated, you can follow along with [issue 363](https://github.com/SeleniumHQ/selenium-ide/issues/363).
 
 ### How to install the IDE behind strict Proxy/Firewall?
 
-In some situations you may not have full public internet access (such as behind a "Corporate Proxy or Firewall"). In those environments you will need to obtain a copy of the built Selenium IDE ZIP file in order to record automated test scripts. This is available on GitHub's "Releases" section here:
+In some situations you may not have full public internet access (such as behind a "Corporate Proxy or Firewall"). In those environments you will need to obtain a copy of the built JetRecord ZIP file in order to record automated test scripts. This is available on GitHub's "Releases" section here:
 
 https://github.com/SeleniumHQ/selenium-ide/releases
 
@@ -91,7 +91,7 @@ __NOTE: If you already have the plugin installed (e.g., on the laptop you're try
 __NOTE: you can't obtain the ".crx" file directly from the Chrome store. Instead, you need to install it once locally, and then go to the installation directory on your machine to retrieve it.__
 
 ### Why does no save dialog appear once a plugin is attached?
-Due to a current [Chrome bug](https://bugs.chromium.org/p/chromium/issues/detail?id=922373), if you don't reply to the emitted message from Selenium IDE, further processing won't happen. In order to workaround the issue, make sure to listen for the action `emit` with the entity `project` and reply with `undefined`:
+Due to a current [Chrome bug](https://bugs.chromium.org/p/chromium/issues/detail?id=922373), if you don't reply to the emitted message from JetRecord, further processing won't happen. In order to workaround the issue, make sure to listen for the action `emit` with the entity `project` and reply with `undefined`:
 
 ```javascript
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {

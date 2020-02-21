@@ -1,6 +1,6 @@
 # Contributing
 
-We are open to, and grateful for, any contributions made by the community. By contributing to Selenium IDE, you agree to abide by the [code of conduct](https://github.com/SeleniumHQ/selenium-ide/blob/master/CODE_OF_CONDUCT.md).
+We are open to, and grateful for, any contributions made by the community. By contributing to JetRecord, you agree to abide by the [code of conduct](https://github.com/SeleniumHQ/selenium-ide/blob/master/CODE_OF_CONDUCT.md).
 
 ## Reporting Issues and Asking Questions
 
@@ -8,9 +8,9 @@ Before opening an issue, please search the [issue tracker](https://github.com/Se
 
 ### Bugs and Improvements
 
-We use the issue tracker to keep track of bugs and improvements to Selenium IDE itself, its examples, and the documentation. We encourage you to open issues to discuss improvements, architecture, theory, internal implementation, etc. If a topic has been discussed before, we will ask you to join the previous discussion.
+We use the issue tracker to keep track of bugs and improvements to JetRecord itself, its examples, and the documentation. We encourage you to open issues to discuss improvements, architecture, theory, internal implementation, etc. If a topic has been discussed before, we will ask you to join the previous discussion.
 
-As Selenium IDE is in it's very early stages, response time to pull requests might be long - as many fundamental issues are being considered and discussed.
+As JetRecord is in it's very early stages, response time to pull requests might be long - as many fundamental issues are being considered and discussed.
 
 ### Getting Help
 

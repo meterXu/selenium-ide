@@ -4,9 +4,9 @@ title: Adding Commands
 sidebar_label: Adding Commands
 ---
 
-To add a command to Selenium IDE firstly make sure to declare it in the [manifest](plugins-getting-started#the-manifest).
+To add a command to JetRecord firstly make sure to declare it in the [manifest](plugins-getting-started#the-manifest).
 
-After declaring the command, Selenium IDE will expect you to respond to requests for its execution and emission.  
+After declaring the command, JetRecord will expect you to respond to requests for its execution and emission.  
 
 ## Executing a Command
 
@@ -100,7 +100,7 @@ Before implementing the command's code emitting, it will be useful to understand
 
 This article is only concerned with the command's test code, if your plugin needs to add setup and teardown code, see [Emitting Setup and Teardown Code](emitting-setup-teardown.md).  
 
-Selenium IDE will send a request to emit the commands you've registered in the manifest.
+JetRecord will send a request to emit the commands you've registered in the manifest.
 
 ```js
 {

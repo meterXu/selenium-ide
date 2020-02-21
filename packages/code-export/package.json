@@ -1,7 +1,7 @@
 {
   "name": "@seleniumhq/code-export",
   "version": "3.16.1",
-  "description": "Selenium IDE code export",
+  "description": "JetRecord code export",
   "repository": "https://github.com/SeleniumHQ/selenium-ide",
   "keywords": [
     "selenium",

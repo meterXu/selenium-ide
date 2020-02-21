@@ -4,7 +4,7 @@ title: Control Flow
 sidebar_label: Control Flow
 ---
 
-Selenium IDE comes with commands that enable you to add conditional logic and looping to your tests.
+JetRecord comes with commands that enable you to add conditional logic and looping to your tests.
 
 This enables you to execute commands (or a set of commands) only when certain conditions in your application are met, or execute command(s) repeatedly based on pre-defined criteria.
 

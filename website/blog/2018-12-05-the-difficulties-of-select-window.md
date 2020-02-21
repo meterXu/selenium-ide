@@ -8,7 +8,7 @@ canonical: https://corevo.io/the-difficulties-of-select-window/
 
 When recording a test case, more often than not, window management becomes an issue,
 the test case may open a popup, or follow a `target=_blank` link.
-Nonetheless, Selenium IDE is expected to follow, and record, recording the window and tab
+Nonetheless, JetRecord is expected to follow, and record, recording the window and tab
 switching in such a way, that there is no need for manual fixing post-recording.
 
 But here lies the issue **selecting windows is stateful**.

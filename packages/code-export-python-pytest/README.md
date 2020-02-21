@@ -1,3 +1,3 @@
 # code-export-python-pytest
 
-Python pytest code export for Selenium IDE.
+Python pytest code export for JetRecord.

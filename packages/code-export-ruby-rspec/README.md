@@ -1,3 +1,3 @@
 # code-export-ruby-rspec
 
-Ruby RSpec code export for Selenium IDE.
+Ruby RSpec code export for JetRecord.

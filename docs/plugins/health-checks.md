@@ -4,9 +4,9 @@ title: Plugin Health Checks
 sidebar_label: Health Checks
 ---
 
-Plugins can only [register](plugins-getting-started#registering-the-plugin) with Selenium IDE when the extension window is open.
+Plugins can only [register](plugins-getting-started#registering-the-plugin) with JetRecord when the extension window is open.
 
-Registering before that will yield an error saying `Selenium IDE is not active`.
+Registering before that will yield an error saying `JetRecord is not active`.
 
 To deal with that you can send a message to the [System API's](system) health check. 
 
@@ -21,15 +21,15 @@ To deal with that you can send a message to the [System API's](system) health ch
 
 ## Health Response
 
-- `error` - Either Selenium IDE is inactive, or not installed.
+- `error` - Either JetRecord is inactive, or not installed.
 - `true` - Your plugin is already registered and able to accept requests.
 - `false` - Your plugin is not registered and should send a [[registration | Getting Started with Plugins#registering-the-plugin]] request.  
 
 ## Polling the Health Checks
 
-You can use this health checking mechanism to introduce polling and register when Selenium IDE goes active.  
+You can use this health checking mechanism to introduce polling and register when JetRecord goes active.  
 
-You should keep polling Selenium IDE even after, since the user can close the IDE's window.  
+You should keep polling JetRecord even after, since the user can close the IDE's window.  
 
 ```js
 let interval;

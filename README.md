@@ -1,12 +1,12 @@
 <img src="packages/selenium-ide/src/icons/icon128.png" alt="logo" height="128" align="right" />
 
-# Selenium IDE &middot; [![Build Status](https://travis-ci.com/SeleniumHQ/selenium-ide.svg?branch=master)](https://travis-ci.com/SeleniumHQ/selenium-ide)
+# JetRecord &middot; [![Build Status](https://travis-ci.com/SeleniumHQ/selenium-ide.svg?branch=master)](https://travis-ci.com/SeleniumHQ/selenium-ide)
 
 _[WIP] An integrated development environment for Selenium scripts_
 
 ## Introduction
 
-This project is a work in progress, towards a complete rewrite of the old Selenium IDE.
+This project is a work in progress, towards a complete rewrite of the old JetRecord.
 The older IDE was a Firefox extension that relied heavily on APIs that are no longer supported by newer versions of Firefox.
 In this project, the IDE is developed as a modern browser extension, supporting both Chrome and Firefox and other modern browsers (in theory).
 

@@ -1527,7 +1527,7 @@ Selenium.prototype.doSubmit = function(formLocator) {
     log: {
       type: 'warn',
       message:
-        'submit is deprecated and will be removed from later versions of Selenium IDE, please re-record the step.',
+        'submit is deprecated and will be removed from later versions of JetRecord, please re-record the step.',
     },
   })
   let form = this.browserbot.findElement(formLocator)

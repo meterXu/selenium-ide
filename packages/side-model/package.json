@@ -1,7 +1,7 @@
 {
   "name": "@seleniumhq/side-model",
   "version": "3.15.0",
-  "description": "Data for Selenium IDE",
+  "description": "Data for JetRecord",
   "repository": "https://github.com/SeleniumHQ/selenium-ide",
   "keywords": [
     "selenium",

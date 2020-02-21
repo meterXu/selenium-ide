@@ -4,7 +4,7 @@ title: Sending and Receiving Requests
 sidebar_label: Requests
 ---
 
-Selenium IDE took its inspiration from HTTP for the messaging to it.  
+JetRecord took its inspiration from HTTP for the messaging to it.  
 
 Messaging from it, however, has a slightly different approach (to save plugins from developing their own router).  
 
@@ -72,9 +72,9 @@ browser.runtime.onMessageExternal.addListener((message, sender, sendResponse) =>
 
 Some requests are async in nature, when we need to wait on a promise or execute a command that changes the DOM.  
 
-Selenium IDE will have to be notified to wait, it'll wait until `sendResponse` will be called. To prevent Selenium IDE from becoming **stuck waiting forever**, make sure that in case of failures, you return an [error](error-handling.md) to the IDE.  
+JetRecord will have to be notified to wait, it'll wait until `sendResponse` will be called. To prevent JetRecord from becoming **stuck waiting forever**, make sure that in case of failures, you return an [error](error-handling.md) to the IDE.  
 
-In order to have Selenium IDE wait, `return true` in the `onMessageExternal` event handler, and keep `sendResponse` around to return the final results with.
+In order to have JetRecord wait, `return true` in the `onMessageExternal` event handler, and keep `sendResponse` around to return the final results with.
 
 ```js
 browser.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {

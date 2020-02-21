@@ -106,7 +106,7 @@ winston.level = program.debug ? 'debug' : 'info'
 
 if (program.extract || program.run) {
   winston.warn(
-    "This feature is used by Selenium IDE maintainers for debugging purposes, we hope you know what you're doing!"
+    "This feature is used by JetRecord maintainers for debugging purposes, we hope you know what you're doing!"
   )
 }
 
@@ -310,7 +310,7 @@ function runProject(project) {
             : 'beforeEach(() => {vars = {};});afterEach(async () => (cleanup()));'
           writeJSFile(
             path.join(projectPath, sanitizeFileName(suite.name)),
-            `jest.setMock('selenium-webdriver', webdriver);\n// This file was generated using Selenium IDE\nconst tests = require("./commons.js");${
+            `jest.setMock('selenium-webdriver', webdriver);\n// This file was generated using JetRecord\nconst tests = require("./commons.js");${
               code.globalConfig
             }${suite.code}${cleanup}`
           )
@@ -324,7 +324,7 @@ function runProject(project) {
                 sanitizeFileName(suite.name),
                 sanitizeFileName(test.name)
               ),
-              `jest.setMock('selenium-webdriver', webdriver);\n// This file was generated using Selenium IDE\nconst tests = require("../commons.js");${
+              `jest.setMock('selenium-webdriver', webdriver);\n// This file was generated using JetRecord\nconst tests = require("../commons.js");${
                 code.globalConfig
               }${test.code}`
             )

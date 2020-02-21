@@ -8,13 +8,13 @@ The Popup API deals with popups which the user can see.
 
 This API is prefix with `/popup`.  
 
-**Note:** Selenium IDE displays one popup at a time, sending a new one will cancel the previous popup.  
+**Note:** JetRecord displays one popup at a time, sending a new one will cancel the previous popup.  
 
-Because of this, if Selenium IDE returned `false` if means **cancel**, no action should be taken, because the popup might have been dismissed.
+Because of this, if JetRecord returned `false` if means **cancel**, no action should be taken, because the popup might have been dismissed.
 
 ### `POST /popup/alert`
 
-Used to display alerts inside Selenium IDE.  
+Used to display alerts inside JetRecord.  
 
 This can get tiring and annoying for users, so use this lightly!
 

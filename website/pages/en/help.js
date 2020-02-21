@@ -25,18 +25,18 @@ function Help(props) {
     {
       content: `Find what you're looking for in our detailed documentation and guides.\n\n- Learn how to [get started](${docUrl(
         'introduction/getting-started'
-      )}) with Selenium IDE.\n\n- Learn how to [use selenium-side-runner](${docUrl(
+      )}) with JetRecord.\n\n- Learn how to [use selenium-side-runner](${docUrl(
         'introduction/command-line-runner'
       )}).\n\n- View the [glossary of commands](${docUrl('api/commands')})`,
       title: 'Browse Docs',
     },
     {
       content:
-        'Ask questions and find answers from other Selenium IDE users like you.\n\n- Join the #selenium channel on [IRC](https://webchat.freenode.net/).\n\n- Or the [Slack](https://seleniumhq.herokuapp.com/) alternative for our community.',
+        'Ask questions and find answers from other JetRecord users like you.\n\n- Join the #selenium channel on [IRC](https://webchat.freenode.net/).\n\n- Or the [Slack](https://seleniumhq.herokuapp.com/) alternative for our community.',
       title: 'Join the community',
     },
     {
-      content: `Find out what's new with Selenium IDE.\n\n- Follow [Dave](https://twitter.com/tourdedave) and [Tomer](https://twitter.com/corevous) on Twitter.\n\n- Read the [Selenium IDE blog](${baseUrl}blog/).\n\n- Read the [release notes](https://github.com/SeleniumHQ/selenium-ide/releases) on GitHub.`,
+      content: `Find out what's new with JetRecord.\n\n- Follow [Dave](https://twitter.com/tourdedave) and [Tomer](https://twitter.com/corevous) on Twitter.\n\n- Read the [JetRecord blog](${baseUrl}blog/).\n\n- Read the [release notes](https://github.com/SeleniumHQ/selenium-ide/releases) on GitHub.`,
       title: 'Stay up to date',
     },
   ]

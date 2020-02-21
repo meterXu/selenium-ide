@@ -554,7 +554,7 @@ function doDelay() {
 
 function notifyWaitDeprecation(command) {
   reportError(
-    `${command} is deprecated, Selenium IDE waits automatically instead`,
+    `${command} is deprecated, JetRecord waits automatically instead`,
     true
   )
 }

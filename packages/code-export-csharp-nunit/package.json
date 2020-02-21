@@ -1,7 +1,7 @@
 {
   "name": "@seleniumhq/code-export-csharp-nunit",
   "version": "3.16.0",
-  "description": "Export Selenium IDE project contents to C# NUnit",
+  "description": "Export JetRecord project contents to C# NUnit",
   "repository": "https://github.com/SeleniumHQ/selenium-ide",
   "keywords": [
     "selenium",

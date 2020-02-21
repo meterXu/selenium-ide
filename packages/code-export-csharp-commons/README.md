@@ -1,3 +1,3 @@
 # code-export-csharp-commons
 
-Shared code for Selenium IDE C# code exports (e.g., used by NUnit and xUnit exporters).
+Shared code for JetRecord C# code exports (e.g., used by NUnit and xUnit exporters).

@@ -4,15 +4,15 @@ title: Getting Started with Plugins
 sidebar_label: Getting Started
 ---
 
-Plugins can extend Selenium IDE's default behavior, through adding additional commands and locators, bootstrapping setup before and after test runs, and affecting the recording process.  
+Plugins can extend JetRecord's default behavior, through adding additional commands and locators, bootstrapping setup before and after test runs, and affecting the recording process.  
 
-Selenium IDE is using the WebExtension standard to work in modern browsers (to learn more, you can check out Mozilla's <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension" target="_blank" rel="noopener noreferrer">Your first extension</a> article). Communicating between the extensions is handled via the <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/sendMessage" target="_blank" rel="noopener noreferrer">external messaging protocol</a>, you can view an example of that <a href="https://github.com/SeleniumHQ/selenium-ide/tree/v3/extension/extension-boilerplate" target="_blank" rel="noopener noreferrer">here</a>.  
+JetRecord is using the WebExtension standard to work in modern browsers (to learn more, you can check out Mozilla's <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Your_first_WebExtension" target="_blank" rel="noopener noreferrer">Your first extension</a> article). Communicating between the extensions is handled via the <a href="https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/runtime/sendMessage" target="_blank" rel="noopener noreferrer">external messaging protocol</a>, you can view an example of that <a href="https://github.com/SeleniumHQ/selenium-ide/tree/v3/extension/extension-boilerplate" target="_blank" rel="noopener noreferrer">here</a>.  
 
-This article assumes knowledge in WebExtension development, and will only discuss Selenium IDE specific capabilities.
+This article assumes knowledge in WebExtension development, and will only discuss JetRecord specific capabilities.
 
 ## Calling the API
 
-Selenium IDE API can be called using `browser.runtime.sendMessage`.  
+JetRecord API can be called using `browser.runtime.sendMessage`.  
 
 An example signature would be `browser.runtime.sendMessage(SIDE_ID, request)` where `SIDE_ID` refers to the IDE's official extension IDs, which can be viewed [here](extension-id).  
 
@@ -25,7 +25,7 @@ The request is the second argument for `browser.runtime.sendMessage` and is simi
   uri: "/register",
   verb: "post",
   payload: {
-    name: "Selenium IDE plugin",
+    name: "JetRecord plugin",
     version: "1.0.0"
   }
 }
@@ -112,7 +112,7 @@ Dependencies are a dictionary of `key:value` like so `name:version`, where name 
 
 ## Registering the Plugin
 
-To register the plugin with Selenium IDE, make sure the IDE window is open, and that you're using the correct [Selenium IDE Extension ID](extension-id).  
+To register the plugin with JetRecord, make sure the IDE window is open, and that you're using the correct [JetRecord Extension ID](extension-id).  
 
 Send the following message:  
 
@@ -121,7 +121,7 @@ browser.runtime.sendMessage(process.env.SIDE_ID, {
   uri: "/register",
   verb: "post",
   payload: {
-    name: "Selenium IDE plugin",
+    name: "JetRecord plugin",
     version: "1.0.0",
     commands: [
       {

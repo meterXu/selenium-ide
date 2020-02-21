@@ -82,7 +82,7 @@ class WelcomeDialogContents extends React.Component {
         renderTitle={() => (
           <div>
             <div className="welcome-dialog__title">
-              欢迎使用 Selenium IDE!
+              欢迎使用 JetRecord!
             </div>
             <div className="welcome-dialog__subtitle">
               版本 {project.version}

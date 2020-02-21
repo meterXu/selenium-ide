@@ -17,7 +17,7 @@ This will save a file containing the exported code for your target language to y
 
 When exporting there is an optional toggle to enable origin tracing code comments.
 
-This will place inline code comments in the exported file with details about the test step in Selenium IDE that generated it.
+This will place inline code comments in the exported file with details about the test step in JetRecord that generated it.
 
 ## Supported Exports
 
@@ -196,7 +196,7 @@ gem 'rspec'
 
 Code export was built in a modular way to help enable contributions.
 
-Each language and test framework will have its own package containing the code to be exported. Each snippet of code maps to a command in Selenium IDE and each of these packages rely on an underlying "core" package which does all of the heavy lifting.
+Each language and test framework will have its own package containing the code to be exported. Each snippet of code maps to a command in JetRecord and each of these packages rely on an underlying "core" package which does all of the heavy lifting.
 
 Here are the steps to create one for a new language or for a new test framework within an already established language.
 

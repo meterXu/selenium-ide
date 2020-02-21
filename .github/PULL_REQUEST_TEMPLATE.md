@@ -1,12 +1,12 @@
 <!--
-Selenium IDE is moving to an electron app!!!.
+JetRecord is moving to an electron app!!!.
 For the time being the team will support both the extension and the app, until the app reaches complete feature parity with the extension.
 
 If you want to submit a PR to the electron app, please submit to master.
 To submit a PR to the extension submit to the branch v3
 -->
 
-**Thanks for contributing to the Selenium IDE!**
+**Thanks for contributing to the JetRecord!**
 **A PR well described will help maintainers to quickly review and merge it**
 
 Before submitting your PR, please check our [contributing](https://github.com/SeleniumHQ/selenium-ide/blob/master/CONTRIBUTING.md) guidelines.

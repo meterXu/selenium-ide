@@ -1,7 +1,7 @@
 {
   "name": "code-export-python-robotframework",
   "version": "1.0.2",
-  "description": "Export Selenium IDE project contents to Python robotframework",
+  "description": "Export JetRecord project contents to Python robotframework",
   "repository": "https://github.com/meterXu/selenium-ide",
   "keywords": [
     "selenium",

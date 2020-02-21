@@ -4,13 +4,13 @@ title: Plugins Playback API
 sidebar_label: Playback
 ---
 
-The Playback API is for the playback capabilities of Selenium IDE.  
+The Playback API is for the playback capabilities of JetRecord.  
 
 It is prefixed with `/playback`.  
 
 ### `GET /playback/location`
 
-Used to resolve a locator using Selenium IDE.  
+Used to resolve a locator using JetRecord.  
 
 ```js
 {
@@ -20,7 +20,7 @@ Used to resolve a locator using Selenium IDE.
 }
 ```
 
-- `location` - a valid Selenium IDE locator (e.g. `css=input.submit`).
+- `location` - a valid JetRecord locator (e.g. `css=input.submit`).
 
 #### Returns
 

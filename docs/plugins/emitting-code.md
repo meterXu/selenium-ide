@@ -4,7 +4,7 @@ title: Emitting Code
 sidebar_label: Emitting Code
 ---
 
-Selenium IDE has two major components, playback inside the browser, which is powered by `actions` and `events`.  
+JetRecord has two major components, playback inside the browser, which is powered by `actions` and `events`.  
 
 And playback in command line mode using [the command-line runner](../introduction/command-line-runner).  
 
@@ -40,7 +40,7 @@ plugin2Func(); //works
 
 ### Don't Define Variables on the Global Scope
 
-Defining variables on the global scope, means that if you and another plugin, or Selenium IDE itself, defines the same variable, an error, or an unknown side effect can happen, which will make things hard to debug.  
+Defining variables on the global scope, means that if you and another plugin, or JetRecord itself, defines the same variable, an error, or an unknown side effect can happen, which will make things hard to debug.  
 
 For example take this test case:
 - `store` | `button` | `element`
