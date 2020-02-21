@@ -41,8 +41,13 @@ function generateMethodDeclaration(name) {
     exporter.parsers.sanitizeName(name)
   )}(self):`
 }
-function generateSuiteDeclaration(name) {
-  return `class JetRPA(object):`
+// eslint-disable-next-line no-unused-vars
+function generateSuiteDeclaration(name, delay) {
+  return `class JetRPA(object):
+    driver = None
+    delay = ${(delay || 300) / 1000}
+    waitTime = 3000
+    `
 }
 function generateFilename(name) {
   return `rpa_${exporter.parsers.uncapitalize(
@@ -70,7 +75,7 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName)
+  const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -104,7 +109,7 @@ export async function emitSuite({
     project,
   })
   // eslint-disable-next-line no-const-assign
-  const suiteDeclaration = generateSuiteDeclaration(suite.name)
+  const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,

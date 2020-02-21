@@ -57,7 +57,7 @@ function afterEach() {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 1, statement: 'def quitCase(self, method):' },
+        { level: 1, statement: 'def quitCase(self):' },
         { level: 2, statement: 'self.driver.quit()' },
       ],
     },
@@ -85,10 +85,8 @@ function beforeEach() {
   const params = {
     startingSyntax: ({ browserName, gridUrl } = {}) => ({
       commands: [
-        { level: 1, statement: 'driver = None' },
-        { level: 1, statement: '' },
         { level: 1, statement: 'def getDriver(self):' },
-        { level: 2, statement: 'time.sleep(0.3)' },
+        { level: 2, statement: 'time.sleep(self.delay)' },
         { level: 2, statement: 'if self.driver is None:' },
         {
           level: 3,
@@ -100,7 +98,7 @@ function beforeEach() {
                 browserName ? browserName : 'Chrome'
               }()`,
         },
-        { level: 3, statement: 'self.driver.implicitly_wait(3000)' },
+        { level: 3, statement: 'self.driver.implicitly_wait(self.waitTime)' },
         { level: 2, statement: 'return self.driver' },
       ],
     }),
