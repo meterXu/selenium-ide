@@ -491,7 +491,14 @@ function emitOpen(target) {
   const url = /^(file|http|https):\/\//.test(target)
     ? `"${target}"`
     : `"${global.baseUrl}${target}"`
-  return Promise.resolve(`self.getDriver().get(${url})`)
+  return Promise.resolve({
+    commands: [
+      {
+        level: 1,
+        statement: `self.getDriver().get(${url})`,
+      },
+    ],
+  })
 }
 
 async function emitPause(time) {
@@ -513,7 +520,9 @@ async function emitRunScript(script) {
 
 async function emitSetWindowSize(size) {
   const [width, height] = size.split('x')
-  return Promise.resolve(`self.getDriver().set_window_size(${width}, ${height})`)
+  return Promise.resolve(
+    `self.getDriver().set_window_size(${width}, ${height})`
+  )
 }
 
 async function emitSelect(selectElement, option) {

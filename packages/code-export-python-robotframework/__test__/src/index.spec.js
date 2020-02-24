@@ -45,7 +45,7 @@ describe('Code Export Python pytest', () => {
       test: project.tests[0],
       tests: project.tests,
     })
-    console.log(results.body)
+    // console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })
@@ -80,6 +80,7 @@ describe('Code Export Python pytest', () => {
       test: project.tests[1],
       tests: project.tests,
     })
+    // console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })
@@ -100,6 +101,7 @@ describe('Code Export Python pytest', () => {
       suite: project.suites[0],
       tests: project.tests,
     })
+    console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })
