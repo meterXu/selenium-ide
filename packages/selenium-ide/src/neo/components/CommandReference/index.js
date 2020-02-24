@@ -45,8 +45,7 @@ export default class CommandReference extends React.Component {
         <li className="argument">
           {!this.props.currentCommand.plugin ? (
             <a
-              href={this.linkForArgument(param)}
-              target="_blank"
+              href="javascript:;"
               rel="noopener noreferrer"
               style={{
                 color: '#3a709e',
@@ -67,14 +66,7 @@ export default class CommandReference extends React.Component {
       <li className="signature">
         {this.props.currentCommand.name &&
           (!this.props.currentCommand.plugin ? (
-            <a
-              className="link"
-              href={`https://www.seleniumhq.org/selenium-ide/docs/en/api/commands/#${this.props.currentCommand.name
-                .replace(/ /g, '-')
-                .toLowerCase()}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="link" href="javascript:;" rel="noopener noreferrer">
               <strong className="name">{this.props.currentCommand.name}</strong>
             </a>
           ) : (
@@ -82,12 +74,7 @@ export default class CommandReference extends React.Component {
           ))}{' '}
         {this.props.currentCommand.target &&
           (!this.props.currentCommand.plugin ? (
-            <a
-              className="link"
-              href={this.linkForArgument(this.props.currentCommand.target)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a className="link" href="javascript:;" rel="noopener noreferrer">
               <em className="target">
                 {this.props.currentCommand.target.name}
               </em>
@@ -99,12 +86,7 @@ export default class CommandReference extends React.Component {
           <React.Fragment>
             <span>, </span>
             {!this.props.currentCommand.plugin ? (
-              <a
-                className="link"
-                href={this.linkForArgument(this.props.currentCommand.value)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a className="link" href="javascript:;" rel="noopener noreferrer">
                 <em className="value">
                   {this.props.currentCommand.value.name}
                 </em>

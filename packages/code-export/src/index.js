@@ -15,12 +15,12 @@
 // specific language governing permissions and limitations
 // under the License.
 export const availableLanguages = {
-  'csharp-nunit': require('@seleniumhq/code-export-csharp-nunit'),
-  'csharp-xunit': require('@seleniumhq/code-export-csharp-xunit'),
-  'java-junit': require('@seleniumhq/code-export-java-junit'),
-  'javascript-mocha': require('@seleniumhq/code-export-javascript-mocha'),
-  'python-pytest': require('@seleniumhq/code-export-python-pytest'),
-  'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
+  // 'csharp-nunit': require('@seleniumhq/code-export-csharp-nunit'),
+  // 'csharp-xunit': require('@seleniumhq/code-export-csharp-xunit'),
+  // 'java-junit': require('@seleniumhq/code-export-java-junit'),
+  // 'javascript-mocha': require('@seleniumhq/code-export-javascript-mocha'),
+  // 'python-pytest': require('@seleniumhq/code-export-python-pytest'),
+  // 'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
   'python-robotframework':require('../../code-export-python-robotframework/dist'),
   'robotframework': require('../../code-export-robotframework/dist')
 }
