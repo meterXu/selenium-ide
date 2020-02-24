@@ -99,6 +99,7 @@ function beforeEach() {
               }()`,
         },
         { level: 3, statement: 'self.driver.implicitly_wait(self.waitTime)' },
+        { level: 3, statement: 'self.vars = {}' },
         { level: 2, statement: 'return self.driver' },
       ],
     }),

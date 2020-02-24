@@ -30,7 +30,7 @@ opts.fileExtension = '.py'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
-opts.commandLevel = '3'
+// opts.commandLevel = '3'
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name) {
@@ -75,7 +75,8 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay, project.implicitlyWait)
+  // const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay, project.implicitlyWait)
+  const suiteDeclaration = generateSuiteDeclaration(suiteName, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -109,7 +110,8 @@ export async function emitSuite({
     project,
   })
   // eslint-disable-next-line no-const-assign
-  const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay, project.implicitlyWait)
+  // const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay, project.implicitlyWait)
+  const suiteDeclaration = generateSuiteDeclaration(suite.name, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
