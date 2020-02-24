@@ -28,6 +28,7 @@ import DisableBreakpoints from '../../components/ActionButtons/DisableBreakpoint
 import PauseExceptions from '../../components/ActionButtons/PauseExceptions'
 import Record from '../../components/ActionButtons/Record'
 import GaugeMenu from '../GaugeMenu'
+import SpeedNumber from '../SpeedNumber'
 import UiState from '../../stores/view/UiState'
 import PlaybackState from '../../stores/view/PlaybackState'
 import ModalState from '../../stores/view/ModalState'
@@ -112,19 +113,21 @@ export default class ToolBar extends React.Component {
           onClick={PlaybackState.stepOver}
         />
         <GaugeMenu
-          opener={<SpeedGauge speed={UiState.gaugeSpeed} title="执行速度" />}
+          opener={<SpeedGauge speed={UiState.gaugeSpeed} title="执行速度" className='si-gauge-exec' />}
           value={PlaybackState.delay}
           maxDelay={PlaybackState.maxDelay}
           onChange={PlaybackState.setDelay}
           flags={['快', '慢']}
         />
+        <SpeedNumber value={PlaybackState.delay} unit={'ms'}></SpeedNumber>
         <GaugeMenu
-          opener={<SpeedGauge speed={UiState.gaugeWaitSpeed} title="隐式等待" />}
+          opener={<SpeedGauge speed={UiState.gaugeWaitSpeed} title="隐式等待" className='si-gauge-wait' />}
           value={PlaybackState.implicitlyWait}
           maxDelay={PlaybackState.maxDelay}
           onChange={PlaybackState.setImplicitlyWait}
           flags={['短', '长']}
         />
+        <SpeedNumber value={PlaybackState.implicitlyWait} unit={'s'}></SpeedNumber>
         <div className="flexer" />
         <DisableBreakpoints
           isActive={PlaybackState.breakpointsDisabled}
