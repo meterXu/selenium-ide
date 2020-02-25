@@ -183,10 +183,11 @@ function addRecordingIndicator() {
     recordingIndicator.src = browser.runtime.getURL('/indicator.html')
     recordingIndicator.id = 'selenium-ide-indicator'
     recordingIndicator.style.border = '1px solid #d30100'
-    recordingIndicator.style.borderRadius = '50px'
+    recordingIndicator.style.borderRadius = '0px'
     recordingIndicator.style.position = 'fixed'
     recordingIndicator.style.bottom = '36px'
     recordingIndicator.style.right = '36px'
+    recordingIndicator.style.overflow = 'hidden'
     recordingIndicator.style.width = '400px'
     recordingIndicator.style.height = '50px'
     recordingIndicator.style['background-color'] = '#f7f7f7'
