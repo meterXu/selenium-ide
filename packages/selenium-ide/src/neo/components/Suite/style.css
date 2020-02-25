@@ -19,6 +19,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  color: #fff;
 }
 
 .project > a .title.changed::after {
@@ -31,10 +32,11 @@
   display: inline-block;
   transform: rotate(0deg);
   transition: all 100ms linear;
+  color:#fff
 }
 
 .project > a.active .si-caret {
-  color: #40a6ff;
+  color: #FFF;
   transform: rotate(90deg);
 }
 

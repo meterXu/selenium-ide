@@ -5,3 +5,6 @@
 .no-session span {
   margin: auto;
 }
+.content.no-session{
+  color: #b0b0b0;
+}

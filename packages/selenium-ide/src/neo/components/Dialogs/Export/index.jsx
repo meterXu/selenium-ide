@@ -126,12 +126,12 @@ class ExportContent extends React.Component {
           form={true}
           onChange={this.toggleOriginTracing.bind(this)}
         />
-        <Checkbox
-          label="导出以在Selenium Grid上使用"
-          checked={this.state.enableGridConfig}
-          form={true}
-          onChange={this.toggleGridConfig.bind(this)}
-        />
+        {/*<Checkbox*/}
+        {/*  label="导出以在Selenium Grid上使用"*/}
+        {/*  checked={this.state.enableGridConfig}*/}
+        {/*  form={true}*/}
+        {/*  onChange={this.toggleGridConfig.bind(this)}*/}
+        {/*/>*/}
         {this.state.enableGridConfig ? (
           <Input
             id="grid-url"

@@ -5,7 +5,7 @@
 }
 
 .menu.content .buttons li a:hover {
-  background-color: #f3f3f3;
+  background-color: RGBA(93,208,149,0.4);
 }
 
 .menu.content .buttons li a .label {

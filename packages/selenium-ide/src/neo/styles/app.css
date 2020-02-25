@@ -3,10 +3,10 @@
 }
 
 :root {
-  --hover-color: #f3f3f3;
-  --active-color: #d8ebfb;
-  --selected-color: #e8f1f8;
-  --selected-border-color: #5cb3ff;
+  --hover-color: rgba(93,208,149,0.6);
+  --active-color: #5dd095;
+  --selected-color: #5dd095;
+  --selected-border-color: #59b981;
 }
 
 html {

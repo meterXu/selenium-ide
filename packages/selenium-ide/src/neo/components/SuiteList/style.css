@@ -2,6 +2,7 @@
   list-style: none;
   padding: 0;
   overflow-y: auto;
+  background: #5573ed;
 }
 
 .projects li {
@@ -10,4 +11,5 @@
 
 .projects .tests .test .name {
   padding-left: 30px;
+  color: #fff;
 }

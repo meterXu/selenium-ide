@@ -24,6 +24,9 @@
 .container .wrapper .dragging .Pane.vertical {
   transition: none;
 }
+.container .wrapper .SplitPane>.Pane.vertical.Pane1   {
+  background: #5573ed;
+}
 
 .container footer .tabbar ~ div {
   flex-grow: 1;

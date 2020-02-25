@@ -1,7 +1,7 @@
 .test {
   font-size: 13px;
   line-height: 24px;
-  background-color: #fff;
+  background-color: #5573ed;
 }
 
 .test:focus {
@@ -12,6 +12,7 @@
   display: flex;
   align-items: center;
   padding-left: 11px;
+  color: #fff;
 }
 
 .test .name > span {
@@ -53,11 +54,11 @@
 }
 
 .test > a.executing {
-  background-color: #e3f2ff;
+  background-color: #5bbf86;
 }
 
 .test.paused > a.executing {
-  background-color: #fffcc5;
+  background-color: #56bf89;
 }
 
 .test.paused:focus > a.selected.executing {

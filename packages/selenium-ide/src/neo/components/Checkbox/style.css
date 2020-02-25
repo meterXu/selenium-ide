@@ -16,7 +16,7 @@ input[type='checkbox'].checkbox + label {
 input[type='checkbox'].checkbox + label span {
   display: inline-block;
   background-color: #fff;
-  color: #40a6ff;
+  color: #5573ed;
   text-align: center;
   line-height: 18px;
   font-size: 18px;

@@ -9,6 +9,9 @@
   line-height: 17px;
   padding: 5px;
 }
+.labelled-input > input:focus{
+  border-color: #5bbf86;
+}
 
 .labelled-input > label {
   font-size: 10px;

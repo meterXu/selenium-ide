@@ -1,11 +1,12 @@
 .runs {
   padding: 15px 10px 0 10px;
-  background-color: #fff;
+  background-color: #556bd7;
   font-size: 12px;
 }
 
 .runs .status {
   padding: 10px 0 15px 0;
+  color: #fff;
 }
 
 .runs .status > span {
