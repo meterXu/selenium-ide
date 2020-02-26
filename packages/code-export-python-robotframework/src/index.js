@@ -45,7 +45,7 @@ function generateMethodDeclaration(name) {
 function generateSuiteDeclaration(name, delay, implicitlyWait) {
   return `class JetRPA(object):
     driver = None
-    delay = ${(delay || 300) / 1000}
+    delay = ${((delay || 300) / 1000).toFixed(1)}
     waitTime = ${implicitlyWait}
     `
 }
