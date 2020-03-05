@@ -21,8 +21,9 @@ export const availableLanguages = {
   // 'javascript-mocha': require('@seleniumhq/code-export-javascript-mocha'),
   // 'python-pytest': require('@seleniumhq/code-export-python-pytest'),
   // 'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
-  'python-robotframework':require('../../code-export-python-robotframework/dist'),
-  'robotframework': require('../../code-export-robotframework/dist')
+  // 'python-robotframework':require('../../code-export-python-robotframework/dist'),
+  // 'robotframework': require('../../code-export-robotframework/dist'),
+  'python-RPA': require('../../code-export-python-rpa/dist')
 }
 
 function registerCommand(language, command, emitter) {
