@@ -1,10 +1,10 @@
 export default [
   'mouseOver',
   'mouseDown',
-  'mouseDownAt',
-  'mouseMoveAt',
+  // 'mouseDownAt',
+  // 'mouseMoveAt',
   'mouseOut',
   'mouseOver',
   'mouseUp',
-  'mouseUpAt',
+  // 'mouseUpAt',
 ]
