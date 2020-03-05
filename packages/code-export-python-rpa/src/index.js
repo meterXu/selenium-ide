@@ -30,11 +30,22 @@ opts.fileExtension = '.py'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
-// opts.commandLevel = '3'
+opts.commandLevel = '0'
+opts.testLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name) {
-  return `def runCase(self):`
+  return `def ${name}(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
+        self.driver = webdriver.Chrome()
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        `
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -43,11 +54,11 @@ function generateMethodDeclaration(name) {
 }
 // eslint-disable-next-line no-unused-vars
 function generateSuiteDeclaration(name, delay, implicitlyWait) {
-  return `class JetRPA(object):
-    driver = None
-    delay = ${((delay || 300) / 1000).toFixed(1)}
-    waitTime = ${implicitlyWait}
-    `
+  return `self = type('', (), {})()
+driver = None
+delay = ${((delay || 300) / 1000).toFixed(1)}
+waitTime = ${implicitlyWait}
+`
 }
 function generateFilename(name) {
   return `rpa_${exporter.parsers.uncapitalize(
@@ -66,17 +77,15 @@ export async function emitTest({
 }) {
   global.baseUrl = baseUrl
   const testDeclaration = generateTestDeclaration(test.name)
-  let newopts = Object.assign({}, opts)
-  newopts.testLevel = '2'
   let result = await exporter.emit.test(test, tests, {
-    ...newopts,
+    ...opts,
     testDeclaration,
     enableOriginTracing,
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay, project.implicitlyWait)
-  // const suiteDeclaration = generateSuiteDeclaration(suiteName, 300, 3000)
+  // const suiteDeclaration = generateSuiteDeclaration(suiteName, project.delay, project.implicitlyWait)
+  const suiteDeclaration = generateSuiteDeclaration(suiteName, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -86,11 +95,7 @@ export async function emitTest({
   })
   return {
     filename: generateFilename(test.name),
-    body:
-      exporter.emit.orderedSuite(_suite) +
-      'jetRpa = JetRPA()\n' +
-      'jetRpa.runCase()\n' +
-      'jetRpa.quitCase()',
+    body: exporter.emit.orderedSuite(_suite),
   }
 }
 
@@ -110,8 +115,8 @@ export async function emitSuite({
     project,
   })
   // eslint-disable-next-line no-const-assign
-  const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay, project.implicitlyWait)
-  // const suiteDeclaration = generateSuiteDeclaration(suite.name, 300, 3000)
+  // const suiteDeclaration = generateSuiteDeclaration(suite.name, project.delay, project.implicitlyWait)
+  const suiteDeclaration = generateSuiteDeclaration(suite.name, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,

@@ -13,7 +13,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -139,7 +139,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -158,8 +158,8 @@ class JetRPA(object):
   def login(self):
     [object Object]
       self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"  self.vars[\\"username\\"]\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"  self.vars[\\"password\\"]\\")
+      self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
+      self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
       self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
   
   def runCase(self):
@@ -188,7 +188,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -216,7 +216,7 @@ class JetRPA(object):
       self.vars[\\"window_handles\\"] = self.getDriver().window_handles
       self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
     self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(  self.vars[\\"win9425\\"])
+      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
       assert self.getDriver().title == \\"\\"New Window\\"\\"
   
   def runCase(self):
@@ -238,7 +238,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -266,7 +266,7 @@ class JetRPA(object):
       self.vars[\\"window_handles\\"] = self.getDriver().window_handles
       self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
     self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(  self.vars[\\"win9425\\"])
+      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
       assert self.getDriver().title == \\"\\"New Window\\"\\"
   
   def runCase(self):
@@ -277,7 +277,7 @@ class JetRPA(object):
       self.vars[\\"window_handles\\"] = self.getDriver().window_handles
       self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
     self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(  self.vars[\\"win9425\\"])
+      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
       assert self.getDriver().title == \\"\\"New Window\\"\\"
   
 "
@@ -296,7 +296,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -338,7 +338,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -357,8 +357,8 @@ class JetRPA(object):
   def login(self):
     [object Object]
       self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"  self.vars[\\"username\\"]\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"  self.vars[\\"password\\"]\\")
+      self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
+      self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
       self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
   
     def runCase(self):
@@ -384,7 +384,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
@@ -415,9 +415,9 @@ class JetRPA(object):
       self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
     self.vars[\\"win9625\\"] = self.wait_for_window(2000)
       self.vars[\\"root\\"] =  self.getDriver().current_window_handle
-      self.getDriver().switch_to.window(  self.vars[\\"win9625\\"])
+      self.getDriver().switch_to.window(self.vars[\\"win9625\\"])
       assert self.getDriver().title == \\"\\"New Window\\"\\"
-      self.getDriver().switch_to.window(  self.vars[\\"root\\"])
+      self.getDriver().switch_to.window(self.vars[\\"root\\"])
       assert self.getDriver().title == \\"\\"The Internet\\"\\"
     
 jetRpa = JetRPA()
@@ -438,7 +438,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-class JetRPA(object):
+self = type('', (), {})()
     driver = None
     delay = 0.3
     waitTime = 3000
