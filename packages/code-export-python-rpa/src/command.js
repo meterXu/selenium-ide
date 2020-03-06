@@ -18,6 +18,7 @@
 import { codeExport as exporter } from '@seleniumhq/side-utils'
 import location from './location'
 import selection from './selection'
+import paramSource from './paramSource'
 
 export const emitters = {
   addSelection: emitSelect,
