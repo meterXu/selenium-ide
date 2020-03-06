@@ -20,6 +20,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import classNames from 'classnames'
 import { Commands } from '../../models/Command'
+import { ParamSource } from '../../models/Command'
 import Input from '../FormInput'
 import TextArea from '../FormTextArea'
 import CommandInput from '../CommandInput'
@@ -59,8 +60,15 @@ export default class CommandForm extends React.Component {
     }
     return commandName
   }
+  getParamSourceName(name) {
+    const paramSourceName = ParamSource.list.get(name).name
+    return paramSourceName
+  }
   parseCommandName(command) {
     return Commands.list.has(command) ? this.getCommandName(command) : command
+  }
+  parseParamSourceName(name) {
+    return ParamSource.list.has(name) ? this.getParamSourceName(name) : name
   }
   parseCommandTargetType(command) {
     return Commands.list.has(command)
@@ -74,6 +82,11 @@ export default class CommandForm extends React.Component {
     }
   }
   render() {
+    const isParamChange = e => {
+      if (this.props.command) {
+        this.props.command.setIsParam(e.target.checked)
+      }
+    }
     return (
       <div className="command-form">
         <form
@@ -206,17 +219,21 @@ export default class CommandForm extends React.Component {
           <Checkbox
             label="参数"
             checked={this.props.command ? this.props.command.isParam : false}
-            onChange={this.props.command ? this.props.command.setIsParam : null}
+            onChange={this.props.command ? isParamChange : null}
           />
           {(() => {
-            if (this.props.command.isParam) {
+            if (this.props.command && this.props.command.isParam) {
               return (
                 <FormDropInput
                   label="参数指向"
                   placeholder="匹配替换，可以为正则"
                   disabled={!this.props.command || PlaybackState.isPlaying}
                   dropValue={
-                    this.props.command ? this.props.command.directionType : ''
+                    this.props.command
+                      ? this.parseParamSourceName(
+                          this.props.command.directionType
+                        )
+                      : ''
                   }
                   value={
                     this.props.command ? this.props.command.directionValue : ''

@@ -48,7 +48,7 @@ export default class FormDropInput extends React.Component {
                 name: this.props.name,
                 disabled: this.props.disabled,
                 onBlur: e => {
-                  this.props.onChange(e.target.value.trim())
+                  this.props.onChangeDrop(e.target.value.trim())
                 },
               }}
               onChange={e => {

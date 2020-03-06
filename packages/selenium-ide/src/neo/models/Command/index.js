@@ -55,7 +55,7 @@ export default class Command {
   @observable
   isParam = false
   @observable
-  directionType = '值'
+  directionType = 'value'
   @observable
   directionValue = ''
 
@@ -142,8 +142,8 @@ export default class Command {
   }
 
   @action.bound
-  setIsParam() {
-    this.isParam = !this.isParam
+  setIsParam(value) {
+    this.isParam = value
   }
 
   @action.bound
@@ -204,7 +204,9 @@ export default class Command {
     this.setTarget(jsRep.target)
     this.setTargets(jsRep.targets)
     this.setValue(jsRep.value)
-
+    this.setIsParam(jsRep.isParam)
+    this.setDirectionType(jsRep.directionType)
+    this.setDirectionValue(jsRep.directionValue)
     if (jsRep.opensWindow) {
       this.setOpensWindow(jsRep.opensWindow)
       this.setWindowHandleName(jsRep.windowHandleName)
@@ -220,6 +222,9 @@ export default class Command {
       target: this.target,
       targets: toJS(this.targets),
       value: this.value,
+      isParam: this.isParam,
+      directionType: this.directionType,
+      directionValue: this.directionValue,
     }
 
     if (this.opensWindow) {
@@ -295,8 +300,8 @@ class CommandList {
 class ParamSourceList {
   @observable
   list = new Map([
-    ['目标', { name: '目标', value: 'target' }],
-    ['值', { name: '值', value: 'value' }],
+    ['target', { name: '目标', value: 'target' }],
+    ['value', { name: '值', value: 'value' }],
   ])
   @computed
   get array() {
