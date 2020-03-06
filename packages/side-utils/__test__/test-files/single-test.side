@@ -3,7 +3,8 @@
   "version": "2.0",
   "name": "the-internet",
   "url": "http://the-internet.herokuapp.com",
-  "delay": 300,
+  "delay": 280,
+  "implicitlyWait": 3000,
   "tests": [{
     "id": "d0f4bf60-d07a-4f93-adde-d60f0e04941b",
     "name": "login",
@@ -13,14 +14,20 @@
       "command": "open",
       "target": "/login",
       "targets": [],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "906eeacc-d60d-4f8c-afa8-0bb11e636dc2",
       "comment": "",
       "command": "setWindowSize",
       "target": "1440x1177",
       "targets": [],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "02c52cbb-4341-4995-b2a9-ff4234c56661",
       "comment": "",
@@ -34,7 +41,10 @@
         ["xpath=//form[@id='login']/div/div/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "tomsmith"
+      "value": "tomsmith",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "a0b7676a-64ce-443f-84f9-7d1b0b938f49",
       "comment": "",
@@ -48,7 +58,10 @@
         ["xpath=//form[@id='login']/div[2]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/input", "xpath:position"]
       ],
-      "value": "SuperSecretPassword!"
+      "value": "SuperSecretPassword!",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "cc0d80e8-a017-4a52-beda-894897031f89",
       "comment": "",
@@ -60,7 +73,10 @@
         ["xpath=//i", "xpath:position"],
         ["xpath=//i[contains(.,' Login')]", "xpath:innerText"]
       ],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "fe82de21-c699-4d98-b98f-691f71f0f398",
       "comment": "",
@@ -73,7 +89,10 @@
         ["xpath=//div[@id='flash-messages']/div", "xpath:idRelative"],
         ["xpath=//div/div/div", "xpath:position"]
       ],
-      "value": "You logged into a secure area!\\n×"
+      "value": "You logged into a secure area!\\n×",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }]
   }],
   "suites": [{

@@ -13,7 +13,10 @@
       "command": "open",
       "target": "/",
       "targets": [],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "42d24143-2085-4bbe-9e16-b71a7d3e8d6c",
       "comment": "",
@@ -28,7 +31,10 @@
         ["xpath=//li[18]/a", "xpath:position"],
         ["xpath=//a[contains(.,'Form Authentication')]", "xpath:innerText"]
       ],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "918b4af6-2c88-43c7-b145-3b2bc3cba4a0",
       "comment": "",
@@ -42,7 +48,10 @@
         ["xpath=//form[@id='login']/div/div/input", "xpath:idRelative"],
         ["xpath=//input", "xpath:position"]
       ],
-      "value": "${username}"
+      "value": "${username}",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "f4f781d9-c051-4a41-a143-a8b3936cb034",
       "comment": "",
@@ -56,7 +65,10 @@
         ["xpath=//form[@id='login']/div[2]/div/input", "xpath:idRelative"],
         ["xpath=//div[2]/div/input", "xpath:position"]
       ],
-      "value": "${password}"
+      "value": "${password}",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "8081fd74-50b1-4f5c-95f1-c171519b8700",
       "comment": "",
@@ -68,7 +80,10 @@
         ["xpath=//i", "xpath:position"],
         ["xpath=//i[contains(.,' Login')]", "xpath:innerText"]
       ],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }]
   }, {
     "id": "0b10e1b2-df70-46c2-8c66-13bdf462f4b2",
@@ -79,21 +94,30 @@
       "command": "store",
       "target": "tomsmith",
       "targets": [],
-      "value": "username"
+      "value": "username",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "02eb7843-9547-434c-b882-81e0301a112e",
       "comment": "",
       "command": "store",
       "target": "SuperSecretPassword!",
       "targets": [],
-      "value": "password"
+      "value": "password",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "3ddd4ccd-ba9c-47df-a963-ba0ebdf84a3a",
       "comment": "",
       "command": "run",
       "target": "login",
       "targets": [],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }]
   }, {
     "id": "01472588-f710-45f6-a3db-3c931e23a37e",
@@ -104,21 +128,30 @@
       "command": "store",
       "target": "blah",
       "targets": [],
-      "value": "username"
+      "value": "username",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "6959737f-8a00-4a07-b238-c990eaf53b27",
       "comment": "",
       "command": "store",
       "target": "blah",
       "targets": [],
-      "value": "password"
+      "value": "password",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }, {
       "id": "3e5ed8a5-088a-4b7a-a52d-b47afa233b89",
       "comment": "",
       "command": "run",
       "target": "login",
       "targets": [],
-      "value": ""
+      "value": "",
+      "isParam": false,
+      "directionType": "value",
+      "directionValue": ""
     }]
   }],
   "suites": [{
@@ -130,5 +163,7 @@
     "tests": ["01472588-f710-45f6-a3db-3c931e23a37e", "0b10e1b2-df70-46c2-8c66-13bdf462f4b2"]
   }],
   "urls": ["https://the-internet.herokuapp.com/"],
-  "plugins": []
+  "plugins": [],
+  "delay": 280,
+  "implicitlyWait": 3000
 }

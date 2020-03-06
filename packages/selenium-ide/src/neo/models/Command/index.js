@@ -314,8 +314,8 @@ class CommandList {
 class ParamSourceList {
   @observable
   list = new Map([
-    ['target', { name: '目标', value: 'target' }],
-    ['value', { name: '值', value: 'value' }],
+    ['target', { name: 'target', value: 'target' }],
+    ['value', { name: 'value', value: 'value' }],
   ])
   @computed
   get array() {
