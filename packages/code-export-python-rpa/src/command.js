@@ -15,10 +15,9 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { codeExport as exporter } from '@seleniumhq/side-utils'
+import { codeExport as exporter } from '../../side-utils/dist'
 import location from './location'
 import selection from './selection'
-import paramSource from './paramSource'
 
 export const emitters = {
   addSelection: emitSelect,
@@ -125,7 +124,6 @@ exporter.register.preprocessors(emitters)
 function register(command, emitter) {
   exporter.register.emitter({ command, emitter, emitters })
 }
-
 function emit(command) {
   return exporter.emit.command(command, emitters[command.command], {
     variableLookup,
@@ -711,11 +709,13 @@ async function emitSubmit(_locator) {
   )
 }
 
-async function emitType(target, value) {
+async function emitType(target, value, commandObj) {
   return Promise.resolve(
     `  self.getDriver().find_element(${await location.emit(
       target
-    )}).send_keys(${generateSendKeysInput(value)})`
+    )}).send_keys(${
+      commandObj.isParam ? commandObj.paramName : generateSendKeysInput(value)
+    })`
   )
 }
 

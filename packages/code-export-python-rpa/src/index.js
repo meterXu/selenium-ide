@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { codeExport as exporter } from '@seleniumhq/side-utils'
+import { codeExport as exporter } from '../../side-utils/dist'
 import emitter from './command'
 import location from './location'
 import { generateHooks } from './hook'
@@ -34,8 +34,8 @@ opts.commandLevel = '0'
 opts.testLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
-function generateTestDeclaration(name) {
-  return `def ${name}(driver):
+function generateTestDeclaration(name, fpName) {
+  return `def ${name}(driver, ${fpName}):
   def getDriver():
     time.sleep(self.delay)
     if self.driver is None:
@@ -66,7 +66,18 @@ function generateFilename(name) {
     exporter.parsers.sanitizeName(name)
   )}${opts.fileExtension}`
 }
-
+function dealwithParm(test) {
+  let fpName = ''
+  let paramIndex = 1
+  test.commands.forEach(c => {
+    if (c.isParam) {
+      fpName += ' parm' + paramIndex + ','
+      c.paramName = 'parm' + paramIndex
+      paramIndex++
+    }
+  })
+  return fpName.replace(/,$/g, '')
+}
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)
 export async function emitTest({
   baseUrl,
@@ -77,7 +88,8 @@ export async function emitTest({
   beforeEachOptions,
 }) {
   global.baseUrl = baseUrl
-  const testDeclaration = generateTestDeclaration(test.name)
+  let fpName = dealwithParm(test)
+  const testDeclaration = generateTestDeclaration(test.name, fpName)
   let result = await exporter.emit.test(test, tests, {
     ...opts,
     testDeclaration,

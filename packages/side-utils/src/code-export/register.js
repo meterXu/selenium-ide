@@ -15,7 +15,11 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { keysPreprocessor, scriptPreprocessor } from './preprocessor'
+import {
+  keysPreprocessor,
+  scriptPreprocessor,
+  objPreprocessor,
+} from './preprocessor'
 
 export function registerCommandEmitter({ command, emitter, emitters } = {}) {
   if (!emitters[command]) {
@@ -41,6 +45,7 @@ export function registerPreprocessors(emitters) {
         emitters[emitter].targetPreprocessor = scriptPreprocessor
         break
     }
+    emitters[emitter].commandObjPreprocessor = objPreprocessor
   })
 }
 

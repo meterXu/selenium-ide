@@ -16,7 +16,7 @@
 // under the License.
 
 import { ArgTypes } from './ArgTypes'
-import i18n from '../../../selenium-ide/src/neo/i18n'
+import i18n from '../i18n'
 export const TargetTypes = {
   NONE: 0,
   LOCATOR: 'locator',

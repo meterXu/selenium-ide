@@ -42,9 +42,9 @@
         ["xpath=//input", "xpath:position"]
       ],
       "value": "tomsmith",
-      "isParam": false,
+      "isParam": true,
       "directionType": "value",
-      "directionValue": ""
+      "directionValue": "tomsmith"
     }, {
       "id": "a0b7676a-64ce-443f-84f9-7d1b0b938f49",
       "comment": "",
@@ -59,9 +59,9 @@
         ["xpath=//div[2]/div/input", "xpath:position"]
       ],
       "value": "SuperSecretPassword!",
-      "isParam": false,
+      "isParam": true,
       "directionType": "value",
-      "directionValue": ""
+      "directionValue": "SuperSecretPassword!"
     }, {
       "id": "cc0d80e8-a017-4a52-beda-894897031f89",
       "comment": "",

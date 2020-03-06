@@ -18,7 +18,7 @@
 import fs from 'fs'
 import path from 'path'
 import { emitTest, emitSuite, _emitMethod, _findTestByName } from '../../src'
-import { project as projectProcessor } from '@seleniumhq/side-utils'
+import { project as projectProcessor } from '../../../side-utils/dist'
 
 function readFile(filename) {
   return JSON.parse(

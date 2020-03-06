@@ -18,6 +18,9 @@
 import stringEscape from '../string-escape'
 
 function escapeString(string, { preprocessor, ignoreEscaping }) {
+  if (typeof string === 'object') {
+    return string
+  }
   if (ignoreEscaping) return string
   else if (preprocessor && preprocessor.name === 'scriptPreprocessor')
     return string.replace(/"/g, "'")
@@ -117,4 +120,8 @@ export function keysPreprocessor(str, variableLookup) {
     }
   }
   return keys
+}
+
+export function objPreprocessor(obj) {
+  return obj
 }
