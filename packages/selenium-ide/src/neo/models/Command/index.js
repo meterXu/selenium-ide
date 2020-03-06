@@ -52,6 +52,12 @@ export default class Command {
   windowTimeout = DEFAULT_NEW_WINDOW_TIMEOUT
   @observable
   opensWindowRead = false
+  @observable
+  isParam = false
+  @observable
+  directionType = '值'
+  @observable
+  directionValue = ''
 
   constructor(id = uuidv4(), command, target, value) {
     this.id = id
@@ -133,6 +139,21 @@ export default class Command {
   @action.bound
   setValue(value) {
     this.value = value ? value.replace(/\n/g, '\\n') : ''
+  }
+
+  @action.bound
+  setIsParam() {
+    this.isParam = !this.isParam
+  }
+
+  @action.bound
+  setDirectionType(value) {
+    this.directionType = value
+  }
+
+  @action.bound
+  setDirectionValue(value) {
+    this.directionValue = value
   }
 
   @action.bound
@@ -271,8 +292,50 @@ class CommandList {
     return this._instance
   }
 }
+class ParamSourceList {
+  @observable
+  list = new Map([
+    ['目标', { name: '目标', value: 'target' }],
+    ['值', { name: '值', value: 'value' }],
+  ])
+  @computed
+  get array() {
+    return Array.from(this.list.keys())
+  }
+  @computed
+  get values() {
+    return this.array.reduce((paramList, param) => {
+      paramList[this.list.get(param).name] = param
+      return paramList
+    }, {})
+  }
+  @computed
+  get fuse() {
+    return new Fuse(Array.from(this.list.values()), {
+      shouldSort: true,
+      threshold: 0.4,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 50,
+      minMatchCharLength: 1,
+      keys: ['name'],
+    })
+  }
+  @action.bound
+  search(pattern) {
+    return this.fuse.search(pattern)
+  }
+  static get instance() {
+    if (!this._instance) {
+      this._instance = new ParamSourceList()
+    }
+    return this._instance
+  }
+}
 
 export const Commands = CommandList.instance
+
+export const ParamSource = ParamSourceList.instance
 
 export const ControlFlowCommandNames = {
   do: 'do',

@@ -14,37 +14,45 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+def valid credentials(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-  def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-      self.getDriver().set_window_size(1440, 1177)
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-      self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-      assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
-  
-  def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-      self.getDriver().set_window_size(1440, 1177)
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"blah\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"blah\\")
-      self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-      assert self.getDriver().find_element(By.ID, \\"flash\\").text == \\"Your username is invalid!\\\\\\\\\\\\\\\\n×\\"
-  
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
+def invalid credentials(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
+        self.driver = webdriver.Chrome()
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"blah\\")
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"blah\\")
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.ID, \\"flash\\").text == \\"Your username is invalid!\\\\\\\\\\\\\\\\n×\\"
 "
 `;
 
@@ -140,38 +148,46 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+def login(self):
+  [object Object]
+    self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
+    self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
+    self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
+    self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
+
+def invalid credentials(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-  def login(self):
-    [object Object]
-      self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
-      self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
-  
-  def runCase(self):
-      self.vars[\\"username\\"] = \\"blah\\"
-      self.vars[\\"password\\"] = \\"blah\\"
-      self.login()
-  
-  def runCase(self):
-      self.vars[\\"username\\"] = \\"tomsmith\\"
-      self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
-      self.login()
-  
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.vars[\\"username\\"] = \\"blah\\"
+  self.vars[\\"password\\"] = \\"blah\\"
+  self.login()
+def valid credentials(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
+        self.driver = webdriver.Chrome()
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.vars[\\"username\\"] = \\"tomsmith\\"
+  self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
+  self.login()
 "
 `;
 
@@ -189,39 +205,38 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+  def wait_for_window(self, timeout = 2):
+    time.sleep(round(timeout / 1000))
+    wh_now = self.getDriver().window_handles
+    wh_then = self.vars[\\"window_handles\\"]
+    if len(wh_now) > len(wh_then):
+      return set(wh_now).difference(set(wh_then)).pop()
+
+def selectwindow(self):
+  [object Object]
+    self.vars[\\"window_handles\\"] = self.getDriver().window_handles
+    self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
+  self.vars[\\"win9425\\"] = self.wait_for_window(2000)
+    self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
+    assert self.getDriver().title == \\"\\"New Window\\"\\"
+
+def reuse(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-    def wait_for_window(self, timeout = 2):
-      time.sleep(round(timeout / 1000))
-      wh_now = self.getDriver().window_handles
-      wh_then = self.vars[\\"window_handles\\"]
-      if len(wh_now) > len(wh_then):
-        return set(wh_now).difference(set(wh_then)).pop()
-  
-  def selectwindow(self):
-    [object Object]
-      self.vars[\\"window_handles\\"] = self.getDriver().window_handles
-      self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
-    self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
-      assert self.getDriver().title == \\"\\"New Window\\"\\"
-  
-  def runCase(self):
-      self.selectwindow()
-  
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.selectwindow()
 "
 `;
 
@@ -239,47 +254,55 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+  def wait_for_window(self, timeout = 2):
+    time.sleep(round(timeout / 1000))
+    wh_now = self.getDriver().window_handles
+    wh_then = self.vars[\\"window_handles\\"]
+    if len(wh_now) > len(wh_then):
+      return set(wh_now).difference(set(wh_then)).pop()
+
+def selectwindow(self):
+  [object Object]
+    self.vars[\\"window_handles\\"] = self.getDriver().window_handles
+    self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
+  self.vars[\\"win9425\\"] = self.wait_for_window(2000)
+    self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
+    assert self.getDriver().title == \\"\\"New Window\\"\\"
+
+def reuse(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-    def wait_for_window(self, timeout = 2):
-      time.sleep(round(timeout / 1000))
-      wh_now = self.getDriver().window_handles
-      wh_then = self.vars[\\"window_handles\\"]
-      if len(wh_now) > len(wh_then):
-        return set(wh_now).difference(set(wh_then)).pop()
-  
-  def selectwindow(self):
-    [object Object]
-      self.vars[\\"window_handles\\"] = self.getDriver().window_handles
-      self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
-    self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
-      assert self.getDriver().title == \\"\\"New Window\\"\\"
-  
-  def runCase(self):
-      self.selectwindow()
-  
-  def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/windows\\")
-      self.vars[\\"window_handles\\"] = self.getDriver().window_handles
-      self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
-    self.vars[\\"win9425\\"] = self.wait_for_window(2000)
-      self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
-      assert self.getDriver().title == \\"\\"New Window\\"\\"
-  
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.selectwindow()
+def select window(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
+        self.driver = webdriver.Chrome()
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/windows\\")
+  self.vars[\\"window_handles\\"] = self.getDriver().window_handles
+  self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
+self.vars[\\"win9425\\"] = self.wait_for_window(2000)
+  self.getDriver().switch_to.window(self.vars[\\"win9425\\"])
+  assert self.getDriver().title == \\"\\"New Window\\"\\"
 "
 `;
 
@@ -297,32 +320,29 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+def login(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-    def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-      self.getDriver().set_window_size(1440, 1177)
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-      self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-      assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
-    
-jetRpa = JetRPA()
-jetRpa.runCase()
-jetRpa.quitCase()"
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
+  return self"
 `;
 
 exports[`Code Export Python pytest should export a test with a reused test method 1`] = `
@@ -339,36 +359,33 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+def login(self):
+  [object Object]
+    self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
+    self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
+    self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
+    self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
+
+def valid credentials(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-  def login(self):
-    [object Object]
-      self.getDriver().find_element(By.LINK_TEXT, \\"Form Authentication\\").click()
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(self.vars[\\"username\\"])
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(self.vars[\\"password\\"])
-      self.getDriver().find_element(By.CSS_SELECTOR, \\".fa\\").click()
-  
-    def runCase(self):
-      self.vars[\\"username\\"] = \\"tomsmith\\"
-      self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
-      self.login()
-    
-jetRpa = JetRPA()
-jetRpa.runCase()
-jetRpa.quitCase()"
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.vars[\\"username\\"] = \\"tomsmith\\"
+  self.vars[\\"password\\"] = \\"SuperSecretPassword!\\"
+  self.login()
+  return self"
 `;
 
 exports[`Code Export Python pytest should export a test with commands that open a new window 1`] = `
@@ -385,44 +402,41 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+  def wait_for_window(self, timeout = 2):
+    time.sleep(round(timeout / 1000))
+    wh_now = self.getDriver().window_handles
+    wh_then = self.vars[\\"window_handles\\"]
+    if len(wh_now) > len(wh_then):
+      return set(wh_now).difference(set(wh_then)).pop()
+
+def select window(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
         self.driver = webdriver.Chrome()
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-    def wait_for_window(self, timeout = 2):
-      time.sleep(round(timeout / 1000))
-      wh_now = self.getDriver().window_handles
-      wh_then = self.vars[\\"window_handles\\"]
-      if len(wh_now) > len(wh_then):
-        return set(wh_now).difference(set(wh_then)).pop()
-  
-    def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/\\")
-      self.getDriver().set_window_size(1260, 1027)
-      self.getDriver().find_element(By.LINK_TEXT, \\"Multiple Windows\\").click()
-      self.vars[\\"window_handles\\"] = self.getDriver().window_handles
-      self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
-    self.vars[\\"win9625\\"] = self.wait_for_window(2000)
-      self.vars[\\"root\\"] =  self.getDriver().current_window_handle
-      self.getDriver().switch_to.window(self.vars[\\"win9625\\"])
-      assert self.getDriver().title == \\"\\"New Window\\"\\"
-      self.getDriver().switch_to.window(self.vars[\\"root\\"])
-      assert self.getDriver().title == \\"\\"The Internet\\"\\"
-    
-jetRpa = JetRPA()
-jetRpa.runCase()
-jetRpa.quitCase()"
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/\\")
+  self.getDriver().set_window_size(1260, 1027)
+  self.getDriver().find_element(By.LINK_TEXT, \\"Multiple Windows\\").click()
+  self.vars[\\"window_handles\\"] = self.getDriver().window_handles
+  self.getDriver().find_element(By.LINK_TEXT, \\"Click Here\\").click()
+self.vars[\\"win9625\\"] = self.wait_for_window(2000)
+  self.vars[\\"root\\"] =  self.getDriver().current_window_handle
+  self.getDriver().switch_to.window(self.vars[\\"win9625\\"])
+  assert self.getDriver().title == \\"\\"New Window\\"\\"
+  self.getDriver().switch_to.window(self.vars[\\"root\\"])
+  assert self.getDriver().title == \\"\\"The Internet\\"\\"
+  return self"
 `;
 
 exports[`Code Export Python pytest should export a test with grid execution 1`] = `
@@ -439,30 +453,27 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 self = type('', (), {})()
-    driver = None
-    delay = 0.3
-    waitTime = 3000
-    
-    def getDriver(self):
-      time.sleep(self.delay)
-      if self.driver is None:
-        self.driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub', desired_capabilities=DesiredCapabilities.FIREFOX)
-        self.driver.implicitly_wait(self.waitTime)
-        self.vars = {}
-      return self.driver
-  
-    def quitCase(self):
-      self.driver.quit()
-  
-    def runCase(self):
-      self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-      self.getDriver().set_window_size(1440, 1177)
-      self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
-      self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
-      self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-      assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
-    
-jetRpa = JetRPA()
-jetRpa.runCase()
-jetRpa.quitCase()"
+driver = None
+delay = 0.3
+waitTime = 3000
+self.vars = {}
+
+def login(driver):
+  def getDriver():
+    time.sleep(self.delay)
+    if self.driver is None:
+      if driver is None:
+        self.driver = webdriver.Chrome()
+      else:
+        self.driver = driver
+      self.driver.implicitly_wait(self.waitTime)
+    return self.driver
+        
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"tomsmith\\")
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"SuperSecretPassword!\\")
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
+  return self"
 `;

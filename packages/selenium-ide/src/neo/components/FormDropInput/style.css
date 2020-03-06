@@ -1,0 +1,17 @@
+.dropInput-con{
+    display: flex;
+    flex-flow: nowrap;
+}
+.dropInput-con-item{
+    display: inline-block;
+}
+.dropInput-con-drop{
+    width: 60px;
+}
+.dropInput-con-input{
+    flex-grow: 1;
+}
+.dropInput-con-input input{
+    width: 100%;
+    box-sizing: border-box;
+}

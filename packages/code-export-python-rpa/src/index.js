@@ -58,6 +58,7 @@ function generateSuiteDeclaration(name, delay, implicitlyWait) {
 driver = None
 delay = ${((delay || 300) / 1000).toFixed(1)}
 waitTime = ${implicitlyWait}
+self.vars = {}
 `
 }
 function generateFilename(name) {
@@ -95,7 +96,7 @@ export async function emitTest({
   })
   return {
     filename: generateFilename(test.name),
-    body: exporter.emit.orderedSuite(_suite),
+    body: exporter.emit.orderedSuite(_suite) + '  return self',
   }
 }
 

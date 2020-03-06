@@ -30,7 +30,9 @@ import { find, select } from '../../IO/SideeX/find-select'
 import ModalState from '../../stores/view/ModalState'
 import UiState from '../../stores/view/UiState'
 import PlaybackState from '../../stores/view/PlaybackState'
+import FormDropInput from '../FormDropInput'
 import './style.css'
+import Checkbox from '../Checkbox'
 
 @observer
 export default class CommandForm extends React.Component {
@@ -201,6 +203,38 @@ export default class CommandForm extends React.Component {
             disabled={!this.props.command}
             onChange={this.props.command ? this.props.command.setComment : null}
           />
+          <Checkbox
+            label="参数"
+            checked={this.props.command ? this.props.command.isParam : false}
+            onChange={this.props.command ? this.props.command.setIsParam : null}
+          />
+          {(() => {
+            if (this.props.command.isParam) {
+              return (
+                <FormDropInput
+                  label="参数指向"
+                  placeholder="匹配替换，可以为正则"
+                  disabled={!this.props.command || PlaybackState.isPlaying}
+                  dropValue={
+                    this.props.command ? this.props.command.directionType : ''
+                  }
+                  value={
+                    this.props.command ? this.props.command.directionValue : ''
+                  }
+                  onChangeDrop={
+                    this.props.command
+                      ? this.props.command.setDirectionType
+                      : null
+                  }
+                  onChangeInput={
+                    this.props.command
+                      ? this.props.command.setDirectionValue
+                      : null
+                  }
+                />
+              )
+            }
+          })()}
           <input tabIndex="-1" type="submit" onClick={this.props.onSubmit} />
         </form>
       </div>
