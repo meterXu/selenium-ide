@@ -148,6 +148,20 @@ export default class Command {
 
   @action.bound
   setDirectionType(value) {
+    switch (value) {
+      case 'value': {
+        if (!this.directionValue) {
+          this.directionValue = this.value
+        }
+        break
+      }
+      case 'target': {
+        if (!this.directionValue) {
+          this.directionValue = this.target
+        }
+        break
+      }
+    }
     this.directionType = value
   }
 

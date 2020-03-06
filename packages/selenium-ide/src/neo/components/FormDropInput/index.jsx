@@ -38,10 +38,10 @@ export default class FormDropInput extends React.Component {
                   ? ParamSource.search(this.props.dropValue)
                   : Array.from(ParamSource.list.values())
               }
-              getItemValue={item => item.name}
+              getItemValue={item => item.value}
               getItemKey={item => item.name}
               renderDefaultStyledItem={item => (
-                <span key={item.name}>{item.name}</span>
+                <span key={item.value}>{item.name}</span>
               )}
               value={this.props.dropValue}
               inputProps={{

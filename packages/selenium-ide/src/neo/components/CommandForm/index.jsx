@@ -226,7 +226,7 @@ export default class CommandForm extends React.Component {
               return (
                 <FormDropInput
                   label="参数指向"
-                  placeholder="匹配替换，可以为正则"
+                  placeholder="替换匹配的值为参数"
                   disabled={!this.props.command || PlaybackState.isPlaying}
                   dropValue={
                     this.props.command
@@ -236,7 +236,11 @@ export default class CommandForm extends React.Component {
                       : ''
                   }
                   value={
-                    this.props.command ? this.props.command.directionValue : ''
+                    this.props.command
+                      ? !this.props.command.directionValue
+                        ? this.props.command.value
+                        : this.props.command.directionValue
+                      : ''
                   }
                   onChangeDrop={
                     this.props.command
