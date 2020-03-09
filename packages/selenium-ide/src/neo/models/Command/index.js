@@ -125,11 +125,12 @@ export default class Command {
   @action.bound
   setTarget(target) {
     this.target = target || ''
-    if (this.directionType === 'target' && !this.target) {
-      this.isParam = false
-    }
     if (this.isParam) {
       this.setDirectionType('target')
+    }
+    if (this.directionType === 'target' && !this.target) {
+      this.isParam = false
+      this.setDirectionValue('')
     }
   }
 
@@ -145,14 +146,27 @@ export default class Command {
   @action.bound
   setValue(value) {
     this.value = value ? value.replace(/\n/g, '\\n') : ''
+    if (this.isParam) {
+      this.setDirectionType('value')
+    }
     if (this.directionType === 'value' && !this.value) {
       this.isParam = false
+      this.setDirectionValue('')
     }
   }
 
   @action.bound
   setIsParam(value) {
     this.isParam = value
+    if (value) {
+      if (this.value) {
+        this.setDirectionType('value')
+      } else {
+        this.setDirectionType('target')
+      }
+    } else {
+      this.setDirectionValue('')
+    }
   }
 
   @action.bound

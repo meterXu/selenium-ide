@@ -99,13 +99,6 @@ export default class CommandForm extends React.Component {
         })
       }
     }
-    if (this.props.command && this.props.command.isParam) {
-      if (this.props.command.value) {
-        this.props.command.setDirectionType('value')
-      } else {
-        this.props.command.setDirectionType('target')
-      }
-    }
   }
   render() {
     return (
@@ -243,7 +236,7 @@ export default class CommandForm extends React.Component {
             onChange={this.props.command ? this.props.command.setComment : null}
           />
           <Checkbox
-            label="参数"
+            label="设为参数"
             checked={this.props.command ? this.props.command.isParam : false}
             onChange={this.props.command ? this.isParamChange : null}
           />

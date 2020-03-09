@@ -269,13 +269,6 @@ class TestRow extends React.Component {
         })
       }
     }
-    if (this.props.command && this.props.command.isParam) {
-      if (this.props.command.value) {
-        this.props.command.setDirectionType('value')
-      } else {
-        this.props.command.setDirectionType('target')
-      }
-    }
   }
   render() {
     const commandIndentation = (
@@ -470,6 +463,13 @@ class TestRow extends React.Component {
               )
             }
           })()}
+        </td>
+        <td
+          className={classNames('control-chk-container', {
+            cell__alternate: this.props.command.comment,
+          })}
+        >
+          {this.props.command.directionValue}
         </td>
         <td className="buttons">
           {!this.props.isPristine && !this.props.readOnly ? listMenu : <div />}

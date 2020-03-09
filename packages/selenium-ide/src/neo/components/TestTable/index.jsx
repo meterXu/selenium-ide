@@ -99,6 +99,7 @@ export default class TestTable extends React.Component {
               <th>目标</th>
               <th>值</th>
               <th>设为参数</th>
+              <th>参数指向</th>
             </tr>
           </thead>
         </table>
