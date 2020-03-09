@@ -45,6 +45,8 @@ function generateTestDeclaration(name, fpName) {
         self.driver = driver
       self.driver.implicitly_wait(self.waitTime)
     return self.driver
+    
+  self.getDriver = getDriver  
         `
 }
 function generateMethodDeclaration(name) {
@@ -55,9 +57,9 @@ function generateMethodDeclaration(name) {
 // eslint-disable-next-line no-unused-vars
 function generateSuiteDeclaration(name, delay, implicitlyWait) {
   return `self = type('', (), {})()
-driver = None
-delay = ${((delay || 300) / 1000).toFixed(1)}
-waitTime = ${implicitlyWait}
+self.driver = None
+self.delay = ${((delay || 300) / 1000).toFixed(1)}
+self.waitTime = ${implicitlyWait}
 self.vars = {}
 `
 }
