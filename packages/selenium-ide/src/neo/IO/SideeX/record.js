@@ -159,13 +159,14 @@ export function recordCommand(command, target, value, index, select = false) {
   newCommand.setCommand(command)
   newCommand.setTarget(target)
   newCommand.setValue(value)
-  newCommand.setComment(
-    createCommandComment({
-      command,
-      target,
-      value,
-    })
-  )
+  // newCommand.setComment(
+  //   createCommandComment({
+  //     command,
+  //     target,
+  //     value,
+  //   })
+  // )
+  newCommand.setComment(command)
   if (select) {
     UiState.selectCommand(newCommand)
   }

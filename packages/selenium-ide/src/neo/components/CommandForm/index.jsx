@@ -34,12 +34,15 @@ import PlaybackState from '../../stores/view/PlaybackState'
 import FormDropInput from '../FormDropInput'
 import './style.css'
 import Checkbox from '../Checkbox'
+import Alert from '../Dialogs/Alert'
 
 @observer
 export default class CommandForm extends React.Component {
   constructor(props) {
     super(props)
     this.handleSelect = this.handleSelect.bind(this)
+    this.showAlertInfo = null
+    this.isParamChange = this.isParamChange.bind(this)
   }
   static propTypes = {
     command: PropTypes.object,
@@ -81,14 +84,37 @@ export default class CommandForm extends React.Component {
       select(type, this.props.command.target)
     }
   }
-  render() {
-    const isParamChange = e => {
-      if (this.props.command) {
-        this.props.command.setIsParam(e.target.checked)
+  isParamChange(e) {
+    if (
+      this.props.command &&
+      (this.props.command.value || this.props.command.target)
+    ) {
+      this.props.command.setIsParam(e.target.checked)
+    } else {
+      if (e.target.checked === true) {
+        this.showAlertInfo({
+          title: '警告',
+          type: 'warn',
+          description: '目标或值为空无法设为参数！',
+        })
       }
     }
+    if (this.props.command && this.props.command.isParam) {
+      if (this.props.command.value) {
+        this.props.command.setDirectionType('value')
+      } else {
+        this.props.command.setDirectionType('target')
+      }
+    }
+  }
+  render() {
     return (
       <div className="command-form">
+        <Alert
+          show={c => {
+            this.showAlertInfo = c
+          }}
+        />
         <form
           onSubmit={e => {
             e.preventDefault()
@@ -219,33 +245,21 @@ export default class CommandForm extends React.Component {
           <Checkbox
             label="参数"
             checked={this.props.command ? this.props.command.isParam : false}
-            onChange={this.props.command ? isParamChange : null}
+            onChange={this.props.command ? this.isParamChange : null}
           />
           {(() => {
-            if (this.props.command && this.props.command.isParam) {
+            if (
+              this.props.command &&
+              this.props.command.isParam &&
+              this.props.command.directionType === 'target'
+            ) {
               return (
                 <FormDropInput
                   label="参数指向"
                   placeholder="替换匹配的值为参数"
                   disabled={!this.props.command || PlaybackState.isPlaying}
-                  dropValue={
-                    this.props.command
-                      ? this.parseParamSourceName(
-                          this.props.command.directionType
-                        )
-                      : ''
-                  }
                   value={
-                    this.props.command
-                      ? !this.props.command.directionValue
-                        ? this.props.command.value
-                        : this.props.command.directionValue
-                      : ''
-                  }
-                  onChangeDrop={
-                    this.props.command
-                      ? this.props.command.setDirectionType
-                      : null
+                    this.props.command ? this.props.command.directionValue : ''
                   }
                   onChangeInput={
                     this.props.command

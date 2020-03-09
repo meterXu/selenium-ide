@@ -125,6 +125,9 @@ export default class Command {
   @action.bound
   setTarget(target) {
     this.target = target || ''
+    if (this.directionType === 'target' && !this.target) {
+      this.isParam = false
+    }
   }
 
   @action.bound
@@ -139,6 +142,9 @@ export default class Command {
   @action.bound
   setValue(value) {
     this.value = value ? value.replace(/\n/g, '\\n') : ''
+    if (this.directionType === 'value' && !this.value) {
+      this.isParam = false
+    }
   }
 
   @action.bound

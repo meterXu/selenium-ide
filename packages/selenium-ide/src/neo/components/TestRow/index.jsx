@@ -29,6 +29,8 @@ import MultilineEllipsis from '../MultilineEllipsis'
 import { withOnContextMenu } from '../ContextMenu'
 import ModalState from '../../stores/view/ModalState'
 import './style.css'
+import Checkbox from '../Checkbox'
+import Alert from '../Dialogs/Alert'
 
 export const Type = 'command'
 
@@ -104,6 +106,8 @@ class TestRow extends React.Component {
     this.select = this.select.bind(this)
     this.remove = this.remove.bind(this)
     this.clearAll = this.clearAll.bind(this)
+    this.isParamChange = this.isParamChange.bind(this)
+    this.showAlertInfo = null
   }
   static propTypes = {
     index: PropTypes.number,
@@ -250,6 +254,29 @@ class TestRow extends React.Component {
       }
     }
   }
+  isParamChange(e) {
+    if (
+      this.props.command &&
+      (this.props.command.value || this.props.command.target)
+    ) {
+      this.props.command.setIsParam(e.target.checked)
+    } else {
+      if (e.target.checked === true) {
+        this.showAlertInfo({
+          title: '警告',
+          type: 'warn',
+          description: '目标或值为空无法设为参数！',
+        })
+      }
+    }
+    if (this.props.command && this.props.command.isParam) {
+      if (this.props.command.value) {
+        this.props.command.setDirectionType('value')
+      } else {
+        this.props.command.setDirectionType('target')
+      }
+    }
+  }
   render() {
     const commandIndentation = (
       <span
@@ -290,9 +317,7 @@ class TestRow extends React.Component {
             插入新命令
           </ListMenuItem>
           <ListMenuSeparator />
-          <ListMenuItem onClick={this.clearAll}>
-            清除所有命令
-          </ListMenuItem>
+          <ListMenuItem onClick={this.clearAll}>清除所有命令</ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem label="B" onClick={this.props.command.toggleBreakpoint}>
             切换断点
@@ -427,9 +452,33 @@ class TestRow extends React.Component {
             {this.props.command.value}
           </MultilineEllipsis>
         </td>
+        <td
+          className={classNames('control-chk-container', {
+            cell__alternate: this.props.command.comment,
+          })}
+        >
+          {(() => {
+            if (this.props.command.command) {
+              return (
+                <Checkbox
+                  width={0}
+                  checked={
+                    this.props.command ? this.props.command.isParam : false
+                  }
+                  onChange={this.props.command ? this.isParamChange : null}
+                />
+              )
+            }
+          })()}
+        </td>
         <td className="buttons">
           {!this.props.isPristine && !this.props.readOnly ? listMenu : <div />}
         </td>
+        <Alert
+          show={c => {
+            this.showAlertInfo = c
+          }}
+        />
       </tr>
     )
     return !this.props.isPristine && !this.props.readOnly
