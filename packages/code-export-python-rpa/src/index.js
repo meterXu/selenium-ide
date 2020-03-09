@@ -98,7 +98,6 @@ export async function emitTest({
   })
   const suiteName = test.name
   const suiteDeclaration = generateSuiteDeclaration(suiteName, project?project.delay:300, project?project.implicitlyWait:3000)
-  // const suiteDeclaration = generateSuiteDeclaration(suiteName, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -127,9 +126,7 @@ export async function emitSuite({
     generateTestDeclaration,
     project,
   })
-  // eslint-disable-next-line no-const-assign
   const suiteDeclaration = generateSuiteDeclaration(suite.name, project?project.delay:300, project?project.implicitlyWait:3000)
-  // const suiteDeclaration = generateSuiteDeclaration(suite.name, 300, 3000)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
