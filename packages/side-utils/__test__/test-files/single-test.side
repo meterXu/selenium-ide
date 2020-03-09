@@ -28,7 +28,25 @@
       "isParam": false,
       "directionType": "value",
       "directionValue": ""
-    }, {
+    },
+    {
+          "id": "02c52cbb-4341-4995-b2a9-ff4234c56661",
+          "comment": "",
+          "command": "click",
+          "target": "xpath=//input[@id='username']",
+          "targets": [
+            ["id=username", "id"],
+            ["name=username", "name"],
+            ["css=#username", "css:finder"],
+            ["xpath=//input[@id='username']", "xpath:attributes"],
+            ["xpath=//form[@id='login']/div/div/input", "xpath:idRelative"],
+            ["xpath=//input", "xpath:position"]
+          ],
+          "isParam": true,
+          "directionType": "target",
+          "directionValue": "username"
+        },
+    {
       "id": "02c52cbb-4341-4995-b2a9-ff4234c56661",
       "comment": "",
       "command": "type",
