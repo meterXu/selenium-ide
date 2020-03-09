@@ -128,6 +128,9 @@ export default class Command {
     if (this.directionType === 'target' && !this.target) {
       this.isParam = false
     }
+    if (this.isParam) {
+      this.setDirectionType('target')
+    }
   }
 
   @action.bound
@@ -156,14 +159,20 @@ export default class Command {
   setDirectionType(value) {
     switch (value) {
       case 'value': {
-        if (!this.directionValue) {
+        if (this.value) {
           this.directionValue = this.value
         }
         break
       }
       case 'target': {
-        if (!this.directionValue) {
-          this.directionValue = this.target
+        if (this.target) {
+          let regexp = new RegExp("(?<=\\(.,\\').*(?=\\'\\))", 'g')
+          let match = this.target.match(regexp)
+          if (match === null) {
+            this.directionValue = this.target
+          } else {
+            this.directionValue = match[0]
+          }
         }
         break
       }
