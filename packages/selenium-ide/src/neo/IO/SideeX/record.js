@@ -166,7 +166,6 @@ export function recordCommand(command, target, value, index, select = false) {
   //     value,
   //   })
   // )
-  newCommand.setComment(command)
   if (select) {
     UiState.selectCommand(newCommand)
   }
