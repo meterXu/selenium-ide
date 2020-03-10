@@ -261,6 +261,8 @@ export default class CommandForm extends React.Component {
                   }
                 />
               )
+            } else {
+              return <div style={{ height: '37px', width: '100%' }} />
             }
           })()}
           <input tabIndex="-1" type="submit" onClick={this.props.onSubmit} />

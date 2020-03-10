@@ -469,7 +469,9 @@ class TestRow extends React.Component {
             cell__alternate: this.props.command.comment,
           })}
         >
-          {this.props.command.directionValue}
+          <MultilineEllipsis lines={3}>
+            {this.props.command.directionValue}
+          </MultilineEllipsis>
         </td>
         <td className="buttons">
           {!this.props.isPristine && !this.props.readOnly ? listMenu : <div />}

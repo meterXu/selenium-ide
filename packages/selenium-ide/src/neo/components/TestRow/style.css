@@ -177,6 +177,9 @@
 .test-table tr .buttons > .active {
   opacity: 1;
 }
+.control-chk-container{
+  position: relative;
+}
 .selected>.control-chk-container>.control span{
   border-color: #009448;
 }
