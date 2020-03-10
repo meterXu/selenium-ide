@@ -236,11 +236,11 @@ export default class Panel extends React.Component {
   async loadNewProject() {
     if (!UiState.isSaved()) {
       const choseProceed = await ModalState.showAlert({
-        title: 'Create without saving',
+        title: '创建不保存',
         description:
-          'Are you sure you would like to create a new project without saving the current one?',
-        confirmLabel: 'proceed',
-        cancelLabel: 'cancel',
+          '您确定要创建一个新项目而不保存当前项目吗？',
+        confirmLabel: '确定',
+        cancelLabel: '取消',
       })
       if (choseProceed) {
         await UiState.stopRecording({ nameNewTest: false })
@@ -248,11 +248,11 @@ export default class Panel extends React.Component {
       }
     } else if (UiState.isRecording) {
       const choseProceed = await ModalState.showAlert({
-        title: 'Stop recording',
+        title: '停止录制',
         description:
-          'Leaving this project and creating a new one will stop the recording process. Would you like to continue?',
-        confirmLabel: 'proceed',
-        cancelLabel: 'cancel',
+          '离开该项目并创建一个新项目将停止录制过程。你想继续吗？',
+        confirmLabel: '确定',
+        cancelLabel: '取消',
       })
       if (choseProceed) {
         await UiState.stopRecording({ nameNewTest: false })
