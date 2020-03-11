@@ -45,6 +45,7 @@ describe('Code Export Python pytest', () => {
       test: project.tests[0],
       tests: project.tests,
     })
+    console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })

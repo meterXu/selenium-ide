@@ -423,7 +423,9 @@ async function emitEditContent(locator, content, commandObj) {
     },
     {
       level: 0,
-      statement: `  self.getDriver().execute_script("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '${content}'}", element)`,
+      statement: `  self.getDriver().execute_script("if(arguments[0].contentEditable === 'true') {arguments[0].innerText = '${
+        commandObj.isParam ? '"+' + commandObj.paramName + '+"' : content
+      }'}", element)`,
     },
   ]
   return Promise.resolve({ commands })
@@ -749,13 +751,23 @@ async function emitSubmit(_locator) {
 }
 
 async function emitType(target, value, commandObj) {
-  return Promise.resolve(
-    `  self.getDriver().find_element(${await location.emit(
-      target
-    )}).send_keys(${
-      commandObj.isParam ? commandObj.paramName : generateSendKeysInput(value)
-    })`
-  )
+  let commands = [
+    {
+      level: 0,
+      statement: `  self.getDriver().find_element(${await location.emit(
+        target
+      )}).clear()`,
+    },
+    {
+      level: 0,
+      statement: `  self.getDriver().find_element(${await location.emit(
+        target
+      )}).send_keys(${
+        commandObj.isParam ? commandObj.paramName : generateSendKeysInput(value)
+      })`,
+    },
+  ]
+  return Promise.resolve({ commands })
 }
 
 async function emitUncheck(locator, value, commandObj) {
