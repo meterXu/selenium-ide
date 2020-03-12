@@ -448,6 +448,9 @@ class TestRow extends React.Component {
             {this.props.command.directionValue}
           </MultilineEllipsis>
         </td>
+        <td className="control-chk-export">
+          ✓
+        </td>
         <td className="buttons">
           {!this.props.isPristine && !this.props.readOnly ? listMenu : <div />}
         </td>

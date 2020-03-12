@@ -183,3 +183,6 @@
 .selected>.control-chk-container>.control span{
   border-color: #009448;
 }
+.test-table tr td.control-chk-export{
+  flex: 0% 0.5 1;
+}

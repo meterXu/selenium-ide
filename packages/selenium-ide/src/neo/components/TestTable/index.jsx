@@ -101,6 +101,7 @@ export default class TestTable extends React.Component {
               <th>描述</th>
               <th>设为参数</th>
               <th>参数指向</th>
+              <th className="header-tr-export">导出</th>
             </tr>
           </thead>
         </table>
