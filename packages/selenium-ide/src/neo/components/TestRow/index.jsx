@@ -409,47 +409,26 @@ class TestRow extends React.Component {
             </a>
           ) : null}
         </td>
-        <td
-          className={classNames('comment', {
-            cell__hidden: !this.props.command.comment,
-          })}
-          colSpan="3"
-        >
-          <MultilineEllipsis lines={1}>
-            {this.props.command.comment}
-          </MultilineEllipsis>
-        </td>
-        <td
-          className={classNames('command', {
-            cell__alternate: this.props.command.comment,
-          })}
-        >
+        <td className={classNames('command')}>
           {commandIndentation}
           <CommandName>{this.props.command.displayedName}</CommandName>
         </td>
-        <td
-          className={classNames({
-            cell__alternate: this.props.command.comment,
-          })}
-        >
+        <td>
           <MultilineEllipsis lines={3}>
             {this.props.command.target}
           </MultilineEllipsis>
         </td>
-        <td
-          className={classNames({
-            cell__alternate: this.props.command.comment,
-          })}
-        >
+        <td>
           <MultilineEllipsis lines={3}>
             {this.props.command.value}
           </MultilineEllipsis>
         </td>
-        <td
-          className={classNames('control-chk-container', {
-            cell__alternate: this.props.command.comment,
-          })}
-        >
+        <td className={classNames('comment')}>
+          <MultilineEllipsis lines={1}>
+            {this.props.command.comment}
+          </MultilineEllipsis>
+        </td>
+        <td className={classNames('control-chk-container')}>
           {(() => {
             if (this.props.command.command) {
               return (
@@ -464,11 +443,7 @@ class TestRow extends React.Component {
             }
           })()}
         </td>
-        <td
-          className={classNames('control-chk-container', {
-            cell__alternate: this.props.command.comment,
-          })}
-        >
+        <td className={classNames('control-chk-container')}>
           <MultilineEllipsis lines={3}>
             {this.props.command.directionValue}
           </MultilineEllipsis>

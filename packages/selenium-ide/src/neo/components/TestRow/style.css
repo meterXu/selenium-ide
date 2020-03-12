@@ -141,7 +141,7 @@
 }
 
 .test-table tr:hover .comment {
-  display: none;
+  display: block;
 }
 
 .test-table tr:not(:hover) .cell__alternate {
