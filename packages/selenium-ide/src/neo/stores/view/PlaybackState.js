@@ -82,7 +82,7 @@ class PlaybackState {
   @observable
   delay = 300
   @observable
-  implicitlyWait = 3000
+  implicitlyWait = 30
   @observable
   callstack = []
   @observable

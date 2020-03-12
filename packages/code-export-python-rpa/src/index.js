@@ -100,7 +100,7 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName, project?project.delay:300, project?project.implicitlyWait:3000)
+  const suiteDeclaration = generateSuiteDeclaration(suiteName, project?project.delay:300, project?project.implicitlyWait:30)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -132,7 +132,7 @@ export async function emitSuite({
     generateTestDeclaration,
     project,
   })
-  const suiteDeclaration = generateSuiteDeclaration(suite.name, project?project.delay:300, project?project.implicitlyWait:3000)
+  const suiteDeclaration = generateSuiteDeclaration(suite.name, project?project.delay:300, project?project.implicitlyWait:30)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,

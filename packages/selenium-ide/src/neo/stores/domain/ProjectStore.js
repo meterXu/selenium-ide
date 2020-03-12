@@ -34,7 +34,7 @@ export default class ProjectStore {
   @observable
   defaultDelay = 300
   @observable
-  defaultImplicitlyWait = 3000
+  defaultImplicitlyWait = 30
   @observable
   delay = this.defaultDelay
   @observable
