@@ -30,8 +30,8 @@ opts.fileExtension = '.py'
 opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
-opts.commandLevel = '0'
 opts.testLevel = '0'
+opts.commandLevel = 1
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(name, fpName) {
@@ -46,8 +46,9 @@ function generateTestDeclaration(name, fpName) {
       self.driver.implicitly_wait(self.waitTime)
     return self.driver
     
-  self.getDriver = getDriver  
-        `
+  self.getDriver = getDriver
+  
+  try:`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -109,7 +110,9 @@ export async function emitTest({
   })
   return {
     filename: generateFilename(test.name),
-    body: exporter.emit.orderedSuite(_suite) + '  return self',
+    body: exporter.emit.orderedSuite(_suite) + `  except Exception as Error:
+    print(Error)
+  return self`,
   }
 }
 
