@@ -94,7 +94,7 @@ class Suite extends React.Component {
   render() {
     const listMenu = (
       <ListMenu width={130} padding={-5} opener={<MoreButton />}>
-        <ListMenuItem onClick={this.props.selectTests}>Add tests</ListMenuItem>
+        <ListMenuItem onClick={this.props.selectTests}>添加用例</ListMenuItem>
         <ListMenuItem
           onClick={() =>
             this.props.rename(this.props.suite.name).then(name => {
@@ -102,11 +102,11 @@ class Suite extends React.Component {
             })
           }
         >
-          Rename
+          重命名
         </ListMenuItem>
-        <ListMenuItem onClick={this.props.remove}>Delete</ListMenuItem>
-        <ListMenuItem onClick={this.props.editSettings}>Settings</ListMenuItem>
-        <ListMenuItem onClick={this.props.codeExport}>Export</ListMenuItem>
+        <ListMenuItem onClick={this.props.remove}>删除</ListMenuItem>
+        {/*<ListMenuItem onClick={this.props.editSettings}>设置</ListMenuItem>*/}
+        <ListMenuItem onClick={this.props.codeExport}>导出</ListMenuItem>
       </ListMenu>
     )
     //setting component of context menu.

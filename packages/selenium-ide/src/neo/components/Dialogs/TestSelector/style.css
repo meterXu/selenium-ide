@@ -9,3 +9,11 @@
   max-height: initial;
   padding: 0;
 }
+
+.testSelector-searchbar{
+  background: #fff;
+  border-color: #3c4d96;
+}
+.testSelector-searchbar::placeholder{
+  color: #333;
+}

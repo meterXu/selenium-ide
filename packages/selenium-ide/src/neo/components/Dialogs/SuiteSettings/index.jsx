@@ -111,14 +111,14 @@ class SuiteSettingsContent extends React.Component {
           <Input
             name="suite-timeout"
             type="number"
-            label="Timeout (seconds)"
+            label="超时(s)"
             placeholder={DEFAULT_TIMEOUT}
             value={this.state.timeout}
             width={130}
             onChange={this.onTimeoutChange.bind(this)}
           />
           <Checkbox
-            label="Run in parallel"
+            label="在parallel中运行"
             checked={this.state.isParallel}
             width={130}
             onChange={this.onIsParallelChange.bind(this)}

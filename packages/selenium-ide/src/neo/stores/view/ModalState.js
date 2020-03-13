@@ -127,10 +127,10 @@ class ModalState {
   @action.bound
   async deleteSuite(suite) {
     const choseDelete = await this.showAlert({
-      title: 'Delete suite',
-      description: `This will permanently delete '${suite.name}'`,
-      cancelLabel: 'cancel',
-      confirmLabel: 'delete',
+      title: '删除用例组',
+      description: `这将永久性删除 '${suite.name}'`,
+      cancelLabel: '取消',
+      confirmLabel: '删除',
     })
     if (choseDelete) {
       this._project.deleteSuite(suite)
@@ -141,12 +141,10 @@ class ModalState {
   @action.bound
   async deleteTest(testCase) {
     const choseDelete = await this.showAlert({
-      title: 'Delete test case',
-      description: `This will permanently delete '${
-        testCase.name
-      }', and remove it from all its suites`,
-      cancelLabel: 'cancel',
-      confirmLabel: 'delete',
+      title: '删除用例',
+      description: `这将永久删除 '${testCase.name}', 并且从用例组中移除`,
+      cancelLabel: '取消',
+      confirmLabel: '删除',
     })
     if (choseDelete) {
       this._project.deleteTestCase(testCase)

@@ -6,6 +6,7 @@
   border-radius:0;
   background: #3f5ac3;
   border-color: #3f5ac3;
+  color: #ccc;
 }
 .search::placeholder{
   color: #ced5ef;

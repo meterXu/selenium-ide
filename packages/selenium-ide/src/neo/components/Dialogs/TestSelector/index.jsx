@@ -107,6 +107,7 @@ class TestSelectorContent extends React.Component {
         )}
       >
         <SearchBar
+          className={'testSelector-searchbar'}
           inputRef={input => {
             this.input = input
           }}

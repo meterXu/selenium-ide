@@ -18,6 +18,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
+import classNames from 'classnames'
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ export default class SearchBar extends React.Component {
     value: PropTypes.string,
     filter: PropTypes.func,
     inputRef: PropTypes.func,
+    className: PropTypes.string,
   }
   handleChange(e) {
     if (this.props.filter) this.props.filter(e.target.value)
@@ -43,7 +45,7 @@ export default class SearchBar extends React.Component {
       >
         <input
           ref={this.props.inputRef}
-          className="search"
+          className={classNames('search', this.props.className)}
           type="search"
           placeholder="搜索用例..."
           value={this.props.value}
