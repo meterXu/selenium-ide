@@ -19,7 +19,7 @@ import { codeExport as exporter } from '@seleniumhq/side-utils'
 const emitters = {
   afterAll: empty,
   afterEach: empty,
-  beforeAll: beforeAll,
+  beforeAll,
   beforeEach: empty,
   declareDependencies,
   declareMethods: empty,
@@ -29,26 +29,29 @@ const emitters = {
   testEnd: testEnd,
 }
 
-function generate(hookName) {
-  return new exporter.hook(emitters[hookName]())
+function generate(hookName,project) {
+  return new exporter.hook(emitters[hookName](project))
 }
 
-export function generateHooks() {
+export function generateHooks(project) {
   let result = {}
   Object.keys(emitters).forEach(hookName => {
-    result[hookName] = generate(hookName)
+    result[hookName] = generate(hookName,project)
   })
   return result
 }
 
-function beforeAll() {
+function beforeAll(project) {
+  let delay = project ? project.delay : 300
+  let implicitlyWait = project ? project.implicitlyWait : 3000
+  delay = (delay / 1000).toFixed(1)
   const params = {
     startingSyntax: {
       commands: [
         { level: 0, statement: 'class RPAInfo:' },
         { level: 1, statement: 'driver = None' },
-        { level: 1, statement: 'delay = 3' },
-        { level: 1, statement: 'waitTime = 30' },
+        { level: 1, statement: `delay = ${delay}` },
+        { level: 1, statement: `waitTime = ${implicitlyWait}` },
         { level: 1, statement: 'vars = {}' },
         { level: 0, statement: '' },
         { level: 1, statement: 'def getDriver(self):' },
@@ -130,6 +133,7 @@ function inEachEnd() {
         { level: 1, statement: 'except Exception as Error:' },
         { level: 2, statement: 'print(Error)' },
         { level: 1, statement: 'return self' },
+        { level: 1, statement: '' },
         { level: 1, statement: '' },
       ],
     },

@@ -4,7 +4,7 @@
   "name": "the-internet",
   "url": "http://the-internet.herokuapp.com",
   "delay": 300,
-  "implicitlyWait": 3000,
+  "implicitlyWait": 1400,
   "tests": [{
     "id": "d0f4bf60-d07a-4f93-adde-d60f0e04941b",
     "name": "login",

@@ -45,12 +45,9 @@ function generateMethodDeclaration(name) {
   )}(self):`
 }
 // eslint-disable-next-line no-unused-vars
-function generateSuiteDeclaration(name, delay, implicitlyWait) {
+function generateSuiteDeclaration(name) {
   return ``
 }
-
-// ${((delay || 300) / 1000).toFixed(1)}
-// ${implicitlyWait}
 
 function generateFilename(name) {
   return `rpa_${exporter.parsers.uncapitalize(
@@ -81,6 +78,7 @@ export async function emitTest({
   enableOriginTracing,
   beforeEachOptions,
 }) {
+  opts.hooks = generateHooks(project)
   global.baseUrl = baseUrl
   dealwithParm(tests)
   const testDeclaration = generateTestDeclaration(test)
@@ -114,6 +112,7 @@ export async function emitSuite({
   enableOriginTracing,
   beforeEachOptions,
 }) {
+  opts.hooks = generateHooks(project)
   global.baseUrl = baseUrl
   dealwithParm(tests)
   let result = await exporter.emit.testsFromSuite(tests, suite, opts, {

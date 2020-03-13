@@ -44,8 +44,9 @@ describe('Code Export Python pytest', () => {
       baseUrl: project.url,
       test: project.tests[0],
       tests: project.tests,
+      project: project,
     })
-    // console.log(results.body)
+    console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })
@@ -69,8 +70,9 @@ describe('Code Export Python pytest', () => {
       baseUrl: project.url,
       suite: project.suites[0],
       tests: project.tests,
+      project: project,
     })
-    console.log(results.body)
+    // console.log(results.body)
     expect(results.body).toBeDefined()
     expect(results.body).toMatchSnapshot()
   })
