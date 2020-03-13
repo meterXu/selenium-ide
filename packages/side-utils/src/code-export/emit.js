@@ -398,7 +398,7 @@ async function emitSuite(
     }
   )
   result.beforeAll = render(
-    await hooks.beforeAll.emit({ suite, tests, project, isOptional: true }),
+    await hooks.beforeAll.emit({ suite, tests, project }),
     {
       startingLevel: testLevel,
     }

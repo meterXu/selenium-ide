@@ -13,24 +13,24 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-self = type('', (), {})()
-self.driver = None
-self.delay = 0.3
-self.waitTime = 30
-self.vars = {}
 
-def valid credentials(driver, parm1, parm2):
-  def getDriver():
+class RPAInfo:
+  driver = None
+  delay = 3
+  waitTime = 30
+  vars = {}
+
+  def getDriver(self):
     time.sleep(self.delay)
     if self.driver is None:
-      if driver is None:
-        self.driver = webdriver.Chrome()
-      else:
-        self.driver = driver
-      self.driver.implicitly_wait(self.waitTime)
+      self.driver = webdriver.Chrome()
+    self.driver.implicitly_wait(self.waitTime)
     return self.driver
-    
-  self.getDriver = getDriver
+
+
+def valid credentials(driver, parm1, parm2):
+  self = RPAInfo()
+  self.driver = driver
   try:
     self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
     self.getDriver().set_window_size(1440, 1177)
@@ -45,17 +45,8 @@ def valid credentials(driver, parm1, parm2):
   return self
   
 def invalid credentials(driver):
-  def getDriver():
-    time.sleep(self.delay)
-    if self.driver is None:
-      if driver is None:
-        self.driver = webdriver.Chrome()
-      else:
-        self.driver = driver
-      self.driver.implicitly_wait(self.waitTime)
-    return self.driver
-    
-  self.getDriver = getDriver
+  self = RPAInfo()
+  self.driver = driver
   try:
     self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
     self.getDriver().set_window_size(1440, 1177)
@@ -85,24 +76,24 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-self = type('', (), {})()
-self.driver = None
-self.delay = 0.3
-self.waitTime = 30
-self.vars = {}
 
-def login(driver, parm1, parm2, parm3):
-  def getDriver():
+class RPAInfo:
+  driver = None
+  delay = 3
+  waitTime = 30
+  vars = {}
+
+  def getDriver(self):
     time.sleep(self.delay)
     if self.driver is None:
-      if driver is None:
-        self.driver = webdriver.Chrome()
-      else:
-        self.driver = driver
-      self.driver.implicitly_wait(self.waitTime)
+      self.driver = webdriver.Chrome()
+    self.driver.implicitly_wait(self.waitTime)
     return self.driver
-    
-  self.getDriver = getDriver
+
+
+def login(driver, parm1, parm2, parm3):
+  self = RPAInfo()
+  self.driver = driver
   try:
     self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
     self.getDriver().set_window_size(1440, 1177)

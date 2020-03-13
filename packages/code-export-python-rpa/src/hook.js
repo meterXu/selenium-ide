@@ -19,7 +19,7 @@ import { codeExport as exporter } from '@seleniumhq/side-utils'
 const emitters = {
   afterAll: empty,
   afterEach: empty,
-  beforeAll: empty,
+  beforeAll: beforeAll,
   beforeEach: empty,
   declareDependencies,
   declareMethods: empty,
@@ -39,6 +39,32 @@ export function generateHooks() {
     result[hookName] = generate(hookName)
   })
   return result
+}
+
+function beforeAll() {
+  const params = {
+    startingSyntax: {
+      commands: [
+        { level: 0, statement: 'class RPAInfo:' },
+        { level: 1, statement: 'driver = None' },
+        { level: 1, statement: 'delay = 3' },
+        { level: 1, statement: 'waitTime = 30' },
+        { level: 1, statement: 'vars = {}' },
+        { level: 0, statement: '' },
+        { level: 1, statement: 'def getDriver(self):' },
+        { level: 2, statement: 'time.sleep(self.delay)' },
+        { level: 2, statement: 'if self.driver is None:' },
+        { level: 3, statement: 'self.driver = webdriver.Chrome()' },
+        { level: 2, statement: 'self.driver.implicitly_wait(self.waitTime)' },
+        { level: 2, statement: 'return self.driver' },
+      ],
+    },
+    endingSyntax: {
+      commands: [{ level: 0, statement: '' }, { level: 0, statement: '' }],
+    },
+    registrationLevel: 1,
+  }
+  return params
 }
 
 function afterAll() {
@@ -69,19 +95,6 @@ function afterEach() {
   return params
 }
 
-function beforeAll() {
-  const params = {
-    startingSyntax: {
-      commands: [{ level: 0, statement: 'def setup_class(cls):' }],
-    },
-    endingSyntax: {
-      commands: [{ level: 0, statement: '' }],
-    },
-    registrationLevel: 1,
-  }
-  return params
-}
-
 function beforeEach() {
   const params = {
     startingSyntax: ({ browserName, gridUrl } = {}) => ({
@@ -97,7 +110,11 @@ function beforeEach() {
 function inEachBegin() {
   const params = {
     startingSyntax: {
-      commands: [{ level: 1, statement: 'try:' }],
+      commands: [
+        { level: 1, statement: 'self = RPAInfo()' },
+        { level: 1, statement: 'self.driver = driver' },
+        { level: 1, statement: 'try:' },
+      ],
     },
     endingSyntax: {
       commands: [],
@@ -170,6 +187,10 @@ function declareDependencies() {
           level: 0,
           statement:
             'from selenium.webdriver.common.desired_capabilities import DesiredCapabilities',
+        },
+        {
+          level: 0,
+          statement: '',
         },
         {
           level: 0,

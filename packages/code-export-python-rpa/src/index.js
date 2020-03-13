@@ -37,18 +37,7 @@ opts.generateMethodDeclaration = generateMethodDeclaration
 function generateTestDeclaration(test) {
   return `def ${test.name}(driver${
     test.fpName === '' ? '' : ',' + test.fpName
-  }):
-  def getDriver():
-    time.sleep(self.delay)
-    if self.driver is None:
-      if driver is None:
-        self.driver = webdriver.Chrome()
-      else:
-        self.driver = driver
-      self.driver.implicitly_wait(self.waitTime)
-    return self.driver
-    
-  self.getDriver = getDriver`
+  }):`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -57,13 +46,12 @@ function generateMethodDeclaration(name) {
 }
 // eslint-disable-next-line no-unused-vars
 function generateSuiteDeclaration(name, delay, implicitlyWait) {
-  return `self = type('', (), {})()
-self.driver = None
-self.delay = ${((delay || 300) / 1000).toFixed(1)}
-self.waitTime = ${implicitlyWait}
-self.vars = {}
-`
+  return ``
 }
+
+// ${((delay || 300) / 1000).toFixed(1)}
+// ${implicitlyWait}
+
 function generateFilename(name) {
   return `rpa_${exporter.parsers.uncapitalize(
     exporter.parsers.sanitizeName(name)
@@ -103,11 +91,7 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(
-    suiteName,
-    project ? project.delay : 300,
-    project ? project.implicitlyWait : 30
-  )
+  const suiteDeclaration = generateSuiteDeclaration(suiteName)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -137,11 +121,7 @@ export async function emitSuite({
     generateTestDeclaration,
     project,
   })
-  const suiteDeclaration = generateSuiteDeclaration(
-    suite.name,
-    project ? project.delay : 300,
-    project ? project.implicitlyWait : 30
-  )
+  const suiteDeclaration = generateSuiteDeclaration(suite.name)
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
