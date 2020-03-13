@@ -17,15 +17,16 @@
 import { codeExport as exporter } from '@seleniumhq/side-utils'
 
 const emitters = {
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
+  afterAll: empty,
+  afterEach: empty,
+  beforeAll: empty,
+  beforeEach: empty,
   declareDependencies,
   declareMethods: empty,
   declareVariables: empty,
-  inEachBegin: empty,
-  inEachEnd: empty,
+  inEachBegin: inEachBegin,
+  inEachEnd: inEachEnd,
+  testEnd: testEnd,
 }
 
 function generate(hookName) {
@@ -57,8 +58,8 @@ function afterEach() {
   const params = {
     startingSyntax: {
       commands: [
-        // { level: 1, statement: 'def quitCase(self):' },
-        // { level: 2, statement: 'self.driver.quit()' },
+        { level: 1, statement: 'def quitCase(self):' },
+        { level: 2, statement: 'self.driver.quit()' },
       ],
     },
     endingSyntax: {
@@ -84,27 +85,51 @@ function beforeAll() {
 function beforeEach() {
   const params = {
     startingSyntax: ({ browserName, gridUrl } = {}) => ({
-      commands: [
-        // { level: 1, statement: 'def getDriver(self):' },
-        // { level: 2, statement: 'time.sleep(self.delay)' },
-        // { level: 2, statement: 'if self.driver is None:' },
-        // {
-        //   level: 3,
-        //   statement: gridUrl
-        //     ? `self.driver = webdriver.Remote(command_executor='${gridUrl}', desired_capabilities=DesiredCapabilities.${
-        //         browserName ? browserName.toUpperCase() : 'CHROME'
-        //       })`
-        //     : `self.driver = webdriver.${
-        //         browserName ? browserName : 'Chrome'
-        //       }()`,
-        // },
-        // { level: 3, statement: 'self.driver.implicitly_wait(self.waitTime)' },
-        // { level: 3, statement: 'self.vars = {}' },
-        // { level: 2, statement: 'return self.driver' },
-      ],
+      commands: [],
     }),
     endingSyntax: {
       commands: [{ level: 0, statement: '' }],
+    },
+  }
+  return params
+}
+
+function inEachBegin() {
+  const params = {
+    startingSyntax: {
+      commands: [{ level: 1, statement: 'try:' }],
+    },
+    endingSyntax: {
+      commands: [],
+    },
+  }
+  return params
+}
+
+function inEachEnd() {
+  const params = {
+    startingSyntax: {
+      commands: [
+        { level: 1, statement: 'except Exception as Error:' },
+        { level: 2, statement: 'print(Error)' },
+        { level: 1, statement: 'return self' },
+        { level: 1, statement: '' },
+      ],
+    },
+    endingSyntax: {
+      commands: [],
+    },
+  }
+  return params
+}
+
+function testEnd() {
+  const params = {
+    startingSyntax: {
+      commands: [],
+    },
+    endingSyntax: {
+      commands: [],
     },
   }
   return params

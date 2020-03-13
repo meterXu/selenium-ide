@@ -249,9 +249,9 @@ async function emitTest(
     startingLevel: testLevel,
   })
   result.inEachBegin = render(
-    await hooks.inEachBegin.emit({ test, tests, project, isOptional: true }),
+    await hooks.inEachBegin.emit({ test, tests, project }),
     {
-      startingLevel: commandLevel,
+      startingLevel: testLevel,
     }
   )
   result.commands = render(
@@ -265,12 +265,15 @@ async function emitTest(
     }
   )
   result.inEachEnd = render(
-    await hooks.inEachEnd.emit({ test, tests, project, isOptional: true }),
+    await hooks.inEachEnd.emit({ test, tests, project }),
     {
-      startingLevel: commandLevel,
+      startingLevel: testLevel,
     }
   )
-  result.testEnd = render(terminatingKeyword, { startingLevel: testLevel })
+
+  result.testEnd = render(await hooks.testEnd.emit({ test, tests, project }), {
+    startingLevel: testLevel,
+  })
 
   return result
 }
@@ -282,16 +285,77 @@ async function emitTestsFromSuite(
   { enableOriginTracing, generateTestDeclaration, project }
 ) {
   let result = {}
+  const render = doRender.bind(this, languageOpts.commandPrefixPadding)
   for (const testName of suite.tests) {
     const test = tests.find(test => test.name === testName)
-    const testDeclaration = generateTestDeclaration(test.name)
+    const testDeclaration = generateTestDeclaration(test)
     result[test.name] = await emitTest(test, tests, {
       ...languageOpts,
       testDeclaration,
       enableOriginTracing,
       project,
     })
+    result[test.name].inEachBegin = render(
+      await languageOpts.hooks.inEachBegin.emit({
+        suite,
+        tests,
+        project,
+      }),
+      {
+        startingLevel: languageOpts.testLevel,
+      }
+    )
+    result[test.name].inEachEnd = render(
+      await languageOpts.hooks.inEachEnd.emit({
+        suite,
+        tests,
+        project,
+      }),
+      {
+        startingLevel: languageOpts.testLevel,
+      }
+    )
+    result[test.name].testEnd = render(
+      await languageOpts.hooks.testEnd.emit({
+        suite,
+        tests,
+        project,
+      }),
+      {
+        startingLevel: languageOpts.testLevel,
+      }
+    )
   }
+  suite.tests.inEachBegin = render(
+    await languageOpts.hooks.inEachBegin.emit({
+      suite,
+      tests,
+      project,
+    }),
+    {
+      startingLevel: languageOpts.testLevel,
+    }
+  )
+  suite.tests.inEachEnd = render(
+    await languageOpts.hooks.inEachEnd.emit({
+      suite,
+      tests,
+      project,
+    }),
+    {
+      startingLevel: languageOpts.testLevel,
+    }
+  )
+  suite.tests.testEnd = render(
+    await languageOpts.hooks.testEnd.emit({
+      suite,
+      tests,
+      project,
+    }),
+    {
+      startingLevel: languageOpts.testLevel,
+    }
+  )
   return result
 }
 

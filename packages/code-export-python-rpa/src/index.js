@@ -34,8 +34,10 @@ opts.testLevel = '0'
 opts.commandLevel = 1
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
-function generateTestDeclaration(name, fpName) {
-  return `def ${name}(driver, ${fpName}):
+function generateTestDeclaration(test) {
+  return `def ${test.name}(driver${
+    test.fpName === '' ? '' : ',' + test.fpName
+  }):
   def getDriver():
     time.sleep(self.delay)
     if self.driver is None:
@@ -46,9 +48,7 @@ function generateTestDeclaration(name, fpName) {
       self.driver.implicitly_wait(self.waitTime)
     return self.driver
     
-  self.getDriver = getDriver
-  
-  try:`
+  self.getDriver = getDriver`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -69,17 +69,20 @@ function generateFilename(name) {
     exporter.parsers.sanitizeName(name)
   )}${opts.fileExtension}`
 }
-function dealwithParm(test) {
-  let fpName = ''
-  let paramIndex = 1
-  test.commands.forEach(c => {
-    if (c.isParam) {
-      fpName += ' parm' + paramIndex + ','
-      c.paramName = 'parm' + paramIndex
-      paramIndex++
-    }
-  })
-  return fpName.replace(/,$/g, '')
+
+function dealwithParm(tests) {
+  for (let testIndex in tests) {
+    let fpName = ''
+    let paramIndex = 1
+    tests[testIndex].commands.forEach(c => {
+      if (c.isParam) {
+        fpName += ' parm' + paramIndex + ','
+        c.paramName = 'parm' + paramIndex
+        paramIndex++
+      }
+    })
+    tests[testIndex]['fpName'] = fpName.replace(/,$/g, '')
+  }
 }
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)
 export async function emitTest({
@@ -91,8 +94,8 @@ export async function emitTest({
   beforeEachOptions,
 }) {
   global.baseUrl = baseUrl
-  let fpName = dealwithParm(test)
-  const testDeclaration = generateTestDeclaration(test.name, fpName)
+  dealwithParm(tests)
+  const testDeclaration = generateTestDeclaration(test)
   let result = await exporter.emit.test(test, tests, {
     ...opts,
     testDeclaration,
@@ -100,7 +103,11 @@ export async function emitTest({
     project,
   })
   const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName, project?project.delay:300, project?project.implicitlyWait:30)
+  const suiteDeclaration = generateSuiteDeclaration(
+    suiteName,
+    project ? project.delay : 300,
+    project ? project.implicitlyWait : 30
+  )
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
@@ -110,10 +117,7 @@ export async function emitTest({
   })
   return {
     filename: generateFilename(test.name),
-    body: exporter.emit.orderedSuite(_suite) + `  except Exception as Error:
-    print(Error)
-    
-  return self`,
+    body: exporter.emit.orderedSuite(_suite),
   }
 }
 
@@ -127,12 +131,17 @@ export async function emitSuite({
   beforeEachOptions,
 }) {
   global.baseUrl = baseUrl
+  dealwithParm(tests)
   let result = await exporter.emit.testsFromSuite(tests, suite, opts, {
     enableOriginTracing,
     generateTestDeclaration,
     project,
   })
-  const suiteDeclaration = generateSuiteDeclaration(suite.name, project?project.delay:300, project?project.implicitlyWait:30)
+  const suiteDeclaration = generateSuiteDeclaration(
+    suite.name,
+    project ? project.delay : 300,
+    project ? project.implicitlyWait : 30
+  )
   const _suite = await exporter.emit.suite(result, tests, {
     ...opts,
     suiteDeclaration,
