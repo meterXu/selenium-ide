@@ -16,8 +16,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class RPAInfo:
   driver = None
-  delay = 3
-  waitTime = 30
+  delay = 0.3
+  waitTime = 2100
   vars = {}
 
   def getDriver(self):
@@ -44,6 +44,7 @@ def valid credentials(driver, parm1, parm2):
     print(Error)
   return self
   
+  
 def invalid credentials(driver):
   self = RPAInfo()
   self.driver = driver
@@ -59,6 +60,7 @@ def invalid credentials(driver):
   except Exception as Error:
     print(Error)
   return self
+  
   
 "
 `;
@@ -79,8 +81,8 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class RPAInfo:
   driver = None
-  delay = 3
-  waitTime = 30
+  delay = 0.3
+  waitTime = 1400
   vars = {}
 
   def getDriver(self):
@@ -107,6 +109,7 @@ def login(driver, parm1, parm2, parm3):
   except Exception as Error:
     print(Error)
   return self
+  
   
 "
 `;
