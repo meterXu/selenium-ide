@@ -56,17 +56,30 @@ function generateFilename(name) {
 }
 
 function dealwithParm(tests) {
-  for (let testIndex in tests) {
+  if (tests instanceof Array) {
+    for (let testIndex in tests) {
+      let fpName = ''
+      let paramIndex = 1
+      tests[testIndex].commands.forEach(c => {
+        if (c.isParam) {
+          fpName += ' parm' + paramIndex + ','
+          c.paramName = 'parm' + paramIndex
+          paramIndex++
+        }
+      })
+      tests[testIndex]['fpName'] = fpName.replace(/,$/g, '')
+    }
+  } else {
     let fpName = ''
     let paramIndex = 1
-    tests[testIndex].commands.forEach(c => {
+    tests.commands.forEach(c => {
       if (c.isParam) {
         fpName += ' parm' + paramIndex + ','
         c.paramName = 'parm' + paramIndex
         paramIndex++
       }
     })
-    tests[testIndex]['fpName'] = fpName.replace(/,$/g, '')
+    tests['fpName'] = fpName.replace(/,$/g, '')
   }
 }
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)
@@ -80,7 +93,7 @@ export async function emitTest({
 }) {
   opts.hooks = generateHooks(project)
   global.baseUrl = baseUrl
-  dealwithParm(tests)
+  dealwithParm(test)
   const testDeclaration = generateTestDeclaration(test)
   let result = await exporter.emit.test(test, tests, {
     ...opts,
