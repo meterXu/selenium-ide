@@ -31,7 +31,7 @@ opts.commandPrefixPadding = '  '
 opts.terminatingKeyword = ''
 opts.commentPrefix = '#'
 opts.testLevel = '0'
-opts.commandLevel = 1
+opts.commandLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
 function generateTestDeclaration(test) {

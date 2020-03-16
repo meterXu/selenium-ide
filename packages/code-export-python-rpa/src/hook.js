@@ -29,14 +29,14 @@ const emitters = {
   testEnd: testEnd,
 }
 
-function generate(hookName,project) {
+function generate(hookName, project) {
   return new exporter.hook(emitters[hookName](project))
 }
 
 export function generateHooks(project) {
   let result = {}
   Object.keys(emitters).forEach(hookName => {
-    result[hookName] = generate(hookName,project)
+    result[hookName] = generate(hookName, project)
   })
   return result
 }
@@ -116,7 +116,6 @@ function inEachBegin() {
       commands: [
         { level: 1, statement: 'self = RPAInfo()' },
         { level: 1, statement: 'self.driver = driver' },
-        { level: 1, statement: 'try:' },
       ],
     },
     endingSyntax: {
@@ -130,8 +129,6 @@ function inEachEnd() {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 1, statement: 'except Exception as Error:' },
-        { level: 2, statement: 'print(Error)' },
         { level: 1, statement: 'return self' },
         { level: 1, statement: '' },
         { level: 1, statement: '' },
