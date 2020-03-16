@@ -31,34 +31,28 @@ class RPAInfo:
 def valid credentials(driver, parm1, parm2):
   self = RPAInfo()
   self.driver = driver
-  try:
-    self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-    self.getDriver().set_window_size(1440, 1177)
-    self.getDriver().find_element(By.ID, \\"username\\").clear()
-    self.getDriver().find_element(By.ID, \\"username\\").send_keys(parm1)
-    self.getDriver().find_element(By.ID, \\"password\\").clear()
-    self.getDriver().find_element(By.ID, \\"password\\").send_keys(parm2)
-    self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
-  except Exception as Error:
-    print(Error)
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").clear()
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(parm1)
+  self.getDriver().find_element(By.ID, \\"password\\").clear()
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(parm2)
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
   return self
   
   
 def invalid credentials(driver):
   self = RPAInfo()
   self.driver = driver
-  try:
-    self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-    self.getDriver().set_window_size(1440, 1177)
-    self.getDriver().find_element(By.ID, \\"username\\").clear()
-    self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"blah\\")
-    self.getDriver().find_element(By.ID, \\"password\\").clear()
-    self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"blah\\")
-    self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    assert self.getDriver().find_element(By.ID, \\"flash\\").text == \\"Your username is invalid!\\\\\\\\\\\\\\\\n×\\"
-  except Exception as Error:
-    print(Error)
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.ID, \\"username\\").clear()
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(\\"blah\\")
+  self.getDriver().find_element(By.ID, \\"password\\").clear()
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(\\"blah\\")
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.ID, \\"flash\\").text == \\"Your username is invalid!\\\\\\\\\\\\\\\\n×\\"
   return self
   
   
@@ -96,18 +90,15 @@ class RPAInfo:
 def login(driver, parm1, parm2, parm3):
   self = RPAInfo()
   self.driver = driver
-  try:
-    self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
-    self.getDriver().set_window_size(1440, 1177)
-    self.getDriver().find_element(By.XPATH, \\"//input[@id=\\\\'\\"+parm1+\\"\\\\']\\").click()
-    self.getDriver().find_element(By.ID, \\"username\\").clear()
-    self.getDriver().find_element(By.ID, \\"username\\").send_keys(parm2)
-    self.getDriver().find_element(By.ID, \\"password\\").clear()
-    self.getDriver().find_element(By.ID, \\"password\\").send_keys(parm3)
-    self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
-    assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
-  except Exception as Error:
-    print(Error)
+  self.getDriver().get(\\"http://the-internet.herokuapp.com/login\\")
+  self.getDriver().set_window_size(1440, 1177)
+  self.getDriver().find_element(By.XPATH, \\"//input[@id=\\\\'\\"+parm1+\\"\\\\']\\").click()
+  self.getDriver().find_element(By.ID, \\"username\\").clear()
+  self.getDriver().find_element(By.ID, \\"username\\").send_keys(parm2)
+  self.getDriver().find_element(By.ID, \\"password\\").clear()
+  self.getDriver().find_element(By.ID, \\"password\\").send_keys(parm3)
+  self.getDriver().find_element(By.CSS_SELECTOR, \\"#login button\\").click()
+  assert self.getDriver().find_element(By.CSS_SELECTOR, \\".flash.success\\").text == \\"You logged into a secure area!\\\\\\\\\\\\\\\\n×\\"
   return self
   
   
