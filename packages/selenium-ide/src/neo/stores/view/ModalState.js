@@ -125,6 +125,9 @@ class ModalState {
   }
 
   @action.bound
+  createCanvas() {}
+
+  @action.bound
   async deleteSuite(suite) {
     const choseDelete = await this.showAlert({
       title: '删除用例组',

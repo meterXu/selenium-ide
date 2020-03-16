@@ -33,6 +33,7 @@ import PauseBanner from '../../components/PauseBanner'
 import ProjectHeader from '../../components/ProjectHeader'
 import Navigation from '../Navigation'
 import Editor from '../Editor'
+import ProgressDesign from '../ProcessDesign'
 import Console from '../Console'
 import Modal from '../Modal'
 import UiState from '../../stores/view/UiState'
@@ -237,8 +238,7 @@ export default class Panel extends React.Component {
     if (!UiState.isSaved()) {
       const choseProceed = await ModalState.showAlert({
         title: '创建不保存',
-        description:
-          '您确定要创建一个新项目而不保存当前项目吗？',
+        description: '您确定要创建一个新项目而不保存当前项目吗？',
         confirmLabel: '确定',
         cancelLabel: '取消',
       })
@@ -249,8 +249,7 @@ export default class Panel extends React.Component {
     } else if (UiState.isRecording) {
       const choseProceed = await ModalState.showAlert({
         title: '停止录制',
-        description:
-          '离开该项目并创建一个新项目将停止录制过程。你想继续吗？',
+        description: '离开该项目并创建一个新项目将停止录制过程。你想继续吗？',
         confirmLabel: '确定',
         cancelLabel: '取消',
       })
@@ -329,13 +328,18 @@ export default class Panel extends React.Component {
                     suites={this.state.project.suites}
                     duplicateTest={this.state.project.duplicateTestCase}
                   />
-                  <Editor
-                    url={this.state.project.url}
-                    urls={this.state.project.urls}
-                    setUrl={this.state.project.setUrl}
-                    test={UiState.displayedTest}
-                    callstackIndex={UiState.selectedTest.stack}
-                  />
+                  {UiState.selectedView === UiState.lang.processDesign && (
+                    <ProgressDesign />
+                  )}
+                  {UiState.selectedView !== UiState.lang.processDesign && (
+                    <Editor
+                      url={this.state.project.url}
+                      urls={this.state.project.urls}
+                      setUrl={this.state.project.setUrl}
+                      test={UiState.displayedTest}
+                      callstackIndex={UiState.selectedTest.stack}
+                    />
+                  )}
                 </SplitPane>
               </div>
             </div>

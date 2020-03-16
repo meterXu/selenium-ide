@@ -27,7 +27,12 @@ import BackgroundRecorder from '../../IO/SideeX/recorder'
 import i18n from '../../i18n'
 class UiState {
   lang = i18n.lang
-  views = [this.lang.tests, this.lang.suites, this.lang.executing]
+  views = [
+    this.lang.tests,
+    this.lang.suites,
+    this.lang.executing,
+    this.lang.processDesign,
+  ]
   @observable
   lastViewSelection = new Map()
   @observable

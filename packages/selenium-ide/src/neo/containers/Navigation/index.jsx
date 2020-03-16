@@ -94,6 +94,12 @@ export default class Navigation extends React.Component {
               onClick={ModalState.createSuite}
             />
           )}
+          {UiState.selectedView === UiState.lang.processDesign && (
+            <AddButton
+              data-tip={'<p>添加新的流程设计</p>'}
+              onClick={ModalState.createCanvas}
+            />
+          )}
         </VerticalTabBar>
         <Provider renameTest={ModalState.renameTest}>
           <React.Fragment>

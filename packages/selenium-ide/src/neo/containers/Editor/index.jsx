@@ -88,26 +88,30 @@ export default class Editor extends React.Component {
           urls={this.props.urls}
           setUrl={this.props.setUrl}
         />
-        <TestTable
-          commands={this.props.test ? this.props.test.commands : null}
-          callstackIndex={this.props.callstackIndex}
-          selectedCommand={
-            UiState.selectedCommand ? UiState.selectedCommand.id : null
-          }
-          selectCommand={UiState.selectCommand}
-          addCommand={this.addCommand}
-          removeCommand={this.removeCommand}
-          clearAllCommands={
-            this.props.test ? this.props.test.clearAllCommands : null
-          }
-          swapCommands={this.props.test ? this.props.test.swapCommands : null}
-        />
-        <CommandForm
-          command={UiState.selectedCommand}
-          setCommand={this.handleCommandChange}
-          isSelecting={UiState.isSelectingTarget}
-          onSubmit={UiState.selectNextCommand}
-        />
+        {this.props.test && (
+          <TestTable
+            commands={this.props.test ? this.props.test.commands : null}
+            callstackIndex={this.props.callstackIndex}
+            selectedCommand={
+              UiState.selectedCommand ? UiState.selectedCommand.id : null
+            }
+            selectCommand={UiState.selectCommand}
+            addCommand={this.addCommand}
+            removeCommand={this.removeCommand}
+            clearAllCommands={
+              this.props.test ? this.props.test.clearAllCommands : null
+            }
+            swapCommands={this.props.test ? this.props.test.swapCommands : null}
+          />
+        )}
+        {this.props.test && (
+          <CommandForm
+            command={UiState.selectedCommand}
+            setCommand={this.handleCommandChange}
+            isSelecting={UiState.isSelectingTarget}
+            onSubmit={UiState.selectNextCommand}
+          />
+        )}
       </main>
     )
   }
