@@ -138,6 +138,7 @@ export default class Panel extends React.Component {
         })
       }, 3000)
     }
+    this.toggleConsole = this.toggleConsole.bind(this)
   }
   handleResize(currWindow) {
     UiState.setWindowHeight(currWindow.innerHeight)
@@ -270,6 +271,22 @@ export default class Panel extends React.Component {
     newProject.setModified(false)
   }
 
+  toggleConsole() {
+    if (UiState.selectedView !== UiState.lang.processDesign) {
+      UiState.setMinConsoleHeight(30)
+      UiState.resizeConsole(100)
+      return (
+        <Console
+          height={UiState.consoleHeight}
+          restoreSize={UiState.restoreConsoleSize}
+        />
+      )
+    } else {
+      UiState.setMinConsoleHeight(0)
+      UiState.minimizeConsole()
+    }
+  }
+
   componentWillUnmount() {
     if (isProduction) {
       clearInterval(this.moveInterval)
@@ -343,10 +360,7 @@ export default class Panel extends React.Component {
                 </SplitPane>
               </div>
             </div>
-            <Console
-              height={UiState.consoleHeight}
-              restoreSize={UiState.restoreConsoleSize}
-            />
+            {this.toggleConsole()}
           </SplitPane>
           <Modal
             project={this.state.project}

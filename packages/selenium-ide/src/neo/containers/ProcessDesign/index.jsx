@@ -5,7 +5,7 @@ class ProcessDesign extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="graphContainer">
         <p>流程设计</p>
       </div>
     )

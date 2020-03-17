@@ -481,6 +481,10 @@ class UiState {
   minimizeConsole() {
     this.resizeConsole(this.minConsoleHeight)
   }
+  @action.bound
+  setMinConsoleHeight(height) {
+    this.minConsoleHeight = height
+  }
 
   @action.bound
   restoreConsoleSize() {
