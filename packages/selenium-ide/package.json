@@ -60,6 +60,7 @@
     "modifier-keys": "^1.2.1",
     "project-name-generator": "^2.1.4",
     "prop-types": "^15.5.10",
+    "raphael": "^2.3.0",
     "rc-slider": "^8.4.0",
     "react": "^16.0.0",
     "react-autocomplete": "^1.7.2",
