@@ -8,20 +8,23 @@ class ProcessDesign extends React.Component {
     super(props)
   }
   componentDidMount() {
-    let container = ReactDom.findDOMNode(this.refs.container)
-    let paper = new Raphael(
-      container,
-      container.clientWidth,
-      container.clientHeight
-    )
-    paper.circle(200, 200, 50)
+    // let container = ReactDom.findDOMNode(this.refs.container)
+    // let paper = new Raphael(
+    //   container,
+    //   container.clientWidth,
+    //   container.clientHeight
+    // )
+    // paper.circle(200, 200, 50)
   }
 
   render() {
     return (
-      <div className="graphContainer">
+      <div className="processDesign">
         {/* eslint-disable-next-line react/no-string-refs */}
-        <div className="container" ref="container" />
+        <div className="design-container" ref="container">
+          <div className="design-bg" />
+          <div className="design-graph" />
+        </div>
         <DockBar />
       </div>
     )
