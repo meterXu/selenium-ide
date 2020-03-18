@@ -18,17 +18,19 @@ class ProcessDesign extends React.Component {
     this.setState({
       zoom: GraphState.zoom,
     })
+    this.refs.designGraph.zoomGraph()
   }
   onReduce() {
     GraphState.reduceZoom()
     this.setState({
       zoom: GraphState.zoom,
     })
+    this.refs.designGraph.zoomGraph()
   }
   render() {
     return (
       <div className="processDesign">
-        <DesignGraph />
+        <DesignGraph ref="designGraph" />
         <GraphTool
           zoom={this.state.zoom}
           onEnlarge={this.onEnlarge}

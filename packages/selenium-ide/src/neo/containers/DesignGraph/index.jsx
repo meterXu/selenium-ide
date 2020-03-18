@@ -8,7 +8,13 @@ export default class DesignGraph extends React.Component {
     super(props)
     this.offsetLeft = 0
     this.offsetTop = 0
+    this.graphWidth = 0
+    this.graphHeight = 0
     this.paper = null
+    this.st0 = null
+  }
+  zoomGraph() {
+    let zoom = 2 - GraphState.zoom
   }
   componentDidMount() {
     this.refs.graphContainer.scrollLeft =
@@ -18,9 +24,11 @@ export default class DesignGraph extends React.Component {
     this.refs.graphContainer.scrollTop = this.refs.designBg.offsetTop - 80
     this.offsetLeft = this.refs.designBg.offsetLeft
     this.offsetTop = this.refs.designBg.offsetTop
+    this.graphWidth = this.refs.graph.clientWidth
+    this.graphHeight = this.refs.graph.clientHeight
     this.paper = new Raphael(this.refs.graph)
 
-    let st0 = this.paper.set()
+    this.st0 = this.paper.set()
     let start0 = this.paper
       .rect(this.offsetLeft + 360, this.offsetTop + 90, 100, 40, 6)
       .attr({
@@ -34,7 +42,7 @@ export default class DesignGraph extends React.Component {
         'font-size': 18,
         fill: '#fff',
       })
-    st0.push(start0, txt0)
+    this.st0.push(start0, txt0)
     this.paper
       .path(
         `M${this.offsetLeft + 410} ${this.offsetTop + 130}L${this.offsetLeft +
@@ -191,7 +199,6 @@ export default class DesignGraph extends React.Component {
       })
     st.push(end, txt)
   }
-
   render() {
     return (
       <div className="design-container" ref="graphContainer">

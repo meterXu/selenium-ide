@@ -16,7 +16,6 @@ class GraphState {
   }
   @action.bound
   reduceZoom() {
-    debugger
     if (this.zoom > this.minZoom) {
       this.zoom -= this.zoomSale
     } else {
@@ -25,7 +24,6 @@ class GraphState {
   }
   @action.bound
   enlargeZoom() {
-    debugger
     if (this.zoom < this.maxZoom) {
       this.zoom += this.zoomSale
     } else {
