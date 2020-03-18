@@ -11,6 +11,13 @@ class ProcessDesign extends React.Component {
     return (
       <div className="processDesign">
         <DesignGraph />
+        <div className="graph-tool">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+          </ul>
+        </div>
         <DockBar />
       </div>
     )

@@ -466,7 +466,6 @@ class UiState {
       height > this.minConsoleHeight + 20 ? height : this.storedConsoleHeight
     this.consoleHeight =
       height > this.minConsoleHeight ? tmpHeight : this.minConsoleHeight
-    debugger
 
     storage.set({
       consoleSize: this.consoleHeight,

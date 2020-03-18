@@ -13,7 +13,7 @@ export default class DesignGraph extends React.Component{
       container.clientWidth,
       container.clientHeight
     )
-    paper.circle(200, 200, 50)
+    paper.circle(400, 400, 50)
   }
 
   render() {
