@@ -296,7 +296,7 @@ export default class Panel extends React.Component {
   }
   componentDidMount() {
     window.onresize = function() {
-      UiState.setWindowHeight(window.outerHeight)
+      UiState.setWindowHeight(window.innerHeight)
     }
   }
   render() {

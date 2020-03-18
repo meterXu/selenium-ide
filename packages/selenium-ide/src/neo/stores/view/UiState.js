@@ -502,6 +502,7 @@ class UiState {
 
   @action.bound
   setWindowHeight(height) {
+    debugger
     this.windowHeight = height
     if (this.windowHeight - this.consoleHeight < this.minContentHeight) {
       this.resizeConsole(this.windowHeight - this.minContentHeight)
