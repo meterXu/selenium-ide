@@ -21,11 +21,6 @@ export default class DesignGraph extends React.Component {
     this.props.graph.offsetLeft = this.refs.designBg.offsetLeft
     this.props.graph.offsetTop = this.refs.designBg.offsetTop
     this.props.graph.paper = new Raphael(this.refs.graph)
-    this.props.graph.paper.circle(
-      this.props.graph.offsetLeft + 50,
-      this.props.graph.offsetTop + 50,
-      40
-    )
   }
 
   render() {
