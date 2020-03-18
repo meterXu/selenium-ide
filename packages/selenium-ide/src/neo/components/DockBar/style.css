@@ -4,6 +4,7 @@
     height: 72px;
     width: 100%;
     background: #ccc;
+    box-shadow: 0px -1px 4px #868686;
 }
 .ul-container{
     width: 500px;
