@@ -1,6 +1,8 @@
 import React from 'react'
 import Raphael from 'raphael'
 import './style.css'
+import { PropTypes } from 'prop-types'
+import GraphState from '../../stores/view/GraphState'
 export default class DesignGraph extends React.Component {
   constructor(props) {
     super(props)
