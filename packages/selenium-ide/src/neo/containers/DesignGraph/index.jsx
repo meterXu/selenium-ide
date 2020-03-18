@@ -1,26 +1,38 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 import Raphael from 'raphael'
 import './style.css'
-export default class DesignGraph extends React.Component{
+export default class DesignGraph extends React.Component {
+  static defaultProps = {
+    graph: {
+      offsetLeft: 0,
+      offsetTop: 0,
+      paper: null,
+    },
+  }
   constructor(props) {
     super(props)
   }
   componentDidMount() {
-    let container = ReactDom.findDOMNode(this.refs.graph)
-    let paper = new Raphael(
-      container,
-      container.clientWidth,
-      container.clientHeight
+    this.refs.graphContainer.scrollLeft =
+      (this.refs.graphContainer.scrollWidth -
+        this.refs.graphContainer.clientWidth) /
+      2
+    this.refs.graphContainer.scrollTop = this.refs.designBg.offsetTop - 80
+    this.props.graph.offsetLeft = this.refs.designBg.offsetLeft
+    this.props.graph.offsetTop = this.refs.designBg.offsetTop
+    this.props.graph.paper = new Raphael(this.refs.graph)
+    this.props.graph.paper.circle(
+      this.props.graph.offsetLeft + 50,
+      this.props.graph.offsetTop + 50,
+      40
     )
-    paper.circle(562, 938, 50)
   }
 
   render() {
     return (
-      <div className="design-container">
-        <div className="design-bg" />
-        <div className="design-graph" ref="graph"/>
+      <div className="design-container" ref="graphContainer">
+        <div className="design-bg" ref="designBg" />
+        <div className="design-graph" ref="graph" />
       </div>
     )
   }
