@@ -1,6 +1,7 @@
 import React from 'react'
 import DockBar from '../../components/DockBar'
 import DesignGraph from '../DesignGraph'
+import GraphTool from '../../components/GraphTool'
 import './style.css'
 class ProcessDesign extends React.Component {
   constructor(props) {
@@ -11,13 +12,7 @@ class ProcessDesign extends React.Component {
     return (
       <div className="processDesign">
         <DesignGraph />
-        <div className="graph-tool">
-          <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-          </ul>
-        </div>
+        <GraphTool />
         <DockBar />
       </div>
     )
