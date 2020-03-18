@@ -10,8 +10,12 @@ class ProcessStart {
     let fontSize = 18
     let start = GraphState.paper
       .rect(
-        GraphState.offsetLeft + GraphState.firstLeft * GraphState.zoom,
-        GraphState.offsetTop + GraphState.firstTop * GraphState.zoom,
+        GraphState.offsetLeft +
+          GraphState.firstLeft -
+          (width * GraphState.zoom) / 2,
+        GraphState.offsetTop +
+          GraphState.firstTop -
+          (height * GraphState.zoom) / 2,
         width * GraphState.zoom,
         height * GraphState.zoom,
         radius * GraphState.zoom
@@ -23,10 +27,8 @@ class ProcessStart {
       })
     let txt = GraphState.paper
       .text(
-        GraphState.offsetLeft +
-          (GraphState.firstLeft + width / 2) * GraphState.zoom,
-        GraphState.offsetTop +
-          (GraphState.firstTop + height / 2) * GraphState.zoom,
+        GraphState.offsetLeft + GraphState.firstLeft,
+        GraphState.offsetTop + GraphState.firstTop,
         '开始'
       )
       .attr({

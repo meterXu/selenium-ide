@@ -8,7 +8,8 @@ export default class DesignGraph extends React.Component {
     super(props)
   }
   zoomGraph() {
-    let zoom = 2 - GraphState.zoom
+    GraphState.paper.clear()
+    GraphDraw.processStart()
   }
   componentDidMount() {
     this.refs.graphContainer.scrollLeft =
