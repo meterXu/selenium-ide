@@ -20,7 +20,7 @@ export default class DesignGraph extends React.Component {
     GraphState.setOffsetTop(this.refs.designBg.offsetTop)
     let paper = new Raphael(this.refs.graph)
     GraphState.setPaper(paper)
-    GraphDraw.processStart()
+    GraphDraw.drawProcess()
 
     // this.paper
     //   .path(

@@ -18,7 +18,14 @@ class ProcessStart {
   }
   @action.bound
   processStart() {
+    let st = GraphState.paper.set()
     let { x, y } = this.getPositionVertical(0)
+    let { txtX, txtY } = this.getPositionText(
+      x,
+      y,
+      this.rectParam.width,
+      this.rectParam.height
+    )
     let cc = GraphState.paper
       .rect(
         x,
@@ -32,36 +39,69 @@ class ProcessStart {
         stroke: '#818283',
         'stroke-width': this.rectParam.strokeWidth * GraphState.zoom,
       })
-    // let txt = GraphState.paper
-    //   .text(
-    //     GraphState.offsetLeft + GraphState.firstDrawX,
-    //     GraphState.offsetTop + GraphState.firstDrawY,
-    //     '开始'
-    //   )
-    //   .attr({
-    //     'font-size': fontSize * GraphState.zoom,
-    //     fill: '#fff',
-    //   })
-    this.itemList.push(cc)
+    let txt = GraphState.paper
+      .text(txtX, txtY, '开始')
+      .attr({
+        'font-size': this.rectParam.fontSize * GraphState.zoom,
+        fill: '#fff',
+      })
+      .data('from', 'rect')
+    st.push(cc)
+    st.push(txt)
+    this.itemList.push(st)
   }
   @action.bound
   resizeGraph() {
     this.itemList.forEach((c, index) => {
       switch (c.type) {
-        case 'rect':
+        case 'set':
           {
             let { x, y } = this.getPositionVertical(index)
-            c.animate(
-              {
-                x,
-                y,
-                width: this.rectParam.width * GraphState.zoom,
-                height: this.rectParam.height * GraphState.zoom,
-                r: this.rectParam.radius * GraphState.zoom,
-              },
-              300,
-              '<>'
-            )
+            c.forEach(s => {
+              switch (s.type) {
+                case 'rect':
+                  {
+                    s.animate(
+                      {
+                        x,
+                        y,
+                        width: this.rectParam.width * GraphState.zoom,
+                        height: this.rectParam.height * GraphState.zoom,
+                        r: this.rectParam.radius * GraphState.zoom,
+                      },
+                      300,
+                      '<>'
+                    )
+                  }
+                  break
+                case 'text':
+                  {
+                    let { txtX, txtY } = this.getPositionText(
+                      x,
+                      y,
+                      s.data('from') === 'rect'
+                        ? this.rectParam.width
+                        : this.nodeParam.width,
+                      s.data('from') === 'rect'
+                        ? this.rectParam.height
+                        : this.nodeParam.height
+                    )
+                    s.animate(
+                      {
+                        x: txtX,
+                        y: txtY,
+                        'font-size':
+                          s.data('from') === 'rect'
+                            ? this.rectParam.fontSize * GraphState.zoom
+                            : this.nodeParam.fontSize * GraphState.zoom,
+                      },
+                      300,
+                      '<>'
+                    )
+                  }
+                  break
+              }
+            })
           }
           break
       }
@@ -94,6 +134,16 @@ class ProcessStart {
         (this.nodeParam.height * (nodeIndex - 1)) / 2) *
         GraphState.zoom
     return { x, y }
+  }
+  @action.bound
+  getPositionText(x, y, width, height) {
+    let txtX = x + (width * GraphState.zoom) / 2
+    let txtY = y + (height * GraphState.zoom) / 2
+    return { txtX, txtY }
+  }
+  @action.bound
+  drawProcess() {
+    this.processStart()
   }
 }
 
