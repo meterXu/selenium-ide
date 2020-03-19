@@ -17,6 +17,8 @@ class ProcessStart {
     height: 48,
     fontSize: 14,
     color: '#333',
+    pathStrokeWidth: 2,
+    pathStroke: '#818283',
   }
   processStart() {
     let st = GraphState.paper.set()
@@ -110,7 +112,7 @@ class ProcessStart {
         x +
           (vIndex === 0 ? this.rectParam.width / 2 : this.nodeParam.width / 2) *
             GraphState.zoom,
-        y,
+        y - (vIndex === 0 ? 0 : 3) * GraphState.zoom,
       ]
       pe = [
         ps[0],
@@ -211,12 +213,17 @@ class ProcessStart {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
       .attr({
-        stroke: '#818283',
-        'stroke-width': 2,
+        stroke: this.nodeParam.pathStroke,
+        'stroke-width': this.nodeParam.pathStrokeWidth * GraphState.zoom,
       })
       .animate(
         {
-          path: `M${from[0]} ${from[1]}L${to[0]} ${to[1]}`,
+          path: `M${from[0]} ${from[1]}L${to[0]} ${to[1]}M${to[0]} ${
+            to[1]
+          }L${to[0] - 2 * GraphState.zoom} ${to[1] -
+            4 * GraphState.zoom}L${to[0] + 2 * GraphState.zoom} ${to[1] -
+            4 * GraphState.zoom}Z`,
+          fill: '#818283',
         },
         200,
         '<>'
@@ -241,6 +248,8 @@ class ProcessStart {
                           width: this.rectParam.width * GraphState.zoom,
                           height: this.rectParam.height * GraphState.zoom,
                           r: this.rectParam.radius * GraphState.zoom,
+                          'stroke-width':
+                            this.rectParam.strokeWidth * GraphState.zoom,
                         },
                         300,
                         '<>'
@@ -299,7 +308,24 @@ class ProcessStart {
                       ).pe
                       s.animate(
                         {
-                          path: `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}`,
+                          path:
+                            h === 0
+                              ? `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${
+                                  pe[0]
+                                } ${pe[1]}L${pe[0] -
+                                  2 * GraphState.zoom} ${pe[1] -
+                                  4 * GraphState.zoom}L${pe[0] +
+                                  2 * GraphState.zoom} ${pe[1] -
+                                  4 * GraphState.zoom}Z`
+                              : `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${
+                                  pe[0]
+                                } ${pe[1]}L${pe[0] -
+                                  4 * GraphState.zoom} ${pe[1] -
+                                  2 * GraphState.zoom}L${pe[0] -
+                                  4 * GraphState.zoom} ${pe[1] +
+                                  2 * GraphState.zoom}Z`,
+                          'stroke-width':
+                            this.nodeParam.pathStrokeWidth * GraphState.zoom,
                         },
                         300,
                         '<>'
