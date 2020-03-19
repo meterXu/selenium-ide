@@ -1,9 +1,10 @@
 import React from 'react'
-import DockBar from '../../components/DockBar'
+import GraphDockBar from '../../components/GraphDockBar'
 import DesignGraph from '../DesignGraph'
 import GraphTool from '../../components/GraphTool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
+import GraphDraw from '../../components/GraphDraw'
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
@@ -27,6 +28,9 @@ class ProcessDesign extends React.Component {
     })
     this.refs.designGraph.zoomGraph()
   }
+  itemClick(item){
+    GraphDraw.drawItem(item)
+  }
   render() {
     return (
       <div className="processDesign">
@@ -36,7 +40,7 @@ class ProcessDesign extends React.Component {
           onEnlarge={this.onEnlarge}
           onReduce={this.onReduce}
         />
-        <DockBar />
+        <GraphDockBar itemClick={this.itemClick.bind(this)} />
       </div>
     )
   }

@@ -16,7 +16,6 @@ class ProcessStart {
     height: 60,
     fontSize: 18,
   }
-  @action.bound
   processStart() {
     let st = GraphState.paper.set()
     let { x, y } = this.getPositionVertical(0)
@@ -50,6 +49,54 @@ class ProcessStart {
     st.push(txt)
     this.itemList.push(st)
   }
+  getPositionVertical(index) {
+    let startHeight = null
+    let nodeIndex = null
+    let cacleWidth = null
+    if (index === 0) {
+      startHeight = 0
+      nodeIndex = 0
+      cacleWidth = this.rectParam.width
+    } else {
+      startHeight = this.rectParam.height
+      nodeIndex = index - 1
+      cacleWidth = this.nodeParam.width
+    }
+    let x =
+      GraphState.offsetLeft +
+      GraphState.firstDrawX -
+      (cacleWidth / 2) * GraphState.zoom
+    let y =
+      GraphState.offsetTop +
+      (GraphState.firstDrawY +
+      (startHeight +
+        GraphState.verticalInterval * index +
+        this.nodeParam.height * nodeIndex)) *
+        GraphState.zoom
+    return { x, y }
+  }
+  getPositionText(x, y, width, height) {
+    let txtX = x + (width * GraphState.zoom) / 2
+    let txtY = y + (height * GraphState.zoom) / 2
+    return { txtX, txtY }
+  }
+  @action.bound
+  drawProcess() {
+    this.processStart()
+  }
+  drawItem(item) {
+    let st = GraphState.paper.set()
+    let { x, y } = this.getPositionVertical(this.itemList.length)
+    let cc = GraphState.paper.image(
+      item.img,
+      x,
+      y,
+      this.nodeParam.width * GraphState.zoom,
+      this.nodeParam.height * GraphState.zoom
+    )
+    st.push(cc)
+    this.itemList.push(st)
+  }
   @action.bound
   resizeGraph() {
     this.itemList.forEach((c, index) => {
@@ -68,6 +115,20 @@ class ProcessStart {
                         width: this.rectParam.width * GraphState.zoom,
                         height: this.rectParam.height * GraphState.zoom,
                         r: this.rectParam.radius * GraphState.zoom,
+                      },
+                      300,
+                      '<>'
+                    )
+                  }
+                  break
+                case 'image':
+                  {
+                    s.animate(
+                      {
+                        x,
+                        y,
+                        width: this.nodeParam.width * GraphState.zoom,
+                        height: this.nodeParam.height * GraphState.zoom,
                       },
                       300,
                       '<>'
@@ -106,44 +167,6 @@ class ProcessStart {
           break
       }
     })
-  }
-  @action.bound
-  getPositionVertical(index) {
-    let startHeight = null
-    let nodeIndex = null
-    let cacleWidth = null
-    if (index === 0) {
-      startHeight = 0
-      nodeIndex = 0
-      cacleWidth = this.rectParam.width
-    } else {
-      startHeight = this.rectParam.height
-      nodeIndex = index - 1
-      cacleWidth = this.nodeParam.width
-    }
-    let x =
-      GraphState.offsetLeft +
-      GraphState.firstDrawX -
-      (cacleWidth / 2) * GraphState.zoom
-    let y =
-      GraphState.offsetTop +
-      GraphState.firstDrawY +
-      (startHeight +
-        GraphState.verticalInterval * index -
-        startHeight / 2 -
-        (this.nodeParam.height * (nodeIndex - 1)) / 2) *
-        GraphState.zoom
-    return { x, y }
-  }
-  @action.bound
-  getPositionText(x, y, width, height) {
-    let txtX = x + (width * GraphState.zoom) / 2
-    let txtY = y + (height * GraphState.zoom) / 2
-    return { txtX, txtY }
-  }
-  @action.bound
-  drawProcess() {
-    this.processStart()
   }
 }
 
