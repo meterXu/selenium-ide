@@ -159,7 +159,7 @@ class ProcessStart {
   drawProcess() {
     this.processStart()
   }
-  drawItem(item) {
+  drawItem(item, func, contentMenuFunc) {
     let st = GraphState.paper.set()
     let { x, y, ps } = this.getPosition(0, this.itemList.length)
     let lPosition = this.getPosition(0, this.itemList.length - 1)
@@ -188,6 +188,17 @@ class ProcessStart {
         '<>'
       )
       .data('direction', 'vertical')
+    if (item.type === 'while') {
+      cc.mousedown(function(e) {
+        if (e.which == 3) {
+          contentMenuFunc && contentMenuFunc(e)
+        }
+      })
+    } else {
+      cc.click(c => {
+        func && func(c)
+      })
+    }
     let txt = GraphState.paper
       .text(500, 3000, item.text)
       .attr({

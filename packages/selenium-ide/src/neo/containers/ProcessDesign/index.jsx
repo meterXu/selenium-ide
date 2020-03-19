@@ -29,7 +29,15 @@ class ProcessDesign extends React.Component {
     this.refs.designGraph.zoomGraph()
   }
   itemClick(item) {
-    GraphDraw.drawItem(item)
+    GraphDraw.drawItem(
+      item,
+      c => {
+        alert(item.type)
+      },
+      d => {
+        alert(item.type)
+      }
+    )
   }
   render() {
     return (
