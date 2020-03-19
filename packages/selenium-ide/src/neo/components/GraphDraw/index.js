@@ -32,7 +32,7 @@ class ProcessStart {
         x,
         y,
         this.rectParam.width * GraphState.zoom,
-        this.rectParam.height * GraphState.zoom,
+        0,
         this.rectParam.radius * GraphState.zoom
       )
       .attr({
@@ -40,13 +40,27 @@ class ProcessStart {
         stroke: '#818283',
         'stroke-width': this.rectParam.strokeWidth * GraphState.zoom,
       })
+      .animate(
+        {
+          height: this.rectParam.height * GraphState.zoom,
+        },
+        500,
+        'bounce'
+      )
       .data('vc', [0, 0])
     let txt = GraphState.paper
       .text(txtX, txtY, '开始')
       .attr({
-        'font-size': this.rectParam.fontSize * GraphState.zoom,
+        'font-size': 0,
         fill: this.rectParam.color,
       })
+      .animate(
+        {
+          'font-size': this.rectParam.fontSize * GraphState.zoom,
+        },
+        500,
+        'elastic'
+      )
       .data('from', 'rect')
     st.push(cc)
     st.push(txt)
@@ -54,29 +68,74 @@ class ProcessStart {
   }
   getPosition(hIndex, vIndex) {
     let startHeight = null
-    let nodeIndex = null
+    let startWidth = null
+    let vNodeIndex = null
+    let hNodeIndex = null
     let cacleWidth = null
     if (vIndex === 0) {
       startHeight = 0
-      nodeIndex = 0
+      vNodeIndex = 0
       cacleWidth = this.rectParam.width
     } else {
       startHeight = this.rectParam.height
-      nodeIndex = vIndex - 1
+      vNodeIndex = vIndex - 1
       cacleWidth = this.nodeParam.width
+    }
+    if (hIndex === 0) {
+      hNodeIndex = 0
+      startWidth = 0
+    } else {
+      hNodeIndex = hIndex - 1
+      startWidth = vIndex === 0 ? this.rectParam.width : this.nodeParam.width
     }
     let x =
       GraphState.offsetLeft +
       GraphState.firstDrawX -
-      (cacleWidth / 2) * GraphState.zoom
+      (cacleWidth / 2) * GraphState.zoom +
+      (startWidth +
+        GraphState.LevelInterval * hIndex +
+        this.nodeParam.width * hNodeIndex) *
+        GraphState.zoom
     let y =
       GraphState.offsetTop +
       (GraphState.firstDrawY +
         (startHeight +
           GraphState.verticalInterval * vIndex +
-          this.nodeParam.height * nodeIndex)) *
+          this.nodeParam.height * vNodeIndex)) *
         GraphState.zoom
-    return { x, y }
+    let ps = []
+    let pe = []
+    if (hIndex === 0) {
+      ps = [
+        x +
+          (vIndex === 0 ? this.rectParam.width / 2 : this.nodeParam.width / 2) *
+            GraphState.zoom,
+        y,
+      ]
+      pe = [
+        ps[0],
+        y +
+          ((vIndex === 0 ? this.rectParam.height : this.nodeParam.height) +
+            (vIndex === 0 ? 0 : 18)) *
+            GraphState.zoom,
+      ]
+    } else {
+      ps = [
+        x,
+        y +
+          (vIndex === 0
+            ? this.rectParam.height / 2
+            : this.nodeParam.height / 2) *
+            GraphState.zoom,
+      ]
+      pe = [
+        x +
+          (vIndex == 0 ? this.rectParam.width : this.nodeParam.width) *
+            GraphState.zoom,
+        ps[1],
+      ]
+    }
+    return { x, y, ps, pe }
   }
   getPositionText(x, y, width, height, position) {
     position = position || 'center'
@@ -100,7 +159,9 @@ class ProcessStart {
   }
   drawItem(item) {
     let st = GraphState.paper.set()
-    let { x, y } = this.getPosition(0, this.itemList.length)
+    let { x, y, ps } = this.getPosition(0, this.itemList.length)
+    let lPosition = this.getPosition(0, this.itemList.length - 1)
+    let lpe = lPosition.pe
     let { txtX, txtY } = this.getPositionText(
       x,
       y,
@@ -111,22 +172,55 @@ class ProcessStart {
     let cc = GraphState.paper
       .image(
         item.img,
-        x,
-        y,
+        500,
+        3000,
         this.nodeParam.width * GraphState.zoom,
         this.nodeParam.height * GraphState.zoom
       )
+      .animate(
+        {
+          x,
+          y,
+        },
+        500,
+        '<>'
+      )
       .data('direction', 'vertical')
     let txt = GraphState.paper
-      .text(txtX, txtY, item.text)
+      .text(500, 3000, item.text)
       .attr({
         'font-size': this.nodeParam.fontSize * GraphState.zoom,
         fill: this.nodeParam.color,
       })
+      .animate(
+        {
+          x: txtX,
+          y: txtY,
+        },
+        500,
+        '<>'
+      )
       .data('from', 'image')
+    let ll = this.drawLine(lpe, ps)
     st.push(cc)
     st.push(txt)
+    st.push(ll)
     this.itemList.push([st])
+  }
+  drawLine(from, to) {
+    return GraphState.paper
+      .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
+      .attr({
+        stroke: '#818283',
+        'stroke-width': 2,
+      })
+      .animate(
+        {
+          path: `M${from[0]} ${from[1]}L${to[0]} ${to[1]}`,
+        },
+        200,
+        '<>'
+      )
   }
   @action.bound
   resizeGraph() {
@@ -190,6 +284,22 @@ class ProcessStart {
                             s.data('from') === 'rect'
                               ? this.rectParam.fontSize * GraphState.zoom
                               : this.nodeParam.fontSize * GraphState.zoom,
+                        },
+                        300,
+                        '<>'
+                      )
+                    }
+                    break
+                  case 'path':
+                    {
+                      let pe = this.getPosition(h, v).ps
+                      let ps = (h === 0
+                        ? this.getPosition(h, v - 1)
+                        : this.getPosition(h - 1, v)
+                      ).pe
+                      s.animate(
+                        {
+                          path: `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}`,
                         },
                         300,
                         '<>'
