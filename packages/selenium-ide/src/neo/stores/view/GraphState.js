@@ -10,9 +10,9 @@ class GraphState {
   @observable
   maxZoom = 2
   @observable
-  firstLeft = 360
+  firstDrawX = 360
   @observable
-  firstTop = 90
+  firstDrawY = 90
   @observable
   offsetLeft = 0
   @observable
