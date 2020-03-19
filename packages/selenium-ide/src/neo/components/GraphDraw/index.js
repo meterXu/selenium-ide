@@ -5,16 +5,18 @@ class ProcessStart {
   itemList = []
   @observable
   rectParam = {
-    width: 100,
-    height: 40,
-    radius: 6,
+    width: 80,
+    height: 32,
+    radius: 4,
     strokeWidth: 2,
-    fontSize: 18,
+    fontSize: 16,
+    color: '#fff',
   }
   nodeParam = {
-    width: 60,
-    height: 60,
-    fontSize: 18,
+    width: 48,
+    height: 48,
+    fontSize: 14,
+    color: '#333',
   }
   processStart() {
     let st = GraphState.paper.set()
@@ -42,7 +44,7 @@ class ProcessStart {
       .text(txtX, txtY, '开始')
       .attr({
         'font-size': this.rectParam.fontSize * GraphState.zoom,
-        fill: '#fff',
+        fill: this.rectParam.color,
       })
       .data('from', 'rect')
     st.push(cc)
@@ -69,16 +71,27 @@ class ProcessStart {
     let y =
       GraphState.offsetTop +
       (GraphState.firstDrawY +
-      (startHeight +
-        GraphState.verticalInterval * index +
-        this.nodeParam.height * nodeIndex)) *
+        (startHeight +
+          GraphState.verticalInterval * index +
+          this.nodeParam.height * nodeIndex)) *
         GraphState.zoom
     return { x, y }
   }
-  getPositionText(x, y, width, height) {
-    let txtX = x + (width * GraphState.zoom) / 2
-    let txtY = y + (height * GraphState.zoom) / 2
-    return { txtX, txtY }
+  getPositionText(x, y, width, height, position) {
+    position = position || 'center'
+    switch (position) {
+      case 'center': {
+        let txtX = x + (width * GraphState.zoom) / 2
+        let txtY = y + (height * GraphState.zoom) / 2
+        return { txtX, txtY }
+      }
+      case 'bottomCenter':
+      default: {
+        let txtX = x + (width * GraphState.zoom) / 2
+        let txtY = y + (height + 10) * GraphState.zoom
+        return { txtX, txtY }
+      }
+    }
   }
   @action.bound
   drawProcess() {
@@ -87,6 +100,13 @@ class ProcessStart {
   drawItem(item) {
     let st = GraphState.paper.set()
     let { x, y } = this.getPositionVertical(this.itemList.length)
+    let { txtX, txtY } = this.getPositionText(
+      x,
+      y,
+      this.nodeParam.width,
+      this.nodeParam.height,
+      'bottomCenter'
+    )
     let cc = GraphState.paper.image(
       item.img,
       x,
@@ -94,7 +114,15 @@ class ProcessStart {
       this.nodeParam.width * GraphState.zoom,
       this.nodeParam.height * GraphState.zoom
     )
+    let txt = GraphState.paper
+      .text(txtX, txtY, item.text)
+      .attr({
+        'font-size': this.nodeParam.fontSize * GraphState.zoom,
+        fill: this.nodeParam.color,
+      })
+      .data('from', 'image')
     st.push(cc)
+    st.push(txt)
     this.itemList.push(st)
   }
   @action.bound
@@ -145,7 +173,8 @@ class ProcessStart {
                         : this.nodeParam.width,
                       s.data('from') === 'rect'
                         ? this.rectParam.height
-                        : this.nodeParam.height
+                        : this.nodeParam.height,
+                      s.data('from') === 'rect' ? 'center' : 'bottomCenter'
                     )
                     s.animate(
                       {

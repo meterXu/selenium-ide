@@ -20,9 +20,9 @@ class GraphState {
   @observable
   paper = null
   @observable
-  verticalInterval = 40
+  verticalInterval = 48
   @observable
-  LevelInterval = 40
+  LevelInterval = 48
   @action.bound
   setZoom(value) {
     this.zoom = value
