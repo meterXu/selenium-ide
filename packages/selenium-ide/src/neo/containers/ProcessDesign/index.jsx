@@ -11,7 +11,7 @@ class ProcessDesign extends React.Component {
     this.onEnlarge = this.onEnlarge.bind(this)
     this.onReduce = this.onReduce.bind(this)
     this.state = {
-      zoom: GraphState.zoom,
+      zoom: 1,
     }
   }
   onEnlarge() {
@@ -19,14 +19,14 @@ class ProcessDesign extends React.Component {
     this.setState({
       zoom: GraphState.zoom,
     })
-    this.refs.designGraph.zoomGraph()
+    GraphDraw.resizeGraph()
   }
   onReduce() {
     GraphState.reduceZoom()
     this.setState({
       zoom: GraphState.zoom,
     })
-    this.refs.designGraph.zoomGraph()
+    GraphDraw.resizeGraph()
   }
   itemClick(item) {
     GraphDraw.drawVerticalItem(
@@ -42,7 +42,7 @@ class ProcessDesign extends React.Component {
   render() {
     return (
       <div className="processDesign">
-        <DesignGraph ref="designGraph" />
+        <DesignGraph />
         <GraphTool
           zoom={this.state.zoom}
           onEnlarge={this.onEnlarge}

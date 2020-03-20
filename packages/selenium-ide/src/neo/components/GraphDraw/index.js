@@ -356,6 +356,11 @@ class ProcessStart {
       })
     })
   }
+  @action.bound
+  resetGraph() {
+    GraphState.paper.clear()
+    this.itemList = []
+  }
 }
 
 if (!window._processStart) window._processStart = new ProcessStart()

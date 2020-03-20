@@ -7,10 +7,8 @@ export default class DesignGraph extends React.Component {
   constructor(props) {
     super(props)
   }
-  zoomGraph() {
-    GraphDraw.resizeGraph()
-  }
   componentDidMount() {
+    GraphState.setZoom(1)
     this.refs.graphContainer.scrollLeft =
       (this.refs.graphContainer.scrollWidth -
         this.refs.graphContainer.clientWidth) /
@@ -18,6 +16,9 @@ export default class DesignGraph extends React.Component {
     this.refs.graphContainer.scrollTop = this.refs.designBg.offsetTop - 80
     GraphState.setOffsetLeft(this.refs.designBg.offsetLeft)
     GraphState.setOffsetTop(this.refs.designBg.offsetTop)
+    if (GraphState.paper) {
+      GraphDraw.resetGraph()
+    }
     let paper = new Raphael(this.refs.graph)
     GraphState.setPaper(paper)
     GraphDraw.drawProcess()
