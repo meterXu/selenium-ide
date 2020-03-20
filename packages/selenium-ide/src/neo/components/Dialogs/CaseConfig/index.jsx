@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
+import LabelledInput from '../../LabelledInput'
 export default class CaseConfigDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -30,6 +31,10 @@ export default class CaseConfigDialog extends React.Component {
 class CaseConfigDialogContents extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      caseId: null,
+      params: null,
+    }
   }
   render() {
     const content = {
@@ -65,7 +70,13 @@ class CaseConfigDialogContents extends React.Component {
         )}
       >
         {content.bodyTop}
-        <span>配置内容</span>
+        <LabelledInput name="caseId" label="用例" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数1" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数2" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数3" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数4" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数5" value={this.state.caseId} />
+        <LabelledInput name="caseId" label="参数6" value={this.state.caseId} />
         {content.bodyBottom}
       </DialogContainer>
     )

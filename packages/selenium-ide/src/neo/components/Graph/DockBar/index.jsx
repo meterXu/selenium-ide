@@ -6,30 +6,30 @@ export default class GraphDockBar extends React.Component {
     super(props)
     this.state = {
       dockItemList: [
-        { type: 'case', img: require('../../../icons/case.svg'), text: '用例' },
+        { type: 'case', img: require('../../../../icons/case.svg'), text: '用例' },
         {
           type: 'while',
-          img: require('../../../icons/while.svg'),
+          img: require('../../../../icons/while.svg'),
           text: '循环',
         },
         {
           type: 'excelRead',
-          img: require('../../../icons/excel_read.svg'),
+          img: require('../../../../icons/excel_read.svg'),
           text: 'Excel读',
         },
         {
           type: 'excelWrite',
-          img: require('../../../icons/excel_write.svg'),
+          img: require('../../../../icons/excel_write.svg'),
           text: 'Excel写',
         },
         {
           type: 'oracleRead',
-          img: require('../../../icons/oracle_read.svg'),
+          img: require('../../../../icons/oracle_read.svg'),
           text: 'Oracle读',
         },
         {
           type: 'oracleWrite',
-          img: require('../../../icons/oracle_write.svg'),
+          img: require('../../../../icons/oracle_write.svg'),
           text: 'Oracle写',
         },
       ],

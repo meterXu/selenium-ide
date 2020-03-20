@@ -1,10 +1,10 @@
 import React from 'react'
-import GraphDockBar from '../../components/GraphDockBar'
-import DesignGraph from '../DesignGraph'
-import GraphTool from '../../components/GraphTool'
+import GraphDockBar from '../../components/Graph/DockBar'
+import DesignGraph from '../Graph'
+import GraphTool from '../../components/Graph/Tool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
-import GraphDraw from '../../components/GraphDraw'
+import GraphDraw from '../../components/Graph/Draw'
 import ModalState from '../../stores/view/ModalState'
 class ProcessDesign extends React.Component {
   constructor(props) {

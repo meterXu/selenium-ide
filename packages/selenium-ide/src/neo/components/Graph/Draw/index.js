@@ -1,5 +1,5 @@
 import { action, computed, observable, observe, extendObservable } from 'mobx'
-import GraphState from '../../stores/view/GraphState'
+import GraphState from '../../../stores/view/GraphState'
 class ProcessStart {
   @observable
   itemList = []
