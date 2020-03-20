@@ -30,3 +30,6 @@
     position: absolute;
     background-image: none;
 }
+.graph-txt,.graph-processStart-txt{
+    user-select: none;
+}

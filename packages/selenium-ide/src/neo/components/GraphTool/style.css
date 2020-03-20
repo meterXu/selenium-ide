@@ -16,6 +16,7 @@
     font-size: 12px;
     line-height: 36px;
     display: block;
+    user-select:none;
 }
 .graph-tool-item{
     width: 20px;
@@ -27,8 +28,10 @@
     cursor: pointer;
     color: #828282;
     display: inline-block;
+    user-select:none;
 }
 .graph-tool-item:hover{
-    color: #62D095;
+    color: #5A5A5A;
+    background: rgba(98,208,149,0.4);
     border-color: #62D095;
 }

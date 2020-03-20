@@ -43,6 +43,7 @@
 }
 .item-container li span{
     font-size: 12px;
+    user-select:none;
     display: block;
 }
 ::-webkit-scrollbar {

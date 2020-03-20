@@ -55,6 +55,7 @@ class ProcessStart {
       .attr({
         'font-size': 0,
         fill: this.rectParam.color,
+        class: 'graph-txt',
       })
       .animate(
         {
@@ -179,6 +180,9 @@ class ProcessStart {
         this.nodeParam.width * GraphState.zoom,
         this.nodeParam.height * GraphState.zoom
       )
+      .attr({
+        cursor: 'pointer',
+      })
       .animate(
         {
           x,
@@ -188,22 +192,12 @@ class ProcessStart {
         '<>'
       )
       .data('direction', 'vertical')
-    if (item.type === 'while') {
-      cc.mousedown(function(e) {
-        if (e.which == 3) {
-          contentMenuFunc && contentMenuFunc(e)
-        }
-      })
-    } else {
-      cc.click(c => {
-        func && func(c)
-      })
-    }
     let txt = GraphState.paper
       .text(500, 3000, item.text)
       .attr({
         'font-size': this.nodeParam.fontSize * GraphState.zoom,
         fill: this.nodeParam.color,
+        class: 'graph-txt',
       })
       .animate(
         {
@@ -215,6 +209,17 @@ class ProcessStart {
       )
       .data('from', 'image')
     let ll = this.drawLine(lpe, ps)
+    if (item.type === 'while') {
+      cc.mousedown(function(e) {
+        if (e.which == 3) {
+          contentMenuFunc && contentMenuFunc(e)
+        }
+      })
+    } else {
+      cc.click(c => {
+        func && func(c)
+      })
+    }
     st.push(cc)
     st.push(txt)
     st.push(ll)
