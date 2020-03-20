@@ -162,6 +162,7 @@ class ProcessStart {
   }
   drawVerticalItem(item, func, contentMenuFunc) {
     let st = GraphState.paper.set()
+    let coordinate = [0, this.itemList.length]
     let { x, y, ps } = this.getPosition(0, this.itemList.length)
     let lPosition = this.getPosition(0, this.itemList.length - 1)
     let lpe = lPosition.pe
@@ -209,21 +210,28 @@ class ProcessStart {
       )
       .data('from', 'image')
     let ll = this.drawLine(lpe, ps)
-    if (item.type === 'while') {
-      cc.mousedown(function(e) {
-        if (e.which == 3) {
-          contentMenuFunc && contentMenuFunc(e)
-        }
-      })
-    } else {
-      cc.click(c => {
-        func && func(c)
-      })
-    }
     st.push(cc)
     st.push(txt)
     st.push(ll)
     this.itemList.push([st])
+    let graphItem = {
+      id: null,
+      text: item.text,
+      type: item.type,
+      coordinate: coordinate,
+    }
+    GraphState.addGraphData(graphItem)
+    if (item.type === 'while') {
+      cc.mousedown(function(e) {
+        if (e.which == 3) {
+          contentMenuFunc && contentMenuFunc(graphItem)
+        }
+      })
+    } else {
+      cc.click(c => {
+        func && func(graphItem)
+      })
+    }
   }
   drawLine(from, to) {
     return GraphState.paper
