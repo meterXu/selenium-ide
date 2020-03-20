@@ -319,6 +319,7 @@ class ProcessStart {
                       ).pe
                       s.animate(
                         {
+                          'stroke-dasharray': h === 0 ? '' : '-',
                           path:
                             h === 0
                               ? `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${
