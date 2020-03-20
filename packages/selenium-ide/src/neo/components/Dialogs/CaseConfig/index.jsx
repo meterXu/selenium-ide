@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
 import LabelledInput from '../../LabelledInput'
+import Combobox from '../../Graph/Combobox'
 export default class CaseConfigDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -34,7 +35,20 @@ class CaseConfigDialogContents extends React.Component {
     this.state = {
       caseId: null,
       params: null,
+      itemData: [],
     }
+  }
+  itemClick(value) {
+    this.setState({
+      caseId: value,
+    })
+  }
+  componentDidMount() {
+    this.setState({
+      itemData: this.props.tests.map(c => {
+        return { text: c.name, value: c.id }
+      }),
+    })
   }
   render() {
     const content = {
@@ -70,13 +84,12 @@ class CaseConfigDialogContents extends React.Component {
         )}
       >
         {content.bodyTop}
-        <LabelledInput name="caseId" label="用例" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数1" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数2" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数3" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数4" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数5" value={this.state.caseId} />
-        <LabelledInput name="caseId" label="参数6" value={this.state.caseId} />
+        <Combobox
+          name="caseId"
+          label="用例"
+          itemData={this.state.itemData}
+          itemClick={this.itemClick.bind(this)}
+        />
         {content.bodyBottom}
       </DialogContainer>
     )

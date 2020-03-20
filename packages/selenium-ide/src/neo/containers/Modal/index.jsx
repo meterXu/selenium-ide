@@ -72,6 +72,8 @@ export default class Modal extends Component {
         <CaseConfigDialog
           isOpen={ModalState.caseConfigState}
           cancel={ModalState.toggleCaseConfig}
+          tests={this.props.project.tests}
+          project={this.props.project}
         />
         <ImportDialog
           isImporting={!!ModalState.importSuiteState.suite}
