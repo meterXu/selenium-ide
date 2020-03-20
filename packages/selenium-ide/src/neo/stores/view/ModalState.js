@@ -24,6 +24,8 @@ class ModalState {
   @observable
   renameState = {}
   @observable
+  caseConfigState = false
+  @observable
   importSuiteState = {}
   @observable
   suiteSettingsState = {}
@@ -245,6 +247,10 @@ class ModalState {
   @action.bound
   toggleNewWindowConfiguration() {
     this.newWindowConfigurationState = !this.newWindowConfigurationState
+  }
+  @action.bound
+  toggleCaseConfig() {
+    this.caseConfigState = !this.caseConfigState
   }
 
   isUniqueWindowName(windowName, commandId) {

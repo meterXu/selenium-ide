@@ -5,6 +5,7 @@ import GraphTool from '../../components/GraphTool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/GraphDraw'
+import ModalState from '../../stores/view/ModalState'
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
@@ -32,7 +33,13 @@ class ProcessDesign extends React.Component {
     GraphDraw.drawVerticalItem(
       item,
       c => {
-        alert(item.type)
+        switch (item.type) {
+          case 'case':
+            {
+              ModalState.toggleCaseConfig()
+            }
+            break
+        }
       },
       d => {
         alert(item.type)

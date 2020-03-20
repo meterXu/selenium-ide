@@ -22,6 +22,7 @@ import TestSelector from '../../components/Dialogs/TestSelector'
 import ImportDialog from '../../components/Dialogs/ImportDialog'
 import SuiteSettings from '../../components/Dialogs/SuiteSettings'
 import RenameDialog from '../../components/Dialogs/Rename'
+import CaseConfigDialog from '../../components/Dialogs/CaseConfig'
 import BaseUrlDialog from '../../components/Dialogs/BaseUrl'
 import WelcomeDialog from '../../components/Dialogs/Welcome'
 import AlertDialog from '../../components/Dialogs/Alert'
@@ -67,6 +68,10 @@ export default class Modal extends Component {
           setValue={ModalState.renameState ? ModalState.renameState.done : null}
           cancel={ModalState.renameState.cancel}
           isNewTest={ModalState.renameState.isNewTest}
+        />
+        <CaseConfigDialog
+          isOpen={ModalState.caseConfigState}
+          cancel={ModalState.toggleCaseConfig}
         />
         <ImportDialog
           isImporting={!!ModalState.importSuiteState.suite}

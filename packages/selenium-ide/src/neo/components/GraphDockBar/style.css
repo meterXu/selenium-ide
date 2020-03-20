@@ -29,6 +29,7 @@
     padding-top: 3px;
     cursor: pointer;
     display: inline-block;
+    user-select: none;
 }
 .item-container li:hover{
     background: rgba(98,208,149,0.5);
