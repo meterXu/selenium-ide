@@ -159,7 +159,7 @@ class ProcessStart {
   drawProcess() {
     this.processStart()
   }
-  drawItem(item, func, contentMenuFunc) {
+  drawVerticalItem(item, func, contentMenuFunc) {
     let st = GraphState.paper.set()
     let { x, y, ps } = this.getPosition(0, this.itemList.length)
     let lPosition = this.getPosition(0, this.itemList.length - 1)
