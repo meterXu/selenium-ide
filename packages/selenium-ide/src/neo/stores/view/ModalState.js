@@ -17,6 +17,7 @@
 
 import { action, observable } from 'mobx'
 import UiState from './UiState'
+import GraphState from './GraphState'
 import i18n from '../../i18n'
 class ModalState {
   @observable

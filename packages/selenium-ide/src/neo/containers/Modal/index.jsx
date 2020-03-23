@@ -71,7 +71,7 @@ export default class Modal extends Component {
         />
         <CaseConfigDialog
           isOpen={ModalState.caseConfigState}
-          cancel={ModalState.toggleCaseConfig}
+          submit={ModalState.toggleCaseConfig}
           tests={this.props.project.tests}
           project={this.props.project}
         />

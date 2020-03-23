@@ -56,7 +56,6 @@ class CaseConfigDialogContents extends React.Component {
       bodyTop: '',
       bodyBottom: '',
       submitButton: '确定',
-      cancelButton: '关闭',
     }
     return (
       <DialogContainer
@@ -69,9 +68,6 @@ class CaseConfigDialogContents extends React.Component {
               display: 'flex',
             }}
           >
-            <FlatButton onClick={this.props.cancel}>
-              {content.cancelButton}
-            </FlatButton>
             <FlatButton
               onClick={this.props.submit}
               style={{
