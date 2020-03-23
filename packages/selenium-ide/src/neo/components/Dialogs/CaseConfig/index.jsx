@@ -45,11 +45,12 @@ class CaseConfigDialogContents extends React.Component {
     GraphState.currentActiveNode.st[1].attr({
       text: obj.text,
     })
-    GraphState.currentActiveNode.data.paraNames = [
-      'webDriver',
-      'param1',
-      'param2',
-    ]
+    GraphState.currentActiveNode.data.paraNames = this.props.tests
+      .find(c => c.name === obj.text.replace('[smoke] ', ''))
+      .commands.filter(c => c.isParam)
+      .map((c, i) => {
+        return 'param' + i
+      })
     this.setState({
       paraNames: GraphState.currentActiveNode.data.paraNames,
     })
