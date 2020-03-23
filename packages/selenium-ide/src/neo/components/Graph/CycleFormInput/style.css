@@ -1,0 +1,12 @@
+.cycleForm-container{
+    padding: 10px 10px;
+    border: 1px solid #dcdcdc;
+}
+
+.cycleForm-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 1px 0 2px 0;
+    color: rgba(0, 0, 0, 0.55);
+}

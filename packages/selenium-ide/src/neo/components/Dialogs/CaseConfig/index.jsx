@@ -7,6 +7,7 @@ import './style.css'
 import FlatButton from '../../FlatButton'
 import Combobox from '../../Graph/Combobox'
 import GraphState from '../../../stores/view/GraphState'
+import CycleFormInput from '../../Graph/CycleFormInput'
 export default class CaseConfigDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -34,6 +35,7 @@ class CaseConfigDialogContents extends React.Component {
     super(props)
     this.state = {
       itemData: [],
+      paraNames: [],
     }
   }
   itemClick(obj) {
@@ -43,7 +45,16 @@ class CaseConfigDialogContents extends React.Component {
     GraphState.currentActiveNode.st[1].attr({
       text: obj.text,
     })
+    GraphState.currentActiveNode.data.paraNames = [
+      'webDriver',
+      'param1',
+      'param2',
+    ]
+    this.setState({
+      paraNames: GraphState.currentActiveNode.data.paraNames
+    })
   }
+
   componentDidMount() {
     this.setState({
       itemData: this.props.tests.map(c => {
@@ -88,6 +99,7 @@ class CaseConfigDialogContents extends React.Component {
           defaultText={GraphState.currentActiveNode.data.caseName}
           itemClick={this.itemClick.bind(this)}
         />
+        <CycleFormInput label={'参数'} cycleKeys={this.state.paraNames} />
         {content.bodyBottom}
       </DialogContainer>
     )
