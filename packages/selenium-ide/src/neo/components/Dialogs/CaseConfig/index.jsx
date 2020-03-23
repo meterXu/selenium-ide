@@ -51,15 +51,21 @@ class CaseConfigDialogContents extends React.Component {
       'param2',
     ]
     this.setState({
-      paraNames: GraphState.currentActiveNode.data.paraNames
+      paraNames: GraphState.currentActiveNode.data.paraNames,
     })
   }
 
   componentDidMount() {
+    console.log(this.props.tests)
     this.setState({
-      itemData: this.props.tests.map(c => {
-        return { text: c.name, value: c.id }
-      }),
+      itemData: this.props.tests
+        .map(c => {
+          return {
+            text: (c.suite ? '[' + c.suite + '] ' : '') + c.name,
+            value: c.id,
+          }
+        })
+        .sort(),
     })
   }
   render() {

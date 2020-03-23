@@ -181,7 +181,11 @@ export default class Suite {
     suite.setParallel(jsRep.parallel)
     suite.setPersistSession(jsRep.persistSession)
     suite._tests.replace(
-      jsRep.tests.map(testId => projectTests.find(({ id }) => id === testId))
+      jsRep.tests.map(testId => {
+        let test = projectTests.find(({ id }) => id === testId)
+        test.suite = jsRep.name
+        return test
+      })
     )
 
     return suite
