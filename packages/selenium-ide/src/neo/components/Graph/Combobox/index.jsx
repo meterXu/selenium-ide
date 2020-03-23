@@ -8,7 +8,7 @@ export default class Combobox extends React.Component {
     this.state = {
       openItemContainer: false,
       text: null,
-      _itemData: this.props.itemData
+      _itemData: this.props.itemData,
     }
   }
   static propTypes = {
@@ -17,9 +17,12 @@ export default class Combobox extends React.Component {
     itemData: PropTypes.array.isRequired,
     itemClick: PropTypes.func,
   }
-  toggleItemContainer() {
+  downActiveClick() {
     this.setState({
       openItemContainer: !this.state.openItemContainer,
+      _itemData: this.state.text
+        ? this.props.itemData.filter(c => c.text.indexOf(this.state.text) > -1)
+        : this.props.itemData,
     })
   }
   onChnage() {
@@ -36,15 +39,20 @@ export default class Combobox extends React.Component {
       })
     }
     this.setState({
-      _itemData:this.props.itemData.filter(c=>c.text.indexOf(event.target.value)>-1)
+      _itemData: this.props.itemData.filter(
+        c => c.text.indexOf(event.target.value) > -1
+      ),
     })
   }
   itemClick() {
     this.setState({
-      text:event.target.innerText
+      openItemContainer: !this.state.openItemContainer,
+      text: event.target.innerText,
     })
-    this.toggleItemContainer()
-    this.props.itemClick(event.target.getAttribute('data-value'))
+    this.props.itemClick({
+      text: event.target.innerText,
+      value: event.target.getAttribute('data-value'),
+    })
   }
   render() {
     return (
@@ -56,8 +64,12 @@ export default class Combobox extends React.Component {
           onChange={this.onChnage.bind(this)}
         />
         <span
-          className={this.state.openItemContainer?'combobox-down combobox-down-active':'combobox-down'}
-          onClick={this.toggleItemContainer.bind(this)}
+          className={
+            this.state.openItemContainer
+              ? 'combobox-down combobox-down-active'
+              : 'combobox-down'
+          }
+          onClick={this.downActiveClick.bind(this)}
         >
           ∨
         </span>
@@ -69,8 +81,17 @@ export default class Combobox extends React.Component {
           }
         >
           <ul>
-            {this.state._itemData.map((c,i) => {
-              return <li tabIndex={i} data-value={c.value} onClick={this.itemClick.bind(this)}>{c.text}</li>
+            {this.state._itemData.map((c, i) => {
+              return (
+                <li
+                  key={i}
+                  tabIndex={i}
+                  data-value={c.value}
+                  onClick={this.itemClick.bind(this)}
+                >
+                  {c.text}
+                </li>
+              )
             })}
           </ul>
         </div>

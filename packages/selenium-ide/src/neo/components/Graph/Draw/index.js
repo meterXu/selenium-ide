@@ -218,7 +218,11 @@ class ProcessStart {
       text: item.text,
       type: item.type,
       coordinate: coordinate,
-      data: null,
+      st: st,
+      data: {
+        caseId: null,
+        params: [],
+      },
     }
     GraphState.addGraphData(graphData)
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)

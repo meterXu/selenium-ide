@@ -5,8 +5,8 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
-import LabelledInput from '../../LabelledInput'
 import Combobox from '../../Graph/Combobox'
+import GraphState from '../../../stores/view/GraphState'
 export default class CaseConfigDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -33,14 +33,14 @@ class CaseConfigDialogContents extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      caseId: null,
-      params: null,
       itemData: [],
     }
   }
-  itemClick(value) {
-    this.setState({
-      caseId: value,
+  itemClick(obj) {
+    GraphState.currentActiveNode.data.caseId = obj.value
+    GraphState.currentActiveNode.text = obj.text
+    GraphState.currentActiveNode.st[1].attr({
+      text: obj.text,
     })
   }
   componentDidMount() {
@@ -87,6 +87,7 @@ class CaseConfigDialogContents extends React.Component {
         <Combobox
           name="caseId"
           label="用例"
+          required={true}
           itemData={this.state.itemData}
           itemClick={this.itemClick.bind(this)}
         />
