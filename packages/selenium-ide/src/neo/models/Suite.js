@@ -117,6 +117,7 @@ export default class Suite {
         }`
       )
     } else {
+      test.suite = this.name
       this._tests.push(test)
     }
   }
@@ -130,6 +131,7 @@ export default class Suite {
         }`
       )
     } else {
+      test.suite = this.name
       this._tests.splice(index, 0, test)
     }
   }
@@ -143,6 +145,7 @@ export default class Suite {
         }`
       )
     } else {
+      test.suite = null
       this._tests.remove(test)
     }
   }
@@ -155,6 +158,9 @@ export default class Suite {
 
   @action.bound
   replaceTestCases(tests) {
+    tests.forEach(c => {
+      c.suite = this.name
+    })
     if (tests.filter(test => !this.isTest(test)).length) {
       throw new Error('Expected to receive array of TestCase')
     } else {

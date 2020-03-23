@@ -56,16 +56,28 @@ class CaseConfigDialogContents extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props.tests)
     this.setState({
       itemData: this.props.tests
         .map(c => {
           return {
+            suite: c.suite,
             text: (c.suite ? '[' + c.suite + '] ' : '') + c.name,
             value: c.id,
           }
         })
-        .sort(),
+        .sort((a, b) => {
+          if (a.suite < b.suite) {
+            return -1
+          } else if (a.suite > b.suite) {
+            return 1
+          } else if (a.text < b.text) {
+            return -1
+          } else if (a.text > b.text) {
+            return 1
+          } else {
+            return 0
+          }
+        }),
     })
   }
   render() {
