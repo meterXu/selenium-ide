@@ -38,6 +38,7 @@ class CaseConfigDialogContents extends React.Component {
   }
   itemClick(obj) {
     GraphState.currentActiveNode.data.caseId = obj.value
+    GraphState.currentActiveNode.data.caseName = obj.text
     GraphState.currentActiveNode.text = obj.text
     GraphState.currentActiveNode.st[1].attr({
       text: obj.text,
@@ -83,8 +84,8 @@ class CaseConfigDialogContents extends React.Component {
         <Combobox
           name="caseId"
           label="用例"
-          required={true}
           itemData={this.state.itemData}
+          defaultText={GraphState.currentActiveNode.data.caseName}
           itemClick={this.itemClick.bind(this)}
         />
         {content.bodyBottom}

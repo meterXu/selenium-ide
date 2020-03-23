@@ -221,6 +221,7 @@ class ProcessStart {
       st: st,
       data: {
         caseId: null,
+        caseName: null,
         params: [],
       },
     }

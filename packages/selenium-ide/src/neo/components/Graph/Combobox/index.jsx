@@ -14,6 +14,7 @@ export default class Combobox extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    defaultText: PropTypes.string.isRequired,
     itemData: PropTypes.array.isRequired,
     itemClick: PropTypes.func,
   }
@@ -54,6 +55,12 @@ export default class Combobox extends React.Component {
       value: event.target.getAttribute('data-value'),
     })
   }
+  componentDidMount() {
+    this.setState({
+      text: this.props.defaultText,
+    })
+  }
+
   render() {
     return (
       <div className={'combobox-container'}>
