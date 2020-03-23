@@ -162,7 +162,7 @@ class ProcessStart {
   }
   drawVerticalItem(item, func, contentMenuFunc) {
     let st = GraphState.paper.set()
-    let coordinate = [0, this.itemList.length]
+    let coordinate = [0, this.itemList.length].join(',')
     let { x, y, ps } = this.getPosition(0, this.itemList.length)
     let lPosition = this.getPosition(0, this.itemList.length - 1)
     let lpe = lPosition.pe
@@ -192,7 +192,7 @@ class ProcessStart {
         500,
         '<>'
       )
-      .data('direction', 'vertical')
+      .data('coordinate', coordinate)
     let txt = GraphState.paper
       .text(500, 3000, item.text)
       .attr({
@@ -214,24 +214,14 @@ class ProcessStart {
     st.push(txt)
     st.push(ll)
     this.itemList.push([st])
-    let graphItem = {
-      id: null,
+    let graphData = {
       text: item.text,
       type: item.type,
       coordinate: coordinate,
+      data: null,
     }
-    GraphState.addGraphData(graphItem)
-    if (item.type === 'while') {
-      cc.mousedown(function(e) {
-        if (e.which == 3) {
-          contentMenuFunc && contentMenuFunc(graphItem)
-        }
-      })
-    } else {
-      cc.click(c => {
-        func && func(graphItem)
-      })
-    }
+    GraphState.addGraphData(graphData)
+    this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
   drawLine(from, to) {
     return GraphState.paper
@@ -252,6 +242,23 @@ class ProcessStart {
         200,
         '<>'
       )
+  }
+  bindNodeClick(node, type, func, contentMenuFunc) {
+    if (type === 'while') {
+      node.mousedown(function() {
+        let coordinate = this.data('coordinate')
+        GraphState.setCurrentActiveNode(coordinate)
+        if (event.which == 3) {
+          contentMenuFunc && contentMenuFunc()
+        }
+      })
+    } else {
+      node.click(function() {
+        let coordinate = this.data('coordinate')
+        GraphState.setCurrentActiveNode(coordinate)
+        func && func()
+      })
+    }
   }
   @action.bound
   resizeGraph() {

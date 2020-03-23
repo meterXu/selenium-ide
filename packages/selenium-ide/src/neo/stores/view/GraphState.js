@@ -24,7 +24,11 @@ class GraphState {
   @observable
   LevelInterval = 48
   @observable
-  graphData = []
+  currentProcess = null
+  @observable
+  currentActiveNode = null
+  @observable
+  processData = []
   @action.bound
   setZoom(value) {
     this.zoom = value
@@ -42,8 +46,26 @@ class GraphState {
     this.paper = value
   }
   @action.bound
+  addProcessData(value) {
+    this.processData.push(value)
+  }
+  @action.bound
   addGraphData(value) {
-    this.graphData.push(value)
+    this.currentProcess.graphData.push(value)
+  }
+  @action.bound
+  setProcessData(value) {
+    this.processData = value
+  }
+  @action.bound
+  setCurrentProcess(value) {
+    this.currentProcess = value
+  }
+  @action.bound
+  setCurrentActiveNode(coordinate) {
+    this.currentActiveNode = this.currentProcess.graphData.find(
+      c => c.coordinate === coordinate
+    )
   }
   @action.bound
   reduceZoom() {

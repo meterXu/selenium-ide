@@ -46,6 +46,14 @@ class ProcessDesign extends React.Component {
       }
     )
   }
+  componentDidMount() {
+    GraphState.setCurrentProcess({
+      processName: 'process_1',
+      graphData: [],
+    })
+    GraphState.setProcessData([GraphState.currentProcess])
+  }
+
   render() {
     return (
       <div className="processDesign">
