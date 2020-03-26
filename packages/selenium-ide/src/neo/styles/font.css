@@ -75,6 +75,9 @@
 .si-open::before {
   content: '\e906';
 }
+.si-source-conf::before {
+  content: '\e930';
+}
 .si-pencil::before {
   content: '\e919';
 }

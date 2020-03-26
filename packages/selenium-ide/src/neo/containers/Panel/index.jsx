@@ -286,7 +286,9 @@ export default class Panel extends React.Component {
       UiState.minimizeConsole()
     }
   }
-
+  sourceConf() {
+    alert('xxxx')
+  }
   componentWillUnmount() {
     if (isProduction) {
       clearInterval(this.moveInterval)
@@ -324,6 +326,7 @@ export default class Panel extends React.Component {
                 openFile={openFile => {
                   this.openFile = openFile
                 }}
+                sourceConf={this.sourceConf.bind(this)}
                 load={loadProject.bind(undefined, this.state.project)}
                 save={() => saveProject(this.state.project)}
                 new={this.loadNewProject.bind(this)}

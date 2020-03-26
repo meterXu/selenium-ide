@@ -26,6 +26,7 @@ import OpenButton from '../ActionButtons/Open'
 import SaveButton from '../ActionButtons/Save'
 import MoreButton from '../ActionButtons/More'
 import ListMenu, { ListMenuItem } from '../ListMenu'
+import SourceConf from '../ActionButtons/SourceConf'
 import './style.css'
 
 @observer
@@ -72,6 +73,7 @@ export default class ProjectHeader extends React.Component {
           <i className="si-pencil" />
         </div>
         <span className="buttons">
+          <SourceConf onClick={this.props.sourceConf} />
           <NewButton onClick={this.props.new} />
           <OpenButton
             onFileSelected={this.props.load}
