@@ -286,8 +286,8 @@ export default class Panel extends React.Component {
       UiState.minimizeConsole()
     }
   }
-  sourceConf() {
-    alert('xxxx')
+  switchHeadBtn() {
+    UiState.setSelectView(UiState.selectedView !== 'sourceConf' ? 'sourceConf' : UiState.lang.tests)
   }
   componentWillUnmount() {
     if (isProduction) {
@@ -326,7 +326,7 @@ export default class Panel extends React.Component {
                 openFile={openFile => {
                   this.openFile = openFile
                 }}
-                sourceConf={this.sourceConf.bind(this)}
+                switchHeadBtn={this.switchHeadBtn.bind(this)}
                 load={loadProject.bind(undefined, this.state.project)}
                 save={() => saveProject(this.state.project)}
                 new={this.loadNewProject.bind(this)}
@@ -336,31 +336,36 @@ export default class Panel extends React.Component {
                   dragging: UiState.navigationDragging,
                 })}
               >
-                <SplitPane
-                  split="vertical"
-                  minSize={UiState.minNavigationWidth}
-                  maxSize={UiState.maxNavigationWidth}
-                  size={UiState.navigationWidth}
-                  onChange={UiState.resizeNavigation}
-                >
-                  <Navigation
-                    tests={UiState.filteredTests}
-                    suites={this.state.project.suites}
-                    duplicateTest={this.state.project.duplicateTestCase}
-                  />
-                  {UiState.selectedView === UiState.lang.processDesign && (
-                    <ProgressDesign />
-                  )}
-                  {UiState.selectedView !== UiState.lang.processDesign && (
-                    <Editor
-                      url={this.state.project.url}
-                      urls={this.state.project.urls}
-                      setUrl={this.state.project.setUrl}
-                      test={UiState.displayedTest}
-                      callstackIndex={UiState.selectedTest.stack}
+                {UiState.selectedView !== 'sourceConf' && (
+                  <SplitPane
+                    split="vertical"
+                    minSize={UiState.minNavigationWidth}
+                    maxSize={UiState.maxNavigationWidth}
+                    size={UiState.navigationWidth}
+                    onChange={UiState.resizeNavigation}
+                  >
+                    <Navigation
+                      tests={UiState.filteredTests}
+                      suites={this.state.project.suites}
+                      duplicateTest={this.state.project.duplicateTestCase}
                     />
-                  )}
-                </SplitPane>
+                    {UiState.selectedView === UiState.lang.processDesign && (
+                      <ProgressDesign />
+                    )}
+                    {UiState.selectedView !== UiState.lang.processDesign && (
+                      <Editor
+                        url={this.state.project.url}
+                        urls={this.state.project.urls}
+                        setUrl={this.state.project.setUrl}
+                        test={UiState.displayedTest}
+                        callstackIndex={UiState.selectedTest.stack}
+                      />
+                    )}
+                  </SplitPane>
+                )}
+                {UiState.selectedView === 'sourceConf' && (
+                  <div>xxx</div>
+                )}
               </div>
             </div>
             {this.toggleConsole()}

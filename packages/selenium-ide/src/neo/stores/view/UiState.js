@@ -178,6 +178,10 @@ class UiState {
   }
 
   @action.bound
+  setSelectView(view) {
+    this.selectedView = view
+  }
+  @action.bound
   async changeView(view, ignoreCache) {
     if (this.isRecording && view !== this.selectedView) {
       const choseChange = await ModalState.showAlert({

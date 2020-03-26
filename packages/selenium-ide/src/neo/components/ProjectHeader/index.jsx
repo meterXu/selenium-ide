@@ -28,6 +28,7 @@ import MoreButton from '../ActionButtons/More'
 import ListMenu, { ListMenuItem } from '../ListMenu'
 import SourceConf from '../ActionButtons/SourceConf'
 import './style.css'
+import UiState from '../../stores/view/UiState'
 
 @observer
 export default class ProjectHeader extends React.Component {
@@ -73,7 +74,7 @@ export default class ProjectHeader extends React.Component {
           <i className="si-pencil" />
         </div>
         <span className="buttons">
-          <SourceConf onClick={this.props.sourceConf} />
+          <SourceConf onClick={this.props.switchHeadBtn} type={UiState.selectedView==='sourceConf'?0:1} />
           <NewButton onClick={this.props.new} />
           <OpenButton
             onFileSelected={this.props.load}
