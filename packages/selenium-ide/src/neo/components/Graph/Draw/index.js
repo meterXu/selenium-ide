@@ -1,6 +1,6 @@
 import { action, computed, observable, observe, extendObservable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
-class ProcessStart {
+class Draw {
   @observable
   itemList = []
   @observable
@@ -228,6 +228,9 @@ class ProcessStart {
     GraphState.addGraphData(graphData)
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
+  drawItem(title,icon,coordinate,direction){
+
+  }
   drawLine(from, to) {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
@@ -383,6 +386,6 @@ class ProcessStart {
   }
 }
 
-if (!window._processStart) window._processStart = new ProcessStart()
+if (!window._draw) window._draw = new Draw()
 
-export default window._processStart
+export default window._draw
