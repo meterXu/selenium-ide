@@ -8,6 +8,7 @@ export default class SourceList extends React.Component {
   }
   static propTypes = {
     itemData: PropTypes.array.isRequired,
+    addSource: PropTypes.func.isRequired,
   }
   getIcon(type, ctype) {
     switch (type) {
@@ -40,6 +41,7 @@ export default class SourceList extends React.Component {
       }
     }
   }
+
   render() {
     return (
       <div className="sourceConf-list">
@@ -57,7 +59,7 @@ export default class SourceList extends React.Component {
               </li>
             )
           })}
-          <li className="sourceConf-list-item">
+          <li className="sourceConf-list-item" onClick={this.props.addSource}>
             <div className="sourceConf-type-icon sc-type-icon-add" />
             <label className="sourceConf-type-title">添加</label>
           </li>

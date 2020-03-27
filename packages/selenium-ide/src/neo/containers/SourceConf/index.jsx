@@ -3,6 +3,7 @@ import './type.css'
 import ScTypeSwitch from '../../components/SourceConf/ScTypeSwitch'
 import SourceList from '../../components/SourceConf/SourceList'
 import UiState from '../../stores/view/UiState'
+import ModalState from '../../stores/view/ModalState'
 export default class SourceConf extends React.Component {
   constructor(props) {
     super(props)
@@ -31,6 +32,9 @@ export default class SourceConf extends React.Component {
         break
     }
   }
+  addSource() {
+    ModalState.toggleSourceModify()
+  }
   componentDidMount() {
     this.setState({
       itemData: this.state.project.sourceData.read,
@@ -42,9 +46,9 @@ export default class SourceConf extends React.Component {
       <div className="sourceConf-containers">
         <ScTypeSwitch
           keys={this.state.typeSwitchData}
-          OnSwitch={this.scTypeSwitch.bind(this)}
+          onSwitch={this.scTypeSwitch.bind(this)}
         />
-        <SourceList itemData={this.state.itemData} />
+        <SourceList itemData={this.state.itemData} addSource={this.addSource.bind(this)}/>
       </div>
     )
   }

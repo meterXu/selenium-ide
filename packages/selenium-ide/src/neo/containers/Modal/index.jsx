@@ -23,6 +23,7 @@ import ImportDialog from '../../components/Dialogs/ImportDialog'
 import SuiteSettings from '../../components/Dialogs/SuiteSettings'
 import RenameDialog from '../../components/Dialogs/Rename'
 import CaseConfigDialog from '../../components/Dialogs/CaseConfig'
+import SourceModify from '../../components/Dialogs/SourceModify'
 import BaseUrlDialog from '../../components/Dialogs/BaseUrl'
 import WelcomeDialog from '../../components/Dialogs/Welcome'
 import AlertDialog from '../../components/Dialogs/Alert'
@@ -74,6 +75,11 @@ export default class Modal extends Component {
           submit={ModalState.toggleCaseConfig}
           tests={this.props.project.tests}
           project={this.props.project}
+        />
+        <SourceModify
+          isOpen={ModalState.SourceModify}
+          isAdd={ModalState.SourceModifyAdd}
+          cancel={ModalState.toggleSourceModify}
         />
         <ImportDialog
           isImporting={!!ModalState.importSuiteState.suite}

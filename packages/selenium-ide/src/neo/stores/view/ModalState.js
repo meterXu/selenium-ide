@@ -41,6 +41,10 @@ class ModalState {
   newWindowConfigurationState = false
   @observable
   exportState = {}
+  @observable
+  SourceModify = false
+  @observable
+  SourceModifyAdd = true
 
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
@@ -260,6 +264,10 @@ class ModalState {
       .filter(command => command.windowHandleName !== '')
       .map(command => command.windowHandleName)
     return !commands.includes(windowName)
+  }
+  @action.bound
+  toggleSourceModify() {
+    this.SourceModify = !this.SourceModify
   }
 }
 

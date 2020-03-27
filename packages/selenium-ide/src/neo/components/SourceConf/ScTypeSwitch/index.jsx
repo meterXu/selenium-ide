@@ -9,7 +9,7 @@ export default class ScTypeSwitch extends React.Component {
     }
   }
   static propTypes = {
-    OnSwitch: PropTypes.func.isRequired,
+    onSwitch: PropTypes.func.isRequired,
   }
   switchScType(type) {
     this.setState({
