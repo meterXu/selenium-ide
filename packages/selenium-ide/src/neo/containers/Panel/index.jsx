@@ -39,6 +39,7 @@ import Modal from '../Modal'
 import UiState from '../../stores/view/UiState'
 import PlaybackState from '../../stores/view/PlaybackState'
 import ModalState from '../../stores/view/ModalState'
+import SourceConf from '../SourceConf'
 import '../../side-effects/contextMenu'
 import '../../styles/app.css'
 import '../../styles/font.css'
@@ -272,7 +273,7 @@ export default class Panel extends React.Component {
   }
 
   toggleConsole() {
-    if (UiState.selectedView !== UiState.lang.processDesign) {
+    if (UiState.selectedView !== UiState.lang.processDesign&&UiState.selectedView !=='sourceConf') {
       UiState.setMinConsoleHeight(30)
       UiState.resizeConsole(100)
       return (
@@ -364,7 +365,7 @@ export default class Panel extends React.Component {
                   </SplitPane>
                 )}
                 {UiState.selectedView === 'sourceConf' && (
-                  <div>xxx</div>
+                  <SourceConf />
                 )}
               </div>
             </div>
