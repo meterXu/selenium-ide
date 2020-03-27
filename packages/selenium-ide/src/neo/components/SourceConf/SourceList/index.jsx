@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 export default class SourceList extends React.Component {
   constructor(props) {
     super(props)
+    this.getIcon = this.getIcon.bind(this)
   }
   static propTypes = {
     itemData: PropTypes.array.isRequired,
@@ -11,31 +12,31 @@ export default class SourceList extends React.Component {
   getIcon(type, ctype) {
     switch (type) {
       case '0': {
-        return 'sc-type-icon-excel'
+        return 'excel'
       }
       case '1': {
         let icon = ''
         switch (ctype) {
           case '0':
             {
-              icon = 'sc-type-icon-oracle'
+              icon = 'oracle'
             }
             break
           case '1':
             {
-              icon = 'sc-type-icon-sqlserver'
+              icon = 'sqlserver'
             }
             break
           case '2':
             {
-              icon = 'sc-type-icon-mysql'
+              icon = 'mysql'
             }
             break
         }
         return icon
       }
       case '2': {
-        return 'sc-type-icon-api'
+        return 'api'
       }
     }
   }
@@ -47,11 +48,10 @@ export default class SourceList extends React.Component {
             return (
               <li key={i} className="sourceConf-list-item">
                 <div
-                  className={`sourceConf-type-icon ${this.getIcon.bind(
-                    this,
-                    c.type,
-                    c.data.type
-                  )}`}
+                  className={
+                    'sourceConf-type-icon sc-type-icon-' +
+                    this.getIcon(c.type, c.data.type)
+                  }
                 />
                 <label className="sourceConf-type-title">{c.name}</label>
               </li>
