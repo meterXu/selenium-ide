@@ -1,5 +1,7 @@
 .sourceConf-containers{
     width: 100%;
+    background: #10131f;
+    overflow-y: auto;
 }
 .sourceConf-typeSwitch{
     height: 42px;
@@ -37,7 +39,7 @@
     background: #c06bd6 !important;
     color: #fff !important;
     transition: background-color;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
 }
 .sourceConf-list{
     overflow-y: auto;
@@ -51,16 +53,21 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     margin: 0 auto;
+    padding-bottom: 10px;
 }
 .sourceConf-list li{
     width: 280px;
     height: 160px;
-    background: #fff;
+    background: #e2e2e2;
     margin-top: 28px;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    border:1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0px 1px 3px #ddd;
+    box-shadow: 0px 1px 3px #000;
+    cursor: pointer;
+}
+.sourceConf-list li:hover{
+    background: #fff;
 }
 .sourceConf-type-icon,.sourceConf-type-title{
     display: block;
@@ -70,14 +77,49 @@
     width: 100%;
 }
 .sc-type-icon-oracle{
-    background: url("../../../icons/oracle_read.svg") center center no-repeat;
+    background: url("../../../icons/oracle.svg") center center no-repeat;
+    background-size: 60% 60%;
+}
+.sc-type-icon-oracle + .sourceConf-type-title{
+    background: #7f322d;
+}
+.sc-type-icon-mysql{
+    background: url("../../../icons/mysql.svg") center center no-repeat;
+    background-size: 60% 60%;
+}
+.sc-type-icon-mysql + .sourceConf-type-title{
+    background: #8e5a17;
+}
+.sc-type-icon-excel{
+    background: url("../../../icons/excel.svg") center center no-repeat;
+    background-size: 60% 60%;
+}
+.sc-type-icon-excel + .sourceConf-type-title{
+    background: #1c5d27;
+}
+.sc-type-icon-sqlserver{
+    background: url("../../../icons/sqlserver.svg") center center no-repeat;
+    background-size: 60% 60%;
+}
+.sc-type-icon-sqlserver + .sourceConf-type-title{
+    background: #0f6573;
+}
+.sc-type-icon-api{
+    background: url("../../../icons/api.svg") center center no-repeat;
+    background-size: 60% 60%;
+}
+.sc-type-icon-api + .sourceConf-type-title{
+    background: #224265;
+}
+.sc-type-icon-add{
+    background: url("../../../icons/add.svg") center center no-repeat;
     background-size: 60% 60%;
 }
 .sourceConf-type-title{
     height: 30px;
     width: 100%;
     line-height: 30px;
-    background: #5573ed;
-    color: #333;
-    border-radius:  0 0 5px 5px;
+    background: #3a3a3a;
+    color: #f3f3f3;
+    border-radius:  0 0 4px 4px;
 }
