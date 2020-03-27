@@ -20,6 +20,7 @@ import uuidv4 from 'uuid/v4'
 import naturalCompare from 'string-natural-compare'
 import TestCase from '../../models/TestCase'
 import Suite from '../../models/Suite'
+import Source from '../../models/Source/Source'
 import { VERSIONS } from '../../IO/migrate'
 
 export default class ProjectStore {
@@ -49,6 +50,11 @@ export default class ProjectStore {
   _urls = []
   @observable
   version = VERSIONS[VERSIONS.length - 1]
+  @observable
+  sourceData = {
+    read: [],
+    write: [],
+  }
 
   constructor(name = 'Untitled Project') {
     this.name = name
@@ -210,6 +216,28 @@ export default class ProjectStore {
       this._tests.remove(test)
     }
   }
+  @action.bound
+  createSource(io, type, name, data) {
+    const source = new Source(undefined, io, type, name, data)
+    this.addSource(source, io)
+    return source
+  }
+
+  @action.bound
+  addSource(source, io) {
+    switch (io) {
+      case 0:
+        {
+          this.sourceData.read.push(source)
+        }
+        break
+      case 1:
+        {
+          this.sourceData.write.push(source)
+        }
+        break
+    }
+  }
 
   @action.bound
   registerPlugin(plugin) {
@@ -249,6 +277,7 @@ export default class ProjectStore {
     this.id = jsRep.id || uuidv4()
     this.delay = jsRep.delay || this.defaultDelay
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
+    this.sourceData = jsRep.sourceData
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
@@ -269,6 +298,7 @@ export default class ProjectStore {
       url: this.url,
       tests: this._tests.map(t => t.export()),
       suites: this._suites.map(s => s.export()),
+      source: this.sourceData,
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,

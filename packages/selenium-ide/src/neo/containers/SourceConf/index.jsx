@@ -7,23 +7,25 @@ export default class SourceConf extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      project: UiState.project,
       typeSwitchData: [{ text: '读取', value: 0 }, { text: '写入', value: 1 }],
       itemData: [],
     }
+    this._project = null
   }
   scTypeSwitch(type) {
     switch (type) {
       case 0:
         {
           this.setState({
-            itemData: UiState.sourceData.read,
+            itemData: this.state.project.sourceData.read,
           })
         }
         break
       case 1:
         {
           this.setState({
-            itemData: UiState.sourceData.write,
+            itemData: this.state.project.sourceData.write,
           })
         }
         break
@@ -31,7 +33,7 @@ export default class SourceConf extends React.Component {
   }
   componentDidMount() {
     this.setState({
-      itemData: UiState.sourceData.read,
+      itemData: this.state.project.sourceData.read,
     })
   }
 

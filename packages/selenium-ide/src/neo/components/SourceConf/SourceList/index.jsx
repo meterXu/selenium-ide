@@ -11,23 +11,23 @@ export default class SourceList extends React.Component {
   }
   getIcon(type, ctype) {
     switch (type) {
-      case '0': {
+      case 0: {
         return 'excel'
       }
-      case '1': {
+      case 1: {
         let icon = ''
         switch (ctype) {
-          case '0':
+          case 0:
             {
               icon = 'oracle'
             }
             break
-          case '1':
+          case 1:
             {
               icon = 'sqlserver'
             }
             break
-          case '2':
+          case 2:
             {
               icon = 'mysql'
             }
@@ -35,7 +35,7 @@ export default class SourceList extends React.Component {
         }
         return icon
       }
-      case '2': {
+      case 2: {
         return 'api'
       }
     }

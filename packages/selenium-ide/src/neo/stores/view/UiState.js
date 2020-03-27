@@ -81,8 +81,6 @@ class UiState {
   specifiedRemoteUrl = null
   @observable
   gridConfigEnabled = null
-  @observable
-  sourceData = null
   constructor() {
     this.suiteStates = {}
     this.filterFunction = this.filterFunction.bind(this)
@@ -600,10 +598,6 @@ class UiState {
   @action.bound
   startConnection() {
     this.isControlled = true
-  }
-  @action.bound
-  selectSourceData(data) {
-    this.sourceData = data
   }
 }
 
