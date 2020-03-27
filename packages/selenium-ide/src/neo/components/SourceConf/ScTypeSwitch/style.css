@@ -1,0 +1,38 @@
+.sourceConf-typeSwitch{
+    height: 42px;
+    margin: 10px;
+}
+.sourceConf-typeSwitch ul{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    list-style: none;
+}
+.sourceConf-typeSwitch ul li {
+    display: table-cell;
+    min-width: 56px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background: #adadad;
+    border-radius: 5px 0 0 5px;
+    cursor: pointer;
+    color: #f7f7f7;
+}
+
+.sourceConf-typeSwitch ul li+li {
+    border-left: 1px solid #e0e0e0;
+    border-radius: 0px 5px 5px 0;
+}
+.sourceConf-typeSwitch ul li:hover{
+    background: #d0d0d0;
+    color: #fff;
+}
+.sourceConf-typeSwitch-ul-li-active{
+    background: #c06bd6 !important;
+    color: #fff !important;
+    transition: background-color;
+    transition-duration: 0.5s;
+}

@@ -1,93 +1,45 @@
 import React from 'react'
 import './type.css'
+import ScTypeSwitch from '../../components/SourceConf/ScTypeSwitch'
+import SourceList from '../../components/SourceConf/SourceList'
 export default class SourceConf extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sourceConfType: 0,
+      typeSwitchData: [{ text: '读取', value: 0 }, { text: '写入', value: 1 }],
+      sourceItemData: [
+        {
+          io: '0',
+          type: '0',
+          name: '用例excel数据',
+          data: {
+            path: '',
+          },
+        },
+        {
+          io: '0',
+          type: '1',
+          name: '用例oracle数据',
+          data: {
+            type: '0',
+            pro: {
+              connstr: 'xxxxx', //连接字符串
+              objName: 'table', //对象名称
+            },
+          },
+        },
+      ],
     }
   }
-  switchScType(type) {
-    this.setState({
-      sourceConfType: type,
-    })
-  }
+  scTypeSwitch(type) {}
   render() {
     return (
       <div className="sourceConf-containers">
-        <div className="sourceConf-typeSwitch">
-          <ul>
-            <li
-              className={this.state.sourceConfType===0?'sourceConf-typeSwitch-ul-li-active':''}
-              onClick={this.switchScType.bind(this, 0)}
-            >
-              读取
-            </li>
-            <li className={this.state.sourceConfType===1?'sourceConf-typeSwitch-ul-li-active':''}
-              onClick={this.switchScType.bind(this, 1)}>写入</li>
-
-          </ul>
-        </div>
-        <div className="sourceConf-list">
-          <ul>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-oracle"></div>
-              <label className="sourceConf-type-title">oracle</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-mysql"></div>
-              <label className="sourceConf-type-title">mysql</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-sqlserver"></div>
-              <label className="sourceConf-type-title">sqlserver</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-excel"></div>
-              <label className="sourceConf-type-title">excel</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item">
-              <div className="sourceConf-type-icon sc-type-icon-api"></div>
-              <label className="sourceConf-type-title">api</label>
-            </li>
-            <li className="sourceConf-list-item sourceConf-list-item-add">
-              <div className="sourceConf-type-icon sc-type-icon-add"></div>
-              <label className="sourceConf-type-title">添加</label>
-            </li>
-          </ul>
-        </div>
+        <ScTypeSwitch
+          keys={this.state.typeSwitchData}
+          OnSwitch={this.scTypeSwitch.bind(this)}
+        />
+        <SourceList itemData={this.state.sourceItemData} />
       </div>
     )
   }
