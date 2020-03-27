@@ -786,6 +786,114 @@ export default function seed(store, numberOfSuites = 0) {
 
   store.changeName('种子项目')
 
+  UiState.selectSourceData({
+    read: [
+      {
+        io: '0',
+        type: '0',
+        name: '用例excel数据',
+        data: {
+          type: '0',
+          path: '',
+        },
+      },
+      {
+        io: '0',
+        type: '1',
+        name: '用例oracle数据',
+        data: {
+          type: '0',
+          pro: {
+            connstr: 'xxxxx', //连接字符串
+            objName: 'table', //对象名称
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '1',
+        name: '用例mysql数据',
+        data: {
+          type: '2',
+          pro: {
+            connstr: 'xxxxx', //连接字符串
+            objName: 'table', //对象名称
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '1',
+        name: '用例sqlserver数据',
+        data: {
+          type: '1',
+          pro: {
+            connstr: 'xxxxx', //连接字符串
+            objName: 'table', //对象名称
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '2',
+        name: '用例api数据',
+        data: {
+          type: '0',
+          pro: {
+            connstr: 'xxxxx', //连接字符串
+            objName: 'table', //对象名称
+          },
+        },
+      },
+    ],
+    write: [
+      {
+        io: '0',
+        type: '0',
+        name: '用例excel数据',
+        data: {
+          type: '0',
+          pro: {
+            path: '',
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '0',
+        name: '用例excel数据',
+        data: {
+          type: '0',
+          pro: {
+            path: '',
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '0',
+        name: '用例excel数据',
+        data: {
+          type: '0',
+          pro: {
+            path: '',
+          },
+        },
+      },
+      {
+        io: '0',
+        type: '0',
+        name: '用例excel数据',
+        data: {
+          type: '0',
+          pro: {
+            path: '',
+          },
+        },
+      },
+    ],
+  })
+
   UiState.saved()
 
   return store
