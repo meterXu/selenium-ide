@@ -14,11 +14,11 @@ export default class Source {
   @observable
   _source = []
 
-  constructor(id = uuidv4(), io, type, name, data) {
+  constructor(id = uuidv4(), io, sourceObj) {
     this.id = id
-    this.name = name
+    this.name = sourceObj.name
     this.io = io
-    this.type = type
-    this.data = data
+    this.type = sourceObj.type
+    this.data = sourceObj.data
   }
 }

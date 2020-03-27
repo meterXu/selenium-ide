@@ -786,39 +786,19 @@ export default function seed(store, numberOfSuites = 0) {
 
   store.changeName('种子项目')
 
-  store.createSource(0, 0, '用例excel数据', {
-    type: 0,
-    pro: { path: '' },
-  })
-  store.createSource(0, 1, '用例oracle数据', {
-    type: 0,
-    pro: { connstr: '', objName: '' },
-  })
-  store.createSource(0, 1, '用例sqlserver数据', {
-    type: 1,
-    pro: { connstr: '', objName: '' },
-  })
-  store.createSource(0, 1, '用例mysql数据', {
-    type: 2,
-    pro: { connstr: '', objName: '' },
-  })
-  store.createSource(0, 2, '用例api数据', {
-    type: 0,
-    pro: { url: '', type: '' },
-  })
+  store.createSource(0, store.createExcel('用例excel数据', ''))
+  store.createSource(0, store.createOracle('用例Oracle数据', ''))
+  store.createSource(0, store.createSqlserver('用例sqlserver数据', ''))
+  store.createSource(0, store.createMysql('用例mysql数据', ''))
+  store.createSource(
+    0,
+    store.createApi('用例api数据', '', '', undefined, null, null)
+  )
 
-  store.createSource(1, 0, '用例excel数据', {
-    type: 0,
-    pro: { path: '' },
-  })
-  store.createSource(1, 0, '用例excel数据', {
-    type: 0,
-    pro: { path: '' },
-  })
-  store.createSource(1, 0, '用例excel数据', {
-    type: 0,
-    pro: { path: '' },
-  })
+  store.createSource(1, store.createExcel('用例excel数据', ''))
+  store.createSource(1, store.createExcel('用例excel数据', ''))
+  store.createSource(1, store.createExcel('用例excel数据', ''))
+
   UiState.saved()
 
   return store

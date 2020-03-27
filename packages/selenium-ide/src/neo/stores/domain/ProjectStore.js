@@ -21,6 +21,9 @@ import naturalCompare from 'string-natural-compare'
 import TestCase from '../../models/TestCase'
 import Suite from '../../models/Suite'
 import Source from '../../models/Source/Source'
+import File from '../../models/Source/File'
+import Db from '../../models/Source/Db'
+import Api from '../../models/Source/Api'
 import { VERSIONS } from '../../IO/migrate'
 
 export default class ProjectStore {
@@ -217,12 +220,41 @@ export default class ProjectStore {
     }
   }
   @action.bound
-  createSource(io, type, name, data) {
-    const source = new Source(undefined, io, type, name, data)
+  createSource(io, obj) {
+    const source = new Source(undefined, io, obj)
     this.addSource(source, io)
     return source
   }
-
+  @action.bound
+  createExcel(name, path) {
+    const excel = new File(name)
+    excel.createExcel(path)
+    return excel
+  }
+  @action.bound
+  createOracle(name, connStr) {
+    const db = new Db(name)
+    db.createOracle(connStr)
+    return db
+  }
+  @action.bound
+  createSqlserver(name, connStr) {
+    const db = new Db(name)
+    db.createSqlserver(connStr)
+    return db
+  }
+  @action.bound
+  createMysql(name, connStr) {
+    const db = new Db(name)
+    db.createMysql(connStr)
+    return db
+  }
+  @action.bound
+  createApi(name, url, type, contentType, data, header) {
+    const api = new Api(name)
+    api.createApi(url, type, contentType, data, header)
+    return api
+  }
   @action.bound
   addSource(source, io) {
     switch (io) {
