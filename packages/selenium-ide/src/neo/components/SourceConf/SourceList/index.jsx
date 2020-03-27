@@ -57,6 +57,10 @@ export default class SourceList extends React.Component {
               </li>
             )
           })}
+          <li className="sourceConf-list-item">
+            <div className="sourceConf-type-icon sc-type-icon-add" />
+            <label className="sourceConf-type-title">添加</label>
+          </li>
         </ul>
       </div>
     )

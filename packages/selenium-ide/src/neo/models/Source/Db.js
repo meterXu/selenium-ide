@@ -4,6 +4,8 @@ export default class Db {
   type = 1
   @observable
   data = null
+  @observable
+  name = null
   constructor(name) {
     this.name = name
     this.createOracle = this.createOracle.bind(this)

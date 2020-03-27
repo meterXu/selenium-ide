@@ -4,8 +4,10 @@ export default class Api {
   type = 2
   @observable
   data = null
+  @observable
+  name = null
   constructor(name) {
-    this.type = name
+    this.name = name
     this.createApi = this.createApi.bind(this)
   }
   @action.bound
