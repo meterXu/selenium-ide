@@ -294,6 +294,7 @@ export default class ProjectStore {
 
   @action.bound
   fromJS(jsRep) {
+    debugger
     this.name = jsRep.name
     this.setUrl(jsRep.url)
     this._tests.replace(jsRep.tests.map(TestCase.fromJS))
@@ -330,7 +331,7 @@ export default class ProjectStore {
       url: this.url,
       tests: this._tests.map(t => t.export()),
       suites: this._suites.map(s => s.export()),
-      source: this.sourceData,
+      sourceData: this.sourceData,
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,

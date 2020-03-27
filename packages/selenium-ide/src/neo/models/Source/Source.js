@@ -11,8 +11,6 @@ export default class Source {
   name = null
   @observable
   data = {}
-  @observable
-  _source = []
 
   constructor(id = uuidv4(), io, sourceObj) {
     this.id = id
