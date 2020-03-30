@@ -6,6 +6,9 @@ import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
 import ModalState from '../../../stores/view/ModalState'
+import FileSource from './FileSource'
+import DbSource from './DbSource'
+import ApiSource from './ApiSource'
 export default class SourceModifyDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -23,13 +26,13 @@ export default class SourceModifyDialog extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.cancel}
       >
-        <SourceModifyContents {...this.props} />
+        <SourceModifyContainer {...this.props} />
       </Modal>
     )
   }
 }
 
-class SourceModifyContents extends React.Component {
+class SourceModifyContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -75,6 +78,9 @@ class SourceModifyContents extends React.Component {
         )}
       >
         {this.state.bodyTop}
+        {ModalState.sourceType === 0 && <FileSource />}
+        {ModalState.sourceType === 1 && <DbSource />}
+        {ModalState.sourceType === 2 && <ApiSource />}
         {this.state.bodyBottom}
       </DialogContainer>
     )
