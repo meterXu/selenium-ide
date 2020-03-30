@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { action, observable } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import UiState from './UiState'
 import i18n from '../../i18n'
 class ModalState {
@@ -53,6 +53,28 @@ class ModalState {
     this.renameSuite = this.rename.bind(this, Types.suite)
     this.rename = this.rename.bind(this)
     this.exportPayload = undefined
+  }
+  @computed
+  get sourceTypeNames() {
+    return this.getSourceTypeNames(this.sourceType)
+  }
+
+  @action.bound
+  getSourceTypeNames(type) {
+    switch (type) {
+      case 0: {
+        return ['文件', 'file']
+      }
+      case 1: {
+        return ['数据库', 'db']
+      }
+      case 2: {
+        return ['接口', 'api']
+      }
+      default: {
+        return ['', '']
+      }
+    }
   }
 
   @action.bound

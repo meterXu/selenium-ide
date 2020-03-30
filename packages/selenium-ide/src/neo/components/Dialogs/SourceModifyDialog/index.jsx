@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
+import ModalState from '../../../stores/view/ModalState'
 export default class SourceModifyDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -31,21 +32,21 @@ export default class SourceModifyDialog extends React.Component {
 class SourceModifyContents extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
-  }
-
-  componentDidMount() {}
-  render() {
-    const content = {
-      title: this.props.isAdd ? '添加数据源' : '维护数据源',
+    this.state = {
+      title:
+        (this.props.isAdd ? '添加数据源 - ' : '维护数据源 - ') +
+        ModalState.sourceTypeNames[0],
       bodyTop: '',
       bodyBottom: '',
       submitButton: this.props.isAdd ? '添加' : '保存',
       cancelButton: '关闭',
     }
+  }
+
+  render() {
     return (
       <DialogContainer
-        title={content.title}
+        title={this.state.title}
         type={'info'}
         renderFooter={() => (
           <span
@@ -60,7 +61,7 @@ class SourceModifyContents extends React.Component {
                 marginRight: '0',
               }}
             >
-              {content.cancelButton}
+              {this.state.cancelButton}
             </FlatButton>
             <FlatButton
               onClick={this.props.submit}
@@ -68,13 +69,13 @@ class SourceModifyContents extends React.Component {
                 marginRight: '0',
               }}
             >
-              {content.submitButton}
+              {this.state.submitButton}
             </FlatButton>
           </span>
         )}
       >
-        {content.bodyTop}
-        {content.bodyBottom}
+        {this.state.bodyTop}
+        {this.state.bodyBottom}
       </DialogContainer>
     )
   }

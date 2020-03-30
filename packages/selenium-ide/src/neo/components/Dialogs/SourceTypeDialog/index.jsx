@@ -4,6 +4,7 @@ import Modal from '../../Modal'
 import classNames from 'classnames'
 import DialogContainer from '../Dialog'
 import FlatButton from '../../FlatButton'
+import ModalState from '../../../stores/view/ModalState'
 export default class SourceTypeDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -82,7 +83,9 @@ class SourceTypeContents extends React.Component {
             return (
               <li
                 key={c.type}
-                className={'source-type-' + this.setTypeStyle(c.type)}
+                className={
+                  'source-type-' + ModalState.getSourceTypeNames(c.type)[1]
+                }
                 onClick={this.props.addSource.bind(this, c.type)}
               >
                 {c.text}
