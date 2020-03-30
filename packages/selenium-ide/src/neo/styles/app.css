@@ -61,7 +61,8 @@ button:disabled {
 }
 
 input,
-textarea {
+textarea,
+select {
   border: 1px #dcdcdc solid;
   color: #3f3f3f;
   border-radius: 2px;
@@ -76,20 +77,23 @@ textarea {
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus{
   border-color: #40a6ff;
   outline: 0;
 }
 
 input:disabled,
-textarea:disabled {
+textarea:disabled
+select:disabled{
   background-color: whitesmoke;
   border-color: whitesmoke;
   cursor: not-allowed;
 }
 
 input::placeholder,
-textarea::placeholder {
+textarea::placeholder
+select::placeholder{
   color: #a0a0a0;
 }
 
