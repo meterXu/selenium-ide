@@ -33,7 +33,7 @@ export default class SourceConf extends React.Component {
     }
   }
   addSource() {
-    ModalState.toggleSourceModify()
+    ModalState.toggleSourceType()
   }
   componentDidMount() {
     this.setState({

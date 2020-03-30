@@ -24,6 +24,7 @@ import SuiteSettings from '../../components/Dialogs/SuiteSettings'
 import RenameDialog from '../../components/Dialogs/Rename'
 import CaseConfigDialog from '../../components/Dialogs/CaseConfig'
 import SourceModify from '../../components/Dialogs/SourceModify'
+import SourceType from '../../components/Dialogs/SourceType'
 import BaseUrlDialog from '../../components/Dialogs/BaseUrl'
 import WelcomeDialog from '../../components/Dialogs/Welcome'
 import AlertDialog from '../../components/Dialogs/Alert'
@@ -80,6 +81,11 @@ export default class Modal extends Component {
           isOpen={ModalState.SourceModify}
           isAdd={ModalState.SourceModifyAdd}
           cancel={ModalState.toggleSourceModify}
+        />
+        <SourceType
+          isOpen={ModalState.SourceType}
+          isAdd={ModalState.SourceModifyAdd}
+          cancel={ModalState.toggleSourceType}
         />
         <ImportDialog
           isImporting={!!ModalState.importSuiteState.suite}

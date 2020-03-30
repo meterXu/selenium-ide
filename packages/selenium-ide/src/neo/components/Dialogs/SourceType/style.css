@@ -1,0 +1,45 @@
+.source-type-container{
+    display: flex;
+    list-style: none;
+    flex-flow: row nowrap;
+    justify-content:center;
+}
+.source-type-container li{
+    width: 120px;
+    height: 80px;
+    margin: 0 0px;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    box-sizing: border-box;
+    transform: skew(-20deg, 0deg);
+    animation: typeMove 0.6s 1;
+    animation-timing-function:ease;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+}
+@keyframes  typeMove{
+    form{
+        margin:  0 0;
+    }
+    to{
+        margin: 0 50px;
+    }
+}
+
+.source-type-container li:hover{
+    box-shadow: 1px 1px 4px #333;
+}
+.source-type-file{
+    background: #389c59;
+}
+
+.source-type-db{
+    background: #54a6c5;
+}
+
+.source-type-api{
+    background: #b5644c;
+}

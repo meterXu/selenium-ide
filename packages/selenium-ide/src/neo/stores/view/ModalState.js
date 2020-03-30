@@ -45,6 +45,8 @@ class ModalState {
   SourceModify = false
   @observable
   SourceModifyAdd = true
+  @observable
+  SourceType = false
 
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
@@ -268,6 +270,10 @@ class ModalState {
   @action.bound
   toggleSourceModify() {
     this.SourceModify = !this.SourceModify
+  }
+  @action.bound
+  toggleSourceType() {
+    this.SourceType = !this.SourceType
   }
 }
 
