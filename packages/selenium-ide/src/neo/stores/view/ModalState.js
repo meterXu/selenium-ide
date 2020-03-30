@@ -17,7 +17,6 @@
 
 import { action, observable } from 'mobx'
 import UiState from './UiState'
-import GraphState from './GraphState'
 import i18n from '../../i18n'
 class ModalState {
   @observable
@@ -42,12 +41,13 @@ class ModalState {
   @observable
   exportState = {}
   @observable
-  SourceModify = false
+  sourceModifyDialog = false
   @observable
-  SourceModifyAdd = true
+  sourceModifyAdd = true
   @observable
-  SourceType = false
-
+  sourceTypeDialog = false
+  @observable
+  sourceType = null
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
     this.renameSuite = this.rename.bind(this, Types.suite)
@@ -268,12 +268,16 @@ class ModalState {
     return !commands.includes(windowName)
   }
   @action.bound
-  toggleSourceModify() {
-    this.SourceModify = !this.SourceModify
+  toggleSourceModifyDialog(type) {
+    if (typeof type === 'number') {
+      this.toggleSourceTypeDialog()
+      this.sourceType = type
+    }
+    this.sourceModifyDialog = !this.sourceModifyDialog
   }
   @action.bound
-  toggleSourceType() {
-    this.SourceType = !this.SourceType
+  toggleSourceTypeDialog() {
+    this.sourceTypeDialog = !this.sourceTypeDialog
   }
 }
 

@@ -5,7 +5,7 @@ import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import './style.css'
 import FlatButton from '../../FlatButton'
-export default class SourceModify extends React.Component {
+export default class SourceModifyDialog extends React.Component {
   constructor(props) {
     super(props)
   }

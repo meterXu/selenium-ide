@@ -23,8 +23,8 @@ import ImportDialog from '../../components/Dialogs/ImportDialog'
 import SuiteSettings from '../../components/Dialogs/SuiteSettings'
 import RenameDialog from '../../components/Dialogs/Rename'
 import CaseConfigDialog from '../../components/Dialogs/CaseConfig'
-import SourceModify from '../../components/Dialogs/SourceModify'
-import SourceType from '../../components/Dialogs/SourceType'
+import SourceModifyDialog from '../../components/Dialogs/SourceModifyDialog'
+import SourceTypeDialog from '../../components/Dialogs/SourceTypeDialog'
 import BaseUrlDialog from '../../components/Dialogs/BaseUrl'
 import WelcomeDialog from '../../components/Dialogs/Welcome'
 import AlertDialog from '../../components/Dialogs/Alert'
@@ -77,15 +77,16 @@ export default class Modal extends Component {
           tests={this.props.project.tests}
           project={this.props.project}
         />
-        <SourceModify
-          isOpen={ModalState.SourceModify}
-          isAdd={ModalState.SourceModifyAdd}
-          cancel={ModalState.toggleSourceModify}
+        <SourceModifyDialog
+          isOpen={ModalState.sourceModifyDialog}
+          isAdd={ModalState.sourceModifyAdd}
+          cancel={ModalState.toggleSourceModifyDialog}
         />
-        <SourceType
-          isOpen={ModalState.SourceType}
-          isAdd={ModalState.SourceModifyAdd}
-          cancel={ModalState.toggleSourceType}
+        <SourceTypeDialog
+          isOpen={ModalState.sourceTypeDialog}
+          isAdd={ModalState.sourceModifyAdd}
+          addSource={ModalState.toggleSourceModifyDialog}
+          cancel={ModalState.toggleSourceTypeDialog}
         />
         <ImportDialog
           isImporting={!!ModalState.importSuiteState.suite}

@@ -4,7 +4,7 @@ import Modal from '../../Modal'
 import classNames from 'classnames'
 import DialogContainer from '../Dialog'
 import FlatButton from '../../FlatButton'
-export default class SourceType extends React.Component {
+export default class SourceTypeDialog extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -13,6 +13,7 @@ export default class SourceType extends React.Component {
       <Modal
         className={classNames('stripped', 'rename-dialog')}
         isOpen={this.props.isOpen}
+        onRequestClose={this.props.cancel}
       >
         <SourceTypeContents {...this.props} />
       </Modal>
@@ -73,6 +74,7 @@ class SourceTypeContents extends React.Component {
             </FlatButton>
           </span>
         )}
+        onRequestClose={this.props.cancel}
       >
         {content.bodyTop}
         <ul className="source-type-container">
@@ -81,7 +83,7 @@ class SourceTypeContents extends React.Component {
               <li
                 key={c.type}
                 className={'source-type-' + this.setTypeStyle(c.type)}
-                onClick={this.props.addSource}
+                onClick={this.props.addSource.bind(this, c.type)}
               >
                 {c.text}
               </li>

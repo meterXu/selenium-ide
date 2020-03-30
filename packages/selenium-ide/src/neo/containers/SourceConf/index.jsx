@@ -32,8 +32,8 @@ export default class SourceConf extends React.Component {
         break
     }
   }
-  addSource() {
-    ModalState.toggleSourceType()
+  showSourceTypeDialog() {
+    ModalState.toggleSourceTypeDialog()
   }
   componentDidMount() {
     this.setState({
@@ -48,7 +48,7 @@ export default class SourceConf extends React.Component {
           keys={this.state.typeSwitchData}
           onSwitch={this.scTypeSwitch.bind(this)}
         />
-        <SourceList itemData={this.state.itemData} addSource={this.addSource.bind(this)}/>
+        <SourceList itemData={this.state.itemData} addSource={this.showSourceTypeDialog.bind(this)}/>
       </div>
     )
   }
