@@ -15,7 +15,7 @@ export default class ScTypeSwitch extends React.Component {
     this.setState({
       sourceConfType: type,
     })
-    this.props.OnSwitch(type)
+    this.props.onSwitch(type)
   }
   render() {
     return (

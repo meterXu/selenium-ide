@@ -294,7 +294,6 @@ export default class ProjectStore {
 
   @action.bound
   fromJS(jsRep) {
-    debugger
     this.name = jsRep.name
     this.setUrl(jsRep.url)
     this._tests.replace(jsRep.tests.map(TestCase.fromJS))
