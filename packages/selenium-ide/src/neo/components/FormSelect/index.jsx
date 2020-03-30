@@ -28,9 +28,7 @@ export default class FormSelect extends React.Component {
     width: PropTypes.number,
     children: PropTypes.element,
     onChange: PropTypes.func,
-  }
-  static defaultProps = {
-    type: 'text',
+    itemData: PropTypes.array.isRequired,
   }
   render() {
     const props = Object.assign({}, this.props, {
@@ -49,14 +47,15 @@ export default class FormSelect extends React.Component {
         >
           {this.props.label}
         </label>
-        {this.props.children ? (
-          this.props.children
-        ) : (
-          <select {...props}>
-            <option value="1">Excel</option>
-            <option value="1">Txt</option>
-          </select>
-        )}
+        <select {...props}>
+          {this.props.itemData.map((c, i) => {
+            return (
+              <option key={i} value={c.value}>
+                {c.text}
+              </option>
+            )
+          })}
+        </select>
       </div>
     )
   }
