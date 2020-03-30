@@ -81,6 +81,7 @@ class SourceTypeContents extends React.Component {
               <li
                 key={c.type}
                 className={'source-type-' + this.setTypeStyle(c.type)}
+                onClick={this.props.addSource}
               >
                 {c.text}
               </li>
