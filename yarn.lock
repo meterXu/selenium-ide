@@ -1789,80 +1789,6 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@seleniumhq/code-export-csharp-commons@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-csharp-commons/-/code-export-csharp-commons-3.17.0.tgz#1a9b3e5127169b6ad3159f84860c6ed89ee5c455"
-  integrity sha512-IKwt/LfvF4DaD7hdT9pHBKVOs5ahgOjVvWxqiWPf/vPa/V1xnTDJn008eylYNWhW6/0eWqS+KiH8G2W76/NXBw==
-
-"@seleniumhq/code-export-csharp-nunit@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-csharp-nunit/-/code-export-csharp-nunit-3.17.0.tgz#a0bde2d025b881836a3b1bc6e09b89925621f808"
-  integrity sha512-bn2pL0lPjQhop9cneiGvPD4lxWv4lojkqniok18ee6R7O+94SNKKFVt3mFIGQi5SQpcjpN/iR8p3q8Tdc2U9FA==
-  dependencies:
-    "@seleniumhq/code-export-csharp-commons" "^3.17.0"
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export-csharp-xunit@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-csharp-xunit/-/code-export-csharp-xunit-3.17.0.tgz#5ae231a10f620b2807810ab4eac64922c5bcdaa4"
-  integrity sha512-7sWJPjjWNn03nD0QjkbVHpm+qBXyZIrol08/9dzoet3I0R0JCWqu6crAVladEx/Br7BR1yTB/vcpo0nmC4WyyA==
-  dependencies:
-    "@seleniumhq/code-export-csharp-commons" "^3.17.0"
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export-java-junit@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-java-junit/-/code-export-java-junit-3.17.0.tgz#a0803ab9ceecf156b5b3946752c61a35fd0aca7d"
-  integrity sha512-KN5hiD8mcUxTs0CHmELJi4PXYMfrSWRLFWPxVOgZb1pg2i/CXme7yKyKAxm12tl0hKN6eu/U7Zp9roe/87/Ijg==
-  dependencies:
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export-javascript-mocha@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-javascript-mocha/-/code-export-javascript-mocha-3.17.0.tgz#ce6d952ff536e056238f6b623b2609176ad82352"
-  integrity sha512-Fm/7Xp8Zlj88ZPrUIUp++BdYpHukLy/czRO5bVoMzFDHiFXf1Zu+trF7a6vqcnqpOUidbv879+exDDH/8eaNXQ==
-  dependencies:
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export-python-pytest@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-python-pytest/-/code-export-python-pytest-3.17.0.tgz#8b65d85e7892b0db1bebb163c1afa63207f2c777"
-  integrity sha512-tNDTwjs3G53bG9jk2psRI7xesW0CVz+40tdm4SMrfVHcNbe3KCV5QzAZsc5MElmntfLjzLNXWK5Rb4d3qa6c6Q==
-  dependencies:
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export-ruby-rspec@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export-ruby-rspec/-/code-export-ruby-rspec-3.17.0.tgz#2a9694efd9bac851f09d83777663a9d61488d4ec"
-  integrity sha512-xj38+z9wnI3WY7qMGHGGK5sDwHw1jzYBJGe/yRXDmx7zqqlwcCPzUG4/oHPB2KFcqBnbbxME5NUOrBqM3OKy0A==
-  dependencies:
-    "@seleniumhq/side-utils" "^3.17.0"
-
-"@seleniumhq/code-export@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/code-export/-/code-export-3.17.0.tgz#918d2abb32672e8e9bd842160f7c63a4ee31d3a6"
-  integrity sha512-0jNMZojvNa4wL5muyID5l3FA5HpwlRwTpPUsfl29HcDNtUcccm8uj1j0A0vQ1YbpOLGHp4Z5TGHaB00gTRTwOg==
-  dependencies:
-    "@seleniumhq/code-export-csharp-nunit" "^3.17.0"
-    "@seleniumhq/code-export-csharp-xunit" "^3.17.0"
-    "@seleniumhq/code-export-java-junit" "^3.17.0"
-    "@seleniumhq/code-export-javascript-mocha" "^3.17.0"
-    "@seleniumhq/code-export-python-pytest" "^3.17.0"
-    "@seleniumhq/code-export-ruby-rspec" "^3.17.0"
-
-"@seleniumhq/side-model@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/side-model/-/side-model-3.17.0.tgz#3b5395dcdd609e077237df5b34b3fb0f2b118b9e"
-  integrity sha512-70BMsF8j/+GzsrGhRDO4KLuHQoyg+vapYZCY9z7O0jFtN3KvxG4Tr97dKmMSu9Tx/Z1zHjxEisicLGvC1hnjSw==
-
-"@seleniumhq/side-utils@^3.17.0":
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/@seleniumhq/side-utils/-/side-utils-3.17.0.tgz#d119f0d62017ff11f22243759454a0809f2457bd"
-  integrity sha512-R2BsfIfx8URlFVv6JFNmYvjBvmi0M6spvTn19G3a68bpGjPWaXKi3ZWWV38TKxDQF7L5wfv75zMM1JOGNnHHuA==
-  dependencies:
-    "@seleniumhq/side-model" "^3.17.0"
-    ua-parser-js "^0.7.17"
-
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.2.tgz#8013f2af54a2b7d735f71560ff360d3a8176a87b"
@@ -4934,6 +4860,11 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
   integrity sha1-Qa4u62XvpiJorr/qg6x9eSmbCIc=
+
+eve-raphael@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/eve-raphael/-/eve-raphael-0.5.0.tgz#17c754b792beef3fa6684d79cf5a47c63c4cda30"
+  integrity sha1-F8dUt5K+7z+maE15z1pHxjxM2jA=
 
 event-emitter@~0.3.5:
   version "0.3.5"
@@ -10392,6 +10323,13 @@ range-parser@^1.0.3, range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
+raphael@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/raphael/-/raphael-2.3.0.tgz#eabeb09dba861a1d4cee077eaafb8c53f3131f89"
+  integrity sha512-w2yIenZAQnp257XUWGni4bLMVxpUpcIl7qgxEgDIXtmSypYtlNxfXWpOBxs7LBTps5sDwhRnrToJrMUrivqNTQ==
+  dependencies:
+    eve-raphael "0.5.0"
+
 raw-body@2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/raw-body/-/raw-body-2.4.0.tgz#a1ce6fb9c9bc356ca52e89256ab59059e13d0332"
@@ -10486,6 +10424,13 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-app-rewired@^2.1.4:
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/react-app-rewired/-/react-app-rewired-2.1.5.tgz#592ec2eae5c3c5cd96c80930b5dc3f6c34da1dc6"
+  integrity sha512-Gr8KfCeL9/PTQs8Vvxc7v8wQ9vCFMnYPhcAkrMlzkLiMFXS+BgSwm11MoERjZm7dpA2WjTi+Pvbu/w7rujAV+A==
+  dependencies:
+    semver "^5.6.0"
 
 react-autocomplete@^1.7.2:
   version "1.8.1"
@@ -11416,14 +11361,6 @@ selfsigned@^1.9.1:
   integrity sha512-8M3wBCzeWIJnQfl43IKwOmC4H/RAp50S8DF60znzjW5GVqTcSe2vWclt7hmYVPkKPlHWOu5EaWOMZ2Y6W8ZXTA==
   dependencies:
     node-forge "0.9.0"
-
-selianize@^3.17.0:
-  version "3.17.0"
-  resolved "https://registry.yarnpkg.com/selianize/-/selianize-3.17.0.tgz#0ef768d226b16d619b54bdb559450320830141dc"
-  integrity sha512-90xuzriZdcrXAaiRXUJ8pgH85pQxtz9K+EYz6HUGnwQinHJi7IHZNKzN6yJ2pzTvaU2vnFbXsBtDNT9sbIyd8g==
-  dependencies:
-    "@seleniumhq/side-model" "^3.17.0"
-    "@seleniumhq/side-utils" "^3.17.0"
 
 "semver@2 || 3 || 4 || 5", semver@^5.4.1, semver@^5.5.0, semver@^5.5.1:
   version "5.6.0"
