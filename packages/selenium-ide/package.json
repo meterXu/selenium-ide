@@ -3,16 +3,19 @@
   "version": "3.16.1",
   "description": "An integrated development environment for Selenium scripts",
   "license": "Apache-2.0",
+  "main": "src/noe/containers/Root/index.jsx",
   "private": true,
   "scripts": {
-    "start": "env NODE_ENV=test webpack-dev-server --host 0.0.0.0 --hot",
+    "start1": "react-scripts start",
+    "start": "env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --hot",
     "build": "rm -rf build && env NODE_ENV=production webpack",
     "build:dev": "webpack",
     "build-chrome": "./build.sh build ../../selenium-ide.pem 1>/dev/null && mkdir -p dist && mv build.crx dist/selenium-ide.crx && echo \"Wrote dist/selenium-ide.crx\"",
     "build-firefox": "web-ext sign -s build -a dist --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET --id=$(cat ../../.web-extension-id)",
     "version": "node scripts/version.js && git add src/manifest.json",
     "prepublishOnly": "yarn build-prod",
-    "watch": "yarn build:dev -w"
+    "watch": "yarn build:dev -w",
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -21,6 +24,7 @@
     "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.3.1",
     "autoprefixer": "^7.1.4",
     "babel-loader": "^8.0.5",
     "closure-loader": "0.6.0",
@@ -77,6 +81,7 @@
     "react-syntax-highlighter": "^8.0.1",
     "react-tooltip": "^3.8.1",
     "react-transition-group": "^2.2.1",
+    "react-scripts": "3.0.1",
     "resolve-url": "^0.2.1",
     "scroll-into-view-if-needed": "2",
     "selianize": "^3.16.0",

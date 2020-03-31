@@ -1,15 +1,16 @@
 .form-group {
-    display: flex;
-    border:1px solid #333;
+    display: block;
 }
-
+.form-group-container{
+    border: 1px solid #dcdcdc;
+    padding: 10px 30px;
+}
 .form-group > label {
     font-size: 13px;
-    width: 85px;
-    display: block;
     margin: 10px 0;
+    width: 85px;
+    display: inline-block;
 }
-
 .form-group > *:last-child {
     flex-grow: 1;
     margin: 5px 0;

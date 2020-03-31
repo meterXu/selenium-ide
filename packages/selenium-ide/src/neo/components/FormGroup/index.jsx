@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
-export default class FormGroup extends React.Component{
+export default class FormGroup extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -24,7 +24,7 @@ export default class FormGroup extends React.Component{
         >
           {this.props.label}
         </label>
-        {this.props.children}
+        <div className="form-group-container">{this.props.children}</div>
       </div>
     )
   }
