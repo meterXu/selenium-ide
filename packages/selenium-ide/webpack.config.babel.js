@@ -258,7 +258,7 @@ module.exports = {
     ],
   },
   plugins: (isProduction
-    ? [
+      ? [
         new UglifyJsPlugin({
           uglifyOptions: {
             warnings: false, // Suppress uglification warnings
@@ -278,7 +278,7 @@ module.exports = {
           exclude: [/\.min\.js$/gi], // skip pre-minified libs
         }),
       ]
-    : []
+      : []
   ).concat([
     // globally add google closure library
     new webpack.ProvidePlugin({
