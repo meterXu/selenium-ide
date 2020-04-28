@@ -32,7 +32,8 @@ export function sanitizeProjectName(projectName) {
     // eslint-disable-next-line node/no-deprecated-api
     return url.parse(projectName).host
   } else {
-    return name.replace(/([^a-z0-9 ._-]+)/gi, '')
+    // return name.replace(/([^a-z0-9 ._-]+)/gi, '')
+    return name
   }
 }
 
