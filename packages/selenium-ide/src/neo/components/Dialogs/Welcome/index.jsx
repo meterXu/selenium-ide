@@ -91,15 +91,15 @@ class WelcomeDialogContents extends React.Component {
         )}
         renderFooter={() => (
           <p>
-            要了解有关Selenium IDE及其使用方法的更多信息，请访问{' '}
-            <a
-              href="https://www.seleniumhq.org/selenium-ide/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Selenium IDE项目页面
-            </a>
-            。
+            {/*要了解有关Selenium IDE及其使用方法的更多信息，请访问{' '}*/}
+            {/*<a*/}
+            {/*  href="https://www.seleniumhq.org/selenium-ide/"*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noopener noreferrer"*/}
+            {/*>*/}
+            {/*  Selenium IDE项目页面*/}
+            {/*</a>*/}
+            {/*。*/}
           </p>
         )}
       >
@@ -121,7 +121,7 @@ class WelcomeDialogContents extends React.Component {
               <a onClick={this.createNewProject}>创建一个新项目</a>
             </li>
             <li>
-              <a onClick={this.dismiss}>关闭Selenium IDE</a>
+              <a onClick={this.dismiss}>关闭JetRecord</a>
             </li>
           </ul>
         </div>
