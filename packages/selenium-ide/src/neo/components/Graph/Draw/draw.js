@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
+import prcItem from '../../../models/Graph/prcItem'
 class Draw {
   @observable
   itemList = []
@@ -223,20 +224,20 @@ class Draw {
     st.push(txt)
     st.push(ll)
     this.itemList.push([st])
-    let _newDrawItem = {
-      text: item.text,
-      type: item.type,
-      img: item.img,
-      coordinate: coordinate,
-      st: st,
-      data: {
+    let _newDrawItem = new prcItem(
+      coordinate,
+      {
         caseId: null,
         caseName: null,
         sourceId: null,
         paraNames: [],
         paraValues: [],
       },
-    }
+      item.img,
+      item.text,
+      item.type,
+      st
+    )
     if (item.hasOwnProperty('data')) {
       item.st = st
     } else {

@@ -7,6 +7,7 @@ import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
 import UiState from '../../stores/view/UiState'
 import Process from '../../models/Graph/Process'
+import prcItem from '../../models/Graph/prcItem'
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
@@ -40,19 +41,19 @@ class ProcessDesign extends React.Component {
   componentDidMount() {
     GraphState.setCurrentProcess(
       new Process(undefined, 'process_1', [
-        {
-          coordinate: '0,1',
-          data: {
+        new prcItem(
+          '0,1',
+          {
             caseId: null,
             caseName: '[smoke] A-HXHS-TEST1',
             paraNames: [],
             paraValues: [],
             sourceId: null,
           },
-          img: UiState.enum.image.用例,
-          text: '[smoke] A-HXHS-TEST1',
-          type: 'case',
-        },
+          UiState.enum.image.用例,
+          '[smoke] A-HXHS-TEST1',
+          'case'
+        ),
       ])
     )
     UiState.project.setProcessData([GraphState.currentProcess])
