@@ -27,7 +27,7 @@ import BackgroundRecorder from '../../IO/SideeX/recorder'
 import i18n from '../../i18n'
 import enumData from '../../../common/enum'
 import axios from 'axios'
-import Source from "../../models/Source/Source";
+import Source from '../../models/Source/Source'
 class UiState {
   lang = i18n.lang
   views = [
@@ -36,7 +36,7 @@ class UiState {
     this.lang.executing,
     this.lang.processDesign,
   ]
-  enum=enumData
+  enum = enumData
   @observable
   lastViewSelection = new Map()
   @observable
@@ -85,9 +85,10 @@ class UiState {
   specifiedRemoteUrl = null
   @observable
   gridConfigEnabled = null
-  @observable pluginConf = {
-    backUrl:'http://192.168.12.74:8000/',
-    dataCatalog:'api/v1/dataCatalog/'
+  @observable
+  pluginConf = {
+    backUrl: 'http://192.168.12.74:8000/',
+    dataCatalog: 'api/v1/dataCatalog/',
   }
   constructor() {
     this.suiteStates = {}
@@ -234,7 +235,9 @@ class UiState {
   }
   @computed
   get sourceList() {
-    return this.project.scTypeSwitch === enumData.scIOType.读取 ? this.project.sourceData.read : this.project.sourceData.write
+    return this.project.scTypeSwitch === enumData.scIOType.读取
+      ? this.project.sourceData.read
+      : this.project.sourceData.write
   }
 
   @action.bound
@@ -274,31 +277,54 @@ class UiState {
   @observable
   responseSources = []
   @action.bound
-  getSourceConf(code){
-    let findSc = this.project.sourceData.read.find(c=>c.code===code)
-    if(!findSc){
-      axios.get(this.pluginConf.backUrl+this.pluginConf.dataCatalog+'?code='+code).then(action(res=>{
-        if(res&&res.data&&res.data.data_type)
-        {
-          switch (res.data.data_type.toString().toLowerCase()) {
-            case enumData.scTypeName.excel:
-            {
-              this.responseSources = [new Source(undefined,enumData.scIOType.读取,this.project.createExcel(res.data.name,res.data.code,res.data.type_connect,JSON.parse(res.data.json_str)))]
-              this.project.addSource(this.responseSources[0],enumData.scIOType.读取)
-            } break
-          }
-        }else{
-          this.responseSources = []
-        }
-      }))
-    }else{
+  getSourceConf(code) {
+    let findSc = this.project.sourceData.read.find(c => c.code === code)
+    if (!findSc) {
+      axios
+        .get(
+          this.pluginConf.backUrl +
+            this.pluginConf.dataCatalog +
+            '?code=' +
+            code
+        )
+        .then(
+          action(res => {
+            if (res && res.data && res.data.data_type) {
+              switch (res.data.data_type.toString().toLowerCase()) {
+                case enumData.scTypeName.excel:
+                  {
+                    this.responseSources = [
+                      new Source(
+                        undefined,
+                        enumData.scIOType.读取,
+                        this.project.createExcel(
+                          res.data.name,
+                          res.data.code,
+                          res.data.type_connect,
+                          JSON.parse(res.data.json_str)
+                        )
+                      ),
+                    ]
+                    this.project.addSource(
+                      this.responseSources[0],
+                      enumData.scIOType.读取
+                    )
+                  }
+                  break
+              }
+            } else {
+              this.responseSources = []
+            }
+          })
+        )
+    } else {
       this.responseSources = [findSc]
     }
   }
 
   @action.bound
-  emptyResponseSource(){
-    this.responseSources=[]
+  emptyResponseSource() {
+    this.responseSources = []
   }
 
   @action.bound
