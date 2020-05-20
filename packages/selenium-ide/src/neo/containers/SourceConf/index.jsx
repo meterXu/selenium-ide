@@ -1,6 +1,5 @@
 import React from 'react'
 import './type.css'
-import ScTypeSwitch from '../../components/SourceConf/ScTypeSwitch'
 import SourceList from '../../components/SourceConf/SourceList'
 import UiState from '../../stores/view/UiState'
 import ModalState from '../../stores/view/ModalState'
