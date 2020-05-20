@@ -16,11 +16,14 @@ class CaseConfState {
     let selectSourceList = [{ text: '-请选择-', value: null }]
     if (
       GraphState.currentActiveNode &&
-      GraphState.currentActiveNode.data.source
+      GraphState.currentActiveNode.data.sourceId
     ) {
-      selectSourceList = selectSourceList.concat({
-        text: GraphState.currentActiveNode.data.source.name,
-        value: GraphState.currentActiveNode.data.source.id,
+      let findSc = UiState.project.sourceData.read.find(
+        c => c.id === GraphState.currentActiveNode.data.sourceId
+      )
+      selectSourceList.push({
+        text: findSc.name,
+        value: findSc.id,
       })
     } else {
       selectSourceList = selectSourceList.concat(
@@ -29,6 +32,7 @@ class CaseConfState {
         })
       )
     }
+
     return selectSourceList
   }
   @action.bound
