@@ -6,7 +6,7 @@ import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
 import UiState from '../../stores/view/UiState'
-import uuidv4 from 'uuid/v4'
+import Process from '../../models/Graph/Process'
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
@@ -38,10 +38,8 @@ class ProcessDesign extends React.Component {
     )
   }
   componentDidMount() {
-    GraphState.setCurrentProcess({
-      id: uuidv4(),
-      name: 'process_1',
-      graphData: [
+    GraphState.setCurrentProcess(
+      new Process(undefined, 'process_1', [
         {
           coordinate: '0,1',
           data: {
@@ -55,8 +53,8 @@ class ProcessDesign extends React.Component {
           text: '[smoke] A-HXHS-TEST1',
           type: 'case',
         },
-      ],
-    })
+      ])
+    )
     UiState.project.setProcessData([GraphState.currentProcess])
     UiState.project.setSelectedProcess(GraphState.currentProcess.id)
   }
