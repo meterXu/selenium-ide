@@ -9,6 +9,7 @@ export default class Process {
     this.name = name
     this.graphData = graphData
     this.export = this.export.bind(this)
+    this.fromJs = this.fromJs.bind(this)
   }
 
   export() {
@@ -17,5 +18,8 @@ export default class Process {
       name: this.name,
       graphData: this.graphData.map(c => c.export()),
     }
+  }
+  fromJs() {
+
   }
 }

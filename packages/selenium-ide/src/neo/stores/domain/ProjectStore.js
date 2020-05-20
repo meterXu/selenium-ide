@@ -25,6 +25,7 @@ import File from '../../models/Source/File'
 import Db from '../../models/Source/Db'
 import Api from '../../models/Source/Api'
 import { VERSIONS } from '../../IO/migrate'
+import Process from '../../models/Graph/Process'
 
 export default class ProjectStore {
   @observable
@@ -347,7 +348,7 @@ export default class ProjectStore {
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
     this.pluginConf = jsRep.pluginConf
-    this.processData = jsRep.processData
+    this.processData.replace(jsRep.processData.map(c=>Process.fromJs(c)))
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
