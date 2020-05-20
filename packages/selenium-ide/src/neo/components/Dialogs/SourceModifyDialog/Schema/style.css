@@ -1,0 +1,14 @@
+.schema-container{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.schema-container li {
+    border:1px dashed #999;
+    height: 18px;
+    line-height: 18px;
+    text-indent: 5px;
+}
+.schema-container li+li{
+    margin-top: 5px;
+}
