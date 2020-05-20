@@ -4,7 +4,7 @@ import DesignGraph from '../Graph'
 import GraphTool from '../../components/Graph/Tool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
-import GraphDraw from '../../components/Graph/Draw'
+import GraphDraw from '../../components/Graph/Draw/draw'
 import UiState from '../../stores/view/UiState'
 import uuidv4 from 'uuid/v4'
 class ProcessDesign extends React.Component {
@@ -51,7 +51,7 @@ class ProcessDesign extends React.Component {
             paraValues: [],
             source: null,
           },
-          img: 'case',
+          img: UiState.enum.image.用例,
           text: '用例',
           type: 'case',
         },

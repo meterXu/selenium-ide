@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
+import enumData from '../../../../common/enum'
 export default class GraphDockBar extends React.Component {
   constructor(props) {
     super(props)
@@ -8,12 +9,12 @@ export default class GraphDockBar extends React.Component {
       dockItemList: [
         {
           type: 'case',
-          img: require('../../../../icons/case.svg'),
+          img: enumData.image.用例,
           text: '用例',
         },
         {
           type: 'while',
-          img: require('../../../../icons/for.svg'),
+          img: enumData.image.循环,
           text: '循环',
         },
       ],

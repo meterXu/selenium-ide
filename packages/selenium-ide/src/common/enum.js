@@ -32,4 +32,8 @@ export default {
     修改: 1,
     无: 2,
   },
+  image: {
+    用例: 'case',
+    循环: 'for',
+  },
 }

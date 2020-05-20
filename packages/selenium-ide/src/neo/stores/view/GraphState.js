@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx'
-import draw from '../../components/Graph/Draw/index'
+import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 class GraphState {
   @observable
@@ -131,6 +131,10 @@ class GraphState {
   removeProcess() {}
   @action.bound
   codeExport() {}
+  @action.bound
+  getImage(name) {
+    return require(`../../../icons/${name}.svg`)
+  }
 }
 if (!window._graphState) window._graphState = new GraphState()
 

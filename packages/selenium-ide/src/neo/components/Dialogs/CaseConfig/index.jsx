@@ -87,7 +87,7 @@ class CaseConfigDialogContents extends React.Component {
   }
   formSelectChange() {
     CaseConfigState.setSelectedSource(event.target.value)
-    GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource)
+    GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource.id)
   }
 
   render() {

@@ -9,7 +9,7 @@ export default [
   // builds from a single configuration where possible, using
   // the `targets` option which can specify `dest` and `format`)
   {
-    input: "src/index.js",
+    input: "src/draw.js",
     external: externalDependencies,
     output: [
       { file: pkg.main, format: "cjs" }
@@ -21,7 +21,7 @@ export default [
     ]
   },
   {
-    input: "src/index.js",
+    input: "src/draw.js",
     external: externalDependencies,
     output: [
       { file: pkg.module, format: "es" }

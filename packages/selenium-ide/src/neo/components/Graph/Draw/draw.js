@@ -1,6 +1,5 @@
 import { action, observable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
-import UiState from '../../../stores/view/SuiteState'
 class Draw {
   @observable
   itemList = []
@@ -185,7 +184,7 @@ class Draw {
     )
     let cc = GraphState.paper
       .image(
-        item.img,
+        GraphState.getImage(item.img),
         500,
         3000,
         this.nodeParam.width * GraphState.zoom,
@@ -245,6 +244,7 @@ class Draw {
     }
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
+
   drawLine(from, to) {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
