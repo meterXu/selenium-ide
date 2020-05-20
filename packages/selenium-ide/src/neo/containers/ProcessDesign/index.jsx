@@ -49,7 +49,7 @@ class ProcessDesign extends React.Component {
             caseName: null,
             paraNames: [],
             paraValues: [],
-            source: null,
+            sourceId: null,
           },
           img: UiState.enum.image.用例,
           text: '用例',

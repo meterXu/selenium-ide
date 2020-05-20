@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './style.css'
 import enumData from '../../../../common/enum'
+import GraphState from '../../../stores/view/GraphState'
 export default class GraphDockBar extends React.Component {
   constructor(props) {
     super(props)
@@ -38,7 +39,7 @@ export default class GraphDockBar extends React.Component {
                     text: c.text,
                   })}
                 >
-                  <img src={c.img} alt={c.type} />
+                  <img src={GraphState.getImage(c.img)} alt={c.type} />
                   <span>{c.text}</span>
                 </li>
               )
