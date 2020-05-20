@@ -60,6 +60,11 @@ export default class ProjectStore {
     read: [],
     write: [],
   }
+  @observable
+  pluginConf = {
+    backUrl: 'http://192.168.12.74:8000/',
+    dataCatalog: 'api/v1/dataCatalog/',
+  }
 
   constructor(name = 'Untitled Project') {
     this.name = name
@@ -321,6 +326,7 @@ export default class ProjectStore {
     this.delay = jsRep.delay || this.defaultDelay
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
+    this.pluginConf = jsRep.pluginConf
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
@@ -346,6 +352,7 @@ export default class ProjectStore {
       tests: this._tests.map(t => t.export()),
       suites: this._suites.map(s => s.export()),
       sourceData: this.sourceData,
+      pluginConf: this.pluginConf,
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,

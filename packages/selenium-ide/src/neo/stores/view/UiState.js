@@ -85,10 +85,9 @@ class UiState {
   specifiedRemoteUrl = null
   @observable
   gridConfigEnabled = null
-  @observable
-  pluginConf = {
-    backUrl: 'http://192.168.12.74:8000/',
-    dataCatalog: 'api/v1/dataCatalog/',
+  @computed
+  pluginConf() {
+    return this.project.pluginConf
   }
   constructor() {
     this.suiteStates = {}
