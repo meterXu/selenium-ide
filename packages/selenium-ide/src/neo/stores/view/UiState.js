@@ -288,6 +288,15 @@ class UiState {
         )
         .then(
           action(res => {
+            res = {
+              data: {
+                name: '核销报核',
+                code: 'A-HXHS-TEST1',
+                data_type: 'Excel',
+                type_connect: 'D:\\\\upload\\\\1.html',
+                json_str: '{"data":"111","url":"heheh"}',
+              },
+            }
             if (res && res.data && res.data.data_type) {
               switch (res.data.data_type.toString().toLowerCase()) {
                 case enumData.scTypeName.excel:
