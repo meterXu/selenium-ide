@@ -232,7 +232,7 @@ class Draw {
       data: {
         caseId: null,
         caseName: null,
-        source: null,
+        sourceId: null,
         paraNames: [],
         paraValues: [],
       },
