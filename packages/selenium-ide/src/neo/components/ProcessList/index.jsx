@@ -22,7 +22,6 @@ import classNames from 'classnames'
 import {MenuTest} from '../Test'
 import UiState from '../../stores/view/UiState'
 import GraphState from '../../stores/view/GraphState'
-import PlaybackState from '../../stores/view/PlaybackState'
 import './style.css'
 
 @inject('renameTest')
@@ -38,7 +37,6 @@ export default class ProcessList extends Component {
           <li key={process.id}>
             <MenuTest
               key={process.id}
-              className={PlaybackState.testState.get(process.id)}
               index={index}
               test={process}
               selected={
