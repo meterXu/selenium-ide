@@ -9,8 +9,8 @@ import ModalState from '../../../stores/view/ModalState'
 import FileSource from './FileSource'
 import DbSource from './DbSource'
 import ApiSource from './ApiSource'
-import enumData from "../../../../common/enum";
-import {observer} from "mobx-react";
+import enumData from '../../../../common/enum'
+import { observer } from 'mobx-react'
 
 @observer
 export default class SourceModifyDialog extends React.Component {
@@ -22,7 +22,7 @@ export default class SourceModifyDialog extends React.Component {
     modifyType: PropTypes.number,
     submit: PropTypes.func,
     cancel: PropTypes.func,
-    sourceConfModel:PropTypes.object
+    sourceConfModel: PropTypes.object,
   }
   render() {
     return (
@@ -41,56 +41,55 @@ class SourceModifyContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title:'',
+      title: '',
       bodyTop: '',
       bodyBottom: '',
       cancelButton: '关闭',
     }
   }
 
-  getTitle(){
+  getTitle() {
     switch (this.props.modifyType) {
-      case enumData.btnType.添加:{
-        return '添加数据源 - '+ModalState.sourceTypeName
+      case enumData.btnType.添加: {
+        return '添加数据源 - ' + ModalState.sourceTypeName
       }
-      case enumData.btnType.修改:{
-        return '修改数据源 - '+ModalState.sourceTypeName
+      case enumData.btnType.修改: {
+        return '修改数据源 - ' + ModalState.sourceTypeName
       }
-      case enumData.btnType.无:{
-        return '查看数据源 - '+ModalState.sourceTypeName
+      case enumData.btnType.无: {
+        return '查看数据源 - ' + ModalState.sourceTypeName
       }
     }
   }
 
-
-  getBtn(){
+  getBtn() {
     switch (this.props.modifyType) {
-      case enumData.btnType.添加:{
+      case enumData.btnType.添加: {
         return (
-            <FlatButton
-                onClick={this.props.submit}
-                style={{
-                  marginRight: '0',
-                }}
-            >
-              添加
-            </FlatButton>
+          <FlatButton
+            onClick={this.props.submit}
+            style={{
+              marginRight: '0',
+            }}
+          >
+            添加
+          </FlatButton>
         )
       }
       case enumData.btnType.修改: {
         return (
-            <FlatButton
-                onClick={this.props.submit}
-                style={{
-                  marginRight: '0',
-                }}
-            >
-              修改
-            </FlatButton>
+          <FlatButton
+            onClick={this.props.submit}
+            style={{
+              marginRight: '0',
+            }}
+          >
+            修改
+          </FlatButton>
         )
       }
 
-      case enumData.btnType.无:{
+      case enumData.btnType.无: {
         return ''
       }
     }
@@ -121,9 +120,15 @@ class SourceModifyContainer extends React.Component {
         )}
       >
         {this.state.bodyTop}
-        {ModalState.sourceType === enumData.scType.文件 && <FileSource model={this.sourceConfModel}/>}
-        {ModalState.sourceType === enumData.scType.数据库 && <DbSource model={this.sourceConfModel}/>}
-        {ModalState.sourceType === enumData.scType.接口 && <ApiSource model={this.sourceConfModel}/>}
+        {ModalState.sourceType === enumData.scType.文件 && (
+          <FileSource model={this.sourceConfModel} />
+        )}
+        {ModalState.sourceType === enumData.scType.数据库 && (
+          <DbSource model={this.sourceConfModel} />
+        )}
+        {ModalState.sourceType === enumData.scType.接口 && (
+          <ApiSource model={this.sourceConfModel} />
+        )}
         {this.state.bodyBottom}
       </DialogContainer>
     )
