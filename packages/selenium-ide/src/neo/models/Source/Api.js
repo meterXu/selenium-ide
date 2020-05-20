@@ -1,25 +1,23 @@
-import { action, observable, reaction } from 'mobx'
+import enumData from '../../../common/enum'
 export default class Api {
-  @observable
-  type = 2
-  @observable
+  type = enumData.scType.接口
   data = null
-  @observable
   name = null
-  constructor(name) {
+  constructor(name,code) {
     this.name = name
+    this.code = code
     this.createApi = this.createApi.bind(this)
   }
-  @action.bound
   createApi(
     url,
     type,
     contentType = 'application/x-www-form-urlencoded',
     data,
-    header
+    header,
+    schema
   ) {
     this.data = {
-      type: 0,
+      type: enumData,
       pro: {
         path: url,
         type: type,
@@ -27,6 +25,7 @@ export default class Api {
         data: data,
         header: header,
       },
+      schema:schema
     }
   }
 }

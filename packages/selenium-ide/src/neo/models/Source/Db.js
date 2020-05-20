@@ -1,42 +1,40 @@
-import { action, observable, reaction } from 'mobx'
+import enumData from '../../../common/enum'
 export default class Db {
-  @observable
-  type = 1
-  @observable
+  type = enumData.scType.数据库
   data = null
-  @observable
   name = null
-  constructor(name) {
+  constructor(name,code) {
     this.name = name
+    this.code = code
     this.createOracle = this.createOracle.bind(this)
     this.createSqlserver = this.createSqlserver.bind(this)
     this.createMysql = this.createMysql.bind(this)
   }
-  @action.bound
-  createOracle(connStr) {
+  createOracle(connStr,schema) {
     this.data = {
-      type: 0,
+      type: enumData.scDbType.oracle,
       pro: {
         connStr: connStr,
       },
+      schema:schema
     }
   }
-  @action.bound
-  createSqlserver(connStr) {
+  createSqlserver(connStr,schema) {
     this.data = {
-      type: 1,
+      type: enumData.scDbType.sqlServer,
       pro: {
         connStr: connStr,
       },
+      schema:schema
     }
   }
-  @action.bound
-  createMysql(connStr) {
+  createMysql(connStr,schema) {
     this.data = {
-      type: 2,
+      type: enumData.scDbType.mysql,
       pro: {
         connStr: connStr,
       },
+      schema:schema
     }
   }
 }

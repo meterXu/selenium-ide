@@ -1,22 +1,20 @@
-import { action, observable, reaction } from 'mobx'
+import enumData from '../../../common/enum'
 export default class File {
-  @observable
-  type = 0
-  @observable
+  type = enumData.scType.文件
   name = null
-  @observable
   data = null
-  constructor(name) {
+  constructor(name,code) {
     this.name = name
+    this.code = code
     this.createExcel = this.createExcel.bind(this)
   }
-  @action.bound
-  createExcel(path) {
+  createExcel(path,schema) {
     this.data = {
-      type: 0,
+      type: enumData.scFileType.excel,
       pro: {
         path: path,
       },
+      schema:schema
     }
   }
 }

@@ -23,7 +23,7 @@ import {
   ArgTypes as _ArgTypes,
   TargetTypes,
   registerCommand,
-} from '../../../../../side-model/dist'
+} from '../../../side-model/'
 const EventEmitter = require('events')
 import { mergeEventEmitter } from '../../../common/events'
 

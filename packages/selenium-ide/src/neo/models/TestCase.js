@@ -73,7 +73,7 @@ export default class TestCase {
   }
 
   @action.bound
-  createCommand(index, c, t, v, comment) {
+  createCommand(index, c, t, v, comment,isParam) {
     if (index !== undefined && index.constructor.name !== 'Number') {
       throw new Error(
         `Expected to receive Number instead received ${
@@ -87,6 +87,17 @@ export default class TestCase {
         this.updateWindowHandleNames
       )
       if (comment) command.setComment(comment)
+      if(isParam){
+        command.setIsParam(isParam)
+        if(v){
+          command.setDirectionValue(v)
+          command.setDirectionType('value')
+        }else{
+          command.setDirectionValue(t)
+          command.setDirectionType('target')
+        }
+
+      }
       index !== undefined
         ? this.commands.splice(index, 0, command)
         : this.commands.push(command)
