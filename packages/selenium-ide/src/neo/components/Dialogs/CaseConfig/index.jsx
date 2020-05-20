@@ -51,7 +51,7 @@ class CaseConfigDialogContents extends React.Component {
       this.props.tests
         .find(c => c.name === obj.hideValue)
         .commands.filter(c => c.isParam)
-        .map(i => {
+        .map((c,i) => {
           return 'param' + i
         })
     )
