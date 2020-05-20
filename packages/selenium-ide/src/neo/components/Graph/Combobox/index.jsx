@@ -53,6 +53,7 @@ export default class Combobox extends React.Component {
     this.props.itemClick({
       text: event.target.innerText,
       value: event.target.getAttribute('data-value'),
+      hideValue:event.target.getAttribute('data-hideValue'),
     })
   }
   componentDidMount() {
@@ -94,6 +95,7 @@ export default class Combobox extends React.Component {
                   key={i}
                   tabIndex={i}
                   data-value={c.value}
+                  data-hideValue={c.hideValue}
                   onClick={this.itemClick.bind(this)}
                 >
                   {c.text}

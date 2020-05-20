@@ -1,4 +1,4 @@
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 import React from 'react'
 import Modal from '../../Modal'
 import DialogContainer from '../Dialog'
@@ -9,10 +9,10 @@ import FlatButton from '../../FlatButton'
 import Combobox from '../../Graph/Combobox'
 import GraphState from '../../../stores/view/GraphState'
 import CycleFormInput from '../../Graph/CycleFormInput'
-import FormGroup from "../../FormGroup";
-import FormSelect from "../../FormSelect";
-import CaseConfigState from "../../../stores/view/caseConf/CaseConfState";
-import UiState from "../../../stores/view/UiState";
+import FormGroup from '../../FormGroup'
+import FormSelect from '../../FormSelect'
+import CaseConfigState from '../../../stores/view/caseConf/CaseConfState'
+import UiState from '../../../stores/view/UiState'
 
 export default class CaseConfigDialog extends React.Component {
   constructor(props) {
@@ -40,17 +40,21 @@ class CaseConfigDialogContents extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      itemData: []
+      itemData: [],
     }
   }
 
   itemClick(obj) {
-    GraphState.setCurrentActiveNodeObj(obj.value,obj.text,this.props.tests
+    GraphState.setCurrentActiveNodeObj(
+      obj.value,
+      obj.text,
+      this.props.tests
         .find(c => c.name === obj.hideValue)
         .commands.filter(c => c.isParam)
-        .map((c, i) => {
+        .map(i => {
           return 'param' + i
-        }))
+        })
+    )
     CaseConfigState.setSelectSource(obj.hideValue)
   }
 
@@ -62,7 +66,7 @@ class CaseConfigDialogContents extends React.Component {
             suite: c.suite,
             text: (c.suite ? '[' + c.suite + '] ' : '') + c.name,
             value: c.id,
-            hideValue:c.name
+            hideValue: c.name,
           }
         })
         .sort((a, b) => {
@@ -81,7 +85,7 @@ class CaseConfigDialogContents extends React.Component {
     })
     UiState.emptyResponseSource()
   }
-  formSelectChange(){
+  formSelectChange() {
     CaseConfigState.setSelectedSource(event.target.value)
     GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource)
   }
@@ -124,12 +128,18 @@ class CaseConfigDialogContents extends React.Component {
           itemClick={this.itemClick.bind(this)}
         />
         <FormGroup label="数据源" name="">
-          <FormSelect name="type" itemData={CaseConfigState.selectSourceList}
-                      value={CaseConfigState.sourceValue} onChange={this.formSelectChange.bind(this)}/>
+          <FormSelect
+            name="type"
+            itemData={CaseConfigState.selectSourceList}
+            value={CaseConfigState.sourceValue}
+            onChange={this.formSelectChange.bind(this)}
+          />
         </FormGroup>
-        <CycleFormInput label={'参数绑定'}
-                        cycleKeys={GraphState.currentActiveNode.data.paraNames}
-                        cycleValues={CaseConfigState.cycleValues}/>
+        <CycleFormInput
+          label={'参数绑定'}
+          cycleKeys={GraphState.currentActiveNode.data.paraNames}
+          cycleValues={CaseConfigState.cycleValues}
+        />
         {content.bodyBottom}
       </DialogContainer>
     )

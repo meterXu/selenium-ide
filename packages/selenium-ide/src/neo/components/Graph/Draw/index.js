@@ -1,4 +1,4 @@
-import { action, computed, observable, observe, extendObservable } from 'mobx'
+import { action, observable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
 class Draw {
   @observable
@@ -222,15 +222,15 @@ class Draw {
       data: {
         caseId: null,
         caseName: null,
-        params: [],
+        source: null,
+        paraNames: [],
+        paraValues: [],
       },
     }
     GraphState.addGraphData(graphData)
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
-  drawItem(title,icon,coordinate,direction){
-
-  }
+  drawItem(title, icon, coordinate, direction) {}
   drawLine(from, to) {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
