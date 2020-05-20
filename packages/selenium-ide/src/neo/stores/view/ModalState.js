@@ -58,7 +58,9 @@ class ModalState {
   }
   @computed
   get sourceTypeName() {
-    return  Object.keys(UiState.enum.scType).find(c=>UiState.enum.scType[c]===this.sourceType)
+    return Object.keys(UiState.enum.scType).find(
+      c => UiState.enum.scType[c] === this.sourceType
+    )
   }
 
   @action.bound
@@ -278,8 +280,8 @@ class ModalState {
     this.sourceTypeDialog = !this.sourceTypeDialog
   }
   @action.bound
-  viewSourceModifyDialog(){
-    this.sourceModifyDialog=true
+  viewSourceModifyDialog() {
+    this.sourceModifyDialog = true
     this.sourceType = this.sourceConfModel.type
     this.sourceModifyType = UiState.enum.btnType.无
   }
@@ -288,25 +290,26 @@ class ModalState {
     this.sourceModifyDialog = !this.sourceModifyDialog
   }
   @action.bound
-  switchSource(type){
+  switchSource(type) {
     this.sourceType = type
     this.sourceModifyDialog = true
     this.sourceTypeDialog = false
     this.sourceConfModel = null
   }
   @action.bound
-  sourceSubmit(){
-    if(this.sourceModifyType===UiState.enum.btnType.添加){
-      UiState.project.createSource(UiState.project.scTypeSwitch, this.sourceConfModel)
+  sourceSubmit() {
+    if (this.sourceModifyType === UiState.enum.btnType.添加) {
+      UiState.project.createSource(
+        UiState.project.scTypeSwitch,
+        this.sourceConfModel
+      )
       this.toggleSourceModifyDialog()
     }
-
   }
   @action.bound
-  setSourceConfModel(model){
+  setSourceConfModel(model) {
     this.sourceConfModel = model
   }
-
 }
 
 const Types = {

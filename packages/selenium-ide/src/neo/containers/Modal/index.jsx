@@ -79,13 +79,14 @@ export default class Modal extends Component {
         />
         <SourceModifyDialog
           isOpen={ModalState.sourceModifyDialog}
-          isAdd={ModalState.sourceModifyAdd}
+          modifyType={ModalState.sourceModifyType}
           cancel={ModalState.toggleSourceModifyDialog}
+          submit={ModalState.sourceSubmit}
+          sourceConfModel={ModalState.sourceConfModel}
         />
         <SourceTypeDialog
           isOpen={ModalState.sourceTypeDialog}
-          isAdd={ModalState.sourceModifyAdd}
-          addSource={ModalState.toggleSourceModifyDialog}
+          switchSource={ModalState.switchSource}
           cancel={ModalState.toggleSourceTypeDialog}
         />
         <ImportDialog
