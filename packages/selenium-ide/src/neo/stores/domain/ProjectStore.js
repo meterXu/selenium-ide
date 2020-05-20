@@ -348,7 +348,7 @@ export default class ProjectStore {
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
     this.pluginConf = jsRep.pluginConf
-    this.processData.replace(jsRep.processData.map(c=>Process.fromJs(c)))
+    this.processData.replace(jsRep.processData.map(c => Process.fromJs(c)))
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()

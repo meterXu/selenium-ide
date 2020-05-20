@@ -1,4 +1,5 @@
 import uuidv4 from 'uuid/v4'
+import prcItem from './prcItem'
 export default class Process {
   id = null
   name = null
@@ -19,7 +20,9 @@ export default class Process {
       graphData: this.graphData.map(c => c.export()),
     }
   }
-  fromJs() {
-
+  fromJs(jsRep) {
+    let graphData = jsRep.graphData(c => prcItem.fromJS(c))
+    let process = new Process(jsRep.id, jsRep.name, graphData)
+    return process
   }
 }

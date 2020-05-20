@@ -14,6 +14,7 @@ export default class prcItem {
     this.type = type
     this.st = st
     this.export = this.export.bind(this)
+    this.fromJs = this.fromJs.bind(this)
   }
   export() {
     return {
@@ -23,5 +24,15 @@ export default class prcItem {
       text: this.text,
       type: this.type,
     }
+  }
+  fromJs(jsRep) {
+    let prcItem = new prcItem(
+      jsRep.coordinate,
+      jsRep.data,
+      jsRep.img,
+      jsRep.text,
+      jsRep.type
+    )
+    return prcItem
   }
 }
