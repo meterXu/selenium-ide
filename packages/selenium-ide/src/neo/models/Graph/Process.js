@@ -8,5 +8,12 @@ export default class Process {
     this.id = id
     this.name = name
     this.graphData = graphData
+    this.export = this.export.bind(this)
+  }
+
+  export() {
+    return {
+
+    }
   }
 }

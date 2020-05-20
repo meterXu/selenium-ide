@@ -374,7 +374,7 @@ export default class ProjectStore {
       suites: this._suites.map(s => s.export()),
       sourceData: this.sourceData,
       pluginConf: this.pluginConf,
-      processData: this.processData,
+      processData: this.processData.map(c => c.export()),
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,
