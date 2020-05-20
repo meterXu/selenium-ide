@@ -9,46 +9,28 @@ export default class SourceConf extends React.Component {
     super(props)
     this.state = {
       project: UiState.project,
-      typeSwitchData: [{ text: '读取', value: 0 }, { text: '写入', value: 1 }],
-      itemData: [],
+      typeSwitchData: [{ text: '读取', value: 0 }, { text: '写入', value: 1 }]
     }
     this._project = null
   }
   scTypeSwitch(type) {
-    switch (type) {
-      case 0:
-        {
-          this.setState({
-            itemData: this.state.project.sourceData.read,
-          })
-        }
-        break
-      case 1:
-        {
-          this.setState({
-            itemData: this.state.project.sourceData.write,
-          })
-        }
-        break
-    }
+    UiState.project.changeScTypeSwitch(type)
   }
   showSourceTypeDialog() {
     ModalState.toggleSourceTypeDialog()
   }
-  componentDidMount() {
-    this.setState({
-      itemData: this.state.project.sourceData.read,
-    })
+  viewSourceTypeDialog(){
+    ModalState.viewSourceModifyDialog()
   }
 
   render() {
     return (
       <div className="sourceConf-containers">
-        <ScTypeSwitch
-          keys={this.state.typeSwitchData}
-          onSwitch={this.scTypeSwitch.bind(this)}
-        />
-        <SourceList itemData={this.state.itemData} addSource={this.showSourceTypeDialog.bind(this)}/>
+        {/*<ScTypeSwitch*/}
+        {/*  keys={this.state.typeSwitchData}*/}
+        {/*  onSwitch={this.scTypeSwitch.bind(this)}*/}
+        {/*/>*/}
+        <SourceList addSource={this.showSourceTypeDialog.bind(this)} viewSource={this.viewSourceTypeDialog.bind(this)}/>
       </div>
     )
   }

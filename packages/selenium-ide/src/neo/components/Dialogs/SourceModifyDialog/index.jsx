@@ -9,15 +9,20 @@ import ModalState from '../../../stores/view/ModalState'
 import FileSource from './FileSource'
 import DbSource from './DbSource'
 import ApiSource from './ApiSource'
+import enumData from "../../../../common/enum";
+import {observer} from "mobx-react";
+
+@observer
 export default class SourceModifyDialog extends React.Component {
   constructor(props) {
     super(props)
   }
   static propTypes = {
     isOpen: PropTypes.bool,
-    isAdd: PropTypes.bool,
+    modifyType: PropTypes.number,
     submit: PropTypes.func,
     cancel: PropTypes.func,
+    sourceConfModel:PropTypes.object
   }
   render() {
     return (
@@ -36,20 +41,65 @@ class SourceModifyContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title:
-        (this.props.isAdd ? '添加数据源 - ' : '维护数据源 - ') +
-        ModalState.sourceTypeNames[0],
+      title:'',
       bodyTop: '',
       bodyBottom: '',
-      submitButton: this.props.isAdd ? '添加' : '保存',
       cancelButton: '关闭',
+    }
+  }
+
+  getTitle(){
+    switch (this.props.modifyType) {
+      case enumData.btnType.添加:{
+        return '添加数据源 - '+ModalState.sourceTypeName
+      }
+      case enumData.btnType.修改:{
+        return '修改数据源 - '+ModalState.sourceTypeName
+      }
+      case enumData.btnType.无:{
+        return '查看数据源 - '+ModalState.sourceTypeName
+      }
+    }
+  }
+
+
+  getBtn(){
+    switch (this.props.modifyType) {
+      case enumData.btnType.添加:{
+        return (
+            <FlatButton
+                onClick={this.props.submit}
+                style={{
+                  marginRight: '0',
+                }}
+            >
+              添加
+            </FlatButton>
+        )
+      }
+      case enumData.btnType.修改: {
+        return (
+            <FlatButton
+                onClick={this.props.submit}
+                style={{
+                  marginRight: '0',
+                }}
+            >
+              修改
+            </FlatButton>
+        )
+      }
+
+      case enumData.btnType.无:{
+        return ''
+      }
     }
   }
 
   render() {
     return (
       <DialogContainer
-        title={this.state.title}
+        title={this.getTitle()}
         type={'info'}
         renderFooter={() => (
           <span
@@ -66,21 +116,14 @@ class SourceModifyContainer extends React.Component {
             >
               {this.state.cancelButton}
             </FlatButton>
-            <FlatButton
-              onClick={this.props.submit}
-              style={{
-                marginRight: '0',
-              }}
-            >
-              {this.state.submitButton}
-            </FlatButton>
+            {this.getBtn()}
           </span>
         )}
       >
         {this.state.bodyTop}
-        {ModalState.sourceType === 0 && <FileSource />}
-        {ModalState.sourceType === 1 && <DbSource />}
-        {ModalState.sourceType === 2 && <ApiSource />}
+        {ModalState.sourceType === enumData.scType.文件 && <FileSource model={this.sourceConfModel}/>}
+        {ModalState.sourceType === enumData.scType.数据库 && <DbSource model={this.sourceConfModel}/>}
+        {ModalState.sourceType === enumData.scType.接口 && <ApiSource model={this.sourceConfModel}/>}
         {this.state.bodyBottom}
       </DialogContainer>
     )

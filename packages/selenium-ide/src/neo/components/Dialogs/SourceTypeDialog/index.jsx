@@ -5,6 +5,7 @@ import classNames from 'classnames'
 import DialogContainer from '../Dialog'
 import FlatButton from '../../FlatButton'
 import ModalState from '../../../stores/view/ModalState'
+import enumData from '../../../../common/enum'
 export default class SourceTypeDialog extends React.Component {
   constructor(props) {
     super(props)
@@ -26,30 +27,15 @@ class SourceTypeContents extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      typeData: [
-        { text: '文件', type: 0 },
-        { text: '数据库', type: 1 },
-        { text: '接口', type: 2 },
-      ],
-    }
-    this.setTypeStyle = this.setTypeStyle.bind(this)
-  }
-  setTypeStyle(type) {
-    switch (type) {
-      case 0: {
-        return 'file'
-      }
-      case 1: {
-        return 'db'
-      }
-      case 2: {
-        return 'api'
-      }
+      typeData: enumData.scType.map(c=>{
+        return {'text':c.key,'value':c}
+      }),
     }
   }
+
   render() {
     const content = {
-      title: this.props.isAdd ? '添加数据源 - 数据类型' : '维护数据源',
+      title: '添加数据源 - 数据类型',
       bodyTop: '',
       bodyBottom: '',
       cancelButton: '关闭',
@@ -86,7 +72,7 @@ class SourceTypeContents extends React.Component {
                 className={
                   'source-type-' + ModalState.getSourceTypeNames(c.type)[1]
                 }
-                onClick={this.props.addSource.bind(this, c.type)}
+                onClick={this.props.switchSource.bind(this, c.type)}
               >
                 {c.text}
               </li>
