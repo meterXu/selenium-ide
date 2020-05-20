@@ -1,4 +1,5 @@
 import { action, observable } from 'mobx'
+import draw from '../../components/Graph/Draw/index'
 class GraphState {
   @observable
   zoom = 1
@@ -34,8 +35,6 @@ class GraphState {
     },
     st: [],
   }
-  @observable
-  processData = []
   @action.bound
   setZoom(value) {
     this.zoom = value
@@ -61,6 +60,7 @@ class GraphState {
   @action.bound
   setCurrentProcess(value) {
     this.currentProcess = value
+    draw.drawProcess()
   }
   @action.bound
   setCurrentActiveNode(coordinate) {

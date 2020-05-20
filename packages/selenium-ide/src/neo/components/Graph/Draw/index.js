@@ -21,6 +21,7 @@ class Draw {
     pathStrokeWidth: 2,
     pathStroke: '#818283',
   }
+  @action.bound
   processStart() {
     let st = GraphState.paper.set()
     let { x, y } = this.getPosition(0, 0)
@@ -160,6 +161,11 @@ class Draw {
   @action.bound
   drawProcess() {
     this.processStart()
+    if (GraphState.currentProcess) {
+      GraphState.currentProcess.graphData.forEach(c => {
+        debugger
+      })
+    }
   }
   drawVerticalItem(item, func, contentMenuFunc) {
     let st = GraphState.paper.set()
