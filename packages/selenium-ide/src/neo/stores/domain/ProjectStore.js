@@ -54,7 +54,7 @@ export default class ProjectStore {
   @observable
   version = VERSIONS[VERSIONS.length - 1]
   @observable
-  scTypeSwitch=0
+  scTypeSwitch = 0
   @observable
   sourceData = {
     read: [],
@@ -65,6 +65,11 @@ export default class ProjectStore {
     backUrl: 'http://192.168.12.74:8000/',
     dataCatalog: 'api/v1/dataCatalog/',
   }
+  @observable
+  processData = []
+
+  @observable
+  selectedProcess = null
 
   constructor(name = 'Untitled Project') {
     this.name = name
@@ -233,33 +238,33 @@ export default class ProjectStore {
     return source
   }
   @action.bound
-  createExcel(name,code, path,schema) {
-    const excel = new File(name,code)
-    excel.createExcel(path,schema)
+  createExcel(name, code, path, schema) {
+    const excel = new File(name, code)
+    excel.createExcel(path, schema)
     return excel
   }
   @action.bound
-  createOracle(name,code, connStr,schema) {
-    const db = new Db(name,code)
-    db.createOracle(connStr,schema)
+  createOracle(name, code, connStr, schema) {
+    const db = new Db(name, code)
+    db.createOracle(connStr, schema)
     return db
   }
   @action.bound
-  createSqlserver(name,code, connStr,schema) {
-    const db = new Db(name,code)
-    db.createSqlserver(connStr,schema)
+  createSqlserver(name, code, connStr, schema) {
+    const db = new Db(name, code)
+    db.createSqlserver(connStr, schema)
     return db
   }
   @action.bound
-  createMysql(name,code, connStr,schema) {
-    const db = new Db(name,code)
-    db.createMysql(connStr,schema)
+  createMysql(name, code, connStr, schema) {
+    const db = new Db(name, code)
+    db.createMysql(connStr, schema)
     return db
   }
   @action.bound
-  createApi(name,code, url, type, contentType, data, header,schema) {
-    const api = new Api(name,code)
-    api.createApi(url, type, contentType, data, header,schema)
+  createApi(name, code, url, type, contentType, data, header, schema) {
+    const api = new Api(name, code)
+    api.createApi(url, type, contentType, data, header, schema)
     return api
   }
   @action.bound
@@ -267,9 +272,9 @@ export default class ProjectStore {
     switch (io) {
       case 0:
         {
-          let xxx = Object.assign({},this.sourceData)
+          let xxx = Object.assign({}, this.sourceData)
           xxx.read.push(source)
-          this.sourceData=xxx
+          this.sourceData = xxx
         }
         break
       case 1:
@@ -280,11 +285,26 @@ export default class ProjectStore {
     }
   }
   @action.bound
-  emptySource(){
+  emptySource() {
     this.sourceData = {
-      read:[],
-      write:[]
+      read: [],
+      write: [],
     }
+  }
+
+  @action.bound
+  setProcessData(value) {
+    this.processData = value
+  }
+
+  @action.bound
+  addProcessData(value) {
+    this.processData.push(value)
+  }
+
+  @action.bound
+  setSelectedProcess(id) {
+    this.selectedProcess = id
   }
 
   @action.bound
@@ -327,12 +347,13 @@ export default class ProjectStore {
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
     this.pluginConf = jsRep.pluginConf
+    this.processData = jsRep.processData
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
   }
   @action.bound
-  changeScTypeSwitch(type){
+  changeScTypeSwitch(type) {
     this.scTypeSwitch = type
   }
 
@@ -353,6 +374,7 @@ export default class ProjectStore {
       suites: this._suites.map(s => s.export()),
       sourceData: this.sourceData,
       pluginConf: this.pluginConf,
+      processData: this.processData,
       urls: this._urls,
       plugins: this.plugins,
       delay: this.delay,

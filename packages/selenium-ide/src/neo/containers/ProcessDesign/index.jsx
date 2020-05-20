@@ -6,6 +6,8 @@ import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw'
 import ModalState from '../../stores/view/ModalState'
+import UiState from '../../stores/view/UiState'
+import uuidv4 from 'uuid/v4'
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
@@ -48,10 +50,12 @@ class ProcessDesign extends React.Component {
   }
   componentDidMount() {
     GraphState.setCurrentProcess({
+      processId: uuidv4(),
       processName: 'process_1',
       graphData: [],
     })
-    GraphState.setProcessData([GraphState.currentProcess])
+    UiState.project.setProcessData([GraphState.currentProcess])
+    UiState.project.setSelectedProcess(GraphState.currentProcess.id)
   }
 
   render() {
