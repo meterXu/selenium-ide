@@ -50,8 +50,8 @@ class ProcessDesign extends React.Component {
   }
   componentDidMount() {
     GraphState.setCurrentProcess({
-      processId: uuidv4(),
-      processName: 'process_1',
+      id: uuidv4(),
+      name: 'process_1',
       graphData: [],
     })
     UiState.project.setProcessData([GraphState.currentProcess])

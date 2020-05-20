@@ -31,6 +31,7 @@ import ExecutionPlan from '../../components/ExecutionPlan'
 import Runs from '../../components/Runs'
 import AddButton from '../../components/ActionButtons/Add'
 import './style.css'
+import ProcessList from '../../components/ProcessList'
 
 @observer
 export default class Navigation extends React.Component {
@@ -143,6 +144,11 @@ export default class Navigation extends React.Component {
                   progress={PlaybackState.finishedTestsCount}
                   totalProgress={PlaybackState.testsCount}
                 />
+              </React.Fragment>
+            )}
+            {UiState.selectedView === UiState.lang.processDesign && (
+              <React.Fragment>
+                <ProcessList process={UiState.project.processData} />
               </React.Fragment>
             )}
           </React.Fragment>
