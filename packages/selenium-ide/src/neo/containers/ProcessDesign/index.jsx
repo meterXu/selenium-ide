@@ -41,21 +41,22 @@ class ProcessDesign extends React.Component {
     GraphState.setCurrentProcess({
       id: uuidv4(),
       name: 'process_1',
-      graphData: [
-        {
-          coordinate: '0,1',
-          data: {
-            caseId: null,
-            caseName: null,
-            paraNames: [],
-            paraValues: [],
-            source: null,
-          },
-          img: 'case',
-          text: '用例',
-          type: 'case',
-        },
-      ],
+      graphData: [],
+      // graphData: [
+      //   {
+      //     coordinate: '0,1',
+      //     data: {
+      //       caseId: null,
+      //       caseName: null,
+      //       paraNames: [],
+      //       paraValues: [],
+      //       source: null,
+      //     },
+      //     img: 'case',
+      //     text: '用例',
+      //     type: 'case',
+      //   },
+      // ],
     })
     UiState.project.setProcessData([GraphState.currentProcess])
     UiState.project.setSelectedProcess(GraphState.currentProcess.id)

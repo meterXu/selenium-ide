@@ -160,10 +160,9 @@ class Draw {
   }
   @action.bound
   drawProcess() {
-    // this.processStart()
     if (GraphState.currentProcess) {
       GraphState.currentProcess.graphData.forEach(c => {
-        this.drawItem(
+        this.drawVerticalItem(
           c,
           () => GraphState.graphItemClick(c),
           () => GraphState.graphItemContentMenu(c)
@@ -225,11 +224,12 @@ class Draw {
     st.push(txt)
     st.push(ll)
     this.itemList.push([st])
-    let graphData = {
+    let _newDrawItem = {
       text: item.text,
       type: item.type,
       img: item.img,
       coordinate: coordinate,
+      st: st,
       data: {
         caseId: null,
         caseName: null,
@@ -238,10 +238,13 @@ class Draw {
         paraValues: [],
       },
     }
-    GraphState.addGraphData(graphData)
+    if (item.hasOwnProperty('data')) {
+      item.st = st
+    } else {
+      GraphState.addGraphData(_newDrawItem)
+    }
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
-  drawItem(item) {}
   drawLine(from, to) {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)
