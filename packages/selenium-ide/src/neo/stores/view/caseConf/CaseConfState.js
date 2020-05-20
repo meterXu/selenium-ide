@@ -52,9 +52,9 @@ class CaseConfState {
   get sourceValue() {
     if (
       GraphState.currentActiveNode &&
-      GraphState.currentActiveNode.data.source
+      GraphState.currentActiveNode.data
     ) {
-      return GraphState.currentActiveNode.data.source.id
+      return GraphState.currentActiveNode.data.sourceId
     } else {
       return null
     }

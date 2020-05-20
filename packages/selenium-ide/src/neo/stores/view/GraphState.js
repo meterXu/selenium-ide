@@ -30,7 +30,7 @@ class GraphState {
   @observable
   currentActiveNode = {
     data: {
-      source: null,
+      sourceId: null,
       paraNames: [],
       paraValues: [],
     },
@@ -68,7 +68,6 @@ class GraphState {
     this.currentActiveNode = this.currentProcess.graphData.find(
       c => c.coordinate === coordinate
     )
-    debugger
   }
   @action.bound
   setCurrentActiveNodeObj(caseId, caseName, paramNames) {
@@ -104,8 +103,8 @@ class GraphState {
     this.currentActiveNode.data.paraValues[index] = paramValue
   }
   @action.bound
-  setCurrentActiveNodeSource(source) {
-    this.currentActiveNode.data.source = source
+  setCurrentActiveNodeSource(sourceId) {
+    this.currentActiveNode.data.sourceId = sourceId
   }
   @action.bound
   graphItemClick(item) {
