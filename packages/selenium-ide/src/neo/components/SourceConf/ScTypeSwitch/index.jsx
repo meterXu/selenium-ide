@@ -21,26 +21,20 @@ export default class ScTypeSwitch extends React.Component {
     return (
       <div className="sourceConf-typeSwitch">
         <ul>
-          <li
-            className={
-              this.state.sourceConfType === 0
-                ? 'sourceConf-typeSwitch-ul-li-active'
-                : ''
-            }
-            onClick={this.switchScType.bind(this, 0)}
-          >
-            读取
-          </li>
-          <li
-            className={
-              this.state.sourceConfType === 1
-                ? 'sourceConf-typeSwitch-ul-li-active'
-                : ''
-            }
-            onClick={this.switchScType.bind(this, 1)}
-          >
-            写入
-          </li>
+          {this.props.keys.map((c,i)=>{
+            return (
+                <li key={i}
+                    className={
+                      this.state.sourceConfType === c.value
+                          ? 'sourceConf-typeSwitch-ul-li-active'
+                          : ''
+                    }
+                    onClick={this.switchScType.bind(this, c.value)}
+                >
+                  {c.text}
+                </li>
+            )
+          })}
         </ul>
       </div>
     )
