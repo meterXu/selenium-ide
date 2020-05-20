@@ -86,7 +86,7 @@ class UiState {
   @observable
   gridConfigEnabled = null
   @computed
-  pluginConf() {
+  get pluginConf() {
     return this.project.pluginConf
   }
   constructor() {
