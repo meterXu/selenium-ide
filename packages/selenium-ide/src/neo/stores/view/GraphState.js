@@ -105,6 +105,16 @@ class GraphState {
   setCurrentActiveNodeSource(source) {
     this.currentActiveNode.data.source = source
   }
+  @action.bound
+  selectProcess() {}
+  @action.bound
+  renameProcess() {}
+  @action.bound
+  duplicateProcess() {}
+  @action.bound
+  removeProcess() {}
+  @action.bound
+  codeExport() {}
 }
 if (!window._graphState) window._graphState = new GraphState()
 

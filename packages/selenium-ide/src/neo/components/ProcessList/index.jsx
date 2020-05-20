@@ -16,12 +16,12 @@
 // under the License.
 
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { PropTypes as MobxPropTypes, inject } from 'mobx-react'
 import { observer } from 'mobx-react'
 import classNames from 'classnames'
-import Test, { DraggableTest, MenuTest } from '../Test'
+import {MenuTest} from '../Test'
 import UiState from '../../stores/view/UiState'
+import GraphState from '../../stores/view/GraphState'
 import PlaybackState from '../../stores/view/PlaybackState'
 import './style.css'
 
@@ -32,7 +32,6 @@ export default class ProcessList extends Component {
     process: MobxPropTypes.arrayOrObservableArray.isRequired,
   }
   render() {
-    debugger
     return (
       <ul className={classNames('tests', { active: !this.props.collapsed })}>
         {this.props.process.map((process, index) => (
@@ -47,23 +46,11 @@ export default class ProcessList extends Component {
                 process.id === UiState.project.selectedProcess
               }
               changed={process.modified}
-              selectTest={UiState.selectTest}
-              renameTest={this.props.renameTest}
-              duplicateTest={() => {
-                this.props.duplicateTest(process)
-              }}
-              removeTest={
-                this.props.removeTest
-                  ? () => {
-                      this.props.removeTest(process)
-                    }
-                  : undefined
-              }
-              codeExport={() => {
-                this.props.codeExport({
-                  test: process.export(),
-                })
-              }}
+              selectTest={GraphState.selectProcess}
+              renameTest={GraphState.renameProcess}
+              duplicateTest={GraphState.duplicateProcess}
+              removeTest={GraphState.removeProcess}
+              codeExport={GraphState.codeExport}
               setSectionFocus={UiState.setSectionFocus}
             />
           </li>
