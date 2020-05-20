@@ -160,10 +160,14 @@ class Draw {
   }
   @action.bound
   drawProcess() {
-    this.processStart()
+    // this.processStart()
     if (GraphState.currentProcess) {
       GraphState.currentProcess.graphData.forEach(c => {
-        debugger
+        this.drawItem(
+          c,
+          () => GraphState.graphItemClick(c),
+          () => GraphState.graphItemContentMenu(c)
+        )
       })
     }
   }
@@ -224,8 +228,8 @@ class Draw {
     let graphData = {
       text: item.text,
       type: item.type,
+      img: item.img,
       coordinate: coordinate,
-      st: st,
       data: {
         caseId: null,
         caseName: null,
@@ -237,7 +241,7 @@ class Draw {
     GraphState.addGraphData(graphData)
     this.bindNodeClick(cc, item.type, func, contentMenuFunc)
   }
-  drawItem(title, icon, coordinate, direction) {}
+  drawItem(item) {}
   drawLine(from, to) {
     return GraphState.paper
       .path(`M${from[0]} ${from[1]}L${from[0]} ${from[1]}`)

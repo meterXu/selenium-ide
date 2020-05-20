@@ -5,7 +5,6 @@ import GraphTool from '../../components/Graph/Tool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw'
-import ModalState from '../../stores/view/ModalState'
 import UiState from '../../stores/view/UiState'
 import uuidv4 from 'uuid/v4'
 class ProcessDesign extends React.Component {
@@ -34,18 +33,8 @@ class ProcessDesign extends React.Component {
   itemClick(item) {
     GraphDraw.drawVerticalItem(
       item,
-      c => {
-        switch (item.type) {
-          case 'case':
-            {
-              ModalState.toggleCaseConfig()
-            }
-            break
-        }
-      },
-      d => {
-        alert(item.type)
-      }
+      () => GraphState.graphItemClick(item),
+      () => GraphState.graphItemContentMenu(item)
     )
   }
   componentDidMount() {
@@ -62,7 +51,7 @@ class ProcessDesign extends React.Component {
             paraValues: [],
             source: null,
           },
-          st: [],
+          img: 'case',
           text: '用例',
           type: 'case',
         },

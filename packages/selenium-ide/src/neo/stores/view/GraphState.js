@@ -1,5 +1,6 @@
 import { action, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/index'
+import ModalState from './ModalState'
 class GraphState {
   @observable
   zoom = 1
@@ -104,6 +105,20 @@ class GraphState {
   @action.bound
   setCurrentActiveNodeSource(source) {
     this.currentActiveNode.data.source = source
+  }
+  @action.bound
+  graphItemClick(item) {
+    switch (item.type) {
+      case 'case':
+        {
+          ModalState.toggleCaseConfig()
+        }
+        break
+    }
+  }
+  @action.bound
+  graphItemContentMenu(item) {
+    alert(item.type)
   }
   @action.bound
   selectProcess() {}
