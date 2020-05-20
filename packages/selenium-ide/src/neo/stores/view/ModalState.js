@@ -43,11 +43,13 @@ class ModalState {
   @observable
   sourceModifyDialog = false
   @observable
-  sourceModifyAdd = true
+  sourceModifyType = UiState.enum.btnType.添加
   @observable
   sourceTypeDialog = false
   @observable
   sourceType = null
+  @observable
+  sourceConfModel = null
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
     this.renameSuite = this.rename.bind(this, Types.suite)
@@ -55,26 +57,8 @@ class ModalState {
     this.exportPayload = undefined
   }
   @computed
-  get sourceTypeNames() {
-    return this.getSourceTypeNames(this.sourceType)
-  }
-
-  @action.bound
-  getSourceTypeNames(type) {
-    switch (type) {
-      case 0: {
-        return ['文件', 'file']
-      }
-      case 1: {
-        return ['数据库', 'db']
-      }
-      case 2: {
-        return ['接口', 'api']
-      }
-      default: {
-        return ['', '']
-      }
-    }
+  get sourceTypeName() {
+    return  Object.keys(UiState.enum.scType).find(c=>UiState.enum.scType[c]===this.sourceType)
   }
 
   @action.bound
@@ -290,17 +274,39 @@ class ModalState {
     return !commands.includes(windowName)
   }
   @action.bound
-  toggleSourceModifyDialog(type) {
-    if (typeof type === 'number') {
-      this.toggleSourceTypeDialog()
-      this.sourceType = type
-    }
-    this.sourceModifyDialog = !this.sourceModifyDialog
-  }
-  @action.bound
   toggleSourceTypeDialog() {
     this.sourceTypeDialog = !this.sourceTypeDialog
   }
+  @action.bound
+  viewSourceModifyDialog(){
+    this.sourceModifyDialog=true
+    this.sourceType = this.sourceConfModel.type
+    this.sourceModifyType = UiState.enum.btnType.无
+  }
+  @action.bound
+  toggleSourceModifyDialog() {
+    this.sourceModifyDialog = !this.sourceModifyDialog
+  }
+  @action.bound
+  switchSource(type){
+    this.sourceType = type
+    this.sourceModifyDialog = true
+    this.sourceTypeDialog = false
+    this.sourceConfModel = null
+  }
+  @action.bound
+  sourceSubmit(){
+    if(this.sourceModifyType===UiState.enum.btnType.添加){
+      UiState.project.createSource(UiState.project.scTypeSwitch, this.sourceConfModel)
+      this.toggleSourceModifyDialog()
+    }
+
+  }
+  @action.bound
+  setSourceConfModel(model){
+    this.sourceConfModel = model
+  }
+
 }
 
 const Types = {

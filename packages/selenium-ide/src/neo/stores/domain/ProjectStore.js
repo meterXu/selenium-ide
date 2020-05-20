@@ -54,6 +54,8 @@ export default class ProjectStore {
   @observable
   version = VERSIONS[VERSIONS.length - 1]
   @observable
+  scTypeSwitch=0
+  @observable
   sourceData = {
     read: [],
     write: [],
@@ -226,33 +228,33 @@ export default class ProjectStore {
     return source
   }
   @action.bound
-  createExcel(name, path) {
-    const excel = new File(name)
-    excel.createExcel(path)
+  createExcel(name,code, path,schema) {
+    const excel = new File(name,code)
+    excel.createExcel(path,schema)
     return excel
   }
   @action.bound
-  createOracle(name, connStr) {
-    const db = new Db(name)
-    db.createOracle(connStr)
+  createOracle(name,code, connStr,schema) {
+    const db = new Db(name,code)
+    db.createOracle(connStr,schema)
     return db
   }
   @action.bound
-  createSqlserver(name, connStr) {
-    const db = new Db(name)
-    db.createSqlserver(connStr)
+  createSqlserver(name,code, connStr,schema) {
+    const db = new Db(name,code)
+    db.createSqlserver(connStr,schema)
     return db
   }
   @action.bound
-  createMysql(name, connStr) {
-    const db = new Db(name)
-    db.createMysql(connStr)
+  createMysql(name,code, connStr,schema) {
+    const db = new Db(name,code)
+    db.createMysql(connStr,schema)
     return db
   }
   @action.bound
-  createApi(name, url, type, contentType, data, header) {
-    const api = new Api(name)
-    api.createApi(url, type, contentType, data, header)
+  createApi(name,code, url, type, contentType, data, header,schema) {
+    const api = new Api(name,code)
+    api.createApi(url, type, contentType, data, header,schema)
     return api
   }
   @action.bound
@@ -260,7 +262,9 @@ export default class ProjectStore {
     switch (io) {
       case 0:
         {
-          this.sourceData.read.push(source)
+          let xxx = Object.assign({},this.sourceData)
+          xxx.read.push(source)
+          this.sourceData=xxx
         }
         break
       case 1:
@@ -268,6 +272,13 @@ export default class ProjectStore {
           this.sourceData.write.push(source)
         }
         break
+    }
+  }
+  @action.bound
+  emptySource(){
+    this.sourceData = {
+      read:[],
+      write:[]
     }
   }
 
@@ -313,6 +324,10 @@ export default class ProjectStore {
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()
+  }
+  @action.bound
+  changeScTypeSwitch(type){
+    this.scTypeSwitch = type
   }
 
   dispose() {

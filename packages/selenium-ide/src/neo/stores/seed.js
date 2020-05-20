@@ -16,7 +16,7 @@
 // under the License.
 
 import generate from 'project-name-generator'
-import { CommandsArray } from '../models/Command'
+// import { CommandsArray } from '../models/Command'
 import Command from '../models/Command'
 import UiState from './view/UiState'
 
@@ -30,9 +30,9 @@ export default function seed(store, numberOfSuites = 0) {
   const targets = ['a', 'button']
   function generateCommand(test) {
     const command = test.createCommand()
-    command.setCommand(
-      CommandsArray[Math.floor(Math.random() * CommandsArray.length)]
-    )
+    // command.setCommand(
+    //   CommandsArray[Math.floor(Math.random() * CommandsArray.length)]
+    // )
     let targetChance = Math.floor(Math.random() * 10)
     command.setTarget(
       targetChance < targets.length ? targets[targetChance] : ''
@@ -374,6 +374,24 @@ export default function seed(store, numberOfSuites = 0) {
   checkTest.createCommand(undefined, 'assertChecked', 'css=input')
   checkTest.createCommand(undefined, 'uncheck', 'css=input')
   checkTest.createCommand(undefined, 'assertNotChecked', 'css=input')
+
+  const unitTest = store.createTestCase('A-HXHS-TEST1')
+  unitTest.createCommand(undefined, 'open', '/checkboxes')
+  const unitCommand = unitTest.createCommand(undefined, 'type', 'css=input1','hello jetRecord','data',true)
+  unitCommand.setTargets([
+    ['id=something', 'id'],
+    ['name=something-else', 'name'],
+    ['linkText=number density', 'linkText'],
+    ["xpath=//a[contains(text(),'number density')]", 'xpath:link'],
+    ['css=main .class > p a.link', 'css'],
+    ["xpath=(//a[contains(text(),'number line')])[2]", 'xpath:link'],
+    ["(//a[contains(text(),'number line')])[2]", 'xpath:link'],
+    ["//a[contains(text(),'number density')]", 'xpath:link'],
+    ["//div[@id='mw-content-text']/div/p[2]/a[5]", 'xpath:idRelative'],
+    ["//a[contains(@href, '/wiki/Number_density')]", 'xpath:href'],
+    ['//a[5]', 'xpath:position'],
+  ])
+  unitTest.createCommand(undefined, 'type', 'css=input2','http://localhost','url',true)
 
   const clickTest = store.createTestCase('click')
   clickTest.createCommand(undefined, 'open', '/')
@@ -760,6 +778,7 @@ export default function seed(store, numberOfSuites = 0) {
 
   const smokeSuite = store.createSuite('smoke')
   smokeSuite.addTestCase(checkTest)
+  smokeSuite.addTestCase(unitTest)
   smokeSuite.addTestCase(clickTest)
   smokeSuite.addTestCase(clickAtTest)
   smokeSuite.addTestCase(accessVariable)
@@ -782,22 +801,19 @@ export default function seed(store, numberOfSuites = 0) {
 
   UiState.changeView(UiState.lang.suites)
   suiteAll.setOpen(true)
-  UiState.selectTest(checkTest, suiteAll)
+  UiState.selectTest(unitTest, suiteAll)
 
   store.changeName('种子项目')
 
-  store.createSource(0, store.createExcel('用例excel数据', ''))
-  store.createSource(0, store.createOracle('用例Oracle数据', ''))
-  store.createSource(0, store.createSqlserver('用例sqlserver数据', ''))
-  store.createSource(0, store.createMysql('用例mysql数据', ''))
-  store.createSource(
-    0,
-    store.createApi('用例api数据', '', '', undefined, null, null)
-  )
-
-  store.createSource(1, store.createExcel('用例excel数据', ''))
-  store.createSource(1, store.createExcel('用例excel数据', ''))
-  store.createSource(1, store.createExcel('用例excel数据', ''))
+  // store.createSource(0, store.createExcel('用例excel数据', ''))
+  // store.createSource(0, store.createOracle('用例Oracle数据', ''))
+  // store.createSource(0, store.createSqlserver('用例sqlserver数据', ''))
+  // store.createSource(0, store.createMysql('用例mysql数据', ''))
+  // store.createSource(0, store.createApi('用例api数据', '', '', null, null, null))
+  //
+  // store.createSource(1, store.createExcel('用例excel数据', ''))
+  // store.createSource(1, store.createExcel('用例excel数据', ''))
+  // store.createSource(1, store.createExcel('用例excel数据', ''))
 
   UiState.saved()
 

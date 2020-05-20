@@ -24,9 +24,14 @@ class GraphState {
   @observable
   LevelInterval = 48
   @observable
-  currentProcess = null
+  currentProcess = {graphData:null}
   @observable
-  currentActiveNode = null
+  currentActiveNode = {
+    data:{
+      source:null,
+      paraNames:[],
+      paraValues:[]
+    },st:[]}
   @observable
   processData = []
   @action.bound
@@ -68,6 +73,17 @@ class GraphState {
     )
   }
   @action.bound
+  setCurrentActiveNodeObj(caseId,caseName,paramNames){
+    this.currentActiveNode.data.caseId = caseId
+    this.currentActiveNode.data.caseName = caseName
+    this.currentActiveNode.text = caseName
+    this.currentActiveNode.st[1].attr({
+      text: caseName,
+    })
+    this.currentActiveNode.data.paraNames = paramNames
+    this.currentActiveNode.data.paraValues = new Array(paramNames!=null?paramNames.length:0)
+  }
+  @action.bound
   reduceZoom() {
     if (this.zoom > this.minZoom) {
       this.zoom -= this.zoomSale
@@ -82,6 +98,14 @@ class GraphState {
     } else {
       this.zoom = this.maxZoom
     }
+  }
+  @action.bound
+  setCurrentActiveNodeParamValues(index,paramValue){
+    this.currentActiveNode.data.paraValues[index] = paramValue
+  }
+  @action.bound
+  setCurrentActiveNodeSource(source){
+    this.currentActiveNode.data.source=source
   }
 }
 if (!window._graphState) window._graphState = new GraphState()
