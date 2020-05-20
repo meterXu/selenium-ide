@@ -294,7 +294,7 @@ class UiState {
                   {
                     this.responseSources = [
                       new Source(
-                        res.data.code,
+                        undefined,
                         enumData.scIOType.读取,
                         this.project.createExcel(
                           res.data.name,
