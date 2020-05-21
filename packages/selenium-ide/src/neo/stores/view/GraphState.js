@@ -118,7 +118,7 @@ class GraphState {
   @action.bound
   graphItemClick(item) {
     switch (item.type) {
-      case 'case':
+      case UiState.enum.prcItemType.用例:
         {
           ModalState.toggleCaseConfig()
         }

@@ -820,18 +820,30 @@ export default function seed(store, numberOfSuites = 0) {
 
   store.changeName('种子项目')
 
-  store.createSource(
+  let source = store.createSource(
     UiState.enum.scIOType.读取,
     store.createExcel(
       '核销报核',
       'A-HXHS-TEST1',
       'D:\\upload\\1.html',
       'sheet1',
-      '{ "data": "马云福报论", "url": "http://www.baidu.com" }'
+      { data: '马云福报论', url: 'http://www.baidu.com' }
     )
   )
   store.createProcess('流程图1', [
-    new PrcItem('0,1', {}, UiState.enum.image.用例, 'A-HXHS-TEST1',UiState.enum.prcItemType.用例),
+    new PrcItem(
+      '0,1',
+      {
+        paraNames: ['param0', 'param1'],
+        paraValues: ['data', 'url'],
+        caseId: unitTest.id,
+        caseName: unitTest.name,
+        sourceId: source.id,
+      },
+      UiState.enum.image.用例,
+      '[smoke] A-HXHS-TEST1',
+      UiState.enum.prcItemType.用例
+    ),
   ])
 
   UiState.saved()
