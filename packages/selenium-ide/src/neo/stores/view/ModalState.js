@@ -17,6 +17,7 @@
 
 import { action, computed, observable } from 'mobx'
 import UiState from './UiState'
+import GraphState from '../view/GraphState'
 import i18n from '../../i18n'
 class ModalState {
   @observable
@@ -146,8 +147,9 @@ class ModalState {
   createProcess() {
     this.renameProcess(undefined).then(name => {
       if (name) {
-        const test = this._project.createProcess(name)
-        //UiState.selectTest(test)
+        const process = this._project.createProcess(name)
+        GraphState.setCurrentProcess(process)
+        UiState.project.setSelectedProcess(process.id)
       }
     })
   }

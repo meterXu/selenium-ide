@@ -39,25 +39,6 @@ class ProcessDesign extends React.Component {
     )
   }
   componentDidMount() {
-    GraphState.setCurrentProcess(
-      new Process(undefined, 'process_1', [
-        new prcItem(
-          '0,1',
-          {
-            caseId: null,
-            caseName: '[smoke] A-HXHS-TEST1',
-            paraNames: [],
-            paraValues: [],
-            sourceId: null,
-          },
-          UiState.enum.image.用例,
-          '[smoke] A-HXHS-TEST1',
-          'case'
-        ),
-      ])
-    )
-    UiState.project.setProcessData([GraphState.currentProcess])
-    UiState.project.setSelectedProcess(GraphState.currentProcess.id)
   }
 
   render() {
