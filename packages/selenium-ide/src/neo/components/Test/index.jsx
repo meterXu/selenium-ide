@@ -17,6 +17,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
+import { observer } from 'mobx-react'
 import { DragSource, DropTarget } from 'react-dnd'
 import classNames from 'classnames'
 import { modifier } from 'modifier-keys'
@@ -119,6 +120,7 @@ const collectTarget = connect => ({
   connectDropTarget: connect.dropTarget(),
 })
 
+@observer
 export default class Test extends React.Component {
   static propTypes = {
     className: PropTypes.string,
@@ -310,9 +312,7 @@ export class MenuTest extends React.Component {
         >
           重命名
         </ListMenuItem>
-        <ListMenuItem onClick={this.props.duplicateTest}>
-          复制
-        </ListMenuItem>
+        <ListMenuItem onClick={this.props.duplicateTest}>复制</ListMenuItem>
         <ListMenuItem onClick={this.props.removeTest}>删除</ListMenuItem>
         <ListMenuItem onClick={this.props.codeExport}>导出</ListMenuItem>
       </ListMenu>
