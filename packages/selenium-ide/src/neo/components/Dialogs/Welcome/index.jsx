@@ -23,7 +23,7 @@ import UiState from '../../../stores/view/UiState'
 import project from '../../../../../package.json'
 import Modal from '../../Modal'
 import DialogContainer from '../Dialog'
-import logoFile from '../../../assets/images/selenium_blue_white32@3x.svg'
+import logoFile from '../../../../icons/icon32.png'
 import { OpenInput } from '../../ActionButtons/Open'
 import './style.css'
 
@@ -91,13 +91,13 @@ class WelcomeDialogContents extends React.Component {
         )}
         renderFooter={() => (
           <p>
-            要了解有关Selenium IDE及其使用方法的更多信息，请访问{' '}
+            要了解有关JetRecord及其使用方法的更多信息，请访问{' '}
             <a
-              href="https://www.seleniumhq.org/selenium-ide/"
+              href="https://github.com/meterXu/selenium-ide"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Selenium IDE项目页面
+              JetRecord项目页面
             </a>
             。
           </p>
@@ -121,7 +121,7 @@ class WelcomeDialogContents extends React.Component {
               <a onClick={this.createNewProject}>创建一个新项目</a>
             </li>
             <li>
-              <a onClick={this.dismiss}>关闭Selenium IDE</a>
+              <a onClick={this.dismiss}>关闭JetRecord</a>
             </li>
           </ul>
         </div>
