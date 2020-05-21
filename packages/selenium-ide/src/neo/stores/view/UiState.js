@@ -279,6 +279,7 @@ class UiState {
   getSourceConf(code) {
     let findSc = this.project.sourceData.read.find(c => c.code === code)
     if (!findSc) {
+      this.responseSources = []
       axios
         .get(
           this.pluginConf.backUrl +
@@ -317,16 +318,10 @@ class UiState {
             }
           })
         )
-        .catch(
-          action(err => {
-            this.responseSources = []
-          })
-        )
     } else {
       this.responseSources = [findSc]
     }
   }
-
   @action.bound
   emptyResponseSource() {
     this.responseSources = []
