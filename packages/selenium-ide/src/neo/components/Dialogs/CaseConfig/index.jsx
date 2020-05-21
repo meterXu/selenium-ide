@@ -53,9 +53,12 @@ class CaseConfigDialogContents extends React.Component {
         .commands.filter(c => c.isParam)
         .map((c, i) => {
           return 'param' + i
-        })
+        }),
+      [],
+      null
     )
     CaseConfigState.getSelectSource(obj.hideValue)
+    CaseConfigState.setSelectedSource(null)
   }
 
   componentDidMount() {
@@ -88,18 +91,20 @@ class CaseConfigDialogContents extends React.Component {
         c => c.id === GraphState.currentActiveNode.data.caseId
       )
       CaseConfigState.getSelectSource(_test.name)
+      CaseConfigState.setSelectedSource(
+        GraphState.currentActiveNode.data.sourceId
+      )
     } else {
       UiState.emptyResponseSource()
     }
   }
   formSelectChange() {
     CaseConfigState.setSelectedSource(event.target.value)
-    if(CaseConfigState.selectedSource){
+    if (CaseConfigState.selectedSource) {
       GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource.id)
-    }else{
+    } else {
       GraphState.setCurrentActiveNodeSource(null)
     }
-
   }
 
   render() {

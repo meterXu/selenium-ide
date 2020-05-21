@@ -79,7 +79,7 @@ class GraphState {
     )
   }
   @action.bound
-  setCurrentActiveNodeObj(caseId, caseName, paramNames) {
+  setCurrentActiveNodeObj(caseId, caseName, paramNames,paramValues, sourceId) {
     this.currentActiveNode.data.caseId = caseId
     this.currentActiveNode.data.caseName = caseName
     this.currentActiveNode.text = caseName
@@ -90,6 +90,8 @@ class GraphState {
     this.currentActiveNode.data.paraValues = new Array(
       paramNames != null ? paramNames.length : 0
     )
+    this.currentActiveNode.data.paraValues = paramValues
+    this.currentActiveNode.data.sourceId = sourceId
   }
   @action.bound
   reduceZoom() {

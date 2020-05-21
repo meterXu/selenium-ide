@@ -54,8 +54,8 @@ class CaseConfState {
   }
   @computed
   get sourceValue() {
-    if (GraphState.currentActiveNode && GraphState.currentActiveNode.data) {
-      return GraphState.currentActiveNode.data.sourceId
+    if (this.selectedSource) {
+      return this.selectedSource.id
     } else {
       return null
     }
