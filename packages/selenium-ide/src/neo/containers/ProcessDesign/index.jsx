@@ -48,9 +48,9 @@ class ProcessDesign extends React.Component {
   render() {
     return (
       <div className="processDesign">
+        <DesignGraph />
         {GraphState.currentProcess && (
           <>
-            <DesignGraph />
             <GraphTool
               zoom={this.state.zoom}
               onEnlarge={this.onEnlarge}

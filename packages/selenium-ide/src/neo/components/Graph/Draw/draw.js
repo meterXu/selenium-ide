@@ -398,7 +398,9 @@ class Draw {
   }
   @action.bound
   resetGraph() {
-    GraphState.paper.clear()
+    if (GraphState.paper) {
+      GraphState.paper.clear()
+    }
     this.itemList = []
   }
 }
