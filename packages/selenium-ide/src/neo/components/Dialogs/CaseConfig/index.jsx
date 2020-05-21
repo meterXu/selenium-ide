@@ -140,7 +140,7 @@ class CaseConfigDialogContents extends React.Component {
           name="caseId"
           label="用例"
           itemdata={this.state.itemdata}
-          defaultText={GraphState.currentActiveNode.data.caseName}
+          defaultText={GraphState.currentActiveNode.data.caseName||""}
           itemClick={this.itemClick.bind(this)}
         />
         <FormGroup label="数据源" name="">

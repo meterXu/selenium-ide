@@ -73,7 +73,7 @@ export default class ProcessWelcomeDialog extends React.Component {
             </span>
           )}
         >
-          <FormGroup label="请输入新的流程设计名称！" width={200}>
+          <FormGroup label="请输入新的流程设计名称！" name="" width={200}>
             <FormInput
               label="名称"
               name="name"
