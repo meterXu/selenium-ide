@@ -837,7 +837,7 @@ export default function seed(store, numberOfSuites = 0) {
         paraNames: ['param0', 'param1'],
         paraValues: ['data', 'url'],
         caseId: unitTest.id,
-        caseName: unitTest.name,
+        caseName: '[smoke] A-HXHS-TEST1',
         sourceId: source.id,
       },
       UiState.enum.image.用例,
