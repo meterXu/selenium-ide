@@ -151,7 +151,6 @@ class ModalState {
       if (name) {
         const process = this._project.createProcess(name)
         GraphState.setCurrentProcess(process)
-        UiState.project.setSelectedProcess(process.id)
       }
     })
   }

@@ -149,7 +149,10 @@ export default class Modal extends Component {
             })
           }
         />
-        <ProcessWelcomeDialog isOpen={ModalState.processWelcomeIsOpen} />
+        <ProcessWelcomeDialog
+          isOpen={ModalState.processWelcomeIsOpen}
+          cancel={ModalState.toggleProcessWelcome}
+        />
       </div>
     )
   }

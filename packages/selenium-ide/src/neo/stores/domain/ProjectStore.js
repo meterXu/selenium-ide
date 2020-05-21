@@ -210,6 +210,7 @@ export default class ProjectStore {
   createProcess(...argv) {
     const process = new Process(undefined, ...argv)
     this.addProcessData(process)
+    this.setSelectedProcess(process.id)
     return process
   }
 
