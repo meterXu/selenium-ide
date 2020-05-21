@@ -26,7 +26,7 @@ class GraphState {
   @observable
   LevelInterval = 48
   @observable
-  currentProcess = { graphData: null }
+  currentProcess = null
   @observable
   currentActiveNode = {
     data: {
