@@ -51,6 +51,8 @@ class ModalState {
   sourceType = null
   @observable
   sourceConfModel = null
+  @observable
+  processWelcomeIsOpen = false
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
     this.renameSuite = this.rename.bind(this, Types.suite)
@@ -267,6 +269,10 @@ class ModalState {
   @action.bound
   renameProject() {
     return this.rename(Types.project, this._project.name)
+  }
+  @action.bound
+  toggleProcessWelcome() {
+    this.processWelcomeIsOpen = !this.processWelcomeIsOpen
   }
 
   @action.bound

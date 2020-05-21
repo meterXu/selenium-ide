@@ -5,6 +5,7 @@ import GraphTool from '../../components/Graph/Tool'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
+import ModalState from '../../stores/view/ModalState'
 
 class ProcessDesign extends React.Component {
   constructor(props) {
@@ -36,7 +37,11 @@ class ProcessDesign extends React.Component {
       () => GraphState.graphItemContentMenu(item)
     )
   }
-  componentDidMount() {}
+  componentDidMount() {
+    if (GraphState.currentProcess == null) {
+      ModalState.toggleProcessWelcome()
+    }
+  }
 
   render() {
     return (
