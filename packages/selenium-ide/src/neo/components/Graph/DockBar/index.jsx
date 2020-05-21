@@ -9,12 +9,12 @@ export default class GraphDockBar extends React.Component {
     this.state = {
       dockItemList: [
         {
-          type: 'case',
+          type: enumData.prcItemType.用例,
           img: enumData.image.用例,
           text: '用例',
         },
         {
-          type: 'while',
+          type: enumData.prcItemType.循环,
           img: enumData.image.循环,
           text: '循环',
         },

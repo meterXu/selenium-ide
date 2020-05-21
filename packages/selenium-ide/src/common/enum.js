@@ -36,4 +36,8 @@ export default {
     用例: 'case',
     循环: 'for',
   },
+  prcItemType: {
+    用例: 1,
+    循环: 2,
+  },
 }

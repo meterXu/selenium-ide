@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
 import prcItem from '../../../models/Graph/PrcItem'
+import enumData from '../../../../common/enum'
 class Draw {
   @observable
   itemList = []
@@ -269,20 +270,27 @@ class Draw {
       )
   }
   bindNodeClick(node, type, func, contentMenuFunc) {
-    if (type === 'while') {
-      node.mousedown(function() {
-        let coordinate = this.data('coordinate')
-        GraphState.setCurrentActiveNode(coordinate)
-        if (event.which == 3) {
-          contentMenuFunc && contentMenuFunc()
+    switch (type) {
+      case enumData.prcItemType.用例:
+        {
+          node.mousedown(function() {
+            let coordinate = this.data('coordinate')
+            GraphState.setCurrentActiveNode(coordinate)
+            if (event.which === 3) {
+              contentMenuFunc && contentMenuFunc()
+            }
+          })
         }
-      })
-    } else {
-      node.click(function() {
-        let coordinate = this.data('coordinate')
-        GraphState.setCurrentActiveNode(coordinate)
-        func && func()
-      })
+        break
+      case enumData.prcItemType.循环:
+        {
+          node.click(function() {
+            let coordinate = this.data('coordinate')
+            GraphState.setCurrentActiveNode(coordinate)
+            func && func()
+          })
+        }
+        break
     }
   }
   @action.bound

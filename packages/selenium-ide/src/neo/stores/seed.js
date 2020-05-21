@@ -19,6 +19,7 @@ import generate from 'project-name-generator'
 // import { CommandsArray } from '../models/Command'
 import Command from '../models/Command'
 import UiState from './view/UiState'
+import PrcItem from '../models/Graph/PrcItem'
 
 export default function seed(store, numberOfSuites = 0) {
   function generateSuite() {
@@ -377,7 +378,14 @@ export default function seed(store, numberOfSuites = 0) {
 
   const unitTest = store.createTestCase('A-HXHS-TEST1')
   unitTest.createCommand(undefined, 'open', '/checkboxes')
-  const unitCommand = unitTest.createCommand(undefined, 'type', 'css=input1','hello jetRecord','data',true)
+  const unitCommand = unitTest.createCommand(
+    undefined,
+    'type',
+    'css=input1',
+    'hello jetRecord',
+    'data',
+    true
+  )
   unitCommand.setTargets([
     ['id=something', 'id'],
     ['name=something-else', 'name'],
@@ -391,7 +399,14 @@ export default function seed(store, numberOfSuites = 0) {
     ["//a[contains(@href, '/wiki/Number_density')]", 'xpath:href'],
     ['//a[5]', 'xpath:position'],
   ])
-  unitTest.createCommand(undefined, 'type', 'css=input2','http://localhost','url',true)
+  unitTest.createCommand(
+    undefined,
+    'type',
+    'css=input2',
+    'http://localhost',
+    'url',
+    true
+  )
 
   const clickTest = store.createTestCase('click')
   clickTest.createCommand(undefined, 'open', '/')
@@ -805,15 +820,19 @@ export default function seed(store, numberOfSuites = 0) {
 
   store.changeName('种子项目')
 
-  // store.createSource(0, store.createExcel('用例excel数据', ''))
-  // store.createSource(0, store.createOracle('用例Oracle数据', ''))
-  // store.createSource(0, store.createSqlserver('用例sqlserver数据', ''))
-  // store.createSource(0, store.createMysql('用例mysql数据', ''))
-  // store.createSource(0, store.createApi('用例api数据', '', '', null, null, null))
-  //
-  // store.createSource(1, store.createExcel('用例excel数据', ''))
-  // store.createSource(1, store.createExcel('用例excel数据', ''))
-  // store.createSource(1, store.createExcel('用例excel数据', ''))
+  store.createSource(
+    UiState.enum.scIOType.读取,
+    store.createExcel(
+      '核销报核',
+      'A-HXHS-TEST1',
+      'D:\\upload\\1.html',
+      'sheet1',
+      '{ "data": "马云福报论", "url": "http://www.baidu.com" }'
+    )
+  )
+  store.createProcess('流程图1', [
+    new PrcItem('0,1', {}, UiState.enum.image.用例, 'A-HXHS-TEST1',UiState.enum.prcItemType.用例),
+  ])
 
   UiState.saved()
 

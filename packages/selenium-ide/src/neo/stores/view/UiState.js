@@ -28,7 +28,6 @@ import i18n from '../../i18n'
 import enumData from '../../../common/enum'
 import axios from 'axios'
 import Source from '../../models/Source/Source'
-import staticData from '../../../common/staticData'
 class UiState {
   lang = i18n.lang
   views = [
@@ -289,8 +288,6 @@ class UiState {
         )
         .then(
           action(res => {
-            //模拟请求数据
-            // res = staticData.excel
             if (res && res.data && res.data.data_type) {
               switch (res.data.data_type.toString().toLowerCase()) {
                 case enumData.scTypeName.excel:
