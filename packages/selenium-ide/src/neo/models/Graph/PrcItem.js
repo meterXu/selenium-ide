@@ -26,7 +26,7 @@ export default class PrcItem {
     }
   }
   @action.bound
-  static fromJs(jsRep) {
+  static fromJs (jsRep) {
     let prcItem = new PrcItem(
       jsRep.coordinate,
       jsRep.data,

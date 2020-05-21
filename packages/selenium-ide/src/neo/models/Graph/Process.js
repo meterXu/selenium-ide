@@ -33,7 +33,7 @@ export default class Process {
   }
   @action.bound
   static fromJs(jsRep) {
-    let graphData = jsRep.graphData.map(c => prcItem.fromJS(c))
+    let graphData = jsRep.graphData.map(c => prcItem.fromJs(c))
     let process = new Process(jsRep.id, jsRep.name, graphData)
     return process
   }
