@@ -1,4 +1,5 @@
 import React from 'react'
+import { observer } from 'mobx-react'
 import GraphDockBar from '../../components/Graph/DockBar'
 import DesignGraph from '../Graph'
 import GraphTool from '../../components/Graph/Tool'
@@ -7,6 +8,7 @@ import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
 import ModalState from '../../stores/view/ModalState'
 
+@observer
 class ProcessDesign extends React.Component {
   constructor(props) {
     super(props)
