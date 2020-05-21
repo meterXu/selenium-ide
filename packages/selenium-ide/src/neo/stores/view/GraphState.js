@@ -137,7 +137,7 @@ class GraphState {
   }
   @action
   renameProcess(type, value, opts = { isNewTest: false }) {
-    return ModalState.renameSuite(type, value, opts)
+    return ModalState.renameProcess(type, value, opts)
   }
   @action.bound
   duplicateProcess(process) {

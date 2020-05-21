@@ -16,14 +16,14 @@
 // under the License.
 
 import React, { Component } from 'react'
-import { inject, PropTypes as MobxPropTypes } from 'mobx-react'
+import { PropTypes as MobxPropTypes } from 'mobx-react'
 import { observer } from 'mobx-react'
 import classNames from 'classnames'
 import { MenuTest } from '../Test'
 import UiState from '../../stores/view/UiState'
 import GraphState from '../../stores/view/GraphState'
 import './style.css'
-@inject('renameTest')
+
 @observer
 export default class ProcessList extends Component {
   static propTypes = {
@@ -44,7 +44,7 @@ export default class ProcessList extends Component {
               }
               changed={process.modified}
               selectTest={GraphState.selectProcess}
-              renameTest={this.props.renameTest}
+              renameTest={GraphState.renameProcess}
               duplicateTest={() => {
                 GraphState.duplicateProcess(process)
               }}

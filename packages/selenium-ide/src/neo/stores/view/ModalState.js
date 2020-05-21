@@ -56,6 +56,7 @@ class ModalState {
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
     this.renameSuite = this.rename.bind(this, Types.suite)
+    this.renameProcess = this.rename.bind(this, Types.process)
     this.rename = this.rename.bind(this)
     this.exportPayload = undefined
     this.renameProcess = this.rename.bind(this, Types.process)
