@@ -56,7 +56,7 @@ class CaseConfState {
     if (this.selectedSource) {
       return this.selectedSource.id
     } else {
-      return null
+      return ''
     }
   }
   @action.bound
