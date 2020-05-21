@@ -26,6 +26,9 @@ export default class FileSource extends React.Component {
             path:
               ModalState.sourceConfModel &&
               ModalState.sourceConfModel.data.pro.path,
+            sheet:
+              ModalState.sourceConfModel &&
+              ModalState.sourceConfModel.data.pro.sheet,
           },
           schema:
             ModalState.sourceConfModel &&
@@ -53,6 +56,14 @@ export default class FileSource extends React.Component {
     })
     ModalState.setSourceConfModel(newFileData)
   }
+  sheetChange() {
+    let newFileData = Object.assign({}, this.state.fileData)
+    newFileData.data.pro.sheet = event.target.value
+    this.setState({
+      fileData: newFileData,
+    })
+    ModalState.setSourceConfModel(newFileData)
+  }
 
   render() {
     return (
@@ -75,6 +86,12 @@ export default class FileSource extends React.Component {
             name="path"
             value={this.state.fileData.data.pro.path}
             onChange={this.pathChange.bind(this)}
+          />
+          <FormInput
+            label="sheet"
+            name="sheet"
+            value={this.state.fileData.data.pro.sheet}
+            onChange={this.sheetChange.bind(this)}
           />
         </FormGroup>
         <FormGroup label="数据格式" name="">

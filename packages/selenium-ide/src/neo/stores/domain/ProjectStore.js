@@ -246,9 +246,9 @@ export default class ProjectStore {
     return source
   }
   @action.bound
-  createExcel(name, code, path, schema) {
+  createExcel(name, code, path, sheet, schema) {
     const excel = new File(name, code)
-    excel.createExcel(path, schema)
+    excel.createExcel(path, sheet, schema)
     return excel
   }
   @action.bound

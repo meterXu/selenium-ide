@@ -294,6 +294,7 @@ class UiState {
                 code: 'A-HXHS-TEST1',
                 data_type: 'Excel',
                 type_connect: 'D:\\\\upload\\\\1.html',
+                para: 'sheet1',
                 json_str: '{"data":"111","url":"heheh"}',
               },
             }
@@ -309,6 +310,7 @@ class UiState {
                           res.data.name,
                           res.data.code,
                           res.data.type_connect,
+                          res.data.para,
                           JSON.parse(res.data.json_str)
                         )
                       ),
