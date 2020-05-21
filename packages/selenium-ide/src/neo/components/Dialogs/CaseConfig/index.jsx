@@ -51,11 +51,11 @@ class CaseConfigDialogContents extends React.Component {
       this.props.tests
         .find(c => c.name === obj.hideValue)
         .commands.filter(c => c.isParam)
-        .map((c,i) => {
+        .map((c, i) => {
           return 'param' + i
         })
     )
-    CaseConfigState.setSelectSource(obj.hideValue)
+    CaseConfigState.getSelectSource(obj.hideValue)
   }
 
   componentDidMount() {
@@ -83,11 +83,23 @@ class CaseConfigDialogContents extends React.Component {
           }
         }),
     })
-    UiState.emptyResponseSource()
+    if (GraphState.currentActiveNode.data.caseId) {
+      let _test = this.props.tests.find(
+        c => c.id === GraphState.currentActiveNode.data.caseId
+      )
+      CaseConfigState.getSelectSource(_test.name)
+    } else {
+      UiState.emptyResponseSource()
+    }
   }
   formSelectChange() {
     CaseConfigState.setSelectedSource(event.target.value)
-    GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource.id)
+    if(CaseConfigState.selectedSource){
+      GraphState.setCurrentActiveNodeSource(CaseConfigState.selectedSource.id)
+    }else{
+      GraphState.setCurrentActiveNodeSource(null)
+    }
+
   }
 
   render() {

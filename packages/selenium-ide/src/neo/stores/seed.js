@@ -20,6 +20,7 @@ import generate from 'project-name-generator'
 import Command from '../models/Command'
 import UiState from './view/UiState'
 import PrcItem from '../models/Graph/PrcItem'
+import CaseConfState from './view/caseConf/CaseConfState'
 
 export default function seed(store, numberOfSuites = 0) {
   function generateSuite() {
@@ -830,6 +831,9 @@ export default function seed(store, numberOfSuites = 0) {
       { data: '马云福报论', url: 'http://www.baidu.com' }
     )
   )
+
+  CaseConfState.setSelectedSource(source.id)
+
   store.createProcess('流程图1', [
     new PrcItem(
       '0,1',

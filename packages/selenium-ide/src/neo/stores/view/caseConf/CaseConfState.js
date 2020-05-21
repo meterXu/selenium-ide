@@ -8,7 +8,7 @@ class CaseConfState {
   selectedSource = null
 
   @action.bound
-  setSelectSource(code) {
+  getSelectSource(code) {
     UiState.getSourceConf(code)
   }
   @computed

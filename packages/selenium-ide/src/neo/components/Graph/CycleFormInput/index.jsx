@@ -15,7 +15,6 @@ export default class CycleFormInput extends React.Component {
     label: PropTypes.string.isRequired,
     cycleValues: PropTypes.array.isRequired,
   }
-  componentDidUpdate(prevProps, prevState, snapshot) {}
   formSelectChange(index) {
     if (event.target.value) {
       GraphState.setCurrentActiveNodeParamValues(index, event.target.value)
