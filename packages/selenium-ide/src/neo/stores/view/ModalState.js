@@ -55,6 +55,7 @@ class ModalState {
     this.renameSuite = this.rename.bind(this, Types.suite)
     this.rename = this.rename.bind(this)
     this.exportPayload = undefined
+    this.renameProcess = this.rename.bind(this, Types.process)
   }
   @computed
   get sourceTypeName() {
@@ -142,7 +143,14 @@ class ModalState {
   }
 
   @action.bound
-  createCanvas() {}
+  createProcess() {
+    this.renameProcess(undefined).then(name => {
+      if (name) {
+        const test = this._project.createProcess(name)
+        //UiState.selectTest(test)
+      }
+    })
+  }
 
   @action.bound
   async deleteSuite(suite) {
@@ -316,6 +324,7 @@ const Types = {
   test: i18n.lang.tests,
   suite: i18n.lang.suites,
   project: i18n.lang.project,
+  process: i18n.lang.processDesign,
 }
 
 if (!window._modalState) window._modalState = new ModalState()

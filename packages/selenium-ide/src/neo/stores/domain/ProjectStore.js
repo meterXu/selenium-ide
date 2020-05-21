@@ -207,6 +207,13 @@ export default class ProjectStore {
   }
 
   @action.bound
+  createProcess(...argv) {
+    const process = new Process(undefined, ...argv)
+    this.addProcessData(process)
+    return process
+  }
+
+  @action.bound
   duplicateTestCase(test) {
     const test2 = test.export()
     delete test2.id

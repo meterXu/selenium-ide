@@ -98,7 +98,7 @@ export default class Navigation extends React.Component {
           {UiState.selectedView === UiState.lang.processDesign && (
             <AddButton
               data-tip={'<p>添加新的流程设计</p>'}
-              onClick={ModalState.createCanvas}
+              onClick={ModalState.createProcess}
             />
           )}
         </VerticalTabBar>
