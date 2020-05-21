@@ -61,7 +61,7 @@ class GraphState {
   @action.bound
   setCurrentProcess(value) {
     this.currentProcess = value
-    draw.drawProcess()
+    draw.drawCurrentProcess()
   }
   @action.bound
   setCurrentActiveNode(coordinate) {

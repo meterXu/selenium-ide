@@ -159,7 +159,9 @@ class Draw {
     }
   }
   @action.bound
-  drawProcess() {
+  drawCurrentProcess() {
+    this.resetGraph()
+    this.processStart()
     if (GraphState.currentProcess) {
       GraphState.currentProcess.graphData.forEach(c => {
         this.drawVerticalItem(
