@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { action, observable, computed, reaction, toJS } from 'mobx'
+import { action, observable, computed, reaction, toJS, isObservableArray } from 'mobx'
 import uuidv4 from 'uuid/v4'
 import naturalCompare from 'string-natural-compare'
 import TestCase from '../../models/TestCase'
@@ -66,6 +66,7 @@ export default class ProjectStore {
     backUrl: 'http://192.168.12.74:8000/',
     dataCatalog: 'api/v1/dataCatalog/',
   }
+
   @observable
   processData = []
 
