@@ -1,6 +1,7 @@
 import { action, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
+import UiState from './../view/UiState'
 class GraphState {
   @observable
   zoom = 1
@@ -61,6 +62,7 @@ class GraphState {
   @action.bound
   setCurrentProcess(value) {
     this.currentProcess = value
+    UiState.project.setSelectedProcess(this.currentProcess.id)
     draw.drawCurrentProcess()
   }
   @action.bound
@@ -121,7 +123,11 @@ class GraphState {
     alert(item.type)
   }
   @action.bound
-  selectProcess() {}
+  selectProcess(process) {
+    if (this.currentProcess.id !== process.id){
+      this.setCurrentProcess(process)
+    }
+  }
   @action.bound
   renameProcess() {}
   @action.bound
