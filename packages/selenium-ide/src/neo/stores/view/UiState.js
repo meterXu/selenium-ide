@@ -317,6 +317,11 @@ class UiState {
             }
           })
         )
+        .catch(
+          action(err => {
+            this.responseSources = []
+          })
+        )
     } else {
       this.responseSources = [findSc]
     }

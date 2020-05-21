@@ -54,7 +54,6 @@ class CaseConfigDialogContents extends React.Component {
         .map((c, i) => {
           return 'param' + i
         }),
-      [],
       null
     )
     CaseConfigState.getSelectSource(obj.hideValue)
