@@ -31,6 +31,13 @@ export default class ProcessWelcomeDialog extends React.Component {
       prcName: event.target.value,
     })
   }
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevState.prcName) {
+      this.setState({
+        prcName: null,
+      })
+    }
+  }
 
   render() {
     return (
