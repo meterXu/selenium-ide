@@ -45,7 +45,9 @@ export default class ProcessList extends Component {
               changed={process.modified}
               selectTest={GraphState.selectProcess}
               renameTest={this.props.renameTest}
-              duplicateTest={GraphState.duplicateProcess}
+              duplicateTest={() => {
+                GraphState.duplicateProcess(process)
+              }}
               removeTest={() => {
                 GraphState.removeProcess(process)
               }}

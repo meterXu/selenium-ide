@@ -29,6 +29,10 @@ export default class Process {
     return process
   }
   @action.bound
+  setId(id) {
+    this.id = id
+  }
+  @action.bound
   setName(name) {
     this.name = name
   }

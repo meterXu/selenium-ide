@@ -2,6 +2,7 @@ import { action, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 import UiState from './../view/UiState'
+import uuidv4 from 'uuid/v4'
 class GraphState {
   @observable
   zoom = 1
@@ -139,7 +140,10 @@ class GraphState {
     return ModalState.renameSuite(type, value, opts)
   }
   @action.bound
-  duplicateProcess() {}
+  duplicateProcess(process) {
+    let new_process = UiState.project.createProcess(process.name + '_副本')
+    this.setCurrentProcess(new_process)
+  }
   @action.bound
   removeProcess(process) {
     if (UiState.project.processData && UiState.project.processData.length > 0) {
