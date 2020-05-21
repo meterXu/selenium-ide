@@ -832,23 +832,21 @@ export default function seed(store, numberOfSuites = 0) {
     )
   )
 
-  CaseConfState.setSelectedSource(source.id)
-
-  // store.createProcess('流程图1', [
-  //   new PrcItem(
-  //     '0,1',
-  //     {
-  //       paraNames: ['param0', 'param1'],
-  //       paraValues: ['data', 'url'],
-  //       caseId: unitTest.id,
-  //       caseName: '[smoke] A-HXHS-TEST1',
-  //       sourceId: source.id,
-  //     },
-  //     UiState.enum.image.用例,
-  //     '[smoke] A-HXHS-TEST1',
-  //     UiState.enum.prcItemType.用例
-  //   ),
-  // ])
+  store.createProcess('流程图1', [
+    new PrcItem(
+      '0,1',
+      {
+        paraNames: ['param0', 'param1'],
+        paraValues: ['data', 'url'],
+        caseId: unitTest.id,
+        caseName: '[smoke] A-HXHS-TEST1',
+        sourceId: source.id,
+      },
+      UiState.enum.image.用例,
+      '[smoke] A-HXHS-TEST1',
+      UiState.enum.prcItemType.用例
+    ),
+  ])
 
   UiState.saved()
 
