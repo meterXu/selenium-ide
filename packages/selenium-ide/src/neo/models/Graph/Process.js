@@ -5,7 +5,7 @@ export default class Process {
   name = null
   graphData = []
 
-  constructor(id = uuidv4(), name, graphData) {
+  constructor(id = uuidv4(), name = null, graphData = []) {
     this.id = id
     this.name = name
     this.graphData = graphData
