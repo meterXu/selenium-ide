@@ -71,7 +71,7 @@ export default class DbSource extends React.Component {
         <FormSelect
           label="类型"
           name="type"
-          itemData={this.state.itemData}
+          itemdata={this.state.itemData}
           value={this.state.dbData.data.type}
         />
         <FormGroup label="属性" name="">

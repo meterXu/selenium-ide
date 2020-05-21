@@ -22,13 +22,13 @@ import './style.css'
 
 export default class FormSelect extends React.Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     className: PropTypes.string,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     width: PropTypes.number,
     children: PropTypes.element,
     onChange: PropTypes.func,
-    itemData: PropTypes.array.isRequired,
+    itemdata: PropTypes.array,
   }
   render() {
     const props = Object.assign({}, this.props, {
@@ -48,7 +48,7 @@ export default class FormSelect extends React.Component {
           {this.props.label}
         </label>
         <select {...props}>
-          {this.props.itemData.map((c, i) => {
+          {this.props.itemdata.map((c, i) => {
             return (
               <option key={i} value={c.value}>
                 {c.text}

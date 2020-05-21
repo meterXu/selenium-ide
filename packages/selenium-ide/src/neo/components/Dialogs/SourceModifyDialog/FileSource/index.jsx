@@ -77,7 +77,7 @@ export default class FileSource extends React.Component {
         <FormSelect
           label="类型"
           name="type"
-          itemData={this.state.itemData}
+          itemdata={this.state.itemData}
           value={this.state.fileData.data.type}
         />
         <FormGroup label="属性" name="">

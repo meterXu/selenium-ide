@@ -40,7 +40,7 @@ class CaseConfigDialogContents extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      itemData: [],
+      itemdata: [],
     }
   }
 
@@ -62,7 +62,7 @@ class CaseConfigDialogContents extends React.Component {
 
   componentDidMount() {
     this.setState({
-      itemData: this.props.tests
+      itemdata: this.props.tests
         .map(c => {
           return {
             suite: c.suite,
@@ -139,14 +139,14 @@ class CaseConfigDialogContents extends React.Component {
         <Combobox
           name="caseId"
           label="用例"
-          itemData={this.state.itemData}
+          itemdata={this.state.itemdata}
           defaultText={GraphState.currentActiveNode.data.caseName}
           itemClick={this.itemClick.bind(this)}
         />
         <FormGroup label="数据源" name="">
           <FormSelect
             name="type"
-            itemData={CaseConfigState.selectSourceList}
+            itemdata={CaseConfigState.selectSourceList}
             value={CaseConfigState.sourceValue}
             onChange={this.formSelectChange.bind(this)}
           />

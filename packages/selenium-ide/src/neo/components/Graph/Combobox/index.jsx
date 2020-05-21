@@ -7,23 +7,23 @@ export default class Combobox extends React.Component {
     super(props)
     this.state = {
       openItemContainer: false,
-      text: null,
-      _itemData: this.props.itemData,
+      text: '',
+      _itemdata: this.props.itemdata,
     }
   }
   static propTypes = {
     name: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     defaultText: PropTypes.string.isRequired,
-    itemData: PropTypes.array.isRequired,
+    itemdata: PropTypes.array.isRequired,
     itemClick: PropTypes.func,
   }
   downActiveClick() {
     this.setState({
       openItemContainer: !this.state.openItemContainer,
-      _itemData: this.state.text
-        ? this.props.itemData.filter(c => c.text.indexOf(this.state.text) > -1)
-        : this.props.itemData,
+      _itemdata: this.state.text
+        ? this.props.itemdata.filter(c => c.text.indexOf(this.state.text) > -1)
+        : this.props.itemdata,
     })
   }
   onChnage() {
@@ -40,7 +40,7 @@ export default class Combobox extends React.Component {
       })
     }
     this.setState({
-      _itemData: this.props.itemData.filter(
+      _itemdata: this.props.itemdata.filter(
         c => c.text.indexOf(event.target.value) > -1
       ),
     })
@@ -53,7 +53,7 @@ export default class Combobox extends React.Component {
     this.props.itemClick({
       text: event.target.innerText,
       value: event.target.getAttribute('data-value'),
-      hideValue: event.target.getAttribute('data-hideValue'),
+      hideValue: event.target.getAttribute('data-hidevalue'),
     })
   }
   componentDidMount() {
@@ -89,13 +89,13 @@ export default class Combobox extends React.Component {
           }
         >
           <ul>
-            {this.state._itemData.map((c, i) => {
+            {this.state._itemdata.map((c, i) => {
               return (
                 <li
                   key={i}
                   tabIndex={i}
                   data-value={c.value}
-                  data-hideValue={c.hideValue}
+                  data-hidevalue={c.hideValue}
                   onClick={this.itemClick.bind(this)}
                 >
                   {c.text}

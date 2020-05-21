@@ -4,8 +4,8 @@ import './style.css'
 
 export default class LabelledInput extends React.Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    label: PropTypes.string,
     children: PropTypes.element,
     onChange: PropTypes.func,
   }

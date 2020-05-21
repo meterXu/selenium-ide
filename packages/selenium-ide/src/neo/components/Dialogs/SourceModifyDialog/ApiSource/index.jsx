@@ -87,7 +87,7 @@ export default class ApiSource extends React.Component {
           <FormSelect
             label="请求方式"
             name="type"
-            itemData={this.state.itemData}
+            itemdata={this.state.itemData}
             value={this.state.apiData.data.pro.type}
           />
           <FormInput

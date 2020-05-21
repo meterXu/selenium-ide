@@ -32,7 +32,6 @@ class CaseConfState {
         })
       )
     }
-
     return selectSourceList
   }
   @action.bound

@@ -33,7 +33,7 @@ export default class CycleFormInput extends React.Component {
                   label={c}
                   name={'cucleFn_' + i}
                   value={CaseConfigState.cycleFormValue(i)}
-                  itemData={this.props.cycleValues}
+                  itemdata={this.props.cycleValues}
                   onChange={this.formSelectChange.bind(this, i)}
                 />
               )
