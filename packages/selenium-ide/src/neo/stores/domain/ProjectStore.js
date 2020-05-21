@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import { action, observable, computed, reaction, toJS, isObservableArray } from 'mobx'
+import { action, observable, computed, reaction, toJS } from 'mobx'
 import uuidv4 from 'uuid/v4'
 import naturalCompare from 'string-natural-compare'
 import TestCase from '../../models/TestCase'
@@ -361,7 +361,10 @@ export default class ProjectStore {
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
     this.pluginConf = jsRep.pluginConf
-    this.processData.replace(jsRep.processData.map(c => Process.fromJs(c)))
+    this.processData = jsRep.processData.map(c => Process.fromJs(c))
+    if (this.processData.length > 0) {
+      this.selectedProcess = this.processData[0].id
+    }
     window._playbackState.delay = this.delay
     window._playbackState.implicitlyWait = this.implicitlyWait
     this.saved()

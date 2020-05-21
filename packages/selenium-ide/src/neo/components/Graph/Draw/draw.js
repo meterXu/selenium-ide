@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import GraphState from '../../../stores/view/GraphState'
-import prcItem from '../../../models/Graph/prcItem'
+import prcItem from '../../../models/Graph/PrcItem'
 class Draw {
   @observable
   itemList = []

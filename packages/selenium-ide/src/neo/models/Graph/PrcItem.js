@@ -1,4 +1,5 @@
-export default class prcItem {
+import { action } from 'mobx'
+export default class PrcItem {
   coordinate = null
   data = null
   img = null
@@ -14,7 +15,6 @@ export default class prcItem {
     this.type = type
     this.st = st
     this.export = this.export.bind(this)
-    this.fromJs = this.fromJs.bind(this)
   }
   export() {
     return {
@@ -25,8 +25,9 @@ export default class prcItem {
       type: this.type,
     }
   }
-  fromJs(jsRep) {
-    let prcItem = new prcItem(
+  @action.bound
+  static fromJs(jsRep) {
+    let prcItem = new PrcItem(
       jsRep.coordinate,
       jsRep.data,
       jsRep.img,

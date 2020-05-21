@@ -7,6 +7,7 @@ import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
 import ModalState from '../../stores/view/ModalState'
+import UiState from '../../stores/view/UiState'
 
 @observer
 class ProcessDesign extends React.Component {
@@ -40,8 +41,12 @@ class ProcessDesign extends React.Component {
     )
   }
   componentDidMount() {
-    if (GraphState.currentProcess == null) {
+    if (UiState.project.processData.length === 0) {
       ModalState.toggleProcessWelcome()
+    } else {
+      if (GraphState.currentProcess == null) {
+        GraphState.setCurrentProcess(UiState.project.processData[0])
+      }
     }
   }
 
