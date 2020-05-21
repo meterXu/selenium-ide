@@ -21,7 +21,6 @@ export default class DesignGraph extends React.Component {
     }
     let paper = new Raphael(this.refs.graph)
     GraphState.setPaper(paper)
-    //GraphDraw.processStart()
   }
   render() {
     return (
