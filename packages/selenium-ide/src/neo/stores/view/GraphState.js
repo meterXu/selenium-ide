@@ -61,9 +61,15 @@ class GraphState {
 
   @action.bound
   setCurrentProcess(value) {
-    this.currentProcess = value
-    UiState.project.setSelectedProcess(this.currentProcess.id)
-    draw.drawCurrentProcess()
+    if (value) {
+      this.currentProcess = value
+      UiState.project.setSelectedProcess(this.currentProcess.id)
+      draw.drawCurrentProcess()
+    } else {
+      this.currentProcess = null
+      UiState.project.setSelectedProcess(null)
+      draw.resetGraph()
+    }
   }
   @action.bound
   setCurrentActiveNode(coordinate) {
@@ -124,16 +130,28 @@ class GraphState {
   }
   @action.bound
   selectProcess(process) {
-    if (this.currentProcess.id !== process.id){
+    if (this.currentProcess.id !== process.id) {
       this.setCurrentProcess(process)
     }
   }
-  @action.bound
-  renameProcess() {}
+  @action
+  renameProcess(type, value, opts = { isNewTest: false }) {
+    return ModalState.renameSuite(type, value, opts)
+  }
   @action.bound
   duplicateProcess() {}
   @action.bound
-  removeProcess() {}
+  removeProcess(process) {
+    if (UiState.project.processData && UiState.project.processData.length > 0) {
+      UiState.project.removeProcess(process)
+    }
+    if (UiState.project.processData.length === 0) {
+      this.setCurrentProcess(null)
+      ModalState.toggleProcessWelcome()
+    } else {
+      this.setCurrentProcess(UiState.project.processData[0])
+    }
+  }
   @action.bound
   codeExport() {}
   @action.bound

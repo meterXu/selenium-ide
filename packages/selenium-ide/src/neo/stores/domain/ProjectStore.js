@@ -315,6 +315,10 @@ export default class ProjectStore {
   setSelectedProcess(id) {
     this.selectedProcess = id
   }
+  @action.bound
+  removeProcess(process) {
+    this.processData.remove(process)
+  }
 
   @action.bound
   registerPlugin(plugin) {

@@ -31,6 +31,7 @@ export default class ProcessWelcomeDialog extends React.Component {
       prcName: event.target.value,
     })
   }
+
   render() {
     return (
       <Modal
