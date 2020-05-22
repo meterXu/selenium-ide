@@ -69,7 +69,7 @@ export default class emitters {
     const commands = [
       {
         level: 1,
-        statement: `$\{self\}= ${funName} ${firstParam} ${paramstr}`,
+        statement: `$\{self\}=    ${funName}    ${firstParam}    ${paramstr}`,
       },
     ]
     return this.generateCode([
@@ -87,7 +87,7 @@ export default class emitters {
     return codes.join('\n')
   }
   generateTab(level) {
-    let tabs = Array(level).fill('\t')
+    let tabs = Array(level).fill('    ')
     return tabs.join('')
   }
 

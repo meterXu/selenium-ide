@@ -114,7 +114,7 @@
     }]
   },{
         "id": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
-        "name": "A-HXHS-TEST1",
+        "name": "A_HXHS_TEST1",
         "commands": [{
           "id": "6dd8de5b-771f-472f-8dd8-20193bbdb7af",
           "comment": "",
@@ -175,7 +175,7 @@
         "io": 0,
         "type": 0,
         "name": "核销报核",
-        "code": "A-HXHS-TEST1",
+        "code": "A_HXHS_TEST1",
         "data": {
           "type": 0,
           "pro": {
@@ -203,35 +203,35 @@
             "paraNames": ["param0", "param1"],
             "paraValues": ["data", "url"],
             "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
-            "caseName": "[smoke] A-HXHS-TEST1",
+            "caseName": "[smoke] A_HXHS_TEST1",
             "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204"
           },
           "img": "case",
-          "text": "[smoke] A-HXHS-TEST1",
+          "text": "[smoke] A_HXHS_TEST1",
           "type": 1
         }, {
           "coordinate": "0,2",
           "data": {
             "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
-            "caseName": "[smoke] A-HXHS-TEST1",
+            "caseName": "[smoke] A_HXHS_TEST1",
             "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204",
             "paraNames": ["param0", "param1"],
             "paraValues": ["data", "url"]
           },
           "img": "case",
-          "text": "[smoke] A-HXHS-TEST1",
+          "text": "[smoke] A_HXHS_TEST1",
           "type": 1
         }, {
           "coordinate": "0,3",
           "data": {
             "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
-            "caseName": "[smoke] A-HXHS-TEST1",
+            "caseName": "[smoke] A_HXHS_TEST1",
             "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204",
             "paraNames": ["param0", "param1"],
             "paraValues": ["url", "data"]
           },
           "img": "case",
-          "text": "[smoke] A-HXHS-TEST1",
+          "text": "[smoke] A_HXHS_TEST1",
           "type": 1
         }]
       }]

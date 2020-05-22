@@ -389,7 +389,7 @@ export default function seed(store, numberOfSuites = 0) {
   )
   unitTest.createCommand(
     undefined,
-    'send keys',
+    'sendKeys',
     'id=kw',
     '${KEY_ENTER}',
     '',
@@ -405,7 +405,7 @@ export default function seed(store, numberOfSuites = 0) {
   )
   unitTest.createCommand(
     undefined,
-    'send keys',
+    'sendKeys',
     'id=kw',
     '${KEY_ENTER}',
     '',
@@ -828,9 +828,9 @@ export default function seed(store, numberOfSuites = 0) {
     UiState.enum.scIOType.读取,
     store.createExcel(
       '核销报核',
-      'A-HXHS-TEST1',
-      'D:\\upload\\1.html',
-      'sheet1',
+      'A_HXHS_TEST1',
+      'D:\\upload\\1.xls',
+      'Sheet1',
       { data: '马云福报论', url: '东哥兄弟论' }
     )
   )
@@ -842,11 +842,11 @@ export default function seed(store, numberOfSuites = 0) {
         paraNames: ['param0', 'param1'],
         paraValues: ['data', 'url'],
         caseId: unitTest.id,
-        caseName: '[smoke] A-HXHS-TEST1',
+        caseName: '[smoke] A_HXHS_TEST1',
         sourceId: source.id,
       },
       UiState.enum.image.用例,
-      '[smoke] A-HXHS-TEST1',
+      '[smoke] A_HXHS_TEST1',
       UiState.enum.prcItemType.用例
     ),
   ])
