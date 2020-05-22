@@ -42,6 +42,8 @@ class ModalState {
   @observable
   exportState = {}
   @observable
+  exportType = Types.test
+  @observable
   sourceModifyDialog = false
   @observable
   sourceModifyType = UiState.enum.btnType.添加
@@ -185,7 +187,8 @@ class ModalState {
   }
 
   @action.bound
-  async codeExport(payload) {
+  async codeExport(payload, type) {
+    this.exportType = type || Types.test
     this.exportState = { isExporting: true }
     this.exportPayload = payload
   }

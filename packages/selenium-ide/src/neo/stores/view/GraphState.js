@@ -2,7 +2,7 @@ import { action, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 import UiState from './../view/UiState'
-import uuidv4 from 'uuid/v4'
+import PluginManager from '../../../plugin/manager'
 class GraphState {
   @observable
   zoom = 1
@@ -158,7 +158,20 @@ class GraphState {
     }
   }
   @action.bound
-  codeExport() {}
+  codeExport(payload) {
+    PluginManager.registerPlugin({
+      id: 'robotframework-process',
+      exports: {
+        vendor: [
+          {
+            id: 'robotframework-process',
+          }
+        ],
+        languages: [],
+      },
+    })
+    return ModalState.codeExport(payload, UiState.lang.processDesign)
+  }
   @action.bound
   getImage(name) {
     return require(`../../../icons/${name}.svg`)
