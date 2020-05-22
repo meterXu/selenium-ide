@@ -71,6 +71,8 @@ export async function exportCodeToFile(
       emittedCode = await exporter.emit.test(language, options)
     } else if (suite) {
       emittedCode = await exporter.emit.suite(language, options)
+    }else if (project){
+      emittedCode = await exporter.emit.process(language, options)
     }
     if (emittedCode)
       downloadUniqueFile(
