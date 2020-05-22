@@ -378,35 +378,38 @@ export default function seed(store, numberOfSuites = 0) {
   checkTest.createCommand(undefined, 'assertNotChecked', 'css=input')
 
   const unitTest = store.createTestCase('A-HXHS-TEST1')
-  unitTest.createCommand(undefined, 'open', '/checkboxes')
-  const unitCommand = unitTest.createCommand(
-    undefined,
-    'type',
-    'css=input1',
-    'hello jetRecord',
-    'data',
-    true
-  )
-  unitCommand.setTargets([
-    ['id=something', 'id'],
-    ['name=something-else', 'name'],
-    ['linkText=number density', 'linkText'],
-    ["xpath=//a[contains(text(),'number density')]", 'xpath:link'],
-    ['css=main .class > p a.link', 'css'],
-    ["xpath=(//a[contains(text(),'number line')])[2]", 'xpath:link'],
-    ["(//a[contains(text(),'number line')])[2]", 'xpath:link'],
-    ["//a[contains(text(),'number density')]", 'xpath:link'],
-    ["//div[@id='mw-content-text']/div/p[2]/a[5]", 'xpath:idRelative'],
-    ["//a[contains(@href, '/wiki/Number_density')]", 'xpath:href'],
-    ['//a[5]', 'xpath:position'],
-  ])
+  unitTest.createCommand(undefined, 'open', 'https://www.baidu.com')
   unitTest.createCommand(
     undefined,
     'type',
-    'css=input2',
-    'http://localhost',
-    'url',
+    'id=kw',
+    'hello world',
+    '搜索内容1',
     true
+  )
+  unitTest.createCommand(
+    undefined,
+    'send key',
+    'id=kw',
+    '${KEY_ENTER}',
+    '',
+    false
+  )
+  unitTest.createCommand(
+    undefined,
+    'type',
+    'id=kw',
+    'hello jetRecord',
+    '搜索内容1',
+    true
+  )
+  unitTest.createCommand(
+    undefined,
+    'send key',
+    'id=kw',
+    '${KEY_ENTER}',
+    '',
+    false
   )
 
   const clickTest = store.createTestCase('click')
@@ -828,7 +831,7 @@ export default function seed(store, numberOfSuites = 0) {
       'A-HXHS-TEST1',
       'D:\\upload\\1.html',
       'sheet1',
-      { data: '马云福报论', url: 'http://www.baidu.com' }
+      { data: '马云福报论', url: '东哥兄弟论' }
     )
   )
 
