@@ -87,6 +87,7 @@ export async function emitTest({
   baseUrl,
   test,
   tests,
+  process,
   project,
   enableOriginTracing,
   beforeEachOptions,
