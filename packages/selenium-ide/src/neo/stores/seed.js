@@ -389,7 +389,7 @@ export default function seed(store, numberOfSuites = 0) {
   )
   unitTest.createCommand(
     undefined,
-    'send key',
+    'send keys',
     'id=kw',
     '${KEY_ENTER}',
     '',
@@ -405,7 +405,7 @@ export default function seed(store, numberOfSuites = 0) {
   )
   unitTest.createCommand(
     undefined,
-    'send key',
+    'send keys',
     'id=kw',
     '${KEY_ENTER}',
     '',
