@@ -45,7 +45,7 @@ function beforeAll(project) {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 0, statement: '*** Test Cases ***' },
+
       ],
     },
     endingSyntax: {
@@ -147,6 +147,8 @@ function declareDependencies() {
         { level: 0, statement: 'Library           JetExcelClient' },
         { level: 0, statement: `Library           JetOracleClient` },
         { level: 0, statement: `Library           JetHtmlAnalyze` },
+        { level: 0, statement: `` },
+        { level: 0, statement: '*** Test Cases ***' },
       ],
     },
   }

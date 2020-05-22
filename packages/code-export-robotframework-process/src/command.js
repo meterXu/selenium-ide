@@ -14,22 +14,24 @@
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
-import enumData from '../../selenium-ide/src/common/enum'
+
 export default class emitters {
   constructor(process, project) {
     this.process = process
     this.projetc = project
     this.generateBody = this.generateBody.bind(this)
+    this.generateHead = this.generateHead.bind(this)
+  }
+  generateHead(command) {
+    return this.generateCode(command)
   }
   generateBody() {
-    let bodycodes = process.graphData.map(c => {
+    let bodycodes = this.process.graphData.map(c => {
       switch (c.type) {
-        case enumData.prcItemType.用例:
-          {
-            this.generateCaseCode(c)
-          }
-          break
-        case enumData.prcItemType.循环:
+        case 1: {
+          return this.generateCaseCode(c)
+        }
+        case 2:
           break
       }
     })
@@ -38,6 +40,23 @@ export default class emitters {
   }
 
   generateCaseCode(prcItem) {
-    debugger
+    const commands = [
+      {
+        level: 1,
+        statement: `login $\{None\} `,
+      },
+    ]
+    return this.generateCode(commands)
+  }
+
+  generateCode(commands) {
+    let codes = commands.map(c => {
+      return this.generateTab(c.level) + c.statement
+    })
+    return codes.join('\n')
+  }
+  generateTab(level) {
+    let tabs = Array(level).fill('\t')
+    return tabs.join('')
   }
 }

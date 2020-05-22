@@ -64,11 +64,13 @@ export async function emitProcess({
 }) {
   opts.hooks = generateHooks(project)
   global.baseUrl = baseUrl
-  const testDeclaration = generateTestDeclaration(process)
-  let body = new emitter(process, project).generateBody()
+  const declaration = generateTestDeclaration(process)
+  let _emitter = new emitter(process, project)
+  let head = _emitter.generateHead(opts.hooks.declareDependencies.startingSyntax.commands)
+  let body = _emitter.generateBody()
   return {
     filename: `${process.name}.robot`,
-    body: `${testDeclaration}\r\n${body}`,
+    body: [head, declaration, body].join('\r\n'),
   }
 }
 
