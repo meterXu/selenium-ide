@@ -24,7 +24,6 @@ import { generateHooks } from './hook'
 export const displayName = 'RobotFramework process'
 
 export let opts = {}
-opts.emitter = emitter
 opts.hooks = generateHooks()
 opts.fileExtension = '.robot'
 opts.commandPrefixPadding = '  '
@@ -34,10 +33,8 @@ opts.testLevel = '0'
 opts.commandLevel = '0'
 opts.generateMethodDeclaration = generateMethodDeclaration
 // Create generators for dynamic string creation of primary entities (e.g., filename, methods, test, and suite)
-function generateTestDeclaration(test) {
-  return `def ${test.name}(driver${
-    test.fpName === '' ? '' : ',' + test.fpName
-  }):`
+function generateTestDeclaration(process) {
+  return `${process.name}`
 }
 function generateMethodDeclaration(name) {
   return `def ${exporter.parsers.uncapitalize(
@@ -55,102 +52,29 @@ function generateFilename(name) {
   )}${opts.fileExtension}`
 }
 
-function dealwithParm(tests) {
-  if (tests instanceof Array) {
-    for (let testIndex in tests) {
-      let fpName = ''
-      let paramIndex = 1
-      tests[testIndex].commands.forEach(c => {
-        if (c.isParam) {
-          fpName += ' parm' + paramIndex + ','
-          c.paramName = 'parm' + paramIndex
-          paramIndex++
-        }
-      })
-      tests[testIndex]['fpName'] = fpName.replace(/,$/g, '')
-    }
-  } else {
-    let fpName = ''
-    let paramIndex = 1
-    tests.commands.forEach(c => {
-      if (c.isParam) {
-        fpName += ' parm' + paramIndex + ','
-        c.paramName = 'parm' + paramIndex
-        paramIndex++
-      }
-    })
-    tests['fpName'] = fpName.replace(/,$/g, '')
-  }
-}
 // Emit an individual test, wrapped in a suite (using the test name as the suite name)
-export async function emitTest({
+export async function emitProcess({
   baseUrl,
   test,
   tests,
+  process,
   project,
   enableOriginTracing,
   beforeEachOptions,
 }) {
   opts.hooks = generateHooks(project)
   global.baseUrl = baseUrl
-  dealwithParm(test)
-  const testDeclaration = generateTestDeclaration(test)
-  let result = await exporter.emit.test(test, tests, {
-    ...opts,
-    testDeclaration,
-    enableOriginTracing,
-    project,
-  })
-  const suiteName = test.name
-  const suiteDeclaration = generateSuiteDeclaration(suiteName)
-  const _suite = await exporter.emit.suite(result, tests, {
-    ...opts,
-    suiteDeclaration,
-    suiteName,
-    project,
-    beforeEachOptions,
-  })
+  const testDeclaration = generateTestDeclaration(process)
+  let body = new emitter(process, project).generateBody()
   return {
-    filename: generateFilename(test.name),
-    body: exporter.emit.orderedSuite(_suite),
-  }
-}
-
-// Emit a suite with all of its tests
-export async function emitSuite({
-  baseUrl,
-  suite,
-  tests,
-  project,
-  enableOriginTracing,
-  beforeEachOptions,
-}) {
-  opts.hooks = generateHooks(project)
-  global.baseUrl = baseUrl
-  dealwithParm(tests)
-  let result = await exporter.emit.testsFromSuite(tests, suite, opts, {
-    enableOriginTracing,
-    generateTestDeclaration,
-    project,
-  })
-  const suiteDeclaration = generateSuiteDeclaration(suite.name)
-  const _suite = await exporter.emit.suite(result, tests, {
-    ...opts,
-    suiteDeclaration,
-    suite,
-    project,
-    beforeEachOptions,
-  })
-  return {
-    filename: generateFilename(suite.name),
-    body: exporter.emit.orderedSuite(_suite),
+    filename: `${process.name}.robot`,
+    body: `${testDeclaration}\r\n${body}`,
   }
 }
 
 export default {
   emit: {
-    test: emitTest,
-    suite: emitSuite,
+    test: emitProcess,
     locator: location.emit,
   },
   register: {

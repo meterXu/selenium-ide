@@ -17,7 +17,7 @@
 
 import fs from 'fs'
 import path from 'path'
-import { emitTest, emitSuite, _emitMethod, _findTestByName } from '../../src'
+import { emitProcess } from '../../src'
 import { project as projectProcessor } from '../../../side-utils/dist'
 
 function readFile(filename) {
@@ -40,10 +40,11 @@ function readFile(filename) {
 describe('Code Export Python pytest', () => {
   it('should export a test', async () => {
     const project = readFile('single-test.side')
-    const results = await emitTest({
+    const results = await emitProcess({
       baseUrl: project.url,
       test: project.tests[0],
       tests: project.tests,
+      process: project.processData[0],
       project: project,
     })
     // console.log(results.body)

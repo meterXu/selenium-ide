@@ -45,7 +45,7 @@ function beforeAll(project) {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 0, statement: '' },
+        { level: 0, statement: '*** Test Cases ***' },
       ],
     },
     endingSyntax: {
