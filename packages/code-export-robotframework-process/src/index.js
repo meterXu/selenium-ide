@@ -76,7 +76,7 @@ export async function emitProcess({
 
 export default {
   emit: {
-    process: emitProcess,
+    test: emitProcess,
     locator: location.emit,
   },
   register: {
