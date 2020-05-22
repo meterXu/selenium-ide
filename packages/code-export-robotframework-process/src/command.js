@@ -65,7 +65,7 @@ export default class emitters {
         return `$\{readData.${c}[0]\}`
       })
       .join('    ')
-    let firstParam = index === 0 ? '${None}' : '${self}'
+    let firstParam = index === 0 ? '${None}' : '${self.driver}'
     const commands = [
       {
         level: 1,
@@ -95,11 +95,12 @@ export default class emitters {
     if (source && source.type === 0) {
       switch (source.data.type) {
         case 0: {
+          let path = source.data.pro.path.replace(/\\/g, '\\\\')
           return [
             {
               level: 1,
               statement: funlist.libs.读取excel.generate(
-                source.data.pro.path,
+                path,
                 source.data.pro.sheet
               ),
             },
@@ -116,11 +117,12 @@ export default class emitters {
     if (source && source.type === 1) {
       switch (source.data.type) {
         case 0: {
+          let path = source.data.pro.path.replace(/\\/g, '\\\\')
           return [
             {
               level: 1,
               statement: funlist.libs.写入excel.generate(
-                source.data.pro.path,
+                path,
                 source.data.pro.sheet
               ),
             },

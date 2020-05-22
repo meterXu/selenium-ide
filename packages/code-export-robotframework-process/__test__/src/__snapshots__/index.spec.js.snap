@@ -8,10 +8,10 @@ Library           JetHtmlAnalyze
 
 *** Test Cases ***
 流程图1
-    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
     \${self}=    A_HXHS_TEST1    \${None}    \${readData.data[0]}    \${readData.url[0]}
-    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
-    \${self}=    A_HXHS_TEST1    \${self}    \${readData.data[0]}    \${readData.url[0]}
-    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
-    \${self}=    A_HXHS_TEST1    \${self}    \${readData.url[0]}    \${readData.data[0]}"
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
+    \${self}=    A_HXHS_TEST1    \${self.driver}    \${readData.data[0]}    \${readData.url[0]}
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
+    \${self}=    A_HXHS_TEST1    \${self.driver}    \${readData.url[0]}    \${readData.data[0]}"
 `;
