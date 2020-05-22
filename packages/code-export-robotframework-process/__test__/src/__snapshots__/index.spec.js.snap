@@ -8,16 +8,10 @@ Library           JetHtmlAnalyze
 
 *** Test Cases ***
 流程图1
-	\${readData}= read_excel_to_df_withName D:\\\\upload\\\\1.html sheet1
-	\${data}= evaluate str(\${readData.data[0]})
-	\${url}= evaluate str(\${readData.url[0]})
-	\${self}= A-HXHS-TEST1  \${None}  \${data}	\${url}
-	\${readData}= read_excel_to_df_withName D:\\\\upload\\\\1.html sheet1
-	\${data}= evaluate str(\${readData.data[0]})
-	\${url}= evaluate str(\${readData.url[0]})
-	\${self}= A-HXHS-TEST1  \${self}  \${data}	\${url}
-	\${readData}= read_excel_to_df_withName D:\\\\upload\\\\1.html sheet1
-	\${url}= evaluate str(\${readData.url[0]})
-	\${data}= evaluate str(\${readData.data[0]})
-	\${self}= A-HXHS-TEST1  \${self}  \${url}	\${data}"
+    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
+    \${self}=    A_HXHS_TEST1    \${None}    \${readData.data[0]}    \${readData.url[0]}
+    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
+    \${self}=    A_HXHS_TEST1    \${self}    \${readData.data[0]}    \${readData.url[0]}
+    \${readData}=    read_excel_to_df_withName    D:\\\\upload\\\\1.html    sheet1
+    \${self}=    A_HXHS_TEST1    \${self}    \${readData.url[0]}    \${readData.data[0]}"
 `;
