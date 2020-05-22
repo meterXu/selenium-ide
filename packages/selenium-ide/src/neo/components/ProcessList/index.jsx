@@ -51,7 +51,9 @@ export default class ProcessList extends Component {
               removeTest={() => {
                 GraphState.removeProcess(process)
               }}
-              codeExport={GraphState.codeExport}
+              codeExport={() => {
+                GraphState.codeExport({ process: process.export() })
+              }}
               setSectionFocus={UiState.setSectionFocus}
             />
           </li>

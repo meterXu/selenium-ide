@@ -22,7 +22,8 @@ export const availableLanguages = {
   // 'python-pytest': require('@seleniumhq/code-export-python-pytest'),
   // 'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
   // 'python-robotframework':require('../../code-export-python-robotframework/dist'),
-  'python-RPA': require('../../code-export-python-rpa/dist')
+  'Robotframework-Process': require('../../code-export-robotframework-process/dist'),
+  'python-RPA': require('../../code-export-python-rpa/dist'),
 }
 
 function registerCommand(language, command, emitter) {
@@ -63,12 +64,13 @@ function registerAfterAll(language, emitter) {
 
 function emitTest(
   language,
-  { url, test, tests, project, enableOriginTracing, beforeEachOptions }
+  { url, test, tests, process, project, enableOriginTracing, beforeEachOptions }
 ) {
   return availableLanguages[language].default.emit.test({
     baseUrl: url,
     test,
     tests,
+    process,
     project,
     enableOriginTracing,
     beforeEachOptions,

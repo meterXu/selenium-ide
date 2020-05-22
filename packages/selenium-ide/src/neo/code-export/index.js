@@ -25,19 +25,19 @@ import { userAgent, project as projectProcessor } from '@seleniumhq/side-utils'
 const vendorLanguages = PluginManager.plugins.vendorLanguages
 
 export function availableLanguages() {
-  if (ModalState.exportType === UiState.lang.tests) {
-    return languages
-  } else {
-    return vendorLanguages
-  }
-  // return Object.keys(vendorLanguages).length
-  //   ? { ...languages, ...vendorLanguages }
-  //   : languages
+  // if (ModalState.exportType === UiState.lang.tests) {
+  //   return languages
+  // } else {
+  //   return vendorLanguages
+  // }
+  return Object.keys(vendorLanguages).length
+    ? { ...languages, ...vendorLanguages }
+    : languages
 }
 
 export async function exportCodeToFile(
   selectedLanguages,
-  { test, suite },
+  { test, suite, process },
   { enableOriginTracing, beforeEachOptions }
 ) {
   const project = UiState.project.toJS()
@@ -47,6 +47,7 @@ export async function exportCodeToFile(
     let options = {
       url,
       tests,
+      process,
       project,
       enableOriginTracing,
       beforeEachOptions: {

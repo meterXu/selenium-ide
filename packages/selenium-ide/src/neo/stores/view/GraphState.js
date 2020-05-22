@@ -159,17 +159,6 @@ class GraphState {
   }
   @action.bound
   codeExport(payload) {
-    PluginManager.registerPlugin({
-      id: 'robotframework-process',
-      exports: {
-        vendor: [
-          {
-            id: 'robotframework-process',
-          }
-        ],
-        languages: [],
-      },
-    })
     return ModalState.codeExport(payload, UiState.lang.processDesign)
   }
   @action.bound
