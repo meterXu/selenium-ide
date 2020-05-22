@@ -14,7 +14,7 @@
 // KIND, either express or implied.  See the License for the
 // specific language governing permissions and limitations
 // under the License.
-
+import funlist from './FunLibs'
 export default class emitters {
   constructor(process, project) {
     this.process = process
@@ -40,13 +40,43 @@ export default class emitters {
   }
 
   generateCaseCode(prcItem) {
+    let sourceData = []
+    if (this.projetc.sourceData) {
+      sourceData = [
+        ...this.projetc.sourceData.read,
+        ...this.projetc.sourceData.write,
+      ]
+    }
+    let test = this.projetc.tests.find(c => c.id === prcItem.data.caseId)
+    let source = sourceData.find(c => c.id === prcItem.data.sourceId)
+    let funName = undefined
+    if (test) {
+      funName = test.name
+    }
+    const ioReadCommands = this.generateIoRead(source)
+    const ioWriteCommands = this.generateIoWrite(source)
+    let formatCommands = []
+    let paramstr = prcItem.data.paraValues
+      .map(c => {
+        formatCommands.push({
+          level: 1,
+          statement: funlist.libs.转字符串.generate(c, 0),
+        })
+        return `$\{${c}\}`
+      })
+      .join('\t')
     const commands = [
       {
         level: 1,
-        statement: `login $\{None\} `,
+        statement: `$\{self\} = ${funName} ${paramstr}`,
       },
     ]
-    return this.generateCode(commands)
+    return this.generateCode([
+      ...ioReadCommands,
+      ...formatCommands,
+      ...commands,
+      ...ioWriteCommands,
+    ])
   }
 
   generateCode(commands) {
@@ -58,5 +88,47 @@ export default class emitters {
   generateTab(level) {
     let tabs = Array(level).fill('\t')
     return tabs.join('')
+  }
+
+  generateIoRead(source) {
+    if (source && source.type === 0) {
+      switch (source.data.type) {
+        case 0: {
+          return [
+            {
+              level: 1,
+              statement: funlist.libs.读取excel.generate(
+                source.data.pro.path,
+                source.data.pro.sheet
+              ),
+            },
+          ]
+        }
+        default:
+          return []
+      }
+    }
+    return []
+  }
+
+  generateIoWrite(source) {
+    if (source && source.type === 1) {
+      switch (source.data.type) {
+        case 0: {
+          return [
+            {
+              level: 1,
+              statement: funlist.libs.写入excel.generate(
+                source.data.pro.path,
+                source.data.pro.sheet
+              ),
+            },
+          ]
+        }
+        default:
+          return []
+      }
+    }
+    return []
   }
 }
