@@ -42,24 +42,10 @@ export function generateHooks(project) {
 }
 
 function beforeAll(project) {
-  let delay = project ? project.delay : 300
-  let implicitlyWait = project ? project.implicitlyWait : 3000
-  delay = (delay / 1000).toFixed(1)
   const params = {
     startingSyntax: {
       commands: [
-        { level: 0, statement: 'class RPAInfo:' },
-        { level: 1, statement: 'driver = None' },
-        { level: 1, statement: `delay = ${delay}` },
-        { level: 1, statement: `waitTime = ${implicitlyWait}` },
-        { level: 1, statement: 'vars = {}' },
         { level: 0, statement: '' },
-        { level: 1, statement: 'def getDriver(self):' },
-        { level: 2, statement: 'time.sleep(self.delay)' },
-        { level: 2, statement: 'if self.driver is None:' },
-        { level: 3, statement: 'self.driver = webdriver.Chrome()' },
-        { level: 2, statement: 'self.driver.implicitly_wait(self.waitTime)' },
-        { level: 2, statement: 'return self.driver' },
       ],
     },
     endingSyntax: {
@@ -157,46 +143,10 @@ function declareDependencies() {
   const params = {
     startingSyntax: {
       commands: [
-        { level: 0, statement: 'import pytest' },
-        { level: 0, statement: 'import time' },
-        { level: 0, statement: 'import json' },
-        { level: 0, statement: 'from selenium import webdriver' },
-        {
-          level: 0,
-          statement: 'from selenium.webdriver.common.by import By',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.common.action_chains import ActionChains',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.support import expected_conditions',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.support.wait import WebDriverWait',
-        },
-        {
-          level: 0,
-          statement: 'from selenium.webdriver.common.keys import Keys',
-        },
-        {
-          level: 0,
-          statement:
-            'from selenium.webdriver.common.desired_capabilities import DesiredCapabilities',
-        },
-        {
-          level: 0,
-          statement: '',
-        },
-        {
-          level: 0,
-          statement: '',
-        },
+        { level: 0, statement: '*** Settings ***' },
+        { level: 0, statement: 'Library           JetExcelClient' },
+        { level: 0, statement: `Library           JetOracleClient` },
+        { level: 0, statement: `Library           JetHtmlAnalyze` },
       ],
     },
   }

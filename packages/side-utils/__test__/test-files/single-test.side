@@ -112,7 +112,53 @@
       "directionType": "value",
       "directionValue": ""
     }]
-  }],
+  },{
+        "id": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
+        "name": "A-HXHS-TEST1",
+        "commands": [{
+          "id": "6dd8de5b-771f-472f-8dd8-20193bbdb7af",
+          "comment": "",
+          "command": "open",
+          "target": "/checkboxes",
+          "targets": [],
+          "value": "",
+          "isParam": false,
+          "directionType": "value",
+          "directionValue": ""
+        }, {
+          "id": "ec2e5b17-2dc5-433c-8bc4-220651e3cfe8",
+          "comment": "data",
+          "command": "type",
+          "target": "css=input1",
+          "targets": [
+            ["id=something", "id"],
+            ["name=something-else", "name"],
+            ["linkText=number density", "linkText"],
+            ["xpath=//a[contains(text(),'number density')]", "xpath:link"],
+            ["css=main .class > p a.link", "css"],
+            ["xpath=(//a[contains(text(),'number line')])[2]", "xpath:link"],
+            ["(//a[contains(text(),'number line')])[2]", "xpath:link"],
+            ["//a[contains(text(),'number density')]", "xpath:link"],
+            ["//div[@id='mw-content-text']/div/p[2]/a[5]", "xpath:idRelative"],
+            ["//a[contains(@href, '/wiki/Number_density')]", "xpath:href"],
+            ["//a[5]", "xpath:position"]
+          ],
+          "value": "hello jetRecord",
+          "isParam": true,
+          "directionType": "value",
+          "directionValue": "hello jetRecord"
+        }, {
+          "id": "bc984daf-fbdf-449a-822d-329707c5b809",
+          "comment": "url",
+          "command": "type",
+          "target": "css=input2",
+          "targets": [],
+          "value": "http://localhost",
+          "isParam": true,
+          "directionType": "value",
+          "directionValue": "http://localhost"
+        }]
+      }],
   "suites": [{
     "id": "edca97e7-1507-4fcd-b61b-fc4cc290c005",
     "name": "Default Suite",
@@ -122,5 +168,71 @@
     "tests": ["d0f4bf60-d07a-4f93-adde-d60f0e04941b"]
   }],
   "urls": ["http://the-internet.herokuapp.com/"],
-  "plugins": []
+  "plugins": [],
+  "sourceData": {
+      "read": [{
+        "id": "99a548de-a8c2-47fa-ba3b-4545670ef204",
+        "io": 0,
+        "type": 0,
+        "name": "核销报核",
+        "code": "A-HXHS-TEST1",
+        "data": {
+          "type": 0,
+          "pro": {
+            "path": "D:\\upload\\1.html",
+            "sheet": "sheet1"
+          },
+          "schema": {
+            "data": "马云福报论",
+            "url": "http://www.baidu.com"
+          }
+        }
+      }],
+      "write": []
+    },
+    "pluginConf": {
+        "backUrl": "http://192.168.12.74:8000/",
+        "dataCatalog": "api/v1/dataCatalog/"
+      },
+      "processData": [{
+        "id": "d2e74ac6-8d33-4b45-b8fe-bebe5c258dc6",
+        "name": "流程图1",
+        "graphData": [{
+          "coordinate": "0,1",
+          "data": {
+            "paraNames": ["param0", "param1"],
+            "paraValues": ["data", "url"],
+            "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
+            "caseName": "[smoke] A-HXHS-TEST1",
+            "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204"
+          },
+          "img": "case",
+          "text": "[smoke] A-HXHS-TEST1",
+          "type": 1
+        }, {
+          "coordinate": "0,2",
+          "data": {
+            "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
+            "caseName": "[smoke] A-HXHS-TEST1",
+            "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204",
+            "paraNames": ["param0", "param1"],
+            "paraValues": ["data", "url"]
+          },
+          "img": "case",
+          "text": "[smoke] A-HXHS-TEST1",
+          "type": 1
+        }, {
+          "coordinate": "0,3",
+          "data": {
+            "caseId": "9c7e4e74-0c91-43c3-b28d-1fbba93bfc1e",
+            "caseName": "[smoke] A-HXHS-TEST1",
+            "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204",
+            "paraNames": ["param0", "param1"],
+            "paraValues": ["url", "data"]
+          },
+          "img": "case",
+          "text": "[smoke] A-HXHS-TEST1",
+          "type": 1
+        }]
+      }]
 }
