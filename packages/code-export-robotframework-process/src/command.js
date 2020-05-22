@@ -26,10 +26,10 @@ export default class emitters {
     return this.generateCode(command)
   }
   generateBody() {
-    let bodycodes = this.process.graphData.map(c => {
+    let bodycodes = this.process.graphData.map((c, i) => {
       switch (c.type) {
         case 1: {
-          return this.generateCaseCode(c)
+          return this.generateCaseCode(c, i)
         }
         case 2:
           break
@@ -39,7 +39,7 @@ export default class emitters {
     return bodycode
   }
 
-  generateCaseCode(prcItem) {
+  generateCaseCode(prcItem, index) {
     let sourceData = []
     if (this.projetc.sourceData) {
       sourceData = [
@@ -51,7 +51,7 @@ export default class emitters {
     let source = sourceData.find(c => c.id === prcItem.data.sourceId)
     let funName = undefined
     if (test) {
-      funName = test.name
+      funName = test.name.trim()
     }
     const ioReadCommands = this.generateIoRead(source)
     const ioWriteCommands = this.generateIoWrite(source)
@@ -64,11 +64,12 @@ export default class emitters {
         })
         return `$\{${c}\}`
       })
-      .join('\t')
+      .join(' ')
+    let firstParam = index === 0 ? '${None}' : '${self}'
     const commands = [
       {
         level: 1,
-        statement: `$\{self\} = ${funName} ${paramstr}`,
+        statement: `$\{self\}= ${funName} ${firstParam} ${paramstr}`,
       },
     ]
     return this.generateCode([
