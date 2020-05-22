@@ -377,7 +377,7 @@ export default function seed(store, numberOfSuites = 0) {
   checkTest.createCommand(undefined, 'uncheck', 'css=input')
   checkTest.createCommand(undefined, 'assertNotChecked', 'css=input')
 
-  const unitTest = store.createTestCase('A-HXHS-TEST1')
+  const unitTest = store.createTestCase('A_HXHS_TEST1')
   unitTest.createCommand(undefined, 'open', 'https://www.baidu.com')
   unitTest.createCommand(
     undefined,
