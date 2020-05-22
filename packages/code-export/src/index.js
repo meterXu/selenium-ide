@@ -22,7 +22,7 @@ export const availableLanguages = {
   // 'python-pytest': require('@seleniumhq/code-export-python-pytest'),
   // 'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
   // 'python-robotframework':require('../../code-export-python-robotframework/dist'),
-  'Robotframework-Process': require('../../code-export-robotframework-process/dist'),
+  'robotframework-Process': require('../../code-export-robotframework-process/dist'),
   'python-RPA': require('../../code-export-python-rpa/dist'),
 }
 

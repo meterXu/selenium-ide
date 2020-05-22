@@ -306,10 +306,16 @@ class UiState {
                         )
                       ),
                     ]
-                    this.project.addSource(
-                      this.responseSources[0],
-                      enumData.scIOType.读取
-                    )
+                    if (
+                      !this.project.sourceData.find(
+                        c => c.code === res.data.code
+                      )
+                    ) {
+                      this.project.addSource(
+                        this.responseSources[0],
+                        enumData.scIOType.读取
+                      )
+                    }
                   }
                   break
               }

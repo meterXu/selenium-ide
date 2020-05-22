@@ -25,14 +25,19 @@ import { userAgent, project as projectProcessor } from '@seleniumhq/side-utils'
 const vendorLanguages = PluginManager.plugins.vendorLanguages
 
 export function availableLanguages() {
-  // if (ModalState.exportType === UiState.lang.tests) {
-  //   return languages
-  // } else {
-  //   return vendorLanguages
-  // }
+  let xx = null
+  if (ModalState.exportType === UiState.lang.tests) {
+    xx = {
+      'python-RPA': languages['python-RPA'],
+    }
+  } else {
+    xx = {
+      'robotframework-Process': languages['robotframework-Process'],
+    }
+  }
   return Object.keys(vendorLanguages).length
-    ? { ...languages, ...vendorLanguages }
-    : languages
+    ? { ...xx, ...vendorLanguages }
+    : xx
 }
 
 export async function exportCodeToFile(
