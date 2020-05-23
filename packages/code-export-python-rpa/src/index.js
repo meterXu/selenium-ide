@@ -50,9 +50,7 @@ function generateSuiteDeclaration(name) {
 }
 
 function generateFilename(name) {
-  return `rpa_${exporter.parsers.uncapitalize(
-    exporter.parsers.sanitizeName(name)
-  )}${opts.fileExtension}`
+  return `rpa_${name}${opts.fileExtension}`
 }
 
 function dealwithParm(tests) {

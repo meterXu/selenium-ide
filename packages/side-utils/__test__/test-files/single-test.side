@@ -7,7 +7,7 @@
   "implicitlyWait": 1400,
   "tests": [{
     "id": "d0f4bf60-d07a-4f93-adde-d60f0e04941b",
-    "name": "login",
+    "name": "A_HXHS_TEST1",
     "commands": [{
       "id": "ba273d63-711b-4c6e-a726-403803b43e19",
       "comment": "",
