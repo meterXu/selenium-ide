@@ -10,11 +10,11 @@ class FunLibs {
         },
       },
       转字符串: {
-        name: 'evaluate',
+        name: 'Convert To String',
         params: ['value'],
         return: 'resValue',
         generate: (key, index) => {
-          return `$\{${key}\}    evaluate    str($\{readData.${key}[${index}]\})`
+          return `$\{${key}\}    Convert To String    $\{readData.${key}[${index}]\}`
         },
       },
       创建数组: {

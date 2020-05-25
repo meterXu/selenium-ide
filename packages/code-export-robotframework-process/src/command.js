@@ -58,11 +58,11 @@ export default class emitters {
     let formatCommands = []
     let paramstr = prcItem.data.paraValues
       .map(c => {
-        // formatCommands.push({
-        //   level: 1,
-        //   statement: funlist.libs.转字符串.generate(c, 0),
-        // })
-        return `$\{readData.${c}[0]\}`
+        formatCommands.push({
+          level: 1,
+          statement: funlist.libs.转字符串.generate(c, 0),
+        })
+        return `$\{${c}\}`
       })
       .join('    ')
     let firstParam = index === 0 ? '${None}' : '${self.driver}'
