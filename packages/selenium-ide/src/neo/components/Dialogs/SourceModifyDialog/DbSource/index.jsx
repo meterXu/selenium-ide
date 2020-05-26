@@ -22,7 +22,8 @@ export default class DbSource extends React.Component {
         code: ModalState.sourceConfModel && ModalState.sourceConfModel.code,
         type: enumData.scType.数据库,
         data: {
-          type: enumData.scDbType.oracle,
+          type:
+            ModalState.sourceConfModel && ModalState.sourceConfModel.data.type,
           pro: {
             connstr:
               ModalState.sourceConfModel &&
@@ -77,6 +78,7 @@ export default class DbSource extends React.Component {
           name="type"
           itemdata={this.state.itemData}
           value={this.state.dbData.data.type}
+          disabled="disabled"
         />
         <FormGroup label="属性" name="">
           <FormInput
