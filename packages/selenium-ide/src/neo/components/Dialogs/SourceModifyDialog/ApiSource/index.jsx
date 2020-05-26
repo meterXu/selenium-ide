@@ -20,15 +20,15 @@ export default class ApiSource extends React.Component {
         type: enumData.scType.接口,
         data: {
           pro: {
-            url:
+            path:
               ModalState.sourceConfModel &&
-              ModalState.sourceConfModel.data.pro.url,
+              ModalState.sourceConfModel.data.pro.path,
             type:
               ModalState.sourceConfModel &&
               ModalState.sourceConfModel.data.pro.type,
-            'content-type':
+            contentType:
               ModalState.sourceConfModel &&
-              ModalState.sourceConfModel.data.pro['content-type'],
+              ModalState.sourceConfModel.data.pro.contentType,
             header:
               ModalState.sourceConfModel &&
               ModalState.sourceConfModel.data.pro.header,
@@ -50,7 +50,7 @@ export default class ApiSource extends React.Component {
   }
   urlChange() {
     let newApiData = Object.assign({}, this.state.apiData)
-    newApiData.data.pro.url = event.target.value
+    newApiData.data.pro.path = event.target.value
     this.setState({
       apiData: newApiData,
     })
@@ -85,7 +85,7 @@ export default class ApiSource extends React.Component {
           <FormInput
             label="网址"
             name="url"
-            value={this.state.apiData.data.pro.url}
+            value={this.state.apiData.data.pro.path}
             onChange={this.urlChange.bind(this)}
           />
           <FormSelect
@@ -97,7 +97,7 @@ export default class ApiSource extends React.Component {
           <FormInput
             label="content-type"
             name="contentType"
-            value={this.state.apiData.data.pro['content-type']}
+            value={this.state.apiData.data.pro.contentType}
             onChange={this.contentTypeChange.bind(this)}
           />
           <FormInput
@@ -108,7 +108,7 @@ export default class ApiSource extends React.Component {
           />
         </FormGroup>
         <FormGroup label="数据格式" name="">
-          <Schema data={this.state.dbData.data.schema} />
+          <Schema data={this.state.apiData.data.schema} />
         </FormGroup>
       </>
     )

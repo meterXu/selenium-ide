@@ -11,7 +11,7 @@ export default class Api {
   createApi(
     url,
     type = 'post',
-    contentType = 'application/x-www-form-urlencoded',
+    contentType = null,
     data = null,
     header = null,
     schema

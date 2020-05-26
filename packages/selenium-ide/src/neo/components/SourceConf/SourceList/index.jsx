@@ -54,7 +54,7 @@ export default class SourceList extends React.Component {
 
   initSourceList() {
     if (UiState.responseSources && UiState.responseSources.length > 0) {
-      return UiState.sourceList.map((c, i) => {
+      return UiState.responseSources.map((c, i) => {
         return (
           <li
             key={i}
@@ -84,9 +84,7 @@ export default class SourceList extends React.Component {
   render() {
     return (
       <div className="sourceConf-list">
-        <ul>
-          {this.initSourceList()}
-        </ul>
+        <ul>{this.initSourceList()}</ul>
       </div>
     )
   }
