@@ -41,7 +41,7 @@ export default {
   itemImage: {
     用例: 'case',
     循环: 'for',
-    函数: 'f(x)',
+    函数: 'fun',
   },
   itemType: {
     用例: 1,
