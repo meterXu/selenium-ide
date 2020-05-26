@@ -193,7 +193,7 @@ export default function seed(store, numberOfSuites = 0) {
     gw_login.createCommand(
       undefined,
       'open',
-      'http://cloud.51haitun.cn/login?redirect=%2Fhome'
+      'http://192.168.10.134/login?redirect=%2Fhome'
     )
     gw_login.createCommand(undefined, 'click', 'xpath=//input', '', '', false)
     gw_login.createCommand(undefined, 'clear', 'xpath=//input', '', '', false)
@@ -245,7 +245,7 @@ export default function seed(store, numberOfSuites = 0) {
       "xpath=//a[contains(.,'ZC322394002500000002')]",
       '',
       '',
-      false
+      true
     )
 
     const gw_add = store.createTestCase('A_HXHS_ADD')
@@ -270,7 +270,7 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       '//div/div[3]/div/div/input',
       '1',
-      '',
+      '企业内部编号',
       true
     )
     gw_add.createCommand(
@@ -286,8 +286,8 @@ export default function seed(store, numberOfSuites = 0) {
       'click',
       "xpath=//a[contains(.,'0255 来料深加工')]",
       '',
-      '',
-      false
+      '监管方式',
+      true
     )
 
     gw_add.createCommand(
@@ -311,7 +311,7 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       'xpath=//div/div[9]/div/div/div/div/input',
       '0000 海关总署',
-      '',
+      '所属海关',
       true
     )
     gw_add.createCommand(
@@ -335,7 +335,7 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       'xpath=//div[13]/div/div/div/div/div/input',
       '3202381070 江苏佳利达国际物流股份有限公司',
-      '',
+      '所属企业',
       true
     )
     gw_add.createCommand(
@@ -359,7 +359,7 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       'xpath=//div[20]/div/div/input',
       '1',
-      '',
+      '关联手(账)册编号',
       true
     )
     gw_add.createCommand(
@@ -375,14 +375,14 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       'xpath=//div[23]/div/div/input',
       '1',
-      '',
+      '关联手(账)册编号',
       true
     )
     gw_add.createCommand(
       undefined,
       'click',
       'xpath=//div[8]/div/div/div/div/input',
-      '1',
+      '',
       '',
       false
     )
@@ -391,7 +391,7 @@ export default function seed(store, numberOfSuites = 0) {
       'click',
       "xpath=//a[contains(.,'2 水路运输')]",
       '',
-      '',
+      '运输方式',
       true
     )
     gw_add.createCommand(
@@ -407,7 +407,7 @@ export default function seed(store, numberOfSuites = 0) {
       'click',
       "xpath=//a[contains(.,'105 文莱')]",
       '',
-      '',
+      '启运国(地区)',
       true
     )
     gw_add.createCommand(
@@ -442,7 +442,7 @@ export default function seed(store, numberOfSuites = 0) {
       'type',
       'xpath=//input',
       'IC1-990335',
-      '',
+      '企业内部编号',
       true
     )
     gw_search.createCommand(

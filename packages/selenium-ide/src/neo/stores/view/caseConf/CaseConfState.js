@@ -29,7 +29,7 @@ class CaseConfState {
   get cycleValues() {
     let _cycleValues = null
     if (this.selectedSource) {
-      _cycleValues = Object.keys(this.selectedSource.data.schema).map(c => {
+      _cycleValues = this.selectedSource.data.schema.map(c => {
         return { text: c, value: c }
       })
       if (_cycleValues) {
