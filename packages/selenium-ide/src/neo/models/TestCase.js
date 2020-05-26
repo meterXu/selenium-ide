@@ -73,7 +73,7 @@ export default class TestCase {
   }
 
   @action.bound
-  createCommand(index, c, t, v, comment,isParam) {
+  createCommand(index, c, t, v, comment, isParam) {
     if (index !== undefined && index.constructor.name !== 'Number') {
       throw new Error(
         `Expected to receive Number instead received ${
