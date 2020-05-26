@@ -290,35 +290,7 @@ class UiState {
         .then(
           action(res => {
             if (res && res.data && res.data.data_type) {
-              switch (res.data.data_type.toString().toLowerCase()) {
-                case enumData.scTypeName.excel:
-                  {
-                    this.responseSources = [
-                      new Source(
-                        undefined,
-                        enumData.scIOType.读取,
-                        this.project.createExcel(
-                          res.data.name,
-                          res.data.code,
-                          res.data.type_connect,
-                          res.data.para,
-                          JSON.parse(res.data.json_str)
-                        )
-                      ),
-                    ]
-                    if (
-                      !this.project.sourceData.find(
-                        c => c.code === res.data.code
-                      )
-                    ) {
-                      this.project.addSource(
-                        this.responseSources[0],
-                        enumData.scIOType.读取
-                      )
-                    }
-                  }
-                  break
-              }
+              this._addSource(res)
             } else {
               this.responseSources = []
             }
@@ -328,6 +300,95 @@ class UiState {
       this.responseSources = [findSc]
     }
   }
+
+  _addSource(res) {
+    switch (res.data.data_type.toString().toLowerCase()) {
+      case enumData.scTypeName.excel:
+        {
+          this.responseSources = this._getResponseSourceExcel(res)
+        }
+        break
+      case enumData.scTypeName.api:
+        {
+          this.responseSources = this._getResponseSourceApi(res)
+        }
+        break
+      case enumData.scTypeName.oracle:
+        {
+          this.responseSources = this._getResponseSourcOracle(res)
+        }
+        break
+      case enumData.scTypeName.sqlserver:
+        {
+          this.responseSources = this._getResponseSourcSqlserver(res)
+        }
+        break
+      case enumData.scTypeName.mysql:
+        {
+          this.responseSources = this._getResponseSourcMysql(res)
+        }
+        break
+      case enumData.scTypeName.local:
+        {
+          this.responseSources = this._getResponseSourcLocal(res)
+        }
+        break
+    }
+    if (!this.project.sourceData.find(c => c.code === res.data.code)) {
+      this.project.addSource(this.responseSources[0], enumData.scIOType.读取)
+    }
+  }
+
+  _getResponseSourceExcel(res) {
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createExcel(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect,
+          res.data.para,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+  _getResponseSourceApi(res) {
+    let apiPara = JSON.parse(res.data.para || '{}')
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createApi(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect,
+          apiPara.type,
+          apiPara.contentType,
+          apiPara.data,
+          apiPara.header,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+  _getResponseSourcOracle(res) {
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createOracle(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect,
+          res.data.para,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+
   @action.bound
   emptyResponseSource() {
     this.responseSources = []

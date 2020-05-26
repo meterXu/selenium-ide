@@ -3,17 +3,17 @@ export default class Api {
   type = enumData.scType.接口
   data = null
   name = null
-  constructor(name,code) {
+  constructor(name, code) {
     this.name = name
     this.code = code
     this.createApi = this.createApi.bind(this)
   }
   createApi(
     url,
-    type,
+    type = 'post',
     contentType = 'application/x-www-form-urlencoded',
-    data,
-    header,
+    data = null,
+    header = null,
     schema
   ) {
     this.data = {
@@ -25,7 +25,7 @@ export default class Api {
         data: data,
         header: header,
       },
-      schema:schema
+      schema: schema,
     }
   }
 }

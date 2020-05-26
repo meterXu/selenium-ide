@@ -26,6 +26,7 @@ export default {
     sqlserver: 'sqlserver',
     mysql: 'mysql',
     api: 'api',
+    local: 'local',
   },
   btnType: {
     添加: 0,

@@ -433,7 +433,7 @@ export default function seed(store, numberOfSuites = 0) {
       'A_HXHS_TEST1',
       'D:\\upload\\1.xls',
       'Sheet1',
-      { data: '马云福报论', url: '东哥兄弟论' }
+      ['data', 'url']
     )
   )
 
