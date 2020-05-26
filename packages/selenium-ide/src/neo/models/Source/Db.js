@@ -15,27 +15,27 @@ export default class Db {
       type: enumData.scDbType.oracle,
       pro: {
         connStr: connStr,
-        target: target,
+        objName: target,
       },
       schema: schema,
     }
   }
-  createSqlserver(connStr, target, schema) {
+  createSqlserver(connStr, objName, schema) {
     this.data = {
       type: enumData.scDbType.sqlServer,
       pro: {
         connStr: connStr,
-        target: target,
+        objName: objName,
       },
       schema: schema,
     }
   }
-  createMysql(connStr, target, schema) {
+  createMysql(connStr, objName, schema) {
     this.data = {
       type: enumData.scDbType.mysql,
       pro: {
         connStr: connStr,
-        target: target,
+        objName: objName,
       },
       schema: schema,
     }

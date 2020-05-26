@@ -254,21 +254,21 @@ export default class ProjectStore {
     return excel
   }
   @action.bound
-  createOracle(name, code, connStr, target, schema) {
+  createOracle(name, code, connStr, objName, schema) {
     const db = new Db(name, code)
-    db.createOracle(connStr, target, schema)
+    db.createOracle(connStr, objName, schema)
     return db
   }
   @action.bound
-  createSqlserver(name, code, connStr, target, schema) {
+  createSqlserver(name, code, connStr, objName, schema) {
     const db = new Db(name, code)
-    db.createSqlserver(connStr, target, schema)
+    db.createSqlserver(connStr, objName, schema)
     return db
   }
   @action.bound
-  createMysql(name, code, connStr, target, schema) {
+  createMysql(name, code, connStr, objName, schema) {
     const db = new Db(name, code)
-    db.createMysql(connStr, target, schema)
+    db.createMysql(connStr, objName, schema)
     return db
   }
   @action.bound
