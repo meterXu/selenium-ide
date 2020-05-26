@@ -2,16 +2,16 @@ import { action } from 'mobx'
 export default class PrcItem {
   coordinate = null
   data = null
-  img = null
-  text = null
+  image = null
+  name = null
   type = null
   st = null
 
-  constructor(coordinate, data, img, text, type, st = null) {
+  constructor(coordinate, data, image, name, type, st = null) {
     this.coordinate = coordinate
     this.data = data
-    this.img = img
-    this.text = text
+    this.image = image
+    this.name = name
     this.type = type
     this.st = st
     this.export = this.export.bind(this)
@@ -20,8 +20,8 @@ export default class PrcItem {
     return {
       coordinate: this.coordinate,
       data: this.data,
-      img: this.img,
-      text: this.text,
+      image: this.image,
+      name: this.image,
       type: this.type,
     }
   }
@@ -30,8 +30,8 @@ export default class PrcItem {
     let prcItem = new PrcItem(
       jsRep.coordinate,
       jsRep.data,
-      jsRep.img,
-      jsRep.text,
+      jsRep.image,
+      jsRep.name,
       jsRep.type
     )
     return prcItem

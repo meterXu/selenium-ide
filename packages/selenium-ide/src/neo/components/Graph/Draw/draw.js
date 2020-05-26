@@ -188,7 +188,7 @@ class Draw {
     )
     let cc = GraphState.paper
       .image(
-        GraphState.getImage(item.img),
+        GraphState.getImage(item.image),
         500,
         3000,
         this.nodeParam.width * GraphState.zoom,
@@ -207,7 +207,7 @@ class Draw {
       )
       .data('coordinate', coordinate)
     let txt = GraphState.paper
-      .text(500, 3000, item.text)
+      .text(500, 3000, item.name)
       .attr({
         'font-size': this.nodeParam.fontSize * GraphState.zoom,
         fill: this.nodeParam.color,
@@ -236,8 +236,8 @@ class Draw {
         paraNames: [],
         paraValues: [],
       },
-      item.img,
-      item.text,
+      item.image,
+      item.name,
       item.type,
       st
     )

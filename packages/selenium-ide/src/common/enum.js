@@ -33,6 +33,23 @@ export default {
     修改: 1,
     无: 2,
   },
+  prcItem: {
+    用例: {
+      name: '用例',
+      image: 'case',
+      type: 1,
+    },
+    循环: {
+      name: '循环',
+      image: 'for',
+      type: 2,
+    },
+    函数: {
+      name: '函数',
+      image: 'fun',
+      type: 3,
+    },
+  },
   itemName: {
     用例: '用例',
     循环: '循环',

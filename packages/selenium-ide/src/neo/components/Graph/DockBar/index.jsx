@@ -8,21 +8,9 @@ export default class GraphDockBar extends React.Component {
     super(props)
     this.state = {
       dockItemList: [
-        {
-          type: enumData.itemType.用例,
-          img: enumData.itemImage.用例,
-          text: enumData.itemName.用例,
-        },
-        {
-          type: enumData.itemType.循环,
-          img: enumData.itemImage.循环,
-          text: enumData.itemName.循环,
-        },
-        {
-          type: enumData.itemType.函数,
-          img: enumData.itemImage.函数,
-          text: enumData.itemName.函数,
-        },
+        enumData.prcItem.用例,
+        enumData.prcItem.循环,
+        enumData.prcItem.函数,
       ],
     }
   }
@@ -36,16 +24,9 @@ export default class GraphDockBar extends React.Component {
           <ul className="item-container">
             {this.state.dockItemList.map(c => {
               return (
-                <li
-                  key={c.type}
-                  onClick={this.props.itemClick.bind(this, {
-                    type: c.type,
-                    img: c.img,
-                    text: c.text,
-                  })}
-                >
-                  <img src={GraphState.getImage(c.img)} alt={c.type} />
-                  <span>{c.text}</span>
+                <li key={c.type} onClick={this.props.itemClick.bind(this, c)}>
+                  <img src={GraphState.getImage(c.image)} alt={c.type} />
+                  <span>{c.name}</span>
                 </li>
               )
             })}
