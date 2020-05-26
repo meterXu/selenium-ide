@@ -78,7 +78,6 @@ export default class DbSource extends React.Component {
           name="type"
           itemdata={this.state.itemData}
           value={this.state.dbData.data.type}
-          disabled="disabled"
         />
         <FormGroup label="属性" name="">
           <FormInput
