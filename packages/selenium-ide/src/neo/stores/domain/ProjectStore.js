@@ -260,15 +260,15 @@ export default class ProjectStore {
     return db
   }
   @action.bound
-  createSqlserver(name, code, connStr, schema) {
+  createSqlserver(name, code, connStr, target, schema) {
     const db = new Db(name, code)
-    db.createSqlserver(connStr, schema)
+    db.createSqlserver(connStr, target, schema)
     return db
   }
   @action.bound
-  createMysql(name, code, connStr, schema) {
+  createMysql(name, code, connStr, target, schema) {
     const db = new Db(name, code)
-    db.createMysql(connStr, schema)
+    db.createMysql(connStr, target, schema)
     return db
   }
   @action.bound

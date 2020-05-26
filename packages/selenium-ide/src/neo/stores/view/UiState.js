@@ -315,22 +315,22 @@ class UiState {
         break
       case enumData.scTypeName.oracle:
         {
-          this.responseSources = this._getResponseSourcOracle(res)
+          this.responseSources = this._getResponseSourceOracle(res)
         }
         break
       case enumData.scTypeName.sqlserver:
         {
-          this.responseSources = this._getResponseSourcSqlserver(res)
+          this.responseSources = this._getResponseSourceSqlServer(res)
         }
         break
       case enumData.scTypeName.mysql:
         {
-          this.responseSources = this._getResponseSourcMysql(res)
+          this.responseSources = this._getResponseSourceMysql(res)
         }
         break
       case enumData.scTypeName.local:
         {
-          this.responseSources = this._getResponseSourcLocal(res)
+          this.responseSources = this._getResponseSourceLocal(res)
         }
         break
     }
@@ -373,7 +373,7 @@ class UiState {
       ),
     ]
   }
-  _getResponseSourcOracle(res) {
+  _getResponseSourceOracle(res) {
     return [
       new Source(
         undefined,
@@ -383,6 +383,56 @@ class UiState {
           res.data.code,
           res.data.type_connect,
           res.data.para,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+  _getResponseSourceMysql(res) {
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createMysql(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect,
+          res.data.para,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+  _getResponseSourceSqlServer(res) {
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createSqlserver(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect,
+          res.data.para,
+          JSON.parse(res.data.schema || '[]')
+        )
+      ),
+    ]
+  }
+  _getResponseSourceLocal(res) {
+    let apiPara = JSON.parse(res.data.para || '{}')
+    return [
+      new Source(
+        undefined,
+        enumData.scIOType.读取,
+        this.project.createApi(
+          res.data.name,
+          res.data.code,
+          res.data.type_connect ||
+            this.project.pluginConf.backUrl + '?code=' + res.data.code,
+          apiPara.type || 'get',
+          apiPara.contentType || 'none',
+          apiPara.data,
+          apiPara.header,
           JSON.parse(res.data.schema || '[]')
         )
       ),
