@@ -271,7 +271,7 @@ class Draw {
   }
   bindNodeClick(node, type, func, contentMenuFunc) {
     switch (type) {
-      case enumData.itemType.循环:
+      case enumData.prcItem.循环.type:
         {
           node.mousedown(function() {
             let coordinate = this.data('coordinate')
@@ -282,7 +282,7 @@ class Draw {
           })
         }
         break
-      case enumData.itemType.用例:
+      case enumData.prcItem.用例.type:
         {
           node.click(function() {
             let coordinate = this.data('coordinate')

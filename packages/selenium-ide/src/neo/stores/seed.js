@@ -499,9 +499,9 @@ export default function seed(store, numberOfSuites = 0) {
         caseName: store.tests.find(c => c.name === 'A_HXHS_TEST1').name,
         sourceId: source.id,
       },
-      UiState.enum.itemImage.用例,
+      UiState.enum.prcItem.用例.image,
       store.tests.find(c => c.name === 'A_HXHS_TEST1').name,
-      UiState.enum.itemType.用例
+      UiState.enum.prcItem.用例.type
     ),
   ])
 

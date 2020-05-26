@@ -49,20 +49,5 @@ export default {
       image: 'fun',
       type: 3,
     },
-  },
-  itemName: {
-    用例: '用例',
-    循环: '循环',
-    函数: '函数',
-  },
-  itemImage: {
-    用例: 'case',
-    循环: 'for',
-    函数: 'fun',
-  },
-  itemType: {
-    用例: 1,
-    循环: 2,
-    函数: 3,
-  },
+  }
 }
