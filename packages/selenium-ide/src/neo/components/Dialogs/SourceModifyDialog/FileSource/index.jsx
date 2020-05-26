@@ -95,7 +95,7 @@ export default class FileSource extends React.Component {
           />
         </FormGroup>
         <FormGroup label="数据格式" name="">
-          <Schema data={Object.keys(this.state.fileData.data.schema)} />
+          <Schema data={this.state.fileData.data.schema} />
         </FormGroup>
       </>
     )

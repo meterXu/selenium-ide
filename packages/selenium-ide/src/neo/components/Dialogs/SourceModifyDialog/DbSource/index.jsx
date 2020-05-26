@@ -6,6 +6,7 @@ import FormGroup from '../../../FormGroup'
 import enumData from '../../../../../common/enum'
 import ModalState from '../../../../stores/view/ModalState'
 import { observer } from 'mobx-react'
+import Schema from '../Schema'
 @observer
 export default class DbSource extends React.Component {
   constructor(props) {
@@ -30,6 +31,9 @@ export default class DbSource extends React.Component {
               ModalState.sourceConfModel &&
               ModalState.sourceConfModel.data.pro.objName,
           },
+          schema:
+            ModalState.sourceConfModel &&
+            ModalState.sourceConfModel.data.schema,
         },
       },
     }
@@ -87,6 +91,9 @@ export default class DbSource extends React.Component {
             value={this.state.dbData.data.pro.objName}
             onChange={this.objNameChange.bind(this)}
           />
+        </FormGroup>
+        <FormGroup label="数据格式" name="">
+          <Schema data={this.state.dbData.data.schema} />
         </FormGroup>
       </>
     )

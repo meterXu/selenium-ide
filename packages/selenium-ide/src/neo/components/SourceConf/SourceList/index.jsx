@@ -86,10 +86,6 @@ export default class SourceList extends React.Component {
       <div className="sourceConf-list">
         <ul>
           {this.initSourceList()}
-          {/*<li className="sourceConf-list-item" onClick={this.props.addSource}>*/}
-          {/*  <div className="sourceConf-type-icon sc-type-icon-add" />*/}
-          {/*  <label className="sourceConf-type-title">添加</label>*/}
-          {/*</li>*/}
         </ul>
       </div>
     )

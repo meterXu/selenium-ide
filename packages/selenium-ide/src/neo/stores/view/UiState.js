@@ -334,7 +334,7 @@ class UiState {
         }
         break
     }
-    if (!this.project.sourceData.find(c => c.code === res.data.code)) {
+    if (!this.project.sourceData.read.find(c => c.code === res.data.code)) {
       this.project.addSource(this.responseSources[0], enumData.scIOType.读取)
     }
   }

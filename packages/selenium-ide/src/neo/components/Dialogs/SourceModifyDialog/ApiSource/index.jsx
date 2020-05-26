@@ -5,6 +5,7 @@ import FormSelect from '../../../FormSelect'
 import FormGroup from '../../../FormGroup'
 import enumData from '../../../../../common/enum'
 import ModalState from '../../../../stores/view/ModalState'
+import Schema from '../Schema'
 export default class ApiSource extends React.Component {
   constructor(props) {
     super(props)
@@ -32,6 +33,9 @@ export default class ApiSource extends React.Component {
               ModalState.sourceConfModel &&
               ModalState.sourceConfModel.data.pro.header,
           },
+          schema:
+            ModalState.sourceConfModel &&
+            ModalState.sourceConfModel.data.schema,
         },
       },
     }
@@ -102,6 +106,9 @@ export default class ApiSource extends React.Component {
             value={this.state.apiData.data.pro.header}
             onChange={this.headerChange.bind(this)}
           />
+        </FormGroup>
+        <FormGroup label="数据格式" name="">
+          <Schema data={this.state.dbData.data.schema} />
         </FormGroup>
       </>
     )
