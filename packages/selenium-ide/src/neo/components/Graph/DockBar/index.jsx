@@ -9,14 +9,19 @@ export default class GraphDockBar extends React.Component {
     this.state = {
       dockItemList: [
         {
-          type: enumData.prcItemType.用例,
-          img: enumData.image.用例,
-          text: '用例',
+          type: enumData.itemType.用例,
+          img: enumData.itemImage.用例,
+          text: enumData.itemName.用例,
         },
         {
-          type: enumData.prcItemType.循环,
-          img: enumData.image.循环,
-          text: '循环',
+          type: enumData.itemType.循环,
+          img: enumData.itemImage.循环,
+          text: enumData.itemName.循环,
+        },
+        {
+          type: enumData.itemType.函数,
+          img: enumData.itemImage.函数,
+          text: enumData.itemName.函数,
         },
       ],
     }

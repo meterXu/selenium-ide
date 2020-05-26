@@ -33,12 +33,19 @@ export default {
     修改: 1,
     无: 2,
   },
-  image: {
+  itemName: {
+    用例: '用例',
+    循环: '循环',
+    函数: '函数',
+  },
+  itemImage: {
     用例: 'case',
     循环: 'for',
+    函数: 'f(x)',
   },
-  prcItemType: {
+  itemType: {
     用例: 1,
     循环: 2,
+    函数: 3,
   },
 }
