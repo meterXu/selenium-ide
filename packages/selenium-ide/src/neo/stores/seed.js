@@ -132,9 +132,61 @@ export default function seed(store, numberOfSuites = 0) {
       '',
       false
     )
+
+    const unitTest3 = store.createTestCase('A_HXHS_TEST3')
+    unitTest3.createCommand(undefined, 'open', 'https://www.baidu.com')
+    unitTest3.createCommand(
+      undefined,
+      'type',
+      'id=kw',
+      'hello world',
+      '搜索内容1',
+      true
+    )
+    unitTest3.createCommand(
+      undefined,
+      'sendKeys',
+      'id=kw',
+      '${KEY_ENTER}',
+      '',
+      false
+    )
+    unitTest3.createCommand(
+      undefined,
+      'type',
+      'id=kw',
+      'hello jetRecord',
+      '搜索内容2',
+      true
+    )
+    unitTest3.createCommand(
+      undefined,
+      'sendKeys',
+      'id=kw',
+      '${KEY_ENTER}',
+      '',
+      false
+    )
+    unitTest3.createCommand(
+      undefined,
+      'type',
+      'id=kw',
+      'hello jetRecord',
+      '搜索内容3',
+      true
+    )
+    unitTest3.createCommand(
+      undefined,
+      'sendKeys',
+      'id=kw',
+      '${KEY_ENTER}',
+      '',
+      false
+    )
     const firstSuite = store.createSuite('first')
     firstSuite.addTestCase(unitTest1)
     firstSuite.addTestCase(unitTest2)
+    firstSuite.addTestCase(unitTest3)
   }
   function initDutiesSuite() {
     const gw_login = store.createTestCase('A_HXHS_LOGIN')
