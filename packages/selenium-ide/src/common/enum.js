@@ -49,5 +49,5 @@ export default {
       image: 'fun',
       type: 3,
     },
-  }
+  },
 }
