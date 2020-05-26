@@ -135,8 +135,6 @@ export default function seed(store, numberOfSuites = 0) {
     const firstSuite = store.createSuite('first')
     firstSuite.addTestCase(unitTest1)
     firstSuite.addTestCase(unitTest2)
-    UiState.changeView(UiState.lang.tests)
-    UiState.selectTest(unitTest1)
   }
   function initDutiesSuite() {
     const gw_login = store.createTestCase('A_HXHS_LOGIN')
@@ -420,6 +418,12 @@ export default function seed(store, numberOfSuites = 0) {
 
   initFirstSuite()
   initDutiesSuite()
+  UiState.changeView(UiState.lang.suites)
+  store.suites.find(c => c.name === 'first').setOpen(true)
+  UiState.selectTest(
+    store.tests.find(c => c.name === 'A_HXHS_TEST1'),
+    store.suites.find(c => c.name === 'first')
+  )
   store.changeName('种子项目')
 
   let source = store.createSource(
