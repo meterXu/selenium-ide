@@ -133,6 +133,24 @@ class GraphState {
           }
         }
         break
+      case UiState.enum.prcItem.函数.type:
+        {
+          if (code === UiState.enum.prcMenuBtn.修改.code) {
+            //TODO: 函数
+          } else if (code === UiState.enum.prcMenuBtn.删除.code) {
+            this.removeItem()
+          }
+        }
+        break
+      case UiState.enum.prcItem.循环.type:
+        {
+          if (code === UiState.enum.prcMenuBtn.修改.code) {
+            //TODO: 循环
+          } else if (code === UiState.enum.prcMenuBtn.删除.code) {
+            this.removeItem()
+          }
+        }
+        break
     }
   }
   @action.bound
