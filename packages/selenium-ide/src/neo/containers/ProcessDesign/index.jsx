@@ -35,11 +35,7 @@ class ProcessDesign extends React.Component {
     GraphDraw.resizeGraph()
   }
   itemClick(item) {
-    GraphDraw.drawVerticalItem(
-      item,
-      () => GraphState.graphItemClick(item),
-      () => GraphState.graphItemContentMenu(item)
-    )
+    GraphDraw.drawVerticalItem(item)
   }
   componentDidMount() {
     if (UiState.project.processData.length === 0) {
@@ -65,7 +61,7 @@ class ProcessDesign extends React.Component {
             <GraphDockBar itemClick={this.itemClick.bind(this)} />
           </>
         )}
-        <ItemMenu />
+        <ItemMenu onMenuClick={GraphState.graphItemClick} />
       </div>
     )
   }

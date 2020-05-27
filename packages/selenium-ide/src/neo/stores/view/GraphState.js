@@ -123,18 +123,16 @@ class GraphState {
     this.currentActiveNode.data.sourceId = sourceId
   }
   @action.bound
-  graphItemClick(item) {
-    switch (item.type) {
+  graphItemClick(code) {
+    switch (this.currentActiveNode.type) {
       case UiState.enum.prcItem.用例.type:
         {
-          ModalState.toggleCaseConfig()
+          if (code === 'edit') {
+            ModalState.toggleCaseConfig()
+          }
         }
         break
     }
-  }
-  @action.bound
-  graphItemContentMenu(item) {
-    alert(item.type)
   }
   @action.bound
   selectProcess(process) {

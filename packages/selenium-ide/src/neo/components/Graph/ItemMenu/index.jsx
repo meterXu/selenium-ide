@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './index.css'
 import GraphState from '../../../stores/view/GraphState'
 import { observer } from 'mobx-react'
@@ -13,9 +14,12 @@ export default class ItemMenu extends React.Component {
       ],
     }
   }
+  static propTypes = {
+    onMenuClick: PropTypes.func.isRequired,
+  }
   menuClick(code) {
     GraphState.hidePrcMenu()
-    alert(code)
+    this.props.onMenuClick(code)
   }
   render() {
     return (

@@ -173,7 +173,7 @@ class Draw {
       })
     }
   }
-  drawVerticalItem(item, func, contentMenuFunc) {
+  drawVerticalItem(item) {
     let st = GraphState.paper.set()
     let coordinate = [0, this.itemList.length].join(',')
     let { x, y, ps } = this.getPosition(0, this.itemList.length)
@@ -246,7 +246,7 @@ class Draw {
     } else {
       GraphState.addGraphData(_newDrawItem)
     }
-    this.bindNodeClick(cc, item.type, func, contentMenuFunc)
+    this.bindNodeClick(cc)
   }
 
   drawLine(from, to) {
@@ -269,40 +269,16 @@ class Draw {
         '<>'
       )
   }
-  bindNodeClick(node, type, func, contentMenuFunc) {
-    switch (type) {
-      case enumData.prcItem.循环.type:
-        {
-          node.mousedown(function() {
-            event.preventDefault()
-            event.stopPropagation()
-            let coordinate = this.data('coordinate')
-            GraphState.setCurrentActiveNode(coordinate)
-            if (event.which === 3) {
-              contentMenuFunc && contentMenuFunc()
-            }
-          })
-        }
-        break
-      case enumData.prcItem.用例.type:
-        {
-          node.click(function() {
-            let coordinate = this.data('coordinate')
-            GraphState.setCurrentActiveNode(coordinate)
-            func && func()
-          })
-          node.mousedown(function() {
-            event.preventDefault()
-            event.stopPropagation()
-            let coordinate = this.data('coordinate')
-            if (event.which === 3) {
-              GraphState.showPrcMenu(event.clientX-180,event.clientY-41)
-
-            }
-          })
-        }
-        break
-    }
+  bindNodeClick(node) {
+    node.mousedown(function() {
+      event.preventDefault()
+      event.stopPropagation()
+      let coordinate = this.data('coordinate')
+      GraphState.setCurrentActiveNode(coordinate)
+      if (event.which === 3) {
+        GraphState.showPrcMenu(event.clientX-180,event.clientY-41)
+      }
+    })
   }
   @action.bound
   resizeGraph() {
