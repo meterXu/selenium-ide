@@ -1,7 +1,5 @@
 .prc-item-menu{
     position: absolute;
-    left: 500px;
-    top: 200px;
     z-index: 999;
     background: #fff;
     width: 80px;

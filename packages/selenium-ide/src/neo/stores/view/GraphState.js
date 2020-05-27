@@ -38,6 +38,12 @@ class GraphState {
     },
     st: [],
   }
+  @observable
+  prcMenuIsOpen = false
+  @observable
+  prcMenuX = 0
+  @observable
+  prcMenuY = 0
   @action.bound
   setZoom(value) {
     this.zoom = value
@@ -164,6 +170,12 @@ class GraphState {
   @action.bound
   getImage(name) {
     return require(`../../../icons/${name}.svg`)
+  }
+  @action.bound
+  showPrcMenu(x = 0, y = 0) {
+    this.prcMenuIsOpen = !this.prcMenuIsOpen
+    this.prcMenuX = x
+    this.prcMenuY = y
   }
 }
 if (!window._graphState) window._graphState = new GraphState()
