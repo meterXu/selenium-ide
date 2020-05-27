@@ -52,7 +52,7 @@ class Draw {
         500,
         'bounce'
       )
-      .data('vc', [0, 0])
+      .data('vc', '0,0')
     let txt = GraphState.paper
       .text(txtX, txtY, '开始')
       .attr({
@@ -70,6 +70,22 @@ class Draw {
       .data('from', 'rect')
     st.push(cc)
     st.push(txt)
+    let startItem = GraphState.currentProcess.graphData.find(
+      c => c.coordinate === '0,0'
+    )
+    if (startItem) {
+      startItem.st = st
+    } else {
+      let _newDrawItem = new prcItem(
+        '0,0',
+        null,
+        enumData.prcItem.开始.image,
+        enumData.prcItem.开始.name,
+        enumData.prcItem.开始.type,
+        st
+      )
+      GraphState.addGraphData(_newDrawItem)
+    }
   }
   getPosition(hIndex, vIndex) {
     let startHeight = null
@@ -164,11 +180,9 @@ class Draw {
     this.processStart()
     if (GraphState.currentProcess) {
       GraphState.currentProcess.graphData.forEach(c => {
-        this.drawVerticalItem(
-          c,
-          () => GraphState.graphItemClick(c),
-          () => GraphState.graphItemContentMenu(c)
-        )
+        if (c.type !== enumData.prcItem.开始.type) {
+          this.drawVerticalItem(c)
+        }
       })
     }
   }
@@ -176,7 +190,7 @@ class Draw {
     let st = GraphState.paper.set()
     let coordinate = item.coordinate
       ? item.coordinate.split(',').map(c => parseInt(c))
-      : [0, GraphState.currentProcess.graphData.length + 1]
+      : [0, GraphState.currentProcess.graphData.length]
     let lastCoordinate = [coordinate[0], coordinate[1] - 1]
     let { x, y, ps } = this.getPosition(...coordinate)
     let lPosition = this.getPosition(...lastCoordinate)
@@ -242,7 +256,7 @@ class Draw {
       item.type,
       st
     )
-    if (item.hasOwnProperty('data')) {
+    if (item.hasOwnProperty('st')) {
       item.st = st
     } else {
       GraphState.addGraphData(_newDrawItem)
@@ -393,10 +407,12 @@ class Draw {
   moveVerticalItem(removeCoordinate) {
     for (
       let y = removeCoordinate[1] + 1;
-      y <= GraphState.currentProcess.graphData.length+1;
+      y <= GraphState.currentProcess.graphData.length;
       y++
     ) {
-      let item = GraphState.currentProcess.graphData.find(c => c.coordinate === `0,${y}`)
+      let item = GraphState.currentProcess.graphData.find(
+        c => c.coordinate === `0,${y}`
+      )
       item.coordinate = `0,${y - 1}`
 
       this.moveItem(item.st, 0, y - 1)

@@ -168,7 +168,8 @@ class GraphState {
   }
   @action.bound
   getImage(name) {
-    return require(`../../../icons/${name}.svg`)
+    if (name) return require(`../../../icons/${name}.svg`)
+    return null
   }
   @action.bound
   showPrcMenu(x = 0, y = 0) {
@@ -190,7 +191,9 @@ class GraphState {
         ),
         1
       )
-      draw.moveVerticalItem(this.currentActiveNode.coordinate.split(',').map(c=>parseInt(c)))
+      draw.moveVerticalItem(
+        this.currentActiveNode.coordinate.split(',').map(c => parseInt(c))
+      )
       this.currentActiveNode = null
     }
   }

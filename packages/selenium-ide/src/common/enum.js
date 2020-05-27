@@ -34,6 +34,11 @@ export default {
     无: 2,
   },
   prcItem: {
+    开始: {
+      name: '开始',
+      image: null,
+      type: 0,
+    },
     用例: {
       name: '用例',
       image: 'case',
