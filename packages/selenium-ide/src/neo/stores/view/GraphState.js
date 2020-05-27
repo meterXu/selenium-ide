@@ -181,6 +181,19 @@ class GraphState {
   hidePrcMenu() {
     this.prcMenuIsOpen = false
   }
+  @action.bound
+  removeItem() {
+    if (this.currentActiveNode) {
+      this.currentActiveNode.st.forEach(c => c.remove())
+      this.currentProcess.graphData.splice(
+        this.currentProcess.graphData.findIndex(
+          c => c.coordinate === this.currentActiveNode.coordinate
+        ),
+        1
+      )
+      this.currentActiveNode = null
+    }
+  }
 }
 if (!window._graphState) window._graphState = new GraphState()
 

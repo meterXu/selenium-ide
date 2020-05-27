@@ -400,9 +400,7 @@ class Draw {
   }
   @action.bound
   removeItem() {
-    if (GraphState.currentActiveNode) {
-      GraphState.currentActiveNode.st.clear()
-    }
+    GraphState.removeItem()
   }
 }
 
