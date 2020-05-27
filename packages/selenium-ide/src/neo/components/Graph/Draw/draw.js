@@ -52,7 +52,7 @@ class Draw {
         500,
         'bounce'
       )
-      .data('vc', '0,0')
+      .data('coordinate', '0,0')
     let txt = GraphState.paper
       .text(txtX, txtY, '开始')
       .attr({
@@ -297,11 +297,12 @@ class Draw {
   }
   @action.bound
   resizeGraph() {
-    GraphState.currentProcess.graphData.forEach((c, v) => {
-      this.moveItem(c.st, 0, v + 1)
+    GraphState.currentProcess.graphData.forEach(c => {
+      let _coordinate = c.coordinate.split(',').map(c => parseInt(c))
+      this.reDrawItem(c.st, _coordinate[0], _coordinate[1])
     })
   }
-  moveItem(k, h, v) {
+  reDrawItem(k, h, v) {
     k.forEach(s => {
       switch (s.type) {
         case 'rect':
@@ -368,8 +369,8 @@ class Draw {
           {
             let pe = this.getPosition(h, v).ps
             let ps = (h === 0
-              ? this.getPosition(h, v - 1)
-              : this.getPosition(h - 1, v)
+              ? this.getPosition(h, v === 0 < 0 ? 0 : v - 1)
+              : this.getPosition(h === 0 ? 0 : h - 1, v)
             ).pe
             s.animate(
               {
@@ -404,7 +405,7 @@ class Draw {
     this.itemList = []
   }
   @action.bound
-  moveVerticalItem(removeCoordinate) {
+  removeVerticalItem(removeCoordinate) {
     for (
       let y = removeCoordinate[1] + 1;
       y <= GraphState.currentProcess.graphData.length;
@@ -415,7 +416,7 @@ class Draw {
       )
       item.coordinate = `0,${y - 1}`
 
-      this.moveItem(item.st, 0, y - 1)
+      this.reDrawItem(item.st, 0, y - 1)
     }
   }
 }

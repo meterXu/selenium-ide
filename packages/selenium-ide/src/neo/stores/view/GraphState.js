@@ -191,7 +191,7 @@ class GraphState {
         ),
         1
       )
-      draw.moveVerticalItem(
+      draw.removeVerticalItem(
         this.currentActiveNode.coordinate.split(',').map(c => parseInt(c))
       )
       this.currentActiveNode = null
