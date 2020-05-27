@@ -21,6 +21,9 @@ export default class DesignGraph extends React.Component {
     }
     let paper = new Raphael(this.refs.graph)
     GraphState.setPaper(paper)
+    this.refs.graph.oncontextmenu = function() {
+      return false
+    }
   }
   render() {
     return (

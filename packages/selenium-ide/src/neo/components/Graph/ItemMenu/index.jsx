@@ -6,6 +6,16 @@ import { observer } from 'mobx-react'
 export default class ItemMenu extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      menuData: [
+        { code: 'edit', name: '修改' },
+        { code: 'remove', name: '删除' },
+      ],
+    }
+  }
+  menuClick(code) {
+    GraphState.hidePrcMenu()
+    alert(code)
   }
   render() {
     return (
@@ -13,15 +23,22 @@ export default class ItemMenu extends React.Component {
         {GraphState.prcMenuIsOpen && (
           <div
             className={'prc-item-menu'}
-            style={{ top: GraphState.prcMenuX, left: GraphState.prcMenuY }}
+            style={{ top: GraphState.prcMenuY, left: GraphState.prcMenuX }}
           >
             <ul className={'prc-item-menu-container'}>
-              <li>
-                <a>修改</a>
-              </li>
-              <li className={'prc-item-menu-remove'}>
-                <a>删除</a>
-              </li>
+              {this.state.menuData.map(c => {
+                return (
+                  <li
+                    key={c.code}
+                    className={
+                      c.code === 'remove' ? 'prc-item-menu-remove' : ''
+                    }
+                    onClick={this.menuClick.bind(this, c.code)}
+                  >
+                    <a>{c.name}</a>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         )}

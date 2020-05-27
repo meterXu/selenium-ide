@@ -274,6 +274,8 @@ class Draw {
       case enumData.prcItem.循环.type:
         {
           node.mousedown(function() {
+            event.preventDefault()
+            event.stopPropagation()
             let coordinate = this.data('coordinate')
             GraphState.setCurrentActiveNode(coordinate)
             if (event.which === 3) {
@@ -290,9 +292,12 @@ class Draw {
             func && func()
           })
           node.mousedown(function() {
+            event.preventDefault()
+            event.stopPropagation()
             let coordinate = this.data('coordinate')
             if (event.which === 3) {
-              alert(coordinate)
+              GraphState.showPrcMenu(event.clientX-180,event.clientY-41)
+
             }
           })
         }

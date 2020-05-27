@@ -173,9 +173,13 @@ class GraphState {
   }
   @action.bound
   showPrcMenu(x = 0, y = 0) {
-    this.prcMenuIsOpen = !this.prcMenuIsOpen
+    this.prcMenuIsOpen = true
     this.prcMenuX = x
     this.prcMenuY = y
+  }
+  @action.bound
+  hidePrcMenu() {
+    this.prcMenuIsOpen = false
   }
 }
 if (!window._graphState) window._graphState = new GraphState()
