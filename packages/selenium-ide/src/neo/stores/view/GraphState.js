@@ -2,7 +2,6 @@ import { action, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 import UiState from './../view/UiState'
-import PluginManager from '../../../plugin/manager'
 class GraphState {
   @observable
   zoom = 1
@@ -124,11 +123,14 @@ class GraphState {
   }
   @action.bound
   graphItemClick(code) {
+    alert(code)
     switch (this.currentActiveNode.type) {
       case UiState.enum.prcItem.用例.type:
         {
-          if (code === 'edit') {
+          if (code === UiState.enum.prcMenuBtn.修改.code) {
             ModalState.toggleCaseConfig()
+          } else if (code === UiState.enum.prcMenuBtn.删除.code) {
+            draw.removeItem()
           }
         }
         break

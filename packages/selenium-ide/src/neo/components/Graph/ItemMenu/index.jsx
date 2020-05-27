@@ -2,16 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './index.css'
 import GraphState from '../../../stores/view/GraphState'
+import enumData from '../../../../common/enum'
 import { observer } from 'mobx-react'
 @observer
 export default class ItemMenu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      menuData: [
-        { code: 'edit', name: '修改' },
-        { code: 'remove', name: '删除' },
-      ],
+      menuData: [enumData.prcMenuBtn.修改, enumData.prcMenuBtn.删除],
     }
   }
   static propTypes = {

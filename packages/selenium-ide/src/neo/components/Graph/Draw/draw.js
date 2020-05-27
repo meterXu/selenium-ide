@@ -276,7 +276,7 @@ class Draw {
       let coordinate = this.data('coordinate')
       GraphState.setCurrentActiveNode(coordinate)
       if (event.which === 3) {
-        GraphState.showPrcMenu(event.clientX-180,event.clientY-41)
+        GraphState.showPrcMenu(event.clientX - 180, event.clientY - 41)
       }
     })
   }
@@ -397,6 +397,12 @@ class Draw {
       GraphState.paper.clear()
     }
     this.itemList = []
+  }
+  @action.bound
+  removeItem() {
+    if (GraphState.currentActiveNode) {
+      GraphState.currentActiveNode.st.clear()
+    }
   }
 }
 

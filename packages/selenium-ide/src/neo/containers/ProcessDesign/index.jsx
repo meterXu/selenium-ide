@@ -21,7 +21,6 @@ class ProcessDesign extends React.Component {
     }
   }
   onEnlarge() {
-    // GraphState.hidePrcMenu()
     GraphState.enlargeZoom()
     this.setState({
       zoom: GraphState.zoom,
@@ -29,7 +28,6 @@ class ProcessDesign extends React.Component {
     GraphDraw.resizeGraph()
   }
   onReduce() {
-    // GraphState.hidePrcMenu()
     GraphState.reduceZoom()
     this.setState({
       zoom: GraphState.zoom,
@@ -37,7 +35,6 @@ class ProcessDesign extends React.Component {
     GraphDraw.resizeGraph()
   }
   addItem(item) {
-    // GraphState.hidePrcMenu()
     GraphDraw.drawVerticalItem(item)
   }
   componentDidMount() {

@@ -50,4 +50,14 @@ export default {
       type: 3,
     },
   },
+  prcMenuBtn: {
+    修改: {
+      code: 'edit',
+      name: '修改',
+    },
+    删除: {
+      code: 'remove',
+      name: '删除',
+    },
+  },
 }
