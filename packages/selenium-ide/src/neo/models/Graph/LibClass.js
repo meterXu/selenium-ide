@@ -1,4 +1,4 @@
-class Bookmark {
+class LibClass {
   id = ''
   state = ''
   name = ''
@@ -15,4 +15,4 @@ class Bookmark {
   }
 }
 
-export default Bookmark
+export default LibClass
