@@ -281,12 +281,7 @@ class UiState {
     if (!findSc) {
       this.responseSources = []
       axios
-        .get(
-          this.pluginConf.backUrl +
-            this.pluginConf.dataCatalog +
-            '?code=' +
-            code
-        )
+        .get(this.pluginConf.backUrl + this.pluginConf.source + '?code=' + code)
         .then(
           action(res => {
             if (res && res.data && res.data.data_type) {

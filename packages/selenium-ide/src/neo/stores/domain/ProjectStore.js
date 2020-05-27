@@ -64,11 +64,15 @@ export default class ProjectStore {
   @observable
   pluginConf = {
     backUrl: 'http://192.168.12.74:8000/',
-    dataCatalog: 'api/v1/dataCatalog/',
+    source: 'api/v1/dataCatalog/',
+    lib: 'api/v1/help/',
   }
 
   @observable
   processData = []
+
+  @observable
+  libData = []
 
   @observable
   selectedProcess = null
