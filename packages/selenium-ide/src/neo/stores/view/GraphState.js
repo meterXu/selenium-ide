@@ -123,7 +123,6 @@ class GraphState {
   }
   @action.bound
   graphItemClick(code) {
-    alert(code)
     switch (this.currentActiveNode.type) {
       case UiState.enum.prcItem.用例.type:
         {

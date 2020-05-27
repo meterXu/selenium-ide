@@ -17,6 +17,7 @@ export default class ItemMenu extends React.Component {
   }
   menuClick(code) {
     this.props.onMenuClick(code)
+    GraphState.hidePrcMenu()
   }
   componentDidUpdate() {
     if (GraphState.prcMenuIsOpen) {

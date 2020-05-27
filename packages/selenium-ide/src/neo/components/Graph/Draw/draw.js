@@ -70,7 +70,6 @@ class Draw {
       .data('from', 'rect')
     st.push(cc)
     st.push(txt)
-    this.itemList.push([st])
   }
   getPosition(hIndex, vIndex) {
     let startHeight = null
@@ -175,9 +174,12 @@ class Draw {
   }
   drawVerticalItem(item) {
     let st = GraphState.paper.set()
-    let coordinate = [0, this.itemList.length].join(',')
-    let { x, y, ps } = this.getPosition(0, this.itemList.length)
-    let lPosition = this.getPosition(0, this.itemList.length - 1)
+    let coordinate = item.coordinate
+      ? item.coordinate.split(',').map(c => parseInt(c))
+      : [0, GraphState.currentProcess.graphData.length + 1]
+    let lastCoordinate = [coordinate[0], coordinate[1] - 1]
+    let { x, y, ps } = this.getPosition(...coordinate)
+    let lPosition = this.getPosition(...lastCoordinate)
     let lpe = lPosition.pe
     let { txtX, txtY } = this.getPositionText(
       x,
@@ -205,7 +207,7 @@ class Draw {
         500,
         '<>'
       )
-      .data('coordinate', coordinate)
+      .data('coordinate', coordinate.join(','))
     let txt = GraphState.paper
       .text(500, 3000, item.name)
       .attr({
@@ -226,9 +228,8 @@ class Draw {
     st.push(cc)
     st.push(txt)
     st.push(ll)
-    this.itemList.push([st])
     let _newDrawItem = new prcItem(
-      coordinate,
+      coordinate.join(','),
       {
         caseId: null,
         caseName: null,
@@ -282,7 +283,7 @@ class Draw {
   }
   @action.bound
   resizeGraph() {
-    this.itemList.forEach((c, v) => {
+    GraphState.currentProcess.graphData.forEach((c, v) => {
       c.forEach((k, h) => {
         switch (k.type) {
           case 'set':
