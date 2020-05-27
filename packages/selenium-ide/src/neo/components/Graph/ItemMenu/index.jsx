@@ -7,8 +7,9 @@ export default class ItemMenu extends React.Component {
   render() {
     return (
       <div className={"prc-item-menu"}>
-        <ul>
-          <li>删除</li>
+        <ul className={"prc-item-menu-container"}>
+          <li><a>修改</a></li>
+          <li className={"prc-item-menu-remove"}><a>删除</a></li>
         </ul>
       </div>
     )

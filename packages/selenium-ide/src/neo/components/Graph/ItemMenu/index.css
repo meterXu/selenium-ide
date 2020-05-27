@@ -3,8 +3,27 @@
     left: 500px;
     top: 200px;
     z-index: 999;
-    background: #fffcc5;
+    background: #fff;
     width: 80px;
-    height: 200px;
+    padding: 8px 0px;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3)
+}
+.prc-item-menu-container li{
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
 
+.prc-item-menu-container a{
+    color: #505050;
+    cursor: pointer;
+}
+.prc-item-menu-container li:hover{
+    background: rgba(93, 208, 149, 0.68);
+}
+.prc-item-menu-container li:hover a{
+    color: #fff;
+}
+.prc-item-menu-remove:hover{
+    background: rgba(236, 61, 61, 0.79) !important;
 }
