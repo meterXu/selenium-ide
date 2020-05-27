@@ -377,6 +377,14 @@ export default class ProjectStore {
   changeScTypeSwitch(type) {
     this.scTypeSwitch = type
   }
+  @action.bound
+  updateSource(findSc, newSource) {
+    findSc.name = newSource.name
+    findSc.code = newSource.code
+    findSc.io = newSource.io
+    findSc.type = newSource.type
+    findSc.data = newSource.data
+  }
 
   dispose() {
     this.changeTestsDisposer()

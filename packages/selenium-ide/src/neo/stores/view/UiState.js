@@ -277,23 +277,18 @@ class UiState {
   responseSources = []
   @action.bound
   getSourceConf(code) {
-    let findSc = this.project.sourceData.read.find(c => c.code === code)
-    if (!findSc) {
-      this.responseSources = []
-      axios
-        .get(this.pluginConf.backUrl + this.pluginConf.source + '?code=' + code)
-        .then(
-          action(res => {
-            if (res && res.data && res.data.data_type) {
-              this._addSource(res)
-            } else {
-              this.responseSources = []
-            }
-          })
-        )
-    } else {
-      this.responseSources = [findSc]
-    }
+    this.responseSources = []
+    axios
+      .get(this.pluginConf.backUrl + this.pluginConf.source + '?code=' + code)
+      .then(
+        action(res => {
+          if (res && res.data && res.data.data_type) {
+            this._addSource(res)
+          } else {
+            this.responseSources = []
+          }
+        })
+      )
   }
 
   _addSource(res) {
@@ -329,7 +324,13 @@ class UiState {
         }
         break
     }
-    if (!this.project.sourceData.read.find(c => c.code === res.data.code)) {
+    let findSc = this.project.sourceData.read.find(
+      c => c.code === res.data.code
+    )
+    if (findSc) {
+      this.project.updateSource(findSc, this.responseSources[0])
+      this.responseSources[0] = findSc
+    } else {
       this.project.addSource(this.responseSources[0], enumData.scIOType.读取)
     }
   }
