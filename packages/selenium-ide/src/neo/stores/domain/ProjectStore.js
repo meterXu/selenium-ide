@@ -385,6 +385,10 @@ export default class ProjectStore {
     findSc.type = newSource.type
     findSc.data = newSource.data
   }
+  @action.bound
+  setLibData(value) {
+    this.libData = value
+  }
 
   dispose() {
     this.changeTestsDisposer()

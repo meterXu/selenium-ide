@@ -140,6 +140,7 @@ export default class Panel extends React.Component {
       }, 3000)
     }
     this.toggleConsole = this.toggleConsole.bind(this)
+    UiState.getLibData()
   }
   handleResize(currWindow) {
     UiState.setWindowHeight(currWindow.innerHeight)

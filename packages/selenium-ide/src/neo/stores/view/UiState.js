@@ -28,6 +28,7 @@ import i18n from '../../i18n'
 import enumData from '../../../common/enum'
 import axios from 'axios'
 import Source from '../../models/Source/Source'
+import LibClass from '../../models/Graph/LibClass'
 class UiState {
   lang = i18n.lang
   views = [
@@ -779,6 +780,14 @@ class UiState {
   @action.bound
   startConnection() {
     this.isControlled = true
+  }
+  @action.bound
+  getLibData() {
+    axios.get(this.pluginConf.backUrl + this.pluginConf.lib).then(c => {
+      if (c.data) {
+        this.project.setLibData(c.data.map(c => LibClass.fromJS(c)))
+      }
+    })
   }
 }
 

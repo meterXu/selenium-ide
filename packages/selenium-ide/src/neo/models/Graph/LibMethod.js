@@ -11,4 +11,14 @@ export default class LibMethod {
     this.params = params
     this.doc = doc
   }
+  static fromJS(jsRep) {
+    let libMethod = new LibMethod(
+      jsRep.id,
+      jsRep.iconCls,
+      jsRep.name,
+      jsRep.params,
+      jsRep.doc
+    )
+    return libMethod
+  }
 }

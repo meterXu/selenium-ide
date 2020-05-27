@@ -1,4 +1,6 @@
-class LibClass {
+import LibMethod from './LibMethod'
+
+export default class LibClass {
   id = ''
   state = ''
   name = ''
@@ -13,6 +15,15 @@ class LibClass {
     this.doc = doc
     this.children = children
   }
+  static fromJS(jsRep) {
+    let libClass = new LibClass(
+      jsRep.id,
+      jsRep.state,
+      jsRep.name,
+      jsRep.params,
+      jsRep.doc,
+      jsRep.children.map(c => LibMethod.fromJS(c))
+    )
+    return libClass
+  }
 }
-
-export default LibClass
