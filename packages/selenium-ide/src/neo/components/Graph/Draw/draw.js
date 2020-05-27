@@ -284,112 +284,102 @@ class Draw {
   @action.bound
   resizeGraph() {
     GraphState.currentProcess.graphData.forEach((c, v) => {
-      c.forEach((k, h) => {
-        switch (k.type) {
-          case 'set':
-            {
-              k.forEach(s => {
-                switch (s.type) {
-                  case 'rect':
-                    {
-                      let { x, y } = this.getPosition(h, v)
-                      s.animate(
-                        {
-                          x,
-                          y,
-                          width: this.rectParam.width * GraphState.zoom,
-                          height: this.rectParam.height * GraphState.zoom,
-                          r: this.rectParam.radius * GraphState.zoom,
-                          'stroke-width':
-                            this.rectParam.strokeWidth * GraphState.zoom,
-                        },
-                        300,
-                        '<>'
-                      )
-                    }
-                    break
-                  case 'image':
-                    {
-                      let { x, y } = this.getPosition(h, v)
-                      s.animate(
-                        {
-                          x,
-                          y,
-                          width: this.nodeParam.width * GraphState.zoom,
-                          height: this.nodeParam.height * GraphState.zoom,
-                        },
-                        300,
-                        '<>'
-                      )
-                    }
-                    break
-                  case 'text':
-                    {
-                      let { x, y } = this.getPosition(h, v)
-                      let { txtX, txtY } = this.getPositionText(
-                        x,
-                        y,
-                        s.data('from') === 'rect'
-                          ? this.rectParam.width
-                          : this.nodeParam.width,
-                        s.data('from') === 'rect'
-                          ? this.rectParam.height
-                          : this.nodeParam.height,
-                        s.data('from') === 'rect' ? 'center' : 'bottomCenter'
-                      )
-                      s.animate(
-                        {
-                          x: txtX,
-                          y: txtY,
-                          'font-size':
-                            s.data('from') === 'rect'
-                              ? this.rectParam.fontSize * GraphState.zoom
-                              : this.nodeParam.fontSize * GraphState.zoom,
-                        },
-                        300,
-                        '<>'
-                      )
-                    }
-                    break
-                  case 'path':
-                    {
-                      let pe = this.getPosition(h, v).ps
-                      let ps = (h === 0
-                        ? this.getPosition(h, v - 1)
-                        : this.getPosition(h - 1, v)
-                      ).pe
-                      s.animate(
-                        {
-                          path:
-                            h === 0
-                              ? `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${
-                                  pe[0]
-                                } ${pe[1]}L${pe[0] -
-                                  2 * GraphState.zoom} ${pe[1] -
-                                  4 * GraphState.zoom}L${pe[0] +
-                                  2 * GraphState.zoom} ${pe[1] -
-                                  4 * GraphState.zoom}Z`
-                              : `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${
-                                  pe[0]
-                                } ${pe[1]}L${pe[0] -
-                                  4 * GraphState.zoom} ${pe[1] -
-                                  2 * GraphState.zoom}L${pe[0] -
-                                  4 * GraphState.zoom} ${pe[1] +
-                                  2 * GraphState.zoom}Z`,
-                          'stroke-width':
-                            this.nodeParam.pathStrokeWidth * GraphState.zoom,
-                        },
-                        300,
-                        '<>'
-                      )
-                    }
-                    break
-                }
-              })
-            }
-            break
-        }
-      })
+      this.moveItem(c.st, 0, v + 1)
+    })
+  }
+  moveItem(k, h, v) {
+    k.forEach(s => {
+      switch (s.type) {
+        case 'rect':
+          {
+            let { x, y } = this.getPosition(h, v)
+            s.animate(
+              {
+                x,
+                y,
+                width: this.rectParam.width * GraphState.zoom,
+                height: this.rectParam.height * GraphState.zoom,
+                r: this.rectParam.radius * GraphState.zoom,
+                'stroke-width': this.rectParam.strokeWidth * GraphState.zoom,
+              },
+              300,
+              '<>'
+            )
+          }
+          break
+        case 'image':
+          {
+            let { x, y } = this.getPosition(h, v)
+            s.animate(
+              {
+                x,
+                y,
+                width: this.nodeParam.width * GraphState.zoom,
+                height: this.nodeParam.height * GraphState.zoom,
+              },
+              300,
+              '<>'
+            ).data('coordinate', `${h},${v}`)
+          }
+          break
+        case 'text':
+          {
+            let { x, y } = this.getPosition(h, v)
+            let { txtX, txtY } = this.getPositionText(
+              x,
+              y,
+              s.data('from') === 'rect'
+                ? this.rectParam.width
+                : this.nodeParam.width,
+              s.data('from') === 'rect'
+                ? this.rectParam.height
+                : this.nodeParam.height,
+              s.data('from') === 'rect' ? 'center' : 'bottomCenter'
+            )
+            s.animate(
+              {
+                x: txtX,
+                y: txtY,
+                'font-size':
+                  s.data('from') === 'rect'
+                    ? this.rectParam.fontSize * GraphState.zoom
+                    : this.nodeParam.fontSize * GraphState.zoom,
+              },
+              300,
+              '<>'
+            )
+          }
+          break
+        case 'path':
+          {
+            let pe = this.getPosition(h, v).ps
+            let ps = (h === 0
+              ? this.getPosition(h, v - 1)
+              : this.getPosition(h - 1, v)
+            ).pe
+            s.animate(
+              {
+                path:
+                  h === 0
+                    ? `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${pe[0]} ${
+                        pe[1]
+                      }L${pe[0] - 2 * GraphState.zoom} ${pe[1] -
+                        4 * GraphState.zoom}L${pe[0] +
+                        2 * GraphState.zoom} ${pe[1] - 4 * GraphState.zoom}Z`
+                    : `M${ps[0]} ${ps[1]}L${pe[0]} ${pe[1]}M${pe[0]} ${
+                        pe[1]
+                      }L${pe[0] - 4 * GraphState.zoom} ${pe[1] -
+                        2 * GraphState.zoom}L${pe[0] -
+                        4 * GraphState.zoom} ${pe[1] + 2 * GraphState.zoom}Z`,
+                'stroke-width':
+                  this.nodeParam.pathStrokeWidth * GraphState.zoom,
+              },
+              300,
+              '<>'
+            )
+          }
+          break
+      }
     })
   }
   @action.bound
@@ -400,8 +390,17 @@ class Draw {
     this.itemList = []
   }
   @action.bound
-  removeItem() {
-    GraphState.removeItem()
+  moveVerticalItem(removeCoordinate) {
+    for (
+      let y = removeCoordinate[1] + 1;
+      y <= GraphState.currentProcess.graphData.length+1;
+      y++
+    ) {
+      let item = GraphState.currentProcess.graphData.find(c => c.coordinate === `0,${y}`)
+      item.coordinate = `0,${y - 1}`
+
+      this.moveItem(item.st, 0, y - 1)
+    }
   }
 }
 

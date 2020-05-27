@@ -129,7 +129,7 @@ class GraphState {
           if (code === UiState.enum.prcMenuBtn.修改.code) {
             ModalState.toggleCaseConfig()
           } else if (code === UiState.enum.prcMenuBtn.删除.code) {
-            draw.removeItem()
+            this.removeItem()
           }
         }
         break
@@ -190,6 +190,7 @@ class GraphState {
         ),
         1
       )
+      draw.moveVerticalItem(this.currentActiveNode.coordinate.split(',').map(c=>parseInt(c)))
       this.currentActiveNode = null
     }
   }
