@@ -3,6 +3,7 @@ import { observer } from 'mobx-react'
 import GraphDockBar from '../../components/Graph/DockBar'
 import DesignGraph from '../Graph'
 import GraphTool from '../../components/Graph/Tool'
+import ItemMenu from '../../components/Graph/ItemMenu'
 import './style.css'
 import GraphState from '../../stores/view/GraphState'
 import GraphDraw from '../../components/Graph/Draw/draw'
@@ -64,6 +65,7 @@ class ProcessDesign extends React.Component {
             <GraphDockBar itemClick={this.itemClick.bind(this)} />
           </>
         )}
+        <ItemMenu />
       </div>
     )
   }

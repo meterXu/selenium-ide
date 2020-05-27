@@ -289,6 +289,12 @@ class Draw {
             GraphState.setCurrentActiveNode(coordinate)
             func && func()
           })
+          node.mousedown(function() {
+            let coordinate = this.data('coordinate')
+            if (event.which === 3) {
+              alert(coordinate)
+            }
+          })
         }
         break
     }
