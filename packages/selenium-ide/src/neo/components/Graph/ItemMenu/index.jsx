@@ -18,9 +18,17 @@ export default class ItemMenu extends React.Component {
     onMenuClick: PropTypes.func.isRequired,
   }
   menuClick(code) {
-    GraphState.hidePrcMenu()
     this.props.onMenuClick(code)
   }
+  componentDidUpdate() {
+    if (GraphState.prcMenuIsOpen) {
+      this.refs.prcItemMenu.focus()
+      this.refs.prcItemMenu.addEventListener('focusout', () => {
+        GraphState.hidePrcMenu()
+      })
+    }
+  }
+
   render() {
     return (
       <>
@@ -28,6 +36,8 @@ export default class ItemMenu extends React.Component {
           <div
             className={'prc-item-menu'}
             style={{ top: GraphState.prcMenuY, left: GraphState.prcMenuX }}
+            tabIndex={1}
+            ref="prcItemMenu"
           >
             <ul className={'prc-item-menu-container'}>
               {this.state.menuData.map(c => {

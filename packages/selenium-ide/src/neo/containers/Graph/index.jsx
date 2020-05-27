@@ -24,6 +24,9 @@ export default class DesignGraph extends React.Component {
     this.refs.graph.oncontextmenu = function() {
       return false
     }
+    // this.refs.graphContainer.addEventListener('click', () => {
+    //   GraphState.hidePrcMenu()
+    // })
   }
   render() {
     return (

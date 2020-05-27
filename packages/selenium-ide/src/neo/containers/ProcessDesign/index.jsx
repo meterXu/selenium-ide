@@ -21,6 +21,7 @@ class ProcessDesign extends React.Component {
     }
   }
   onEnlarge() {
+    // GraphState.hidePrcMenu()
     GraphState.enlargeZoom()
     this.setState({
       zoom: GraphState.zoom,
@@ -28,13 +29,15 @@ class ProcessDesign extends React.Component {
     GraphDraw.resizeGraph()
   }
   onReduce() {
+    // GraphState.hidePrcMenu()
     GraphState.reduceZoom()
     this.setState({
       zoom: GraphState.zoom,
     })
     GraphDraw.resizeGraph()
   }
-  itemClick(item) {
+  addItem(item) {
+    // GraphState.hidePrcMenu()
     GraphDraw.drawVerticalItem(item)
   }
   componentDidMount() {
@@ -58,7 +61,7 @@ class ProcessDesign extends React.Component {
               onEnlarge={this.onEnlarge}
               onReduce={this.onReduce}
             />
-            <GraphDockBar itemClick={this.itemClick.bind(this)} />
+            <GraphDockBar itemClick={this.addItem.bind(this)} />
           </>
         )}
         <ItemMenu onMenuClick={GraphState.graphItemClick} />

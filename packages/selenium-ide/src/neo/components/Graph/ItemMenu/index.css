@@ -4,7 +4,8 @@
     background: #fff;
     width: 80px;
     padding: 8px 0px;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3)
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
+    outline:none;
 }
 .prc-item-menu-container li{
     height: 32px;
