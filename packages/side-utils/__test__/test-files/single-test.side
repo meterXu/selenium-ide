@@ -206,8 +206,8 @@
             "caseName": "[smoke] A_HXHS_TEST1",
             "sourceId": "99a548de-a8c2-47fa-ba3b-4545670ef204"
           },
-          "img": "case",
-          "text": "[smoke] A_HXHS_TEST1",
+          "image": "case",
+          "name": "[smoke] A_HXHS_TEST1",
           "type": 1
         }, {
           "coordinate": "0,2",
@@ -218,8 +218,8 @@
             "paraNames": ["param0", "param1"],
             "paraValues": ["data", "url"]
           },
-          "img": "case",
-          "text": "[smoke] A_HXHS_TEST1",
+          "image": "case",
+          "name": "[smoke] A_HXHS_TEST1",
           "type": 1
         }, {
           "coordinate": "0,3",
@@ -230,8 +230,8 @@
             "paraNames": ["param0", "param1"],
             "paraValues": ["url", "data"]
           },
-          "img": "case",
-          "text": "[smoke] A_HXHS_TEST1",
+          "image": "case",
+          "name": "[smoke] A_HXHS_TEST1",
           "type": 1
         }]
       }]
