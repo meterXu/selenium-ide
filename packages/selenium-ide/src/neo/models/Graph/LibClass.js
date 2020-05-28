@@ -7,6 +7,7 @@ export default class LibClass {
   params = ''
   doc = ''
   pid = ''
+  icon = null
   children = null
   constructor(key, state, title, params, doc, pid, children) {
     this.key = key

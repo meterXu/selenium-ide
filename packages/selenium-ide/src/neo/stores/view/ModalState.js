@@ -334,6 +334,9 @@ class ModalState {
   @action.bound
   toggleLibModify() {
     this.libModifyIsOpen = !this.libModifyIsOpen
+    if (this.libModifyIsOpen === false) {
+      GraphState.currentActiveFun = null
+    }
   }
 }
 

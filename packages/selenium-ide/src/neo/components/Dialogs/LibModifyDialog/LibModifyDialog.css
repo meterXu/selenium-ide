@@ -32,7 +32,7 @@
     font-weight: bold;
 }
 .libModify-pane-doc{
-    color: #ca841d;
+    color: #f87d28;
 }
 .Pane.horizontal.Pane2{
     overflow-y:auto;
@@ -44,4 +44,45 @@
 .rc-tree-node-selected{
     background-color: rgba(93, 208, 149,0.5) !important;
     border-color: rgb(93, 208, 149) !important;
+}
+.rc-tree-treenode{
+    line-height: 26px!important;
+}
+.rc-tree-node-content-wrapper {
+    height: 26px !important;
+    padding: 1px 3px 0 5px !important;
+}
+.rc-tree-icon__close{
+    background-color: #407d41 !important;
+    background-image: none !important;
+    color: #f3f3f3;
+    text-align: center;
+    border-radius: 9px;
+}
+.rc-tree-icon__open{
+    background-color: #ed5555 !important;
+    background-image: none !important;
+    color: #fff;
+    text-align: center;
+    border-radius: 9px;
+}
+.rc-tree-icon__docu {
+    background-image: none !important;
+    text-align: center;
+    background-color: #f87d28 !important;
+    color: #fff;
+    border-radius: 9px;
+}
+.rc-tree-icon__open::after,
+.rc-tree-icon__close::after,
+.rc-tree-icon__docu::after {
+    content: 'c';
+    font-size: 14px;
+    line-height: 0px;
+    vertical-align: middle;
+    display: inline-table;
+}
+.rc-tree-icon__docu::after{
+    content: 'f';
+    font-size: 9px;
 }
