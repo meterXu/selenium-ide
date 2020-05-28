@@ -55,6 +55,8 @@ class ModalState {
   sourceConfModel = null
   @observable
   processWelcomeIsOpen = false
+  @observable
+  libModifyIsOpen = false
   constructor() {
     this.renameTest = this.rename.bind(this, Types.test)
     this.renameSuite = this.rename.bind(this, Types.suite)
@@ -328,6 +330,10 @@ class ModalState {
   @action.bound
   setSourceConfModel(model) {
     this.sourceConfModel = model
+  }
+  @action.bound
+  toggleLibModify() {
+    this.libModifyIsOpen = !this.libModifyIsOpen
   }
 }
 

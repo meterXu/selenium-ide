@@ -35,6 +35,7 @@ import { isProduction } from '../../../common/utils'
 import UiState from '../../stores/view/UiState'
 import { exportCodeToFile } from '../../code-export'
 import ProcessWelcomeDialog from '../../components/Dialogs/ProcessWelcomeDialog/ProcessWelcomeDialog'
+import LibModifyDialog from '../../components/Dialogs/LibModifyDialog/LibModifyDialog'
 
 @observer
 export default class Modal extends Component {
@@ -152,6 +153,10 @@ export default class Modal extends Component {
         <ProcessWelcomeDialog
           isOpen={ModalState.processWelcomeIsOpen}
           cancel={ModalState.toggleProcessWelcome}
+        />
+        <LibModifyDialog
+          isOpen={ModalState.libModifyIsOpen}
+          cancel={ModalState.toggleLibModify}
         />
       </div>
     )
