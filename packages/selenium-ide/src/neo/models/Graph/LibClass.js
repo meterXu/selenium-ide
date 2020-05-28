@@ -1,16 +1,16 @@
 import LibMethod from './LibMethod'
 
 export default class LibClass {
-  id = ''
+  key = ''
   state = ''
-  name = ''
+  title = ''
   params = ''
   doc = ''
   children = null
-  constructor(id, state, name, params, doc, children) {
-    this.id = id
+  constructor(key, state, title, params, doc, children) {
+    this.key = key
     this.state = state
-    this.name = name
+    this.title = title
     this.params = params
     this.doc = doc
     this.children = children

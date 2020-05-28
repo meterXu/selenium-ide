@@ -43,6 +43,8 @@ class GraphState {
   prcMenuX = 0
   @observable
   prcMenuY = 0
+  @observable
+  currentActiveFun = null
   @action.bound
   setZoom(value) {
     this.zoom = value
@@ -217,18 +219,11 @@ class GraphState {
   }
   @computed
   get LibTreeData() {
-    return UiState.project.libData.map(c => {
-      return {
-        key: c.id,
-        title: c.name,
-        children: c.children.map(d => {
-          return {
-            key: d.id,
-            title: d.name,
-          }
-        }),
-      }
-    })
+    return UiState.project.libData
+  }
+  @action.bound
+  TreeSelect(keys,e) {
+    this.currentActiveFun = UiState.ajaxLibData.find(c => c.id === keys[0])
   }
 }
 if (!window._graphState) window._graphState = new GraphState()

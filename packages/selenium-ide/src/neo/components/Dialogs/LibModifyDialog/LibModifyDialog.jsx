@@ -8,7 +8,7 @@ import SplitPane from 'react-split-pane'
 import Tree from 'rc-tree'
 import 'rc-tree/assets/index.css'
 import GraphState from '../../../stores/view/GraphState'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 @observer
 export default class LibModifyDialog extends React.Component {
   constructor(props) {
@@ -52,11 +52,33 @@ export default class LibModifyDialog extends React.Component {
                   defaultExpandedKeys={this.defaultExpandedKeys}
                   height={600}
                   treeData={GraphState.LibTreeData}
+                  onSelect={GraphState.TreeSelect}
                 />
               </div>
-              <div className={classNames('libModify-pane-title')}>
-                详细配置：
-              </div>
+              <SplitPane
+                split="horizontal"
+                style={{
+                  position: 'initial',
+                }}
+                size={500}
+                maxSize={500}
+                minSize={400}
+              >
+                <div>
+                  <div className={classNames('libModify-pane-title')}>
+                    详细配置：
+                  </div>
+                </div>
+                <div>
+                  <div className={classNames('libModify-pane-title')}>
+                    描述：
+                  </div>
+                  <div className={classNames('libModify-pane-content')}>
+                    {GraphState.currentActiveFun &&
+                      GraphState.currentActiveFun.doc}
+                  </div>
+                </div>
+              </SplitPane>
             </SplitPane>
           </div>
         </DialogContainer>

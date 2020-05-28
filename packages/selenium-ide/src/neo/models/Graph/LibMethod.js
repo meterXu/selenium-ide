@@ -1,13 +1,13 @@
 export default class LibMethod {
-  id = ''
+  key = ''
   iconCls = ''
-  name = ''
+  title = ''
   params = ''
   doc = ''
-  constructor(id, iconCls, name, params, doc) {
-    this.id = id
+  constructor(key, iconCls, title, params, doc) {
+    this.key = key
     this.iconCls = iconCls
-    this.name = name
+    this.title = title
     this.params = params
     this.doc = doc
   }
