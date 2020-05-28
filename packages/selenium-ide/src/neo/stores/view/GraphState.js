@@ -222,8 +222,16 @@ class GraphState {
     return UiState.project.libData
   }
   @action.bound
-  TreeSelect(keys,e) {
-    this.currentActiveFun = UiState.ajaxLibData.find(c => c.id === keys[0])
+  TreeSelect(keys, e) {
+    if (e.node.pid) {
+      this.currentActiveFun = UiState.project.ajaxLibData
+        .find(c => c.key === e.node.pid)
+        .children.find(c => c.key === keys[0])
+    } else {
+      this.currentActiveFun = UiState.project.libData.find(
+        c => c.key === keys[0]
+      )
+    }
   }
 }
 if (!window._graphState) window._graphState = new GraphState()

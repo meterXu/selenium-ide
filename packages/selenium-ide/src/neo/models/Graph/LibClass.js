@@ -6,13 +6,15 @@ export default class LibClass {
   title = ''
   params = ''
   doc = ''
+  pid = ''
   children = null
-  constructor(key, state, title, params, doc, children) {
+  constructor(key, state, title, params, doc, pid, children) {
     this.key = key
     this.state = state
     this.title = title
     this.params = params
     this.doc = doc
+    this.pid = pid
     this.children = children
   }
   static fromJS(jsRep, data) {
@@ -23,6 +25,7 @@ export default class LibClass {
       jsRep.name,
       jsRep.params,
       jsRep.doc,
+      jsRep.pid,
       _chlid.map(c => LibMethod.fromJS(c))
     )
     return libClass
