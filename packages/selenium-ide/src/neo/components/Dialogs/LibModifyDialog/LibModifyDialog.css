@@ -1,3 +1,6 @@
 .libModify-modal-content{
     max-width: 80%;
 }
+.libModify-container{
+    height: 600px;
+}
