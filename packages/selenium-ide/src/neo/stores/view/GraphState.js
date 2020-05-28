@@ -138,7 +138,7 @@ class GraphState {
       case UiState.enum.prcItem.函数.type:
         {
           if (code === UiState.enum.prcMenuBtn.修改.code) {
-            //TODO: 函数
+            ModalState.toggleLibModify()
           } else if (code === UiState.enum.prcMenuBtn.删除.code) {
             this.removeItem()
           }
