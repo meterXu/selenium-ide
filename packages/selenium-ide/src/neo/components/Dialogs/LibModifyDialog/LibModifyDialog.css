@@ -4,3 +4,26 @@
 .libModify-container{
     height: 600px;
 }
+.rc-tree-child-tree {
+    display: block;
+}
+
+.node-motion {
+    transition: all .3s;
+    overflow-y: hidden;
+}
+.libModify-tree-container{
+    overflow: hidden;
+    overflow-y: auto;
+}
+.libModify-tree{
+    width: 98%;
+}
+.rc-tree-list{
+    overflow: hidden;
+}
+.libModify-pane-title{
+    height: 32px;
+    line-height: 32px;
+    text-indent: 5px;
+}
