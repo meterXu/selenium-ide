@@ -20,7 +20,9 @@ export default class LibModifyDialog extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.cancel}
       >
-        <DialogContainer>LibModifyDialog</DialogContainer>
+        <DialogContainer title={'函数维护'} onRequestClose={this.props.cancel}>
+          LibModifyDialog
+        </DialogContainer>
       </Modal>
     )
   }
