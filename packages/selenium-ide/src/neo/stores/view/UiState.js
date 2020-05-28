@@ -86,7 +86,6 @@ class UiState {
   specifiedRemoteUrl = null
   @observable
   gridConfigEnabled = null
-  ajaxLibData = null
   @computed
   get pluginConf() {
     return this.project.pluginConf
@@ -786,7 +785,6 @@ class UiState {
   getLibData() {
     axios.get(this.pluginConf.backUrl + this.pluginConf.lib).then(c => {
       if (c.data) {
-        this.ajaxLibData = c.data
         this.project.setLibData(
           c.data.filter(c => c.pid === '').map(d => LibClass.fromJS(d, c.data))
         )

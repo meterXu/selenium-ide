@@ -224,7 +224,7 @@ class GraphState {
   @action.bound
   TreeSelect(keys, e) {
     if (e.node.pid) {
-      this.currentActiveFun = UiState.project.ajaxLibData
+      this.currentActiveFun = UiState.project.libData
         .find(c => c.key === e.node.pid)
         .children.find(c => c.key === keys[0])
     } else {

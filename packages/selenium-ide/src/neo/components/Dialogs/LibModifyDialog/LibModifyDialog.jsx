@@ -68,15 +68,25 @@ export default class LibModifyDialog extends React.Component {
                   <div className={classNames('libModify-pane-title')}>
                     详细配置：
                   </div>
-                </div>
-                <div>
-                  <div className={classNames('libModify-pane-title')}>
+                  <div
+                    className={classNames(
+                      'libModify-pane-title',
+                      'libModify-pane-title-bottom'
+                    )}
+                  >
                     描述：
                   </div>
-                  <div className={classNames('libModify-pane-content')}>
-                    {GraphState.currentActiveFun &&
-                      GraphState.currentActiveFun.doc}
-                  </div>
+                </div>
+                <div>
+                  <div
+                    className={classNames('libModify-pane-doc')}
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        (GraphState.currentActiveFun === null||GraphState.currentActiveFun === undefined)
+                          ? ''
+                          : GraphState.currentActiveFun.doc,
+                    }}
+                  />
                 </div>
               </SplitPane>
             </SplitPane>
