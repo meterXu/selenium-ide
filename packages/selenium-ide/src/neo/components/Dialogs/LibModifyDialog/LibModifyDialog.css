@@ -42,5 +42,6 @@
     bottom: 0;
 }
 .rc-tree-node-selected{
-    background: #1c5d27;
+    background-color: rgba(93, 208, 149,0.5) !important;
+    border-color: rgb(93, 208, 149) !important;
 }

@@ -25,6 +25,13 @@ export default class LibModifyDialog extends React.Component {
     isOpen: PropTypes.bool.isRequired,
     cancel: PropTypes.func,
   }
+  Icon({ selected }) {
+    return (
+      <span
+        className={classNames('customize-icon', selected && 'selected-icon')}
+      />
+    )
+  }
   render() {
     return (
       <Modal
