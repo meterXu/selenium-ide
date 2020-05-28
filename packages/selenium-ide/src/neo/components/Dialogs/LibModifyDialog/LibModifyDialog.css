@@ -41,3 +41,6 @@
     position: absolute;
     bottom: 0;
 }
+.rc-tree-node-selected{
+    background: #1c5d27;
+}
