@@ -43,6 +43,7 @@ const transitionStyles = {
 
 export default class Modal extends React.Component {
   static propTypes = {
+    modConClassName: PropTypes.string,
     className: PropTypes.string,
     isOpen: PropTypes.bool,
     duration: PropTypes.number,
@@ -59,7 +60,7 @@ export default class Modal extends React.Component {
       <Transition in={this.props.isOpen} timeout={this.props.duration}>
         {status => (
           <ReactModal
-            className="modal-content"
+            className={classNames('modal-content', this.props.modConClassName)}
             isOpen={this.props.isOpen}
             ariaHideApp={false}
             shouldCloseOnOverlayClick={true}

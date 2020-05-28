@@ -15,7 +15,8 @@ export default class LibModifyDialog extends React.Component {
   render() {
     return (
       <Modal
-        className={classNames('stripped', 'rename-dialog')}
+        modConClassName={classNames('libModify-modal-content')}
+        className={classNames('stripped', 'libModify-dialog')}
         isOpen={this.props.isOpen}
         onRequestClose={this.props.cancel}
       >
