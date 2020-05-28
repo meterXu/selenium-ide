@@ -16,21 +16,10 @@ export default class LibModifyDialog extends React.Component {
   constructor(props) {
     super(props)
     this.defaultExpandedKeys = ['0', '0-2', '0-9-2']
-    this.motion = {
-      motionName: 'node-motion',
-      motionAppear: false,
-    }
   }
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     cancel: PropTypes.func,
-  }
-  Icon({ selected }) {
-    return (
-      <span
-        className={classNames('customize-icon', selected && 'selected-icon')}
-      />
-    )
   }
   render() {
     return (
@@ -48,7 +37,7 @@ export default class LibModifyDialog extends React.Component {
                 position: 'initial',
               }}
               size={175}
-              maxSize={250}
+              maxSize={300}
               minSize={175}
             >
               <div className={classNames('libModify-tree-container')}>
