@@ -15,14 +15,15 @@ export default class LibClass {
     this.doc = doc
     this.children = children
   }
-  static fromJS(jsRep) {
+  static fromJS(jsRep, data) {
+    let _chlid = data.filter(c => c.pid === jsRep.id)
     let libClass = new LibClass(
       jsRep.id,
       jsRep.state,
       jsRep.name,
       jsRep.params,
       jsRep.doc,
-      jsRep.children.map(c => LibMethod.fromJS(c))
+      _chlid.map(c => LibMethod.fromJS(c))
     )
     return libClass
   }

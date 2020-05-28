@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, computed, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 import UiState from './../view/UiState'
@@ -214,6 +214,21 @@ class GraphState {
       )
       this.currentActiveNode = null
     }
+  }
+  @computed
+  get LibTreeData() {
+    return UiState.project.libData.map(c => {
+      return {
+        key: c.id,
+        title: c.name,
+        children: c.children.map(d => {
+          return {
+            key: d.id,
+            title: d.name,
+          }
+        }),
+      }
+    })
   }
 }
 if (!window._graphState) window._graphState = new GraphState()

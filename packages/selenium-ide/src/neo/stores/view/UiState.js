@@ -785,7 +785,7 @@ class UiState {
   getLibData() {
     axios.get(this.pluginConf.backUrl + this.pluginConf.lib).then(c => {
       if (c.data) {
-        this.project.setLibData(c.data.map(c => LibClass.fromJS(c)))
+        this.project.setLibData(c.data.filter(c=>c.pid==='').map(d => LibClass.fromJS(d, c.data)))
       }
     })
   }
