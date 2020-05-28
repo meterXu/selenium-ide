@@ -17,18 +17,19 @@
     overflow-y: auto;
 }
 .libModify-tree{
-    width: 98%;
+    width: 95%;
 }
 .rc-tree-list{
     overflow: hidden;
+}
+.libModify-pane-con{
+    padding-left: 5px;
+    flex: 1;
 }
 .libModify-pane-title{
     height: 32px;
     line-height: 32px;
     font-weight: bold;
-}
-.libModify-pane-title,.libModify-pane-doc{
-    padding-left: 5px;
 }
 .libModify-pane-doc{
     color: #ca841d;

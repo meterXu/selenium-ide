@@ -9,6 +9,8 @@ import Tree from 'rc-tree'
 import 'rc-tree/assets/index.css'
 import GraphState from '../../../stores/view/GraphState'
 import { observer } from 'mobx-react'
+import FormGroup from '../../FormGroup'
+import FormInput from '../../FormInput'
 @observer
 export default class LibModifyDialog extends React.Component {
   constructor(props) {
@@ -64,9 +66,28 @@ export default class LibModifyDialog extends React.Component {
                 maxSize={500}
                 minSize={400}
               >
-                <div>
+                <div className={classNames('libModify-pane-con')}>
                   <div className={classNames('libModify-pane-title')}>
                     详细配置：
+                  </div>
+                  <div>
+                    <FormGroup label="使用函数" name="">
+                      <label>
+                        {(() => {
+                          if (GraphState.currentActiveFun) {
+                            return GraphState.currentActiveFun.title
+                          } else {
+                            return '--请在左侧选择要使用的函数--'
+                          }
+                        })()}
+                      </label>
+                    </FormGroup>
+                    <FormGroup label="函数参数" name="">
+                      <FormInput label="param1" name="param2" />
+                      <FormInput label="param2" name="param2" />
+                      <FormInput label="param2" name="param2" />
+                      <FormInput label="param2" name="param2" />
+                    </FormGroup>
                   </div>
                   <div
                     className={classNames(
@@ -77,13 +98,14 @@ export default class LibModifyDialog extends React.Component {
                     描述：
                   </div>
                 </div>
-                <div>
+                <div className={classNames('libModify-pane-con')}>
                   <div
                     className={classNames('libModify-pane-doc')}
                     dangerouslySetInnerHTML={{
                       __html:
-                        (GraphState.currentActiveFun === null||GraphState.currentActiveFun === undefined)
-                          ? ''
+                        GraphState.currentActiveFun === null ||
+                        GraphState.currentActiveFun === undefined
+                          ? '--暂无--'
                           : GraphState.currentActiveFun.doc,
                     }}
                   />

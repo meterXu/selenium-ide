@@ -227,10 +227,6 @@ class GraphState {
       this.currentActiveFun = UiState.project.libData
         .find(c => c.key === e.node.pid)
         .children.find(c => c.key === keys[0])
-    } else {
-      this.currentActiveFun = UiState.project.libData.find(
-        c => c.key === keys[0]
-      )
     }
   }
 }
