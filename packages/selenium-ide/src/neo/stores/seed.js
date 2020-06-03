@@ -16,11 +16,8 @@
 // under the License.
 
 import generate from 'project-name-generator'
-// import { CommandsArray } from '../models/Command'
-import Command from '../models/Command'
 import UiState from './view/UiState'
 import PrcItem from '../models/Graph/PrcItem'
-import CaseConfState from './view/caseConf/CaseConfState'
 
 export default function seed(store, numberOfSuites = 0) {
   function generateSuite() {
@@ -63,7 +60,7 @@ export default function seed(store, numberOfSuites = 0) {
   store.addUrl(url)
 
   function initFirstSuite() {
-    const unitTest1 = store.createTestCase('A_HXHS_TEST1')
+    const unitTest1 = store.createTestCase('search_1')
     unitTest1.createCommand(undefined, 'open', 'https://www.baidu.com')
     unitTest1.createCommand(
       undefined,
@@ -98,7 +95,7 @@ export default function seed(store, numberOfSuites = 0) {
       false
     )
 
-    const unitTest2 = store.createTestCase('A_HXHS_TEST2')
+    const unitTest2 = store.createTestCase('search_2')
     unitTest2.createCommand(undefined, 'open', 'https://www.baidu.com')
     unitTest2.createCommand(
       undefined,
@@ -133,7 +130,7 @@ export default function seed(store, numberOfSuites = 0) {
       false
     )
 
-    const unitTest3 = store.createTestCase('A_HXHS_TEST3')
+    const unitTest3 = store.createTestCase('search_3')
     unitTest3.createCommand(undefined, 'open', 'https://www.baidu.com')
     unitTest3.createCommand(
       undefined,
@@ -189,7 +186,7 @@ export default function seed(store, numberOfSuites = 0) {
     firstSuite.addTestCase(unitTest3)
   }
   function initDutiesSuite() {
-    const gw_login = store.createTestCase('A_HXHS_LOGIN')
+    const gw_login = store.createTestCase('login')
     gw_login.createCommand(
       undefined,
       'open',
@@ -248,7 +245,7 @@ export default function seed(store, numberOfSuites = 0) {
       true
     )
 
-    const gw_add = store.createTestCase('A_HXHS_ADD')
+    const gw_add = store.createTestCase('add')
     gw_add.createCommand(
       undefined,
       'click',
@@ -427,7 +424,7 @@ export default function seed(store, numberOfSuites = 0) {
       false
     )
 
-    const gw_search = store.createTestCase('A_HXHS_SEARCH')
+    const gw_search = store.createTestCase('search')
     gw_search.createCommand(
       undefined,
       'click',
@@ -489,18 +486,18 @@ export default function seed(store, numberOfSuites = 0) {
     )
   )
 
-  store.createProcess('流程图1', [
+  store.createProcess('A_HXHS_TEST1', [
     new PrcItem(
       '0,1',
       {
         paraNames: ['param0', 'param1'],
         paraValues: ['data', 'url'],
-        caseId: store.tests.find(c => c.name === 'A_HXHS_TEST1').id,
-        caseName: store.tests.find(c => c.name === 'A_HXHS_TEST1').name,
+        caseId: store.tests.find(c => c.name === 'search_1').id,
+        caseName: store.tests.find(c => c.name === 'search_1').name,
         sourceId: source.id,
       },
       UiState.enum.prcItem.用例.image,
-      store.tests.find(c => c.name === 'A_HXHS_TEST1').name,
+      store.tests.find(c => c.name === 'search_1').name,
       UiState.enum.prcItem.用例.type
     ),
   ])

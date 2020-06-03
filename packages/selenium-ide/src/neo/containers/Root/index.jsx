@@ -36,10 +36,6 @@ const render = Component => {
 
 render(Panel)
 
+// eslint-disable-next-line no-empty
 if (module.hot) {
-  module.hot.accept('../Panel/LibModifyDialog.jsx', () => {
-    // eslint-disable-next-line node/no-missing-require
-    const NextRootContainer = require('../Panel').default
-    render(NextRootContainer)
-  })
 }
