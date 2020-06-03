@@ -271,7 +271,6 @@ class UiState {
         this.selectedTest = {}
         this.selectCommand(undefined)
       }
-      this.getSourceConf(test.name)
     }
   }
   @observable

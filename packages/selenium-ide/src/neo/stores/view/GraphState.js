@@ -68,9 +68,10 @@ class GraphState {
   }
 
   @action.bound
-  setCurrentProcess(value) {
-    if (value) {
-      this.currentProcess = value
+  setCurrentProcess(process) {
+    UiState.getSourceConf(process.name)
+    if (process) {
+      this.currentProcess = process
       UiState.project.setSelectedProcess(this.currentProcess.id)
       draw.drawCurrentProcess()
     } else {
