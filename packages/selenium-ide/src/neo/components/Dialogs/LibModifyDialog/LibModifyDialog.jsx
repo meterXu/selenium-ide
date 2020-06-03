@@ -11,6 +11,7 @@ import GraphState from '../../../stores/view/GraphState'
 import { observer } from 'mobx-react'
 import FormGroup from '../../FormGroup'
 import FormInput from '../../FormInput'
+import FlatButton from '../../FlatButton'
 @observer
 export default class LibModifyDialog extends React.Component {
   constructor(props) {
@@ -29,7 +30,26 @@ export default class LibModifyDialog extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.cancel}
       >
-        <DialogContainer title={'函数维护'} onRequestClose={this.props.cancel}>
+        <DialogContainer
+          title={'函数维护'}
+          renderFooter={() => (
+            <span
+              className="right"
+              style={{
+                display: 'flex',
+              }}
+            >
+              <FlatButton
+                onClick={this.props.cancel}
+                style={{
+                  marginRight: '0',
+                }}
+              >
+                确定
+              </FlatButton>
+            </span>
+          )}
+        >
           <div className={classNames('libModify-container')}>
             <SplitPane
               split="vertical"

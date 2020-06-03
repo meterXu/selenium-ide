@@ -470,7 +470,7 @@ export default function seed(store, numberOfSuites = 0) {
   UiState.changeView(UiState.lang.suites)
   store.suites.find(c => c.name === 'first').setOpen(true)
   UiState.selectTest(
-    store.tests.find(c => c.name === 'A_HXHS_TEST1'),
+    store.tests.find(c => c.name === 'search_1'),
     store.suites.find(c => c.name === 'first')
   )
   store.changeName('种子项目')
