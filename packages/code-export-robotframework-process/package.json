@@ -1,5 +1,5 @@
 {
-  "name": "code-export-python-rpa",
+  "name": "code-export-robotframework-process",
   "version": "1.0.2",
   "description": "Export JetRecord project contents to Python rpa",
   "repository": "https://github.com/meterXu/selenium-ide",
