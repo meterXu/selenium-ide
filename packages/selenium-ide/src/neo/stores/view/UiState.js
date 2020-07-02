@@ -222,6 +222,9 @@ class UiState {
     if (this.clipboard && this.displayedTest) {
       const newCommand = this.clipboard.clone()
       this.displayedTest.insertCommandAt(newCommand, index)
+      window.setTimeout(() => {
+        this.selectNextCommand()
+      }, 100)
     }
   }
 

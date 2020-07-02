@@ -44,10 +44,15 @@ export default class Editor extends React.Component {
     if (command) {
       const newCommand = command.clone()
       this.props.test.insertCommandAt(newCommand, index)
+      window.setTimeout(() => {
+        UiState.selectNextCommand()
+      }, 100)
       return newCommand
     } else {
       const newCommand = this.props.test.createCommand(index)
-      UiState.selectCommand(newCommand)
+      window.setTimeout(() => {
+        UiState.selectNextCommand()
+      }, 100)
       return newCommand
     }
   }
