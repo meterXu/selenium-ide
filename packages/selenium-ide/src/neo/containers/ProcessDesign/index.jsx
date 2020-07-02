@@ -37,13 +37,14 @@ class ProcessDesign extends React.Component {
   addItem(item) {
     GraphDraw.drawVerticalItem(item)
   }
+  componentWillUnmount() {
+    GraphState.clearCurrentProcess(null)
+  }
   componentDidMount() {
     if (UiState.project.processData.length === 0) {
       ModalState.toggleProcessWelcome()
     } else {
-      if (GraphState.currentProcess == null) {
-        GraphState.setCurrentProcess(UiState.project.processData[0])
-      }
+      GraphState.setCurrentProcess(UiState.project.processData[0])
     }
   }
 

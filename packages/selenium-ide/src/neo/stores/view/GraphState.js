@@ -81,6 +81,10 @@ class GraphState {
     }
   }
   @action.bound
+  clearCurrentProcess() {
+    this.currentProcess = null
+  }
+  @action.bound
   setCurrentActiveNode(coordinate) {
     this.currentActiveNode = this.currentProcess.graphData.find(
       c => c.coordinate === coordinate
