@@ -87,16 +87,15 @@ export default class TestCase {
         this.updateWindowHandleNames
       )
       if (comment) command.setComment(comment)
-      if(isParam){
+      if (isParam) {
         command.setIsParam(isParam)
-        if(v){
+        if (v) {
           command.setDirectionValue(v)
           command.setDirectionType('value')
-        }else{
+        } else {
           command.setDirectionValue(t)
           command.setDirectionType('target')
         }
-
       }
       index !== undefined
         ? this.commands.splice(index, 0, command)

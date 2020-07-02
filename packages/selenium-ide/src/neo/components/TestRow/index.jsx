@@ -214,7 +214,7 @@ class TestRow extends React.Component {
   }
   addCommand(index) {
     if (!this.props.readOnly) {
-      this.props.addCommand(index)
+      this.props.addCommand(index + 1)
     }
   }
   copy() {
@@ -228,7 +228,7 @@ class TestRow extends React.Component {
   }
   paste() {
     if (!this.props.readOnly) {
-      this.props.pasteFromClipboard(this.props.index)
+      this.props.pasteFromClipboard(this.props.index + 1)
     }
   }
   select() {
@@ -296,7 +296,7 @@ class TestRow extends React.Component {
             label={parse('v', { primaryKey: true })}
             onClick={this.paste}
           >
-            粘贴
+            粘贴在下方
           </ListMenuItem>
           <ListMenuItem label="Del" onClick={this.remove}>
             删除
@@ -307,7 +307,7 @@ class TestRow extends React.Component {
               this.addCommand(this.props.index)
             }}
           >
-            插入新命令
+            在下方插入新命令
           </ListMenuItem>
           <ListMenuSeparator />
           <ListMenuItem onClick={this.clearAll}>清除所有命令</ListMenuItem>
@@ -448,9 +448,7 @@ class TestRow extends React.Component {
             {this.props.command.directionValue}
           </MultilineEllipsis>
         </td>
-        <td className="control-chk-export">
-          ✓
-        </td>
+        <td className="control-chk-export">✓</td>
         <td className="buttons">
           {!this.props.isPristine && !this.props.readOnly ? listMenu : <div />}
         </td>

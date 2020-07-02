@@ -47,6 +47,7 @@ export default class Editor extends React.Component {
       return newCommand
     } else {
       const newCommand = this.props.test.createCommand(index)
+      UiState.selectCommand(newCommand)
       return newCommand
     }
   }
