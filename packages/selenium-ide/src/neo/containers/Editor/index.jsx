@@ -46,13 +46,13 @@ export default class Editor extends React.Component {
       this.props.test.insertCommandAt(newCommand, index)
       window.setTimeout(() => {
         UiState.selectNextCommand()
-      }, 100)
+      }, 300)
       return newCommand
     } else {
       const newCommand = this.props.test.createCommand(index)
       window.setTimeout(() => {
         UiState.selectNextCommand()
-      }, 100)
+      }, 300)
       return newCommand
     }
   }

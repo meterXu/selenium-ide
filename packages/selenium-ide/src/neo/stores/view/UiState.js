@@ -224,7 +224,7 @@ class UiState {
       this.displayedTest.insertCommandAt(newCommand, index)
       window.setTimeout(() => {
         this.selectNextCommand()
-      }, 100)
+      }, 300)
     }
   }
 
