@@ -86,6 +86,12 @@ class UiState {
   specifiedRemoteUrl = null
   @observable
   gridConfigEnabled = null
+  @observable
+  keydownObj = {
+    ctrlKey: false,
+    shiftKey: false,
+    keyCode: null,
+  }
   @computed
   get pluginConf() {
     return this.project.pluginConf
@@ -792,6 +798,12 @@ class UiState {
         )
       }
     })
+  }
+  @action.bound
+  setKeydownObj(ctrlKey, shiftKey, keyCode) {
+    this.keydownObj.ctrlKey = ctrlKey
+    this.keydownObj.shiftKey = shiftKey
+    this.keydownObj.keyCode = keyCode
   }
 }
 

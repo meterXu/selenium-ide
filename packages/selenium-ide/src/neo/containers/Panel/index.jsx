@@ -274,7 +274,10 @@ export default class Panel extends React.Component {
   }
 
   toggleConsole() {
-    if (UiState.selectedView !== UiState.lang.processDesign&&UiState.selectedView !=='sourceConf') {
+    if (
+      UiState.selectedView !== UiState.lang.processDesign &&
+      UiState.selectedView !== 'sourceConf'
+    ) {
       UiState.setMinConsoleHeight(30)
       UiState.resizeConsole(100)
       return (
@@ -289,7 +292,9 @@ export default class Panel extends React.Component {
     }
   }
   switchHeadBtn() {
-    UiState.setSelectView(UiState.selectedView !== 'sourceConf' ? 'sourceConf' : UiState.lang.tests)
+    UiState.setSelectView(
+      UiState.selectedView !== 'sourceConf' ? 'sourceConf' : UiState.lang.tests
+    )
   }
   componentWillUnmount() {
     if (isProduction) {
@@ -302,6 +307,14 @@ export default class Panel extends React.Component {
     window.onresize = function() {
       UiState.setWindowHeight(window.innerHeight)
     }
+    window.addEventListener('keydown', event => {
+      if (event) {
+        UiState.setKeydownObj(event.ctrlKey, event.shiftKey, event.keyCode)
+      }
+    })
+    window.addEventListener('keyup', event => {
+      UiState.setKeydownObj(false, false, null)
+    })
   }
   render() {
     return (
@@ -365,9 +378,7 @@ export default class Panel extends React.Component {
                     )}
                   </SplitPane>
                 )}
-                {UiState.selectedView === 'sourceConf' && (
-                  <SourceConf />
-                )}
+                {UiState.selectedView === 'sourceConf' && <SourceConf />}
               </div>
             </div>
             {this.toggleConsole()}
