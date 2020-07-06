@@ -94,7 +94,7 @@ class GraphState {
   setCurrentActiveNodeObj(caseId, caseName, paramNames, sourceId) {
     this.currentActiveNode.data.caseId = caseId
     this.currentActiveNode.data.caseName = caseName
-    this.currentActiveNode.text = caseName
+    this.currentActiveNode.name = caseName
     this.currentActiveNode.st[1].attr({
       text: caseName,
     })
