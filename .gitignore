@@ -24,3 +24,5 @@ docs/api/commands.md
 
 # master remnants from switching locally
 *.tsbuildinfo
+/packages/browser-webdriver/package-lock.json
+/packages/side-utils/package-lock.json
