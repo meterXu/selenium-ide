@@ -20,7 +20,7 @@ import { preprocessParameter } from './preprocessor'
 import doRender from './render'
 import { registerMethod } from './register'
 import { findReusedTestMethods, findCommandThatOpensWindow } from './find'
-import { Commands } from '@seleniumhq/side-model'
+import { Commands } from '../../../side-model/dist/index'
 
 function validateCommand(command) {
   const commandName = command.command

@@ -15,7 +15,7 @@
 // specific language governing permissions and limitations
 // under the License.
 
-import webdriver from 'browser-webdriver'
+import webdriver from '../../../../../browser-webdriver/build/webdriver'
 import { absolutifyUrl } from './utils'
 import { Logger, Channels } from '../../stores/view/Logs'
 import PlaybackState from '../../stores/view/PlaybackState'
