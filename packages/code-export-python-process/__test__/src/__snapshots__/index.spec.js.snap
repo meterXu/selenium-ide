@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Code Export Python pytest should export a test 1`] = `
+"*** Settings ***
+Library           JetExcelClient
+Library           JetOracleClient
+Library           JetHtmlAnalyze
+
+*** Test Cases ***
+流程图1
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
+    \${data}    Convert To String    \${readData.data[0]}
+    \${url}    Convert To String    \${readData.url[0]}
+    \${self}=    A_HXHS_TEST1    \${None}    \${data}    \${url}
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
+    \${data}    Convert To String    \${readData.data[0]}
+    \${url}    Convert To String    \${readData.url[0]}
+    \${self}=    A_HXHS_TEST1    \${self.driver}    \${data}    \${url}
+    \${readData}=    read_excel_to_df_withName    D:\\\\\\\\upload\\\\\\\\1.html    sheet1
+    \${url}    Convert To String    \${readData.url[0]}
+    \${data}    Convert To String    \${readData.data[0]}
+    \${self}=    A_HXHS_TEST1    \${self.driver}    \${url}    \${data}"
+`;

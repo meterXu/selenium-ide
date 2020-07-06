@@ -23,6 +23,7 @@ export const availableLanguages = {
   // 'ruby-rspec': require('@seleniumhq/code-export-ruby-rspec'),
   // 'python-robotframework':require('../../code-export-python-robotframework/dist'),
   'robotframework-Process': require('../../code-export-robotframework-process/dist'),
+  'python-Process': require('../../code-export-python-process/dist'),
   'python-RPA': require('../../code-export-python-rpa/dist'),
 }
 

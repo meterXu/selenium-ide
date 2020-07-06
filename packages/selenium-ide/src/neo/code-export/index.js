@@ -33,6 +33,7 @@ export function availableLanguages() {
   } else {
     xx = {
       'robotframework-Process': languages['robotframework-Process'],
+      'python-Process': languages['python-Process'],
     }
   }
   return Object.keys(vendorLanguages).length
