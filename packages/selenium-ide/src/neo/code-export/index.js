@@ -18,10 +18,10 @@
 import UiState from '../stores/view/UiState'
 import ModalState from '../stores/view/ModalState'
 import exporter from '@seleniumhq/code-export'
-import { availableLanguages as languages } from '@seleniumhq/code-export'
+import { availableLanguages as languages } from '../../../../code-export/dist/index'
 import { downloadUniqueFile } from '../IO/filesystem'
 import PluginManager from '../../plugin/manager'
-import { userAgent, project as projectProcessor } from '@seleniumhq/side-utils'
+import { userAgent, project as projectProcessor } from '../../../../side-utils/dist/index'
 const vendorLanguages = PluginManager.plugins.vendorLanguages
 
 export function availableLanguages() {
