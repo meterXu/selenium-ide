@@ -63,9 +63,10 @@ export default class ProjectStore {
   }
   @observable
   pluginConf = {
-    backUrl: 'http://192.168.12.74:8000/',
+    backUrl: 'http://rpaapi.isaacxu.com/v1',
     source: 'api/v1/dataCatalog/',
     lib: 'api/v1/help/',
+    upload: '/code/upload',
   }
 
   @observable
