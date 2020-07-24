@@ -27,6 +27,8 @@ class ModalState {
   @observable
   caseConfigState = false
   @observable
+  settingConfigState = false
+  @observable
   importSuiteState = {}
   @observable
   suiteSettingsState = {}
@@ -289,6 +291,11 @@ class ModalState {
     this.caseConfigState = !this.caseConfigState
   }
 
+  @action.bound
+  toggleSettingConfig() {
+    this.settingConfigState = !this.settingConfigState
+  }
+
   isUniqueWindowName(windowName, commandId) {
     const commands = UiState.selectedTest.test.commands
       .filter(command => command.id !== commandId)
@@ -337,6 +344,11 @@ class ModalState {
     if (this.libModifyIsOpen === false) {
       GraphState.currentActiveFun = null
     }
+  }
+  @action.bound
+  saveSettingConfig() {
+    window.localStorage.setItem('backUrl', UiState.pluginConf.backUrl)
+    this.settingConfigState = !this.settingConfigState
   }
 }
 

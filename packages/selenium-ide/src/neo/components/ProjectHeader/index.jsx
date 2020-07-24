@@ -24,11 +24,8 @@ import { observer } from 'mobx-react'
 import NewButton from '../ActionButtons/New'
 import OpenButton from '../ActionButtons/Open'
 import SaveButton from '../ActionButtons/Save'
-import MoreButton from '../ActionButtons/More'
-import ListMenu, { ListMenuItem } from '../ListMenu'
-import SourceConf from '../ActionButtons/SourceConf'
+import ProjectSetting from '../ActionButtons/ProjectSetting'
 import './style.css'
-import UiState from '../../stores/view/UiState'
 
 @observer
 export default class ProjectHeader extends React.Component {
@@ -45,6 +42,7 @@ export default class ProjectHeader extends React.Component {
     load: PropTypes.func,
     save: PropTypes.func,
     new: PropTypes.func,
+    showSetting: PropTypes.func,
   }
   handleKeyDown(e) {
     if (e.key === 'Enter') {
@@ -74,7 +72,7 @@ export default class ProjectHeader extends React.Component {
           <i className="si-pencil" />
         </div>
         <span className="buttons">
-          <SourceConf onClick={this.props.switchHeadBtn} type={UiState.selectedView==='sourceConf'?0:1} />
+          <ProjectSetting onClick={this.props.showSetting} />
           {/*<SourceConf onClick={this.props.switchHeadBtn} type={UiState.selectedView==='sourceConf'?0:1} />*/}
           <NewButton onClick={this.props.new} />
           <OpenButton

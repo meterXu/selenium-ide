@@ -296,6 +296,9 @@ export default class Panel extends React.Component {
       UiState.selectedView !== 'sourceConf' ? 'sourceConf' : UiState.lang.tests
     )
   }
+  showSetting() {
+    ModalState.toggleSettingConfig()
+  }
   componentWillUnmount() {
     if (isProduction) {
       clearInterval(this.moveInterval)
@@ -342,6 +345,7 @@ export default class Panel extends React.Component {
                   this.openFile = openFile
                 }}
                 switchHeadBtn={this.switchHeadBtn.bind(this)}
+                showSetting={this.showSetting.bind(this)}
                 load={loadProject.bind(undefined, this.state.project)}
                 save={() => saveProject(this.state.project)}
                 new={this.loadNewProject.bind(this)}

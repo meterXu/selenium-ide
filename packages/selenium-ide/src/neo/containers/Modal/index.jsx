@@ -25,6 +25,7 @@ import RenameDialog from '../../components/Dialogs/Rename'
 import CaseConfigDialog from '../../components/Dialogs/CaseConfig'
 import SourceModifyDialog from '../../components/Dialogs/SourceModifyDialog'
 import SourceTypeDialog from '../../components/Dialogs/SourceTypeDialog'
+import SettingConfigDialog from '../../components/Dialogs/SettingConfig'
 import BaseUrlDialog from '../../components/Dialogs/BaseUrl'
 import WelcomeDialog from '../../components/Dialogs/Welcome'
 import AlertDialog from '../../components/Dialogs/Alert'
@@ -78,6 +79,10 @@ export default class Modal extends Component {
           submit={ModalState.toggleCaseConfig}
           tests={this.props.project.tests}
           project={this.props.project}
+        />
+        <SettingConfigDialog
+          isOpen={ModalState.settingConfigState}
+          submit={ModalState.saveSettingConfig}
         />
         <SourceModifyDialog
           isOpen={ModalState.sourceModifyDialog}

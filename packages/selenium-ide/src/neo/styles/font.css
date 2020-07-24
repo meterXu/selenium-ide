@@ -81,6 +81,9 @@
 .si-home::before {
   content: '\e931';
 }
+.si-setting::before {
+  content: '\e932';
+}
 .si-pencil::before {
   content: '\e919';
 }

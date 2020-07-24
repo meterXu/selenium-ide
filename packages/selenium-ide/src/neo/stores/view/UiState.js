@@ -92,9 +92,14 @@ class UiState {
     shiftKey: false,
     keyCode: null,
   }
+
   @computed
   get pluginConf() {
-    return this.project.pluginConf
+    let _pgConf = this.project.pluginConf
+    if (window.localStorage.getItem('backUrl')) {
+      _pgConf.backUrl = window.localStorage.getItem('backUrl')
+    }
+    return _pgConf
   }
   constructor() {
     this.suiteStates = {}
@@ -789,6 +794,12 @@ class UiState {
   startConnection() {
     this.isControlled = true
   }
+
+  @action.bound
+  changeBackUrl(backUrl) {
+    this.pluginConf.backUrl = backUrl
+  }
+
   @action.bound
   getLibData() {
     axios.get(this.pluginConf.backUrl + this.pluginConf.lib).then(c => {
