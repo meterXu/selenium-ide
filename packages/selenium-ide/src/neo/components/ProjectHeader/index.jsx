@@ -75,6 +75,7 @@ export default class ProjectHeader extends React.Component {
         </div>
         <span className="buttons">
           <SourceConf onClick={this.props.switchHeadBtn} type={UiState.selectedView==='sourceConf'?0:1} />
+          {/*<SourceConf onClick={this.props.switchHeadBtn} type={UiState.selectedView==='sourceConf'?0:1} />*/}
           <NewButton onClick={this.props.new} />
           <OpenButton
             onFileSelected={this.props.load}

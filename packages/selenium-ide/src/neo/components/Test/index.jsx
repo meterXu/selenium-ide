@@ -315,6 +315,7 @@ export class MenuTest extends React.Component {
         <ListMenuItem onClick={this.props.duplicateTest}>复制</ListMenuItem>
         <ListMenuItem onClick={this.props.removeTest}>删除</ListMenuItem>
         <ListMenuItem onClick={this.props.codeExport}>导出</ListMenuItem>
+        <ListMenuItem>上传</ListMenuItem>
       </ListMenu>
     )
     //setting component of context menu.
