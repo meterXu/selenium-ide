@@ -24,6 +24,9 @@ import Test, { DraggableTest, MenuTest } from '../Test'
 import UiState from '../../stores/view/UiState'
 import PlaybackState from '../../stores/view/PlaybackState'
 import './style.css'
+import GraphState from '../../stores/view/GraphState'
+import 'rc-notification/assets/index.css'
+import Notification from 'rc-notification'
 
 @inject('renameTest')
 @observer
@@ -39,6 +42,8 @@ export default class TestList extends Component {
     noMenu: PropTypes.bool,
   }
   render() {
+    let notification = null
+    Notification.newInstance({}, n => (notification = n))
     return (
       <ul className={classNames('tests', { active: !this.props.collapsed })}>
         {this.props.tests.map((test, index) => (
@@ -162,6 +167,12 @@ export default class TestList extends Component {
                 codeExport={() => {
                   this.props.codeExport({
                     test: test.export(),
+                  })
+                }}
+                upload={() => {
+                  GraphState.upload(test)
+                  notification.notice({
+                    content: <span>上传成功</span>,
                   })
                 }}
                 moveSelectionUp={() => {

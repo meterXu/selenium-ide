@@ -62,6 +62,7 @@
     "project-name-generator": "^2.1.4",
     "prop-types": "^15.5.10",
     "raphael": "^2.3.0",
+    "rc-notification": "^4.4.0",
     "rc-slider": "^8.4.0",
     "rc-tree": "^3.2.2",
     "react": "^16.0.0",

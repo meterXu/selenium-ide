@@ -66,7 +66,7 @@ export default class ProjectStore {
     backUrl: 'http://rpaapi.isaacxu.com/v1',
     source: 'api/v1/dataCatalog/',
     lib: 'api/v1/help/',
-    upload: '/code/upload',
+    upload: '/code',
   }
 
   @observable

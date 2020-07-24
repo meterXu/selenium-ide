@@ -2,6 +2,7 @@ import { action, computed, observable } from 'mobx'
 import draw from '../../components/Graph/Draw/draw'
 import ModalState from './ModalState'
 import UiState from './../view/UiState'
+import axios from 'axios'
 class GraphState {
   @observable
   zoom = 1
@@ -190,6 +191,30 @@ class GraphState {
   @action.bound
   codeExport(payload) {
     return ModalState.codeExport(payload, UiState.lang.processDesign)
+  }
+  @action.bound
+  upload(test) {
+    const uploadData = {
+      postType: 'upload',
+      recordOid: test.id,
+      name: test.name,
+      commands: test.commands,
+    }
+    axios
+      .post(
+        UiState.pluginConf.backUrl + UiState.pluginConf.upload,
+        uploadData,
+        {
+          headers: {
+            Authorization: `Bearer develop`,
+          },
+        }
+      )
+      .then(c => {
+        if (c.data && c.data.success) {
+          ModalState.toggle
+        }
+      })
   }
   @action.bound
   getImage(name) {
