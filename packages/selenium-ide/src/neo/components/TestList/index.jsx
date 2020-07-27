@@ -170,9 +170,24 @@ export default class TestList extends Component {
                   })
                 }}
                 upload={() => {
-                  GraphState.upload(test)
-                  notification.notice({
-                    content: <span>上传成功</span>,
+                  GraphState.upload(test, isSuccess => {
+                    if (isSuccess) {
+                      notification.notice({
+                        content: <span>上传成功</span>,
+                        style: {
+                          background: '#5dd095',
+                          color: '#fff',
+                        },
+                      })
+                    } else {
+                      notification.notice({
+                        content: <span>上传失败</span>,
+                        style: {
+                          background: '#ff2424',
+                          color: '#fff',
+                        },
+                      })
+                    }
                   })
                 }}
                 moveSelectionUp={() => {

@@ -193,7 +193,7 @@ class GraphState {
     return ModalState.codeExport(payload, UiState.lang.processDesign)
   }
   @action.bound
-  upload(test) {
+  upload(test, callback) {
     const uploadData = {
       postType: 'upload',
       recordOid: test.id,
@@ -211,8 +211,13 @@ class GraphState {
         }
       )
       .then(c => {
-        if (c.data && c.data.success) {
-          ModalState.toggle
+        if (callback) {
+          callback(c.data.success)
+        }
+      })
+      .catch(() => {
+        if (callback) {
+          callback(false)
         }
       })
   }
