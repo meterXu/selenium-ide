@@ -96,6 +96,12 @@ class UiState {
   @computed
   get pluginConf() {
     let _pgConf = this.project.pluginConf
+    if (!_pgConf) {
+      _pgConf = {
+        backUrl: 'http://rpaapi.isaacxu.com/v1',
+        upload: '/code',
+      }
+    }
     if (window.localStorage.getItem('backUrl')) {
       _pgConf.backUrl = window.localStorage.getItem('backUrl')
     }
