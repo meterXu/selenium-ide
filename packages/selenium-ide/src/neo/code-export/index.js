@@ -25,20 +25,9 @@ import { userAgent, project as projectProcessor } from '../../../../side-utils/d
 const vendorLanguages = PluginManager.plugins.vendorLanguages
 
 export function availableLanguages() {
-  let xx = null
-  if (ModalState.exportType === UiState.lang.tests) {
-    xx = {
-      'python-RPA': languages['python-RPA'],
-    }
-  } else {
-    xx = {
-      'robotframework-Process': languages['robotframework-Process'],
-      'python-Process': languages['python-Process'],
-    }
-  }
   return Object.keys(vendorLanguages).length
-    ? { ...xx, ...vendorLanguages }
-    : xx
+    ? { ...languages, ...vendorLanguages }
+    : languages
 }
 
 export async function exportCodeToFile(

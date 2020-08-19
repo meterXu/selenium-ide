@@ -365,12 +365,22 @@ export default class ProjectStore {
     this.delay = jsRep.delay || this.defaultDelay
     this.implicitlyWait = jsRep.implicitlyWait || this.defaultImplicitlyWait
     this.sourceData = jsRep.sourceData
-    this.pluginConf = jsRep.pluginConf || {
-      backUrl: 'http://rpaapi.isaacxu.com/v1',
-      source: 'api/v1/dataCatalog/',
-      lib: 'api/v1/help/',
-      upload: '/code',
+    this.pluginConf = {}
+    if (jsRep.pluginConf) {
+      this.pluginConf.backUrl =
+        jsRep.pluginConf.backUrl || 'http://rpaapi.isaacxu.com/v1'
+      this.pluginConf.source = jsRep.pluginConf.source || 'api/v1/dataCatalog/'
+      this.pluginConf.lib = jsRep.pluginConf.lib || 'api/v1/help/'
+      this.pluginConf.upload = jsRep.pluginConf.upload || '/code'
+    } else {
+      this.pluginConf = {
+        backUrl: 'http://rpaapi.isaacxu.com/v1',
+        source: 'api/v1/dataCatalog/',
+        lib: 'api/v1/help/',
+        upload: '/code',
+      }
     }
+
     this.processData = jsRep.processData.map(c => Process.fromJs(c))
     if (this.processData.length > 0) {
       this.selectedProcess = this.processData[0].id
